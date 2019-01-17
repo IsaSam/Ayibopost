@@ -12,15 +12,6 @@ User Stories - AYIBOPOST The following required functionality :
 - [ ] A user should comment on an article and share it .
 - [ ] User should be able to change the search criteria and see a new list of results
 
-//## Video Walkthrough
-
-//Here's a walkthrough of implemented user stories:
-
-//<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-## Notes
-
-
 
 ## License
 
