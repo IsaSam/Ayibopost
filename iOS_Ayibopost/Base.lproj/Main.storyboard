@@ -30,25 +30,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="244.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAf-md-xdn">
-                                                    <rect key="frame" x="15" y="112" width="345" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-Wa-BcU">
+                                                    <rect key="frame" x="15" y="85" width="345" height="149"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-Wa-BcU">
-                                                    <rect key="frame" x="15" y="134" width="345" height="100"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAf-md-xdn">
+                                                    <rect key="frame" x="15" y="31" width="345" height="65"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLabel" destination="WyA-Wa-BcU" id="qSd-7b-OEL"/>
-                                            <outlet property="titleLabel" destination="RAf-md-xdn" id="K60-pU-pAZ"/>
+                                            <outlet property="contentLabel" destination="WyA-Wa-BcU" id="MbC-u2-baP"/>
+                                            <outlet property="titleLabel" destination="RAf-md-xdn" id="FrX-45-yVU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -58,7 +58,7 @@
                         <viewLayoutGuide key="safeArea" id="IVY-ea-DUO"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="Vla-XV-3x5" id="1Z1-9a-nDT"/>
+                        <outlet property="tableView" destination="Vla-XV-3x5" id="nRy-7C-bEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcw-kN-BGi" sceneMemberID="firstResponder"/>
