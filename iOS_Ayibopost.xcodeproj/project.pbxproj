@@ -12,6 +12,9 @@
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
 		963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9021EECA7F00187DA2 /* Assets.xcassets */; };
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
+		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
+		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
+		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,11 @@
 		963D9B9021EECA7F00187DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963D9B9321EECA7F00187DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
+		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
+		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
+		D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Ayibopost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		067B09E67B113E7F869D83E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */,
+				CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		963D9B7D21EECA7900187DA2 = {
 			isa = PBXGroup;
 			children = (
 				963D9B8821EECA7900187DA2 /* iOS_Ayibopost */,
 				963D9B8721EECA7900187DA2 /* Products */,
+				067B09E67B113E7F869D83E5 /* Pods */,
+				E70C2A9A6EE1CBAF78D68F5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +80,18 @@
 				963D9B9021EECA7F00187DA2 /* Assets.xcassets */,
 				963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */,
 				963D9B9521EECA7F00187DA2 /* Info.plist */,
+				963D9B9B21EECD2800187DA2 /* PostsCell.swift */,
+				963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */,
 			);
 			path = iOS_Ayibopost;
+			sourceTree = "<group>";
+		};
+		E70C2A9A6EE1CBAF78D68F5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963D9B9821EECA7F00187DA2 /* Build configuration list for PBXNativeTarget "iOS_Ayibopost" */;
 			buildPhases = (
+				6887D83762F4FDC4B3B57ADC /* [CP] Check Pods Manifest.lock */,
 				963D9B8221EECA7900187DA2 /* Sources */,
 				963D9B8321EECA7900187DA2 /* Frameworks */,
 				963D9B8421EECA7900187DA2 /* Resources */,
+				B06E0325496B12D25D9A7F52 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,11 +162,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6887D83762F4FDC4B3B57ADC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS_Ayibopost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B06E0325496B12D25D9A7F52 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		963D9B8221EECA7900187DA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
+				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
 			);
@@ -278,6 +351,7 @@
 		};
 		963D9B9921EECA7F00187DA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +369,7 @@
 		};
 		963D9B9A21EECA7F00187DA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
