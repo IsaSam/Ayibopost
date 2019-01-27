@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import AlamofireImage
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -25,7 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedRowHeight = 200
         
         load_Posts()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
     func load_Posts(){
         guard let url = URL(string: "https://ayibopost.com/wp-json/posts") else {return}
@@ -42,15 +43,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 //print(jsonResponse) //Response result
                 guard let dataDictionary = jsonResponse as? [[String: Any]] else{return}
                 
-                for dic in dataDictionary{
-                    //guard let title = dic["title"] as? String else { return }
-                    //guard let content = dic["content"] as? String else {return}
-                    //print(title) //Output
-                    self.posts.append(dic)
-                    //self.posts.append([title])
-                    print(self.posts)
-                    self.tableView.reloadData()
+                /*for dic in dataDictionary{
+                    guard let title = dic["title"] as? String else { return }
+                    guard let content = dic["content"] as? String else {return}
+                    print(title) //Output
+                    //self.posts.append(dic)
+                    //self.posts.append(title)
+                    //print(self.posts)
+                    //self.tableView.reloadData()
                     
+                }*/
+                guard let imgArray = (jsonResponse as AnyObject).value(forKey: "featured_image") else {return}
+                //print(theArray)
+                let dataDic = imgArray as? [[String: Any]]
+                //print(dataDic)
+                for dic1 in dataDic!{
+                    let source = dic1["source"] as? String
+                    print(source!)
+                }
+                
+                
+                for dic in dataDictionary{
+                    if let title = dic["title"] as? String,
+                        let content = dic["content"] as? String{
+                   // print(title) //Output
+                    //self.posts.append(dic)
+                    //self.posts.append(title)
+                    //print(self.posts)
+                    //self.tableView.reloadData()
+                    }
                 }
                 
             } catch let parsingError {
@@ -76,13 +97,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.contentLabel.text = content
         
         /*if let posterPath = movie["source"] as? String{
-            let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
-            let posterUrl = URL(string:  posterBaseUrl + posterPath)
-            cell.MoviesImageView.af_setImage(withURL: posterUrl!)
-        }
-        else{
-            cell.MoviesImageView.image = nil
-        }*/
+         let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
+         let posterUrl = URL(string:  posterBaseUrl + posterPath)
+         cell.MoviesImageView.af_setImage(withURL: posterUrl!)
+         }
+         else{
+         cell.MoviesImageView.image = nil
+         }*/
         
         return cell
     }
@@ -92,7 +113,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 }
