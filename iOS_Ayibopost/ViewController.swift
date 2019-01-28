@@ -117,6 +117,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.contentLabel.text = content
         //cell.contentLabel.text = post["content"] as? String ?? "Default"
         
+        do{
+            if let url = "https://ayibopost.com/wp-content/uploads/2019/01/dlo-Haiti.jpg" as? String{
+                let data = try Data(contentsOf: URL(string: url)!)
+                cell .imagePost?.image = UIImage(data: data)
+                print("image loaded***************************************************************")
+                }
+            } catch {
+                print("Error in converting into data")
+        }
+        
+        
+        
         /*if let posterPath = movie["source"] as? String{
          let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
          let posterUrl = URL(string:  posterBaseUrl + posterPath)
