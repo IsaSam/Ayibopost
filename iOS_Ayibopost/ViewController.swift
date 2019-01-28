@@ -25,9 +25,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.rowHeight = 168
         tableView.estimatedRowHeight = 200
         
-        load_Posts()
-        //self.tableView.reloadData()
+        getPostList()
+        
+       // load_Posts()
     }
+    private func getPostList(){
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+            
+            if error != nil{
+                print(error!)
+                return
+            }
+            print(result!)
+        }
+    }
+    /*
     func load_Posts(){
         guard let url = URL(string: "https://ayibopost.com/wp-json/posts") else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -80,13 +92,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         task.resume()
     }
-    
-    
+     */
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
+        return 0//self.posts.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         let post = posts[indexPath.row]
         let title = post["title"] as! String
@@ -104,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          else{
          cell.MoviesImageView.image = nil
          }*/
-        
+ 
         return cell
     }
     

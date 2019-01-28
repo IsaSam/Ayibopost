@@ -14,6 +14,7 @@
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
+		96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */; };
 		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
+		96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboAPIManager.swift; sourceTree = "<group>"; };
 		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
 		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
 		D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Ayibopost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				963D9B9521EECA7F00187DA2 /* Info.plist */,
 				963D9B9B21EECD2800187DA2 /* PostsCell.swift */,
 				963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */,
+				96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */,
 			);
 			path = iOS_Ayibopost;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
+				96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
