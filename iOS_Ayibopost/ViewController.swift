@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -30,13 +31,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
        // load_Posts()
     }
     private func getPostList(){
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result) in
             
-            if error != nil{
-                print(error!)
-                return
+            switch result{
+            case .error(let msg):
+                print("Error: \(msg)")
+            case .success(let json):
+                print(json) //Array of dictionnary
             }
-            print(result!)
         }
     }
     /*
@@ -93,21 +95,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         task.resume()
     }
      */
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0//self.posts.count
+        return posts.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+
         let post = posts[indexPath.row]
-        let title = post["title"] as! String
-        cell.titleLabel.text = title
-        let htmlTag =  post["content"] as! String
-        //let htmlTag = post["content"] as! String
+   //     let title = post["title"] as! String
+        cell.titleLabel.text = post["title"] as? String
+    //    let htmlTag =  post["content"] as! String
+        let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
         
@@ -118,14 +121,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          }
          else{
          cell.MoviesImageView.image = nil
-         }*/
- 
+         }
+ */
         return cell
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

@@ -8,21 +8,31 @@
 
 import Foundation
 
+enum Result{
+    
+    //Associative types
+    case error(String)
+    case success([[String : Any]])
+}
+
 struct AyiboAPIManager{
     
     static let shared:AyiboAPIManager = AyiboAPIManager()
     
-    func get(url:String, completion: @escaping ([[String: Any]]?, String?) -> Void ){
+    func get(url:String, completion: @escaping (Result) -> Void ){
         let urlRequest = URLRequest(url: URL(string: url)!)
         URLSession.shared.dataTask(with: urlRequest) { ( data, response, error) in
             
             if error != nil {
-                completion(nil, error?.localizedDescription)
+                let er = Result.error(error!.localizedDescription)
+                completion(er)
                 return
             }
             do{
-                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String : Any]]
-                completion(json, nil)
+                if let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String : Any]]{
+                
+                    completion( .success( json ))
+                }
                 
             }catch{
                 print("Error: \(error.localizedDescription)")
