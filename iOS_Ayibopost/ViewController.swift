@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return
             }
             print(result!)
+            self.posts = result!
+            self.tableView.reloadData() // to tell table about new data
         }
     }
     /*
@@ -93,23 +95,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         task.resume()
     }
      */
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0//self.posts.count
+        return posts.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+        
         let post = posts[indexPath.row]
-        let title = post["title"] as! String
-        cell.titleLabel.text = title
-        let htmlTag =  post["content"] as! String
-        //let htmlTag = post["content"] as! String
+        //     let title = post["title"] as! String
+        cell.titleLabel.text = post["title"] as? String
+        //    let htmlTag =  post["content"] as! String
+        let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+        //cell.contentLabel.text = post["content"] as? String ?? "Default"
+        
+        do{
+            if let url = "https://ayibopost.com/wp-content/uploads/2019/01/dlo-Haiti.jpg" as? String{
+                let data = try Data(contentsOf: URL(string: url)!)
+                cell .imagePost?.image = UIImage(data: data)
+                print("image loaded***************************************************************")
+            }
+        } catch {
+            print("Error in converting into data")
+        }
+        
+        
         
         /*if let posterPath = movie["source"] as? String{
          let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
@@ -118,8 +134,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          }
          else{
          cell.MoviesImageView.image = nil
-         }*/
- 
+         }
+         */
         return cell
     }
     
