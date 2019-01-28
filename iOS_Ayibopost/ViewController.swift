@@ -38,6 +38,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print("Error: \(msg)")
             case .success(let json):
                 print(json) //Array of dictionnary
+                self.posts = json
+                self.tableView.reloadData() // to tell table about new data
             }
         }
     }
@@ -113,6 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+        //cell.contentLabel.text = post["content"] as? String ?? "Default"
         
         /*if let posterPath = movie["source"] as? String{
          let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
