@@ -10,8 +10,7 @@ import UIKit
 
 enum PostKeys {
     static let title = "title"
-    static let postID = "id"
-    static let imgURL = "source"
+    static let content = "content"
 }
 
 class DetailsPostViewController: UIViewController {
@@ -29,7 +28,9 @@ class DetailsPostViewController: UIViewController {
         
          if let post = post{
          titleLabel.text = post[PostKeys.title] as? String
-         contentLabel.text = post["content"] as? String
+         let htmlTag = post[PostKeys.content] as! String
+         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+         contentLabel.text = content
    
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
@@ -40,13 +41,6 @@ class DetailsPostViewController: UIViewController {
                 postImageView.image = nil
             }
          }
-            /*if let imagePath = imgPost,
-                let imgPost = URL(string:  imagePath){
-                postImageView.af_setImage(withURL: imgPost)
-            }
-            else{
-                postImageView.image = nil
-            }*/
          }
     
 
