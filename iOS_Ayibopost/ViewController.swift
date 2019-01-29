@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -16,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     var posts: [[String: Any]] = []
+    var imgPosts: [[String: Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedRowHeight = 200
         
         getPostList()
+        //getImgPostList()
         
        // load_Posts()
     }
@@ -36,11 +39,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(error!)
                 return
             }
-            print(result!)
+            //print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
         }
+
     }
+    /*private func getImgPostList(){
+        AyiboAPIManager.shared.get(urlimg: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+            
+            if error != nil{
+                print(error!)
+                return
+            }
+            print(result!)
+            self.imgPosts = result!
+            self.tableView.reloadData() // to tell table about new data
+        }
+        
+    }*/
+    
+    
+    
     /*
     func load_Posts(){
         guard let url = URL(string: "https://ayibopost.com/wp-json/posts") else {return}
@@ -95,9 +115,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         task.resume()
     }
      */
-    func numberOfSections(in tableView: UITableView) -> Int {
+    /*func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
+    }*/
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -107,6 +127,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         
         let post = posts[indexPath.row]
+        //let postImg = imgPosts[indexPath.row]
         //     let title = post["title"] as! String
         cell.titleLabel.text = post["title"] as? String
         //    let htmlTag =  post["content"] as! String
@@ -116,15 +137,51 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //cell.contentLabel.text = post["content"] as? String ?? "Default"
         
         do{
-            if let url = "https://ayibopost.com/wp-content/uploads/2019/01/dlo-Haiti.jpg" as? String{
-                let data = try Data(contentsOf: URL(string: url)!)
+            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+            //print(imgArray!)
+            let dataDic = imgArray as? [[String: Any]]
+            //print(dataDic)
+            self.imgPosts = dataDic!
+            
+            let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = remoteImageUrlString["source"] as? String
+            print(imageURL!)
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                cell.imagePost.af_setImage(withURL: imgUrl)
+                
+            }
+            else{
+                cell.imagePost.image = nil
+            }
+            
+            /*for dic1 in dataDic!{
+                let source = dic1["source"] as? String
+                print(source!)
+                
+                if let posterPath = source,
+                    let posterUrl = URL(string:  posterPath){
+                    cell.imagePost.af_setImage(withURL: posterUrl)
+                    
+                }
+                else{
+                    cell.imagePost.image = nil
+                }
+            }*/
+        }
+        
+        
+        /*
+        do{
+            if let urlimg = postImg["source"] as? String{
+                let data = try Data(contentsOf: URL(string: urlimg)!)
                 cell .imagePost?.image = UIImage(data: data)
                 print("image loaded***************************************************************")
             }
         } catch {
             print("Error in converting into data")
         }
-        
+        */
         
         
         /*if let posterPath = movie["source"] as? String{
