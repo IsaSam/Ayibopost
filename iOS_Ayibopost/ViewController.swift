@@ -28,9 +28,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedRowHeight = 200
         
         getPostList()
-        //getImgPostList()
-        
-       // load_Posts()
     }
     private func getPostList(){
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
@@ -45,79 +42,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
     }
-    /*private func getImgPostList(){
-        AyiboAPIManager.shared.get(urlimg: "https://ayibopost.com/wp-json/posts/") { (result, error) in
-            
-            if error != nil{
-                print(error!)
-                return
-            }
-            print(result!)
-            self.imgPosts = result!
-            self.tableView.reloadData() // to tell table about new data
-        }
-        
-    }*/
-    
-    
-    
-    /*
-    func load_Posts(){
-        guard let url = URL(string: "https://ayibopost.com/wp-json/posts") else {return}
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return
-            }
-            do{
-                //here dataResponse received from a network request
-                let jsonResponse = try JSONSerialization.jsonObject(with:
-                    dataResponse, options: [])
-                //print(jsonResponse) //Response result
-                guard let dataDictionary = jsonResponse as? [[String: Any]] else{return}
-                
-                /*for dic in dataDictionary{
-                    guard let title = dic["title"] as? String else { return }
-                    guard let content = dic["content"] as? String else {return}
-                    print(title) //Output
-                    //self.posts.append(dic)
-                    //self.posts.append(title)
-                    //print(self.posts)
-                    //self.tableView.reloadData()
-                    
-                }*/
-                guard let imgArray = (jsonResponse as AnyObject).value(forKey: "featured_image") else {return}
-                //print(theArray)
-                let dataDic = imgArray as? [[String: Any]]
-                //print(dataDic)
-                for dic1 in dataDic!{
-                    let source = dic1["source"] as? String
-                    print(source!)
-                }
-                
-                
-                for dic in dataDictionary{
-                    if let title = dic["title"] as? String,
-                        let content = dic["content"] as? String{
-                   // print(title) //Output
-                    //self.posts.append(dic)
-                    //self.posts.append(title)
-                    //print(self.posts)
-                    //self.tableView.reloadData()
-                    }
-                }
-                
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
-        task.resume()
-    }
-     */
-    /*func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }*/
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -134,13 +58,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
-        //cell.contentLabel.text = post["content"] as? String ?? "Default"
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
-            //print(imgArray!)
             let dataDic = imgArray as? [[String: Any]]
-            //print(dataDic)
             self.imgPosts = dataDic!
             
             let remoteImageUrlString = imgPosts[indexPath.row]
@@ -149,50 +70,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
                 cell.imagePost.af_setImage(withURL: imgUrl)
-                
             }
             else{
                 cell.imagePost.image = nil
             }
-            
-            /*for dic1 in dataDic!{
-                let source = dic1["source"] as? String
-                print(source!)
-                
-                if let posterPath = source,
-                    let posterUrl = URL(string:  posterPath){
-                    cell.imagePost.af_setImage(withURL: posterUrl)
-                    
-                }
-                else{
-                    cell.imagePost.image = nil
-                }
-            }*/
         }
-        
-        
-        /*
-        do{
-            if let urlimg = postImg["source"] as? String{
-                let data = try Data(contentsOf: URL(string: urlimg)!)
-                cell .imagePost?.image = UIImage(data: data)
-                print("image loaded***************************************************************")
-            }
-        } catch {
-            print("Error in converting into data")
-        }
-        */
-        
-        
-        /*if let posterPath = movie["source"] as? String{
-         let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
-         let posterUrl = URL(string:  posterBaseUrl + posterPath)
-         cell.MoviesImageView.af_setImage(withURL: posterUrl!)
-         }
-         else{
-         cell.MoviesImageView.image = nil
-         }
-         */
+
         return cell
     }
     
