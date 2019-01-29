@@ -6,7 +6,7 @@ ayibopost.com Official App
 
 User Stories - AYIBOPOST The following required functionality :
 
-- [ ] A user should be able to see a list of articles post on Ayibopost.com.
+- [X] A user should be able to see a list of articles post on Ayibopost.com.
 - [ ] User can read an article by is choice
 - [ ] From the article browsing view, a user should be able to see a list articles marked as favorites
 - [ ] A user should comment on an article and share it .

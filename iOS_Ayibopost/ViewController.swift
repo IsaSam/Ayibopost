@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -17,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     var posts: [[String: Any]] = []
+    var imgPosts: [[String: Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +29,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedRowHeight = 200
         
         getPostList()
-        
-       // load_Posts()
     }
     private func getPostList(){
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result) in
@@ -41,8 +41,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.posts = json
                 self.tableView.reloadData() // to tell table about new data
             }
+<<<<<<< HEAD
+=======
+            //print(result!)
+            self.posts = result!
+            self.tableView.reloadData() // to tell table about new data
+>>>>>>> jsonOther
         }
+
     }
+<<<<<<< HEAD
     /*
     func load_Posts(){
         guard let url = URL(string: "https://ayibopost.com/wp-json/posts") else {return}
@@ -100,6 +108,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+=======
+>>>>>>> jsonOther
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -107,11 +117,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+<<<<<<< HEAD
 
         let post = posts[indexPath.row]
    //     let title = post["title"] as! String
         cell.titleLabel.text = post["title"] as? String
     //    let htmlTag =  post["content"] as! String
+=======
+        
+        let post = posts[indexPath.row]
+        //let postImg = imgPosts[indexPath.row]
+        //     let title = post["title"] as! String
+        cell.titleLabel.text = post["title"] as? String
+        //    let htmlTag =  post["content"] as! String
+>>>>>>> jsonOther
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
@@ -129,6 +148,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         
+<<<<<<< HEAD
         /*if let posterPath = movie["source"] as? String{
          let posterBaseUrl = "https://image.tmdb.org/t/p/w500"
          let posterUrl = URL(string:  posterBaseUrl + posterPath)
@@ -138,6 +158,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          cell.MoviesImageView.image = nil
          }
  */
+=======
+        do{
+            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+            let dataDic = imgArray as? [[String: Any]]
+            self.imgPosts = dataDic!
+            
+            let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = remoteImageUrlString["source"] as? String
+            print(imageURL!)
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                cell.imagePost.af_setImage(withURL: imgUrl)
+            }
+            else{
+                cell.imagePost.image = nil
+            }
+        }
+
+>>>>>>> jsonOther
         return cell
     }
     

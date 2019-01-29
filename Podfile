@@ -8,7 +8,7 @@ target 'iOS_Ayibopost' do
   # Pods for AyiboPostIos
 
   pod 'Alamofire', '~> 4.7'
-  #pod 'AlamofireImage'
+  pod 'AlamofireImage'
 
   #pod 'SwiftyJSON'
   pod 'SwiftyJSON', '~> 4.0'
