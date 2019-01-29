@@ -27,7 +27,7 @@ struct AyiboAPIManager{
             }catch{
                 print("Error: \(error.localizedDescription)")
             }
-            
-            }.resume()
+                
+        }.resume()
     }
 }
