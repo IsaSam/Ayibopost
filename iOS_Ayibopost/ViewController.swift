@@ -51,10 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         
         let post = posts[indexPath.row]
-        //let postImg = imgPosts[indexPath.row]
-        //     let title = post["title"] as! String
         cell.titleLabel.text = post["title"] as? String
-        //    let htmlTag =  post["content"] as! String
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content

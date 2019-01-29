@@ -22,7 +22,9 @@ struct AyiboAPIManager{
             }
             do{
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String : Any]]
+                
                 completion(json, nil)
+                
                 
             }catch{
                 print("Error: \(error.localizedDescription)")
