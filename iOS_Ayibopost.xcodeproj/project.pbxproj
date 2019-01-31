@@ -8,26 +8,71 @@
 
 /* Begin PBXBuildFile section */
 		963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8921EECA7900187DA2 /* AppDelegate.swift */; };
-		963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController.swift */; };
+		963D9B8C21EECA7900187DA2 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController1.swift */; };
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
 		963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9021EECA7F00187DA2 /* Assets.xcassets */; };
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
+		9684A869220389320054AF55 /* NavigationDrawer in Resources */ = {isa = PBXBuildFile; fileRef = 9684A868220389310054AF55 /* NavigationDrawer */; };
+		9684A86B220389F90054AF55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86A220389F90054AF55 /* ViewController.swift */; };
+		9684A87A22038A340054AF55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9684A86C22038A2E0054AF55 /* Info.plist */; };
+		9684A87B22038A340054AF55 /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86D22038A2F0054AF55 /* Offers.swift */; };
+		9684A87C22038A340054AF55 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86E22038A2F0054AF55 /* Language.swift */; };
+		9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86F22038A2F0054AF55 /* LayoutThree.swift */; };
+		9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87022038A300054AF55 /* LayoutTwo.swift */; };
+		9684A87F22038A340054AF55 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87122038A300054AF55 /* Settings.swift */; };
+		9684A88022038A340054AF55 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87222038A300054AF55 /* History.swift */; };
+		9684A88122038A340054AF55 /* proPicOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684A87322038A310054AF55 /* proPicOne.png */; };
+		9684A88222038A340054AF55 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87422038A310054AF55 /* DrawerView.swift */; };
+		9684A88322038A340054AF55 /* proPicTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684A87522038A320054AF55 /* proPicTwo.png */; };
+		9684A88422038A340054AF55 /* DrawerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87622038A330054AF55 /* DrawerCell.swift */; };
+		9684A88522038A350054AF55 /* DrawerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9684A87722038A330054AF55 /* DrawerCell.xib */; };
+		9684A88622038A350054AF55 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87822038A340054AF55 /* MyAccount.swift */; };
+		9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87922038A340054AF55 /* DrawerProtocol.swift */; };
+		9684A88922038A820054AF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9684A88822038A810054AF55 /* Assets.xcassets */; };
 		96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */; };
 		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9684A866220388950054AF55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9684A862220388950054AF55 /* NavigationDrawer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9951A2501F7A80A300E4C4FC;
+			remoteInfo = NavigationDrawer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		963D9B8B21EECA7900187DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		963D9B8B21EECA7900187DA2 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		963D9B8E21EECA7900187DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		963D9B9021EECA7F00187DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963D9B9321EECA7F00187DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
+		9684A862220388950054AF55 /* NavigationDrawer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavigationDrawer.xcodeproj; path = ../NavigationDrawer/NavigationDrawer.xcodeproj; sourceTree = "<group>"; };
+		9684A868220389310054AF55 /* NavigationDrawer */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NavigationDrawer; path = ../../NavigationDrawer/NavigationDrawer; sourceTree = "<group>"; };
+		9684A86A220389F90054AF55 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9684A86C22038A2E0054AF55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../NavigationDrawer/NavigationDrawer/Info.plist; sourceTree = "<group>"; };
+		9684A86D22038A2F0054AF55 /* Offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
+		9684A86E22038A2F0054AF55 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		9684A86F22038A2F0054AF55 /* LayoutThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThree.swift; sourceTree = "<group>"; };
+		9684A87022038A300054AF55 /* LayoutTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwo.swift; sourceTree = "<group>"; };
+		9684A87122038A300054AF55 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9684A87222038A300054AF55 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		9684A87322038A310054AF55 /* proPicOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proPicOne.png; sourceTree = "<group>"; };
+		9684A87422038A310054AF55 /* DrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
+		9684A87522038A320054AF55 /* proPicTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proPicTwo.png; sourceTree = "<group>"; };
+		9684A87622038A330054AF55 /* DrawerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerCell.swift; sourceTree = "<group>"; };
+		9684A87722038A330054AF55 /* DrawerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawerCell.xib; sourceTree = "<group>"; };
+		9684A87822038A340054AF55 /* MyAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
+		9684A87922038A340054AF55 /* DrawerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerProtocol.swift; sourceTree = "<group>"; };
+		9684A88822038A810054AF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../NavigationDrawer/NavigationDrawer/Assets.xcassets; sourceTree = "<group>"; };
 		96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboAPIManager.swift; sourceTree = "<group>"; };
 		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
 		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +103,7 @@
 		963D9B7D21EECA7900187DA2 = {
 			isa = PBXGroup;
 			children = (
+				9684A862220388950054AF55 /* NavigationDrawer.xcodeproj */,
 				963D9B8821EECA7900187DA2 /* iOS_Ayibopost */,
 				963D9B8721EECA7900187DA2 /* Products */,
 				067B09E67B113E7F869D83E5 /* Pods */,
@@ -76,8 +122,25 @@
 		963D9B8821EECA7900187DA2 /* iOS_Ayibopost */ = {
 			isa = PBXGroup;
 			children = (
+				9684A868220389310054AF55 /* NavigationDrawer */,
 				963D9B8921EECA7900187DA2 /* AppDelegate.swift */,
-				963D9B8B21EECA7900187DA2 /* ViewController.swift */,
+				9684A86A220389F90054AF55 /* ViewController.swift */,
+				9684A87622038A330054AF55 /* DrawerCell.swift */,
+				9684A87722038A330054AF55 /* DrawerCell.xib */,
+				9684A87922038A340054AF55 /* DrawerProtocol.swift */,
+				9684A87422038A310054AF55 /* DrawerView.swift */,
+				9684A87222038A300054AF55 /* History.swift */,
+				9684A86C22038A2E0054AF55 /* Info.plist */,
+				9684A86E22038A2F0054AF55 /* Language.swift */,
+				9684A86F22038A2F0054AF55 /* LayoutThree.swift */,
+				9684A87022038A300054AF55 /* LayoutTwo.swift */,
+				9684A87822038A340054AF55 /* MyAccount.swift */,
+				9684A86D22038A2F0054AF55 /* Offers.swift */,
+				9684A87322038A310054AF55 /* proPicOne.png */,
+				9684A87522038A320054AF55 /* proPicTwo.png */,
+				9684A87122038A300054AF55 /* Settings.swift */,
+				9684A88822038A810054AF55 /* Assets.xcassets */,
+				963D9B8B21EECA7900187DA2 /* ViewController1.swift */,
 				963D9B8D21EECA7900187DA2 /* Main.storyboard */,
 				963D9B9021EECA7F00187DA2 /* Assets.xcassets */,
 				963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */,
@@ -87,6 +150,14 @@
 				96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */,
 			);
 			path = iOS_Ayibopost;
+			sourceTree = "<group>";
+		};
+		9684A863220388950054AF55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9684A867220388950054AF55 /* NavigationDrawer.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E70C2A9A6EE1CBAF78D68F5F /* Frameworks */ = {
@@ -145,6 +216,12 @@
 			mainGroup = 963D9B7D21EECA7900187DA2;
 			productRefGroup = 963D9B8721EECA7900187DA2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9684A863220388950054AF55 /* Products */;
+					ProjectRef = 9684A862220388950054AF55 /* NavigationDrawer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				963D9B8521EECA7900187DA2 /* iOS_Ayibopost */,
@@ -152,14 +229,30 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		9684A867220388950054AF55 /* NavigationDrawer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = NavigationDrawer.app;
+			remoteRef = 9684A866220388950054AF55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		963D9B8421EECA7900187DA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */,
+				9684A869220389320054AF55 /* NavigationDrawer in Resources */,
 				963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */,
+				9684A87A22038A340054AF55 /* Info.plist in Resources */,
+				9684A88522038A350054AF55 /* DrawerCell.xib in Resources */,
 				963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */,
+				9684A88322038A340054AF55 /* proPicTwo.png in Resources */,
+				9684A88922038A820054AF55 /* Assets.xcassets in Resources */,
+				9684A88122038A340054AF55 /* proPicOne.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +306,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9684A88422038A340054AF55 /* DrawerCell.swift in Sources */,
+				9684A86B220389F90054AF55 /* ViewController.swift in Sources */,
+				9684A87B22038A340054AF55 /* Offers.swift in Sources */,
 				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
-				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
+				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
+				9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */,
+				9684A88222038A340054AF55 /* DrawerView.swift in Sources */,
+				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
+				9684A88022038A340054AF55 /* History.swift in Sources */,
+				9684A88622038A350054AF55 /* MyAccount.swift in Sources */,
+				963D9B8C21EECA7900187DA2 /* ViewController1.swift in Sources */,
+				9684A87C22038A340054AF55 /* Language.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
+				9684A87F22038A340054AF55 /* Settings.swift in Sources */,
 				96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
