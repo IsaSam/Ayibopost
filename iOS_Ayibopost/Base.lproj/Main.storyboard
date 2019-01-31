@@ -138,12 +138,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Tj4-6k-g66">
             <objects>
-                <navigationBar alpha="0.94999999999999996" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IsF-KH-0Gh">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </navigationBar>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hjf-z4-jmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gqt-FV-Qc7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="Q8O-mD-BXy">
@@ -161,6 +155,12 @@
                         <segue destination="4qo-My-A28" kind="relationship" relationship="rootViewController" id="dEX-bt-Fw4"/>
                     </connections>
                 </navigationController>
+                <navigationBar alpha="0.94999999999999996" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IsF-KH-0Gh">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </navigationBar>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjf-z4-jmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1752.1739130434785" y="132.88043478260872"/>
         </scene>
