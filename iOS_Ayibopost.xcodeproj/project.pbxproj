@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8921EECA7900187DA2 /* AppDelegate.swift */; };
-		963D9B8C21EECA7900187DA2 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController1.swift */; };
+		963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController.swift */; };
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
 		963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9021EECA7F00187DA2 /* Assets.xcassets */; };
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
 		9684A869220389320054AF55 /* NavigationDrawer in Resources */ = {isa = PBXBuildFile; fileRef = 9684A868220389310054AF55 /* NavigationDrawer */; };
-		9684A86B220389F90054AF55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86A220389F90054AF55 /* ViewController.swift */; };
 		9684A87A22038A340054AF55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9684A86C22038A2E0054AF55 /* Info.plist */; };
 		9684A87B22038A340054AF55 /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86D22038A2F0054AF55 /* Offers.swift */; };
 		9684A87C22038A340054AF55 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86E22038A2F0054AF55 /* Language.swift */; };
@@ -48,7 +47,7 @@
 /* Begin PBXFileReference section */
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		963D9B8B21EECA7900187DA2 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		963D9B8B21EECA7900187DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		963D9B8E21EECA7900187DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		963D9B9021EECA7F00187DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963D9B9321EECA7F00187DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
 		9684A862220388950054AF55 /* NavigationDrawer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavigationDrawer.xcodeproj; path = ../NavigationDrawer/NavigationDrawer.xcodeproj; sourceTree = "<group>"; };
 		9684A868220389310054AF55 /* NavigationDrawer */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NavigationDrawer; path = ../../NavigationDrawer/NavigationDrawer; sourceTree = "<group>"; };
-		9684A86A220389F90054AF55 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9684A86C22038A2E0054AF55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../NavigationDrawer/NavigationDrawer/Info.plist; sourceTree = "<group>"; };
 		9684A86D22038A2F0054AF55 /* Offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
 		9684A86E22038A2F0054AF55 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 			children = (
 				9684A868220389310054AF55 /* NavigationDrawer */,
 				963D9B8921EECA7900187DA2 /* AppDelegate.swift */,
-				9684A86A220389F90054AF55 /* ViewController.swift */,
 				9684A87622038A330054AF55 /* DrawerCell.swift */,
 				9684A87722038A330054AF55 /* DrawerCell.xib */,
 				9684A87922038A340054AF55 /* DrawerProtocol.swift */,
@@ -140,7 +137,7 @@
 				9684A87522038A320054AF55 /* proPicTwo.png */,
 				9684A87122038A300054AF55 /* Settings.swift */,
 				9684A88822038A810054AF55 /* Assets.xcassets */,
-				963D9B8B21EECA7900187DA2 /* ViewController1.swift */,
+				963D9B8B21EECA7900187DA2 /* ViewController.swift */,
 				963D9B8D21EECA7900187DA2 /* Main.storyboard */,
 				963D9B9021EECA7F00187DA2 /* Assets.xcassets */,
 				963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */,
@@ -307,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9684A88422038A340054AF55 /* DrawerCell.swift in Sources */,
-				9684A86B220389F90054AF55 /* ViewController.swift in Sources */,
 				9684A87B22038A340054AF55 /* Offers.swift in Sources */,
 				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
@@ -317,7 +313,7 @@
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A88022038A340054AF55 /* History.swift in Sources */,
 				9684A88622038A350054AF55 /* MyAccount.swift in Sources */,
-				963D9B8C21EECA7900187DA2 /* ViewController1.swift in Sources */,
+				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				9684A87C22038A340054AF55 /* Language.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
 				9684A87F22038A340054AF55 /* Settings.swift in Sources */,

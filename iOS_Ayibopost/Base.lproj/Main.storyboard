@@ -13,7 +13,7 @@
         <!--ayiboPOST-->
         <scene sceneID="PnA-RM-B0i">
             <objects>
-                <viewController id="4qo-My-A28" customClass="ViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="4qo-My-A28" customClass="ViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P6E-v0-1s0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,6 +65,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="ayiboPOST" id="WLi-qd-CS8">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oWI-04-P24"/>
+                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="TAM-xh-DOl">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actShowMenu:" destination="4qo-My-A28" id="kEF-7r-bCM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Vla-XV-3x5" id="nRy-7C-bEv"/>
@@ -300,7 +306,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="NUj-Ah-mc4" kind="relationship" relationship="rootViewController" id="WRK-cx-QfS"/>
+                        <segue destination="4qo-My-A28" kind="relationship" relationship="rootViewController" id="09m-8H-Ltn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJZ-pz-qd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -516,7 +522,7 @@
         <!--Layout I-->
         <scene sceneID="0Lw-Zn-P4g">
             <objects>
-                <viewController storyboardIdentifier="Home" id="NUj-Ah-mc4" customClass="ViewController" customModule="iOS_Ayibopost" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home2" id="NUj-Ah-mc4" customClass="ViewController" customModule="iOS_Ayibopost" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F4I-aC-Itx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -524,19 +530,12 @@
                         <viewLayoutGuide key="safeArea" id="kkb-Vy-qA1"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Layout I" id="Dwl-gz-ReF">
-                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="TAM-xh-DOl">
-                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="actShowMenu:" destination="NUj-Ah-mc4" id="zGb-6F-EJy"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Layout I" id="Dwl-gz-ReF"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JeS-TZ-7bD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88.405797101449281" y="1729.8913043478262"/>
+            <point key="canvasLocation" x="3351" y="-579"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8DB-08-aqV">
@@ -595,7 +594,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-818.84057971014499" y="1729.8913043478262"/>
+            <point key="canvasLocation" x="2445" y="-579"/>
         </scene>
     </scenes>
     <resources>
@@ -606,6 +605,6 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WRK-cx-QfS"/>
+        <segue reference="09m-8H-Ltn"/>
     </inferredMetricsTieBreakers>
 </document>
