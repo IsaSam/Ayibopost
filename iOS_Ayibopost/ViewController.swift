@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     
-        
+     // -------------------------------
         // 1.Decllare the drawer view
         var drawerVw = DrawerView()
         

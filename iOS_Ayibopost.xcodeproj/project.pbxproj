@@ -31,6 +31,7 @@
 		9684A8A7220416360054AF55 /* AyiboTalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A6220416360054AF55 /* AyiboTalk.swift */; };
 		9684A8A9220417BF0054AF55 /* Politique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A8220417BF0054AF55 /* Politique.swift */; };
 		9684A8AB220417D80054AF55 /* Society.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AA220417D80054AF55 /* Society.swift */; };
+		9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AC2204CF540054AF55 /* CategoryCell.swift */; };
 		96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */; };
 		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		9684A8A6220416360054AF55 /* AyiboTalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboTalk.swift; sourceTree = "<group>"; };
 		9684A8A8220417BF0054AF55 /* Politique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Politique.swift; sourceTree = "<group>"; };
 		9684A8AA220417D80054AF55 /* Society.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Society.swift; sourceTree = "<group>"; };
+		9684A8AC2204CF540054AF55 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboAPIManager.swift; sourceTree = "<group>"; };
 		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
 		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
 				9684A8A8220417BF0054AF55 /* Politique.swift */,
 				9684A8AA220417D80054AF55 /* Society.swift */,
+				9684A8AC2204CF540054AF55 /* CategoryCell.swift */,
 			);
 			path = NavigationDrawer;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
 				9684A8A32204160C0054AF55 /* Culture.swift in Sources */,
 				9684A8AB220417D80054AF55 /* Society.swift in Sources */,
+				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
 				9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */,
