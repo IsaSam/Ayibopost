@@ -111,7 +111,7 @@
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4R-so-lPo">
                                         <rect key="frame" x="0.0" y="-33" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ayibopost-logo-blanc-2" translatesAutoresizingMaskIntoConstraints="NO" id="gOz-od-mU0">
                                         <rect key="frame" x="64" y="18" width="287" height="58"/>
@@ -213,7 +213,7 @@
         <!--Layout Three-->
         <scene sceneID="hya-qw-wM7">
             <objects>
-                <viewController storyboardIdentifier="LayoutThree" id="lJH-Ox-OKO" customClass="LayoutThree" customModule="NavigationDrawer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LayoutThree" id="lJH-Ox-OKO" customClass="LayoutThree" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iW6-6J-yDv"/>
                         <viewControllerLayoutGuide type="bottom" id="KMH-p4-Z6p"/>
@@ -280,7 +280,7 @@
         <!--Layout Two-->
         <scene sceneID="kQs-fj-X5h">
             <objects>
-                <viewController storyboardIdentifier="LayoutTwo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="osf-Wr-AXC" customClass="LayoutTwo" customModule="NavigationDrawer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LayoutTwo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="osf-Wr-AXC" customClass="LayoutTwo" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nua-im-chr"/>
                         <viewControllerLayoutGuide type="bottom" id="nLr-Bm-SIM"/>
