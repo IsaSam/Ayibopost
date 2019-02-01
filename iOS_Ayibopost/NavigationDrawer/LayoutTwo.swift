@@ -35,7 +35,7 @@ class LayoutTwo: UIViewController, DrawerControllerDelegate {
         drawerVw.changeCellTextColor(txtColor: UIColor.black)
         drawerVw.changeUserNameTextColor(txtColor: UIColor.black)
         drawerVw.changeFont(font: UIFont(name:"Avenir Next", size:18)!)
-        drawerVw.changeUserName(name: "Josep Vijay")
+        drawerVw.changeUserName(name: "WELCOME")
         drawerVw.show()
     }
 }

@@ -153,7 +153,8 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         vwForHeader.addSubview(lblunderLine)
         
         btnLogOut = UIButton(frame:CGRect(x:20, y:14, width:vwForHeader.frame.size.width/2+30, height:25))
-        btnLogOut.setTitle("LOG OUT", for: .normal)
+        //------------ btnLogOut.setTitle("LOG OUT", for: .normal)
+        btnLogOut.setTitle("ayiboPOST", for: .normal)
         btnLogOut.contentHorizontalAlignment = .left
         btnLogOut.addTarget(self, action: #selector(actLogOut), for: .touchUpInside)
         btnLogOut.titleLabel?.font = fontNew ?? UIFont(name: "Euphemia UCAS", size: 15)
@@ -168,7 +169,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         vwForHeader.addSubview(imgProPic)
         
         lblUserName = UILabel(frame:CGRect(x:btnLogOut.frame.origin.x, y:btnLogOut.frame.origin.y+btnLogOut.frame.size.height-5, width:btnLogOut.frame.size.width, height:25))
-        lblUserName.text = "No Name"
+        lblUserName.text = "Discutons-Imaginons-Controversons"
         lblUserName.font = UIFont(name: "Euphemia UCAS", size: 11)
         lblUserName.textAlignment = .left
         lblUserName.textColor = UIColor.lightText

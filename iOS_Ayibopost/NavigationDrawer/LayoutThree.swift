@@ -34,6 +34,7 @@ class LayoutThree: UIViewController, DrawerControllerDelegate {
         drawerVw.changeCellTextColor(txtColor: UIColor.white)
         drawerVw.changeUserNameTextColor(txtColor: UIColor.lightText)
         drawerVw.changeFont(font:UIFont(name:"Marker Felt", size:18)!)
+        drawerVw.changeUserName(name: "WELCOME")
         drawerVw.show()
     }
 

@@ -1,19 +1,19 @@
 //
-//  Settings.swift
-//  NavigationDrawer
+//  Politique.swift
+//  iOS_Ayibopost
 //
-//  Created by Sowrirajan Sugumaran on 05/10/17.
-//  Copyright © 2017 Sowrirajan Sugumaran. All rights reserved.
+//  Created by Isaac Samuel on 2/1/19.
+//  Copyright © 2019 Isaac Samuel. All rights reserved.
 //
 
 import UIKit
 
-class Settings: UIViewController {
+class Politique: UIViewController {
 
-    @IBOutlet weak var lblName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

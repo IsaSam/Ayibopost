@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             drawerVw.delegate = self
             
             // Can change account holder name
-            drawerVw.changeUserName(name: "Sowrirajan Sugumaran")
+            drawerVw.changeUserName(name: "WELCOME")
             
             // 3.show the Navigation drawer.
             drawerVw.show()
@@ -134,6 +134,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-        static let array:NSArray = ["MyAccount", "Offers", "History","Offers", "Language", "Settings", "History"]
+        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
 }
 //----------------------
