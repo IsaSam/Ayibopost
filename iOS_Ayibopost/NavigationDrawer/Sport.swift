@@ -13,6 +13,8 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var posts: [[String: Any]] = []
+    var catePosts: [[String: Any]] = []
+    var catePosts1: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var termPosts: [[String: Any]] = []
     var catPost1: [[String: Any]] = []
@@ -21,7 +23,8 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var catPosts2 = [AnyObject]()
     var catPosts3 = [String]()
     var catPosts4: [[String: AnyObject]] = []
-    var catPosts5 = ["SPORT"]
+    var catPosts5 = [String]()
+    
     
     
     override func viewDidLoad() {
@@ -32,9 +35,10 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.rowHeight = 350
         self.tableView.estimatedRowHeight = 350
         
-        getPostList()
-        loadList2()
+        //getPostList()
+        loadList1()
     }
+    
     private func getPostList(){
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
             
@@ -42,17 +46,47 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 print(error!)
                 return
             }
+            self.posts = result!
+            //print(self.posts)
             //print(result!)
             //self.posts = result!
            
-            /*==============new comment
+            
             do{
                 guard let catArray = (result! as AnyObject).value(forKey: "terms") else{return}
-                self.posts = catArray as! [[String : Any]]
+                self.posts = catArray as! [[String : AnyObject]]
                 //print(self.posts)
                 
-                guard let catArray2 = (self.posts as AnyObject).value(forKey: "category") else{return}
+                /*guard let catArray2 = (self.posts as AnyObject).value(forKey: "category") else{return}
+                print(catArray2)*/
+               // let catArray2 = (self.posts as AnyObject).value(forKey: "category")
+                //let dataDic = catArray2 as? [[String: Any]]
                 
+                //self.termPosts = dataDic!
+                //print(self.catPosts3)
+                //self.catPosts4 = catArray2 as? Any as! [[String : AnyObject]]
+              
+                //self.catPosts = (catArray2 as! NSArray) as! [[String : Any]]
+                /*self.catPosts4 = catArray2 as! [[String : AnyObject]]
+                for value in self.catPosts4
+                {
+                    if let category = value["name"] as? [[String : AnyObject]]
+                    {
+                        self.catPosts4 = category
+                 
+                        // print(self.catPosts3)
+                 
+                        print(category)
+                       /* if category.contains("SPORT"){
+                            print("found")
+                        }else{
+                            //print("not found")
+                        }*/
+                        //self.catPosts3 = [category]
+                        //self.tableView.reloadData()
+                    }
+                }*/
+                /*
                // self.catPosts2 = catArray2 as! [[String: Any]] as [AnyObject]
                 self.catPosts = catArray2 as! [[String : Any]]
                 //self.catPosts = (catArray2 as? [[String : Any]])!
@@ -67,8 +101,11 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         print(category)
                     }
                 }
+                */
                 //}
-            }*/
+            }
+            
+            
             /*
             do{
                 guard let catArray = (result! as AnyObject).value(forKey: "terms") else{return}
@@ -76,11 +113,11 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 //print(self.posts)
                 
                 guard let catArray2 = (self.posts as AnyObject).value(forKey: "category") else{return}
-                
+             
                 //self.catPosts = (catArray2 as? [[String : Any]])!
                 //print(catArray2 )
                 //dump(catArray2)
-                
+             
                 //for value in (catArray2 as? String)!
                 for value in catArray2
                 {
@@ -132,6 +169,111 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
     }
+    func loadList1(){
+        let url3 = URL(string: "https://ayibopost.com/wp-json/posts/")
+        let task = URLSession.shared.dataTask(with: url3!){
+            (data, response, error) in
+            
+            if error != nil
+            {
+                print("ERROR")
+            }
+            else{
+                do{
+                    if let content = data{
+                        let myJson = try JSONSerialization.jsonObject(with: content, options: .mutableContainers)
+                        //print(myJson)
+                        //dump(myJson)
+                        self.posts = myJson as! [[String : Any]]
+                        if let jsonData = myJson as? [[String : Any]]{
+                            do{
+                                let cateArray = (self.posts as AnyObject).value(forKey: "terms")
+                                let dataDic = cateArray as? [[String : Any]]
+                               self.catePosts = cateArray as! [[String : Any]]
+                                // self.catePosts = dataDic!
+                                //print(self.catePosts)
+                            
+                            for value in self.catePosts
+                            {
+                                if let category = value["category"]
+                                {
+                                    //print(category)
+                                    //self.catePosts1 = category as! [[String : Any]]
+                                    self.catePosts1 = category as! [[String : Any]]
+                                    //print(self.catePosts1)
+                                    
+                                    for value in self.catePosts1
+                                    {
+                                        if let category = value["name"] as? String
+                                        {
+                                            self.catPosts3 = [category]
+                                            
+                                            // print(self.catPosts3)
+                                            
+                                            print(category)
+                                           /* if category.contains("SPORT"){
+                                                print("found")
+                                            }else{
+                                                //print("not found")
+                                            }*/
+                                        }
+                                        
+                                    }
+                                    
+                                    
+                                   
+                                }
+                                }
+                            }
+                           // if let myResults = jsonData["terms"] as? [[String : Any]]
+                 
+                        
+                                //print(myJson)
+                                //dump(myResults)
+                                
+                               /* if let jsonData = myJson as? [String : Any]
+                                {
+                                    if let myResults = jsonData["terms"] as? [[String : Any]]
+                                    {
+                             
+                                    }
+                                }*/
+                            
+                                /*
+                                self.catPosts = myResults as! [[String : Any]]
+                                for value in self.catPosts
+                                {
+                                    if let category = value["name"] as? String
+                                    {
+                                        self.catPosts3 = [category]
+                             
+                                        // print(self.catPosts3)
+                             
+                                        //print(category)
+                                        if category.contains("SPORT"){
+                                            print("found")
+                                        }else{
+                                            //print("not found")
+                                        }
+                                    }
+                                }*/
+                       
+                        
+                        }
+                  
+                    }
+                        
+                      
+                    }
+                catch
+                {
+                    
+                }
+            }
+            
+        }
+        task.resume()
+    }
     
     func loadList2(){
         let url2 = URL(string: "https://ayibopost.com/wp-json/taxonomies/category/terms")
@@ -158,10 +300,12 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                 
                                // print(self.catPosts3)
                                 
-                                print(category)
+                                //print(category)
                                 if category.contains("SPORT"){
-                                    print("found")   }else{
-                                    print("not found")   }
+                                    print("found")
+                                }else{
+                                    //print("not found")
+                                }
                                 //self.catPosts3 = [category]
                                 //self.tableView.reloadData()
                             }
