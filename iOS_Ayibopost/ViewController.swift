@@ -83,6 +83,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+
         
         let post = posts[indexPath.row]
         cell.titleLabel.text = post["title"] as? String
@@ -94,10 +95,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-            
+                
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
-            print(imageURL!)
+            //print(imageURL!)
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
                 cell.imagePost.af_setImage(withURL: imgUrl)
