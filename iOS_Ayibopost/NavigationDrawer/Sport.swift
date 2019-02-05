@@ -47,10 +47,10 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         //print(myJson)
                         //dump(myJson)
                         self.posts = myJson as! [[String : Any]]
-                        if let jsonData = myJson as? [[String : Any]]{
+             //           if let jsonData = myJson as? [[String : Any]]{
                             do{
                                 let cateArray = (self.posts as AnyObject).value(forKey: "terms")
-                                let dataDic = cateArray as? [[String : Any]]
+             //                   let dataDic = cateArray as? [[String : Any]]
                                self.catePosts = cateArray as! [[String : Any]]
                                 // self.catePosts = dataDic!
                             
@@ -81,7 +81,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                     }
                                 }
                             }
-                        }
+                      //  }
                   
                     }
                         
@@ -147,7 +147,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
 
-        let term = catPosts3[indexPath.row]
+ //       let term = catPosts3[indexPath.row]
         
 
         return cell
