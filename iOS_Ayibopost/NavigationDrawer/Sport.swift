@@ -42,6 +42,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             else{
                 do{
+                    
                     if let content = data{
                         let myJson = try JSONSerialization.jsonObject(with: content, options: .mutableContainers)
                         //print(myJson)
@@ -66,6 +67,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                     {
                                         if let category = value["name"] as? String
                                         {
+                                            
                                             self.catPosts3 = [category]
                                             
                                             // print(self.catPosts3)
