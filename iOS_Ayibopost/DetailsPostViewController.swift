@@ -19,12 +19,11 @@ class DetailsPostViewController: UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     
     var post: [String: Any]?
-    //var remoteImageUrlString: [[String: Any]]?
     var imgPost: [String: Any]?
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
          if let post = post{
          titleLabel.text = post[PostKeys.title] as? String
