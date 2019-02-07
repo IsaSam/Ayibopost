@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -31,8 +32,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 168
-        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = 280
+        tableView.estimatedRowHeight = 280
         
         getPostList()
         //-----------------
