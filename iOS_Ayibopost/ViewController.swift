@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
-    var urlPost1: String?
+ //   var urlPost1: String?
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -27,9 +27,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var vwBG = UIView()
     //--------------------
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -40,6 +44,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //-----------------
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
+    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        getPostList()
     }
         //-----------------
         @IBAction func actShowMenu(_ sender: Any) {
@@ -72,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(error!)
                 return
             }
-            //print(result!)
+            print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
         }
@@ -88,8 +95,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         
         let post = posts[indexPath.row]
-        let urlPost = post["link"] as! String
-        urlPost1 = urlPost as String
+        //let urlPost = post["link"] as! String
+    //    urlPost1 = urlPost as String
         
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
@@ -130,7 +137,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
-        detailViewController.urlPost1 = urlPost1
+   //     detailViewController.urlPost1 = urlPost1
     
         
     }
