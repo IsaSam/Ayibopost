@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+    var urlPost1: String?
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -87,10 +88,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         
         let post = posts[indexPath.row]
+        let urlPost = post["link"] as! String
+        urlPost1 = urlPost as String
+        
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+        
+
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
@@ -124,6 +130,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
+        detailViewController.urlPost1 = urlPost1
+    
+        
     }
     
     

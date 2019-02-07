@@ -229,6 +229,11 @@
                     <navigationItem key="navigationItem" id="6n0-jD-o2y">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Home" id="AOf-iF-1Wg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="share" style="plain" id="vXC-SJ-gQg">
+                            <connections>
+                                <action selector="shareButton:" destination="Uhv-1l-mLN" id="WQV-Ko-cKM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentLabel" destination="kjO-JX-cX6" id="bXY-83-xzR"/>
@@ -845,6 +850,7 @@
         <image name="ayibopost-logo-blanc-2" width="600" height="146"/>
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
+        <image name="share" width="30" height="30"/>
         <image name="tabThree" width="26" height="26"/>
         <image name="tabTwo" width="26" height="26"/>
     </resources>
