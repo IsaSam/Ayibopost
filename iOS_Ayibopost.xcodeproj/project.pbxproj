@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9614203C220BEF3C004C59A3 /* Sport1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614203B220BEF3C004C59A3 /* Sport1.swift */; };
 		963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8921EECA7900187DA2 /* AppDelegate.swift */; };
 		963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController.swift */; };
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9614203B220BEF3C004C59A3 /* Sport1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport1.swift; sourceTree = "<group>"; };
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963D9B8B21EECA7900187DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				9684A8A0220415320054AF55 /* Economie.swift */,
 				9684A8A22204160C0054AF55 /* Culture.swift */,
 				9684A8A4220416260054AF55 /* Sport.swift */,
+				9614203B220BEF3C004C59A3 /* Sport1.swift */,
 				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
 				9684A8A8220417BF0054AF55 /* Politique.swift */,
 				9684A8AA220417D80054AF55 /* Society.swift */,
@@ -292,6 +295,7 @@
 				9684A8A32204160C0054AF55 /* Culture.swift in Sources */,
 				9684A8AB220417D80054AF55 /* Society.swift in Sources */,
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
+				9614203C220BEF3C004C59A3 /* Sport1.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
 				9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */,

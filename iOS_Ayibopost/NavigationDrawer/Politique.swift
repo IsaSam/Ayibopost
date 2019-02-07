@@ -8,12 +8,17 @@
 
 import UIKit
 
-class Politique: UIViewController {
+class Politique: UIViewController,UIWebViewDelegate {
 
+    @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        webView.delegate = self
+        if let url = URL(string: "https://ayibopost.com/category/politics/") {
+            let request = URLRequest(url: url)
+            webView.loadRequest(request)
+        }
     }
 
     override func didReceiveMemoryWarning() {
