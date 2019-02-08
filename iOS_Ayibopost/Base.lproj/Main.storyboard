@@ -231,7 +231,7 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="AOf-iF-1Wg"/>
                         <barButtonItem key="rightBarButtonItem" title="Share" image="share" style="plain" id="vXC-SJ-gQg">
                             <connections>
-                                <action selector="shareButton:" destination="Uhv-1l-mLN" id="WQV-Ko-cKM"/>
+                                <action selector="btnShareTapped:" destination="Uhv-1l-mLN" id="DaA-F3-Elf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

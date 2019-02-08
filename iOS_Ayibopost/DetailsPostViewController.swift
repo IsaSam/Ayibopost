@@ -53,6 +53,21 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
             }
         }
     }
+    @IBAction func btnShareTapped(_ sender: Any) {
+        let title = post![PostKeys.title] as? String
+        let URl = urlPost1
+        let image = imgPost!["source"] as? String
+        if let imagePath = image,
+            let imgUrl = URL(string:  imagePath){
+            postImageView.af_setImage(withURL: imgUrl)
+        }
+        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+        if let popoverController = vc.popoverPresentationController{
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
    /* func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filteredPosts = searchText.isEmpty ? self.imgPost : self.imgPost?.filter({(imgPost) -> Bool in
             return (imgPost[PostKeys.title] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
@@ -60,7 +75,7 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
         
     }*/
 
-    @IBAction func shareButton(_ sender: Any) {
+  /*  @IBAction func shareButton(_ sender: Any) {
 
         let bounds = UIScreen.main.bounds
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
@@ -71,7 +86,7 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
         
-    }
+    }*/
 
 
     override func didReceiveMemoryWarning() {
