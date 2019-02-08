@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgPosts: [[String: Any]] = []
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var i = 10
+  //  var i = 10
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -37,7 +37,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
 
         searchBar.delegate = self
-//        self.navigationItem.titleView = searchBar
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)

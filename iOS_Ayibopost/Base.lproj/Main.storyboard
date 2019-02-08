@@ -192,7 +192,7 @@
                                     <constraint firstItem="YWE-vG-pMl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bw4-wb-CXA" secondAttribute="leading" constant="100" id="tqK-Hy-X2y"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" text="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="EOv-6C-z2N">
+                            <searchBar contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="EOv-6C-z2N">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -238,6 +238,7 @@
                     <connections>
                         <outlet property="contentLabel" destination="kjO-JX-cX6" id="bXY-83-xzR"/>
                         <outlet property="postImageView" destination="jBR-mi-ok3" id="PRs-wt-tWo"/>
+                        <outlet property="searchBar" destination="EOv-6C-z2N" id="qkZ-Xi-vzd"/>
                         <outlet property="titleLabel" destination="are-tx-8Cz" id="ipl-CI-dyn"/>
                     </connections>
                 </viewController>

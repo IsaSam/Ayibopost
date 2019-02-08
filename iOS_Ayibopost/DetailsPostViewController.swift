@@ -13,11 +13,14 @@ enum PostKeys {
     static let content = "content"
 }
 
-class DetailsPostViewController: UIViewController {
+class DetailsPostViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+   
+    var filteredPosts: [String: Any]?
     var post: [String: Any]?
     var imgPost: [String: Any]?
     var urlPost1: String?
@@ -27,14 +30,19 @@ class DetailsPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         if let post = post{
+        searchBar.delegate = self
+        
+        categoryWeb()
+
+         }
+    func categoryWeb(){
+        if let post = post{
             
-         
-         titleLabel.text = post[PostKeys.title] as? String
-         let htmlTag = post[PostKeys.content] as! String
-         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-         contentLabel.text = content
-   
+            titleLabel.text = post[PostKeys.title] as? String
+            let htmlTag = post[PostKeys.content] as! String
+            let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+            contentLabel.text = content
+            
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
@@ -43,9 +51,14 @@ class DetailsPostViewController: UIViewController {
             else{
                 postImageView.image = nil
             }
-         }
-
-         }
+        }
+    }
+   /* func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredPosts = searchText.isEmpty ? self.imgPost : self.imgPost?.filter({(imgPost) -> Bool in
+            return (imgPost[PostKeys.title] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        
+    }*/
 
     @IBAction func shareButton(_ sender: Any) {
 
