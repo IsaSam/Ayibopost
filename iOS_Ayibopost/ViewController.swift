@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     
     
     var posts: [[String: Any]] = []
@@ -66,19 +67,47 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //-----------------
         
     private func getPostList(){
+        
+        self.activityIndicatory.startAnimating() //====================
+      
+        let url = URL(string: "https://ayibopost.com/wp-json/posts/")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) {(data, response, error) in
+            //-- This will run when the network request returns
+            if let error = error{
+                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                errorAlertController.addAction(cancelAction)
+                self.present(errorAlertController, animated: true)
+                print(error.localizedDescription)
+            } else if let data = data,
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+                self.posts = [dataDictionary]
+                self.tableView.reloadData()
+                self.activityIndicatory.stopAnimating()
+            }
+        /*
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
             
             if error != nil{
                 print(error!)
+                
                 return
             }
+            
+ 
             //print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
-        }
+            
+            self.activityIndicatory.stopAnimating() //====================
+        }*/
 
     }
-
+    task.resume()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
         

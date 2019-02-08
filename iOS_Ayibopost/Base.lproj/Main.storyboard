@@ -399,11 +399,20 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f58-9M-UaF">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f58-9M-UaF" firstAttribute="centerY" secondItem="ydk-G3-mdq" secondAttribute="centerY" id="gHX-nj-3wt"/>
+                            <constraint firstItem="f58-9M-UaF" firstAttribute="centerX" secondItem="ydk-G3-mdq" secondAttribute="centerX" id="uMU-8Q-cO4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2x3-f1-FXb"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="f58-9M-UaF" id="ChV-99-ti7"/>
                         <outlet property="webView" destination="vWQ-nq-wLT" id="2l2-Y2-5CL"/>
                     </connections>
                 </viewController>
@@ -428,8 +437,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Uuc-gz-8dE">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Uuc-gz-8dE" firstAttribute="centerY" secondItem="1P9-bo-7HF" secondAttribute="centerY" id="NvW-ml-1wa"/>
+                            <constraint firstItem="Uuc-gz-8dE" firstAttribute="centerX" secondItem="1P9-bo-7HF" secondAttribute="centerX" id="OdW-ZR-Z78"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KU9-42-Go2"/>
                     </view>
                     <connections>
@@ -517,8 +534,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ILe-gt-LTA">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ILe-gt-LTA" firstAttribute="centerX" secondItem="WWW-GY-cuQ" secondAttribute="centerX" id="6ye-rV-ThU"/>
+                            <constraint firstItem="ILe-gt-LTA" firstAttribute="centerY" secondItem="WWW-GY-cuQ" secondAttribute="centerY" id="X3N-QQ-Cag"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YfT-54-Wa5"/>
                     </view>
                     <connections>
@@ -546,8 +571,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="afL-DS-hKS">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="afL-DS-hKS" firstAttribute="centerY" secondItem="w6W-W1-MeS" secondAttribute="centerY" id="HPr-Zw-8qc"/>
+                            <constraint firstItem="afL-DS-hKS" firstAttribute="centerX" secondItem="w6W-W1-MeS" secondAttribute="centerX" id="Wto-Si-egd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BRY-Zv-KiW"/>
                     </view>
                     <connections>
@@ -571,8 +604,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ety-vT-WYb">
+                                <rect key="frame" x="188.66666666666666" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ety-vT-WYb" firstAttribute="centerY" secondItem="OX8-Kd-B82" secondAttribute="centerY" id="VlK-a3-n2s"/>
+                            <constraint firstItem="Ety-vT-WYb" firstAttribute="centerX" secondItem="OX8-Kd-B82" secondAttribute="centerX" id="k8k-KM-nq9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dzf-V8-avd"/>
                     </view>
                     <connections>
@@ -596,8 +637,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BaH-Nn-vQ5">
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BaH-Nn-vQ5" firstAttribute="centerY" secondItem="5sp-Ja-ibU" secondAttribute="centerY" id="ggs-fj-lMe"/>
+                            <constraint firstItem="BaH-Nn-vQ5" firstAttribute="centerX" secondItem="5sp-Ja-ibU" secondAttribute="centerX" id="kMS-KW-VSr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4wM-e4-37M"/>
                     </view>
                     <connections>
@@ -807,6 +856,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-PQ-7WA">
+                                <rect key="frame" x="188.66666666666666" y="349" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <searchBar contentMode="redraw" barStyle="blackTranslucent" text="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
                                 <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -820,10 +873,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="leading" secondItem="VJC-h2-1XL" secondAttribute="leading" id="FOF-WN-b5X"/>
+                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerX" secondItem="Twa-Dh-WE9" secondAttribute="centerX" id="HzX-2S-sBm"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="top" secondItem="CXb-cm-gnQ" secondAttribute="bottom" id="IvR-Yk-bX2"/>
                             <constraint firstAttribute="bottom" secondItem="OvU-I2-MbO" secondAttribute="bottom" id="RZ5-PE-xz4"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="leading" secondItem="VJC-h2-1XL" secondAttribute="leading" id="T3a-XL-5yW"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="trailing" secondItem="VJC-h2-1XL" secondAttribute="trailing" id="WfI-fX-ajh"/>
+                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerY" secondItem="Twa-Dh-WE9" secondAttribute="centerY" id="d8Z-g1-2U0"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="trailing" secondItem="VJC-h2-1XL" secondAttribute="trailing" id="nTn-pA-bHO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VJC-h2-1XL"/>
@@ -838,6 +893,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
                         <outlet property="tableView" destination="OvU-I2-MbO" id="Dya-Uy-jpX"/>
                     </connections>
                 </viewController>
