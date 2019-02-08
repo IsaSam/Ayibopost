@@ -54,13 +54,16 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
         }
     }
     @IBAction func btnShareTapped(_ sender: Any) {
-        let title = post![PostKeys.title] as? String
+     //   let title = post![PostKeys.title] as? String
+        let title = titleLabel.text
         let URl = urlPost1
-        let image = imgPost!["source"] as? String
+       /* let image = imgPost!["source"] as? String
         if let imagePath = image,
             let imgUrl = URL(string:  imagePath){
             postImageView.af_setImage(withURL: imgUrl)
-        }
+        }*/
+        let image = postImageView.image
+        
         let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
         if let popoverController = vc.popoverPresentationController{
             popoverController.sourceView = self.view
