@@ -11,6 +11,7 @@ import UIKit
 enum PostKeys {
     static let title = "title"
     static let content = "content"
+    static let link = "link"
 }
 
 class DetailsPostViewController: UIViewController, UISearchBarDelegate {
@@ -56,7 +57,7 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
     @IBAction func btnShareTapped(_ sender: Any) {
      //   let title = post![PostKeys.title] as? String
         let title = titleLabel.text
-        let URl = urlPost1
+        let URl = post![PostKeys.link]
        /* let image = imgPost!["source"] as? String
         if let imagePath = image,
             let imgUrl = URL(string:  imagePath){
