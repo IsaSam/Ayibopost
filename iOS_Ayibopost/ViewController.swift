@@ -11,13 +11,15 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var urlPost1: String?
@@ -34,6 +36,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
+//        self.navigationItem.titleView = searchBar
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
@@ -102,16 +107,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.activityIndicatory.stopAnimating()
    
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredPosts = searchText.isEmpty ? self.posts : self.posts.filter({(post) -> Bool in
+            return (post["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        self.tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if self.searchBar.text!.isEmpty{
+            return self.posts.count
+        }else{
+            return filteredPosts?.count ?? 0
+        }
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
-
+        let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         
-        let post = posts[indexPath.row]
+      //  let post = posts[indexPath.row]
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
         

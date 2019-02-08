@@ -865,7 +865,7 @@
                                 <rect key="frame" x="188.66666666666666" y="349" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" text="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
+                            <searchBar contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
                                 <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -899,6 +899,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
+                        <outlet property="searchBar" destination="CXb-cm-gnQ" id="q5y-iY-fFJ"/>
                         <outlet property="tableView" destination="OvU-I2-MbO" id="Dya-Uy-jpX"/>
                     </connections>
                 </viewController>
