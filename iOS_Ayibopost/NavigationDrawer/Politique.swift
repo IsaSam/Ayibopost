@@ -13,27 +13,48 @@ class Politique: UIViewController,UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(Politique.didPullToRefresh(_:)), for: .valueChanged)
+       
+  //      tableView.insertSubview(refreshControl, at: 0)
+        
+        getCategory()
+    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        getCategory()
+    }
+    
+    func getCategory(){
+        
         self.activityIndicator.startAnimating() //====================
+        
         webView.delegate = self
         if let url = URL(string: "https://ayibopost.com/category/politics/") {
-           // let request = URLRequest(url: url)
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-            let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+            // let request = URLRequest(url: url)
+            var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+            var session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request) { (data, response, error) in
                 if let error = error {
-                self.activityIndicator.stopAnimating() //====================
+                    request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+                    session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+            //        self.activityIndicator.stopAnimating() //====================
                     let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline.", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                    let cancelAction = UIAlertAction(title: "Pull to Refresh", style: .cancel)
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
                     print(error.localizedDescription)
+
                 } else{
-                        self.webView.loadRequest(request)
-                        self.activityIndicator.stopAnimating() //====================
+                    self.webView.loadRequest(request)
+                    self.activityIndicator.stopAnimating() //====================
                 }
+                self.refreshControl.endRefreshing()
+                self.activityIndicator.stopAnimating()
             }
             task.resume()
         }

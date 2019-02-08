@@ -21,6 +21,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var urlPost1: String?
+    var refreshControl: UIRefreshControl!
+    var i = 10
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -31,16 +33,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
-        tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 280
         tableView.estimatedRowHeight = 280
+        
+        tableView.insertSubview(refreshControl, at: 0)
+        tableView.dataSource = self
         
         getPostList()
         //-----------------
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
+    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        getPostList()
     }
         //-----------------
         @IBAction func actShowMenu(_ sender: Any) {
@@ -69,43 +79,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func getPostList(){
         
         self.activityIndicatory.startAnimating() //====================
-      
-        let url = URL(string: "https://ayibopost.com/wp-json/posts/")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) {(data, response, error) in
-            //-- This will run when the network request returns
-            if let error = error{
+        
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+         
+         if error != nil{
+        // print(error!)
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
-                print(error.localizedDescription)
-            } else if let data = data,
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-                self.posts = [dataDictionary]
-                self.tableView.reloadData()
-                self.activityIndicatory.stopAnimating()
-            }
-        /*
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
-            
-            if error != nil{
                 print(error!)
-                
-                return
-            }
-            
- 
-            //print(result!)
-            self.posts = result!
-            self.tableView.reloadData() // to tell table about new data
-            
-            self.activityIndicatory.stopAnimating() //====================
-        }*/
 
-    }
-    task.resume()
+         return
+         }
+         
+         //print(result!)
+         self.posts = result!
+         self.tableView.reloadData() // to tell table about new data
+         self.activityIndicatory.stopAnimating() //====================
+         }
+                self.refreshControl.endRefreshing()
+                self.activityIndicatory.stopAnimating()
+   
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

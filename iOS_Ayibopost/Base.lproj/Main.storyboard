@@ -450,6 +450,7 @@
                         <viewLayoutGuide key="safeArea" id="KU9-42-Go2"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Uuc-gz-8dE" id="bND-F9-Y2F"/>
                         <outlet property="webView" destination="dwG-el-aYh" id="nWC-IJ-5Ez"/>
                     </connections>
                 </viewController>
@@ -547,6 +548,7 @@
                         <viewLayoutGuide key="safeArea" id="YfT-54-Wa5"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ILe-gt-LTA" id="gsT-BC-47l"/>
                         <outlet property="webView" destination="mzj-xf-O7L" id="eqX-gR-4sQ"/>
                     </connections>
                 </viewController>
@@ -584,6 +586,7 @@
                         <viewLayoutGuide key="safeArea" id="BRY-Zv-KiW"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="afL-DS-hKS" id="YlQ-Wo-IPS"/>
                         <outlet property="webView" destination="ViX-Ox-zvh" id="C4h-hM-QGS"/>
                     </connections>
                 </viewController>
@@ -617,6 +620,7 @@
                         <viewLayoutGuide key="safeArea" id="dzf-V8-avd"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ety-vT-WYb" id="Xnd-Gj-k2W"/>
                         <outlet property="webView" destination="8m7-Mh-8dW" id="6aj-js-DQG"/>
                     </connections>
                 </viewController>
@@ -650,6 +654,7 @@
                         <viewLayoutGuide key="safeArea" id="4wM-e4-37M"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="BaH-Nn-vQ5" id="ZvG-HQ-BrY"/>
                         <outlet property="webView" destination="m5a-tY-cca" id="dgi-CY-HBh"/>
                     </connections>
                 </viewController>
