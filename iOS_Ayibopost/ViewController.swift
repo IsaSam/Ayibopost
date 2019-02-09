@@ -22,13 +22,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
-<<<<<<< HEAD
- //   var urlPost1: String?
-=======
+
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-  //  var i = 10
->>>>>>> drawbles_data
+
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -36,7 +33,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var vwBG = UIView()
     //--------------------
-    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +42,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
-<<<<<<< HEAD
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
-        
-        tableView.dataSource = self
-=======
->>>>>>> drawbles_data
         tableView.delegate = self
         tableView.rowHeight = 280
         tableView.estimatedRowHeight = 280
@@ -82,8 +71,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // 3.show the Navigation drawer.
             drawerVw.show()
             
-            
-            
         }
         
         // 6.To push the viewcontroller which is selected by user.
@@ -105,15 +92,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
                 print(error!)
-<<<<<<< HEAD
-                return
-            }
-            print(result!)
-            self.posts = result!
-            self.tableView.reloadData() // to tell table about new data
-        }
-=======
->>>>>>> drawbles_data
 
          return
          }
@@ -145,23 +123,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
-        
-<<<<<<< HEAD
-        let post = posts[indexPath.row]
-        //let urlPost = post["link"] as! String
-    //    urlPost1 = urlPost as String
-=======
-      //  let post = posts[indexPath.row]
+
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
->>>>>>> drawbles_data
         
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
-        
-
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
