@@ -55,14 +55,8 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
         }
     }
     @IBAction func btnShareTapped(_ sender: Any) {
-     //   let title = post![PostKeys.title] as? String
         let title = titleLabel.text
         let URl = post![PostKeys.link]
-       /* let image = imgPost!["source"] as? String
-        if let imagePath = image,
-            let imgUrl = URL(string:  imagePath){
-            postImageView.af_setImage(withURL: imgUrl)
-        }*/
         let image = postImageView.image
         
         let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
@@ -78,20 +72,6 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
         })
         
     }*/
-
-  /*  @IBAction func shareButton(_ sender: Any) {
-
-        let bounds = UIScreen.main.bounds
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
-        
-    }*/
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
