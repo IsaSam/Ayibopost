@@ -452,8 +452,9 @@
 			baseConfigurationReference = C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QWGP46S9YN;
 				INFOPLIST_FILE = iOS_Ayibopost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -472,8 +473,9 @@
 			baseConfigurationReference = CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QWGP46S9YN;
 				INFOPLIST_FILE = iOS_Ayibopost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

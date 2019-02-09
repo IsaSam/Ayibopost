@@ -11,13 +11,17 @@ import UIKit
 enum PostKeys {
     static let title = "title"
     static let content = "content"
+    static let link = "link"
 }
 
-class DetailsPostViewController: UIViewController {
+class DetailsPostViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+   
+    var filteredPosts: [String: Any]?
     var post: [String: Any]?
     var imgPost: [String: Any]?
     var urlPost1: String?
@@ -27,14 +31,19 @@ class DetailsPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         if let post = post{
+        searchBar.delegate = self
+        
+        categoryWeb()
+
+         }
+    func categoryWeb(){
+        if let post = post{
             
-         
-         titleLabel.text = post[PostKeys.title] as? String
-         let htmlTag = post[PostKeys.content] as! String
-         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-         contentLabel.text = content
-   
+            titleLabel.text = post[PostKeys.title] as? String
+            let htmlTag = post[PostKeys.content] as! String
+            let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+            contentLabel.text = content
+            
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
@@ -43,23 +52,26 @@ class DetailsPostViewController: UIViewController {
             else{
                 postImageView.image = nil
             }
-         }
-
-         }
-
-    @IBAction func shareButton(_ sender: Any) {
-
-        let bounds = UIScreen.main.bounds
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
-        
+        }
     }
-
+    @IBAction func btnShareTapped(_ sender: Any) {
+        let title = titleLabel.text
+        let URl = post![PostKeys.link]
+        let image = postImageView.image
+        
+        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+        if let popoverController = vc.popoverPresentationController{
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
+   /* func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredPosts = searchText.isEmpty ? self.imgPost : self.imgPost?.filter({(imgPost) -> Bool in
+            return (imgPost[PostKeys.title] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

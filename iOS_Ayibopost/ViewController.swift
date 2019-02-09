@@ -11,15 +11,24 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+<<<<<<< HEAD
  //   var urlPost1: String?
+=======
+    var urlPost1: String?
+    var refreshControl: UIRefreshControl!
+  //  var i = 10
+>>>>>>> drawbles_data
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -31,14 +40,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        searchBar.delegate = self
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
+<<<<<<< HEAD
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
         tableView.dataSource = self
+=======
+>>>>>>> drawbles_data
         tableView.delegate = self
         tableView.rowHeight = 280
         tableView.estimatedRowHeight = 280
+        
+        tableView.insertSubview(refreshControl, at: 0)
+        tableView.dataSource = self
         
         getPostList()
         //-----------------
@@ -73,30 +93,68 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //-----------------
         
     private func getPostList(){
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
-            
-            if error != nil{
+        
+        self.activityIndicatory.startAnimating() //====================
+        
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+         
+         if error != nil{
+        // print(error!)
+                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                errorAlertController.addAction(cancelAction)
+                self.present(errorAlertController, animated: true)
                 print(error!)
+<<<<<<< HEAD
                 return
             }
             print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
         }
+=======
+>>>>>>> drawbles_data
 
+         return
+         }
+         
+         //print(result!)
+         self.posts = result!
+         self.tableView.reloadData() // to tell table about new data
+         self.activityIndicatory.stopAnimating() //====================
+         }
+                self.refreshControl.endRefreshing()
+                self.activityIndicatory.stopAnimating()
+   
     }
-
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredPosts = searchText.isEmpty ? self.posts : self.posts.filter({(post) -> Bool in
+            return (post["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        self.tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if self.searchBar.text!.isEmpty{
+            return self.posts.count
+        }else{
+            return filteredPosts?.count ?? 0
+        }
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
-
+        let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         
+<<<<<<< HEAD
         let post = posts[indexPath.row]
         //let urlPost = post["link"] as! String
     //    urlPost1 = urlPost as String
+=======
+      //  let post = posts[indexPath.row]
+        let urlPost = post["link"] as! String
+        urlPost1 = urlPost as String
+>>>>>>> drawbles_data
         
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
