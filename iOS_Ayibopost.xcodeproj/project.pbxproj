@@ -34,6 +34,9 @@
 		9684A8AB220417D80054AF55 /* Society.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AA220417D80054AF55 /* Society.swift */; };
 		9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AC2204CF540054AF55 /* CategoryCell.swift */; };
 		96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */; };
+		96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */; };
+		96DE418B220F826E0071B456 /* LaunchImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 96DE4188220F826D0071B456 /* LaunchImage.gif */; };
+		96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4189220F826D0071B456 /* Swift+Gif.swift */; };
 		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		9684A8AA220417D80054AF55 /* Society.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Society.swift; sourceTree = "<group>"; };
 		9684A8AC2204CF540054AF55 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboAPIManager.swift; sourceTree = "<group>"; };
+		96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		96DE4188220F826D0071B456 /* LaunchImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LaunchImage.gif; sourceTree = "<group>"; };
+		96DE4189220F826D0071B456 /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
 		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
 		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
 		D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Ayibopost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +123,9 @@
 		963D9B8821EECA7900187DA2 /* iOS_Ayibopost */ = {
 			isa = PBXGroup;
 			children = (
+				96DE4188220F826D0071B456 /* LaunchImage.gif */,
+				96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */,
+				96DE4189220F826D0071B456 /* Swift+Gif.swift */,
 				963D9B8921EECA7900187DA2 /* AppDelegate.swift */,
 				9684A8962203F0960054AF55 /* NavigationDrawer */,
 				9684A8922203EE8E0054AF55 /* Info.plist */,
@@ -230,6 +239,7 @@
 			files = (
 				9684A88D2203B3FE0054AF55 /* proPicOne.png in Resources */,
 				9684A88F2203E9440054AF55 /* proPicTwo.png in Resources */,
+				96DE418B220F826E0071B456 /* LaunchImage.gif in Resources */,
 				963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */,
 				9684A8952203EEA20054AF55 /* Assets.xcassets in Resources */,
 				963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */,
@@ -293,6 +303,7 @@
 				9684A88422038A340054AF55 /* DrawerCell.swift in Sources */,
 				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
 				9684A8A32204160C0054AF55 /* Culture.swift in Sources */,
+				96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */,
 				9684A8AB220417D80054AF55 /* Society.swift in Sources */,
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
 				9614203C220BEF3C004C59A3 /* Sport1.swift in Sources */,
@@ -307,6 +318,7 @@
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
 				9684A87F22038A340054AF55 /* Settings.swift in Sources */,
+				96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */,
 				96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
