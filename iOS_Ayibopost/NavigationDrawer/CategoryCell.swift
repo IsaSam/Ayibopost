@@ -1,20 +1,18 @@
 //
-//  PostsCell.swift
+//  CategoryCell.swift
 //  iOS_Ayibopost
 //
-//  Created by Isaac Samuel on 1/15/19.
+//  Created by Isaac Samuel on 2/1/19.
 //  Copyright © 2019 Isaac Samuel. All rights reserved.
 //
 
 import UIKit
 
-class PostsCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var imagePost: UIImageView!
-    
-    
+class CategoryCell: UITableViewCell {
+    @IBOutlet weak var imageCategory: UIImageView!
+    @IBOutlet weak var titleLabelCat: UILabel!
+    @IBOutlet weak var dateLabelCat: UILabel!
+    @IBOutlet weak var contentLabelCat: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

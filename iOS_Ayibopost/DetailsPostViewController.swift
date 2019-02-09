@@ -20,12 +20,16 @@ class DetailsPostViewController: UIViewController {
     
     var post: [String: Any]?
     var imgPost: [String: Any]?
+    var urlPost1: String?
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
          if let post = post{
+            
+         
          titleLabel.text = post[PostKeys.title] as? String
          let htmlTag = post[PostKeys.content] as! String
          let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
@@ -40,8 +44,22 @@ class DetailsPostViewController: UIViewController {
                 postImageView.image = nil
             }
          }
+
          }
-    
+
+    @IBAction func shareButton(_ sender: Any) {
+
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

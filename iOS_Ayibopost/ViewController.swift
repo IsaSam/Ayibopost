@@ -11,24 +11,67 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     
     
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+ //   var urlPost1: String?
+    
+     // -------------------------------
+        // 1.Decllare the drawer view
+        var drawerVw = DrawerView()
+        
+        var vwBG = UIView()
+    //--------------------
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 168
-        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = 280
+        tableView.estimatedRowHeight = 280
         
         getPostList()
+        //-----------------
+        self.navigationController?.navigationBar.isTranslucent = false
+        //-----------------
     }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        getPostList()
+    }
+        //-----------------
+        @IBAction func actShowMenu(_ sender: Any) {
+            
+            //**** REQUIRED ****//
+            //**** 2.Implement the drawer view object and set delecate to current view controller
+            drawerVw = DrawerView(aryControllers:DrawerArray.array, isBlurEffect:true, isHeaderInTop:false, controller:self)
+            drawerVw.delegate = self
+            
+            // Can change account holder name
+            drawerVw.changeUserName(name: "WELCOME")
+            
+            // 3.show the Navigation drawer.
+            drawerVw.show()
+            
+            
+            
+        }
+        
+        // 6.To push the viewcontroller which is selected by user.
+        func pushTo(viewController: UIViewController) {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        //-----------------
+        
     private func getPostList(){
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
             
@@ -36,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(error!)
                 return
             }
-            //print(result!)
+            print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
         }
@@ -49,21 +92,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+
         
         let post = posts[indexPath.row]
+        //let urlPost = post["link"] as! String
+    //    urlPost1 = urlPost as String
+        
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
         
+
+        
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-            
+                
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
-            print(imageURL!)
+            //print(imageURL!)
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
                 cell.imagePost.af_setImage(withURL: imgUrl)
@@ -88,6 +137,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
+   //     detailViewController.urlPost1 = urlPost1
+    
+        
     }
     
     
@@ -96,3 +148,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 }
+//----------------------
+
+    // 7.Struct for add storyboards which you want show on navigation drawer
+    struct DrawerArray {
+        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
+}
+//----------------------
