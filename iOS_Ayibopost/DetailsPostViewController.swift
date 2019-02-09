@@ -14,7 +14,7 @@ enum PostKeys {
     static let link = "link"
 }
 
-class DetailsPostViewController: UIViewController, UISearchBarDelegate {
+class DetailsPostViewController: UIViewController{
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -30,8 +30,6 @@ class DetailsPostViewController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchBar.delegate = self
         
         categoryWeb()
 
