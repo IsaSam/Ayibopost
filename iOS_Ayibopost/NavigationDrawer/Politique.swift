@@ -24,11 +24,21 @@ class Politique: UIViewController,UIWebViewDelegate {
   //      tableView.insertSubview(refreshControl, at: 0)
         
         getCategory()
+        topBarLogo()
     }
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
         getCategory()
     }
-    
+    func topBarLogo(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "ayibopost-logo-blanc-2.png")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
+    }
     func getCategory(){
         
         self.activityIndicator.startAnimating() //====================

@@ -15,6 +15,19 @@ class LayoutTwo: UIViewController, DrawerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
+        
+        topBarLogo()
+    }
+    
+    func topBarLogo(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "ayibopost-logo-blanc-2.png")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
     }
 
     override func didReceiveMemoryWarning() {

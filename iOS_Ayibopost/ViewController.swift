@@ -36,6 +36,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topBarLogo()
 
         searchBar.delegate = self
         
@@ -54,6 +56,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
     }
+    
+    func topBarLogo(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "ayibopost-logo-blanc-2.png")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
+    }
+    
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
         getPostList()
     }

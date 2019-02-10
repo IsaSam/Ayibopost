@@ -17,7 +17,18 @@ class AyiboTalk: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
 
         
-       getCategory()
+        getCategory()
+        topBarLogo()
+    }
+    func topBarLogo(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "ayibopost-logo-blanc-2.png")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
     }
     
     func getCategory(){
