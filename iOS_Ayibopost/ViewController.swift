@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-
+    var loadNumber = 1
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -96,8 +96,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func getPostList(){
         
         self.activityIndicatory.startAnimating() //====================
-        
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
          
          if error != nil{
         // print(error!)
@@ -119,6 +118,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.activityIndicatory.stopAnimating()
    
     }
+    
+    
+    func loadMorePosts(){
+      loadNumber = loadNumber + 1
+      AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+            
+            if error != nil{
+                // print(error!)
+                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                errorAlertController.addAction(cancelAction)
+                self.present(errorAlertController, animated: true)
+                print(error!)
+                
+                return
+            }
+            
+            //print(result!)
+            self.posts.append(<#T##newElement: [String : Any]##[String : Any]#>)
+            self.tableView.reloadData() // to tell table about new data
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == posts.count{
+            loadMorePosts()
+        }
+    }
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filteredPosts = searchText.isEmpty ? self.posts : self.posts.filter({(post) -> Bool in
             return (post["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
