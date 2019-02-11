@@ -19,6 +19,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBAction func onTap(_ sender: Any) {
+                view.endEditing(true)
+    }
+    
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
@@ -55,6 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //-----------------
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
+        self.hideKeyboardOnTap(#selector(self.onTap(_:)))
     }
     
     func topBarLogo(){
@@ -108,7 +113,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
          return
          }
-         
          //print(result!)
          self.posts = result!
          self.tableView.reloadData() // to tell table about new data
@@ -231,8 +235,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 //----------------------
 
+/*
+func dismissKeyboard() {
+    view.endEditing(true)
+    // do aditional stuff
+}
+*/
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
         static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
 }
 //----------------------
+
+extension UIViewController {
+    func hideKeyboardOnTap(_ selector: Selector) {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+}
