@@ -124,20 +124,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       loadNumber = loadNumber + 1
       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
             
-            if error != nil{
-                // print(error!)
-                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-                errorAlertController.addAction(cancelAction)
-                self.present(errorAlertController, animated: true)
-                print(error!)
-                
-                return
+                if error != nil{
+                    // print(error!)
+                    let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                    errorAlertController.addAction(cancelAction)
+                    self.present(errorAlertController, animated: true)
+                    print(error!)
+                    
+                    return
+                }
+        
+                //print(result!)
+                //self.posts = result!
+        
+            do{
+                for item in result!
+                {
+                    //self.dataList.add(item)
+                    self.posts.append(item)
+                }
+                print(result!)
+                self.tableView.reloadData() // to tell table about new data
             }
-            
-            //print(result!)
-            self.posts.append(<#T##newElement: [String : Any]##[String : Any]#>)
-            self.tableView.reloadData() // to tell table about new data
         }
         
         
