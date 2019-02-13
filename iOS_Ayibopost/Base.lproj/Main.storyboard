@@ -552,35 +552,25 @@
                                 <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="376" id="eu5-Yw-JBs" customClass="CategoryCell" customModule="iOS_Ayibopost" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="376"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="390" id="eu5-Yw-JBs" customClass="CategoryCell" customModule="iOS_Ayibopost" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="390"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eu5-Yw-JBs" id="CfP-yV-Y8c">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="375.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="389.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mku-jN-cPu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mku-jN-cPu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="5nl-Nb-C0K"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="sQJ-z5-aNr"/>
+                                                        <constraint firstAttribute="height" constant="230" id="KWh-cG-Wdo"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="NJS-Za-w8W"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnZ-oa-U2O">
-                                                    <rect key="frame" x="0.0" y="202" width="320" height="58"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-E4-Iwy">
+                                                    <rect key="frame" x="8" y="328" width="304" height="57"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="58" id="UDm-od-sjF"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="qiX-qy-q49"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-E4-Iwy">
-                                                    <rect key="frame" x="8" y="285" width="302" height="75"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="75" id="R57-Ac-c62"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="UZ7-v6-ocq"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="1KX-dR-OKd"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="85" id="XPO-eM-UG9"/>
                                                     </constraints>
                                                     <string key="text">Nerlens Noël a été sélectionné à la 6e place au premier tour du draft par New Orleans puis transféré à Philadelphie 76ers en 2013. Il a été l’un des produits du processus de reconstruction des Sixers intitulé « the process ». L’année de sa sélection, il n’a pas joué le moindre match à cause d’une opération au genou.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
@@ -588,29 +578,44 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 13, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54G-qc-Ihp">
-                                                    <rect key="frame" x="194" y="265" width="118" height="15"/>
+                                                    <rect key="frame" x="194" y="306" width="118" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="avd-Rw-nOW"/>
-                                                        <constraint firstAttribute="height" constant="15" id="sqO-Nd-GD5"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="F3z-Fw-yQl"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="15" id="LXd-e1-fks"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nerlens Noël a été sélectionné à la 6e place au premier tour " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnZ-oa-U2O">
+                                                    <rect key="frame" x="8" y="240" width="304" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="rY9-CO-0pq"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="waK-Ep-PD1"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="6Go-E4-Iwy" secondAttribute="trailing" constant="10" id="1Cs-Ts-JQ2"/>
-                                                <constraint firstItem="6Go-E4-Iwy" firstAttribute="top" secondItem="54G-qc-Ihp" secondAttribute="bottom" constant="5" id="5gy-Vk-dYF"/>
-                                                <constraint firstAttribute="bottom" secondItem="6Go-E4-Iwy" secondAttribute="bottom" constant="15.5" id="E7v-Oj-Nmh"/>
-                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" id="EUb-32-j1J"/>
-                                                <constraint firstItem="6Go-E4-Iwy" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" constant="8" id="IDa-cd-AUL"/>
-                                                <constraint firstAttribute="trailing" secondItem="54G-qc-Ihp" secondAttribute="trailing" constant="8" id="QNI-Cf-oAe"/>
-                                                <constraint firstAttribute="trailing" secondItem="Mku-jN-cPu" secondAttribute="trailing" id="Qrz-sj-yMd"/>
-                                                <constraint firstItem="HnZ-oa-U2O" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" id="RRo-9H-u17"/>
-                                                <constraint firstAttribute="trailing" secondItem="HnZ-oa-U2O" secondAttribute="trailing" id="Scp-DP-EbE"/>
-                                                <constraint firstItem="HnZ-oa-U2O" firstAttribute="top" secondItem="Mku-jN-cPu" secondAttribute="bottom" constant="1" id="WUC-wf-WCl"/>
-                                                <constraint firstItem="54G-qc-Ihp" firstAttribute="top" secondItem="HnZ-oa-U2O" secondAttribute="bottom" constant="5" id="b8i-qF-o4J"/>
-                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" id="oD4-YO-Ura"/>
+                                                <constraint firstItem="54G-qc-Ihp" firstAttribute="top" secondItem="HnZ-oa-U2O" secondAttribute="bottom" constant="8" id="8Ud-GZ-mAc"/>
+                                                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="6Go-E4-Iwy" secondAttribute="bottom" constant="19.5" id="A8O-RS-yG3"/>
+                                                <constraint firstItem="HnZ-oa-U2O" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" constant="8" id="EhW-Ur-ixS"/>
+                                                <constraint firstItem="54G-qc-Ihp" firstAttribute="leading" relation="lessThanOrEqual" secondItem="CfP-yV-Y8c" secondAttribute="leading" constant="194" id="JLC-CL-G1D"/>
+                                                <constraint firstItem="HnZ-oa-U2O" firstAttribute="top" secondItem="Mku-jN-cPu" secondAttribute="bottom" constant="10" id="LVt-UB-pTE"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Go-E4-Iwy" secondAttribute="trailing" constant="8" id="MHF-3E-v3O"/>
+                                                <constraint firstItem="54G-qc-Ihp" firstAttribute="top" secondItem="HnZ-oa-U2O" secondAttribute="bottom" constant="8" id="OeK-ZB-4lD"/>
+                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" id="Spc-zr-neU"/>
+                                                <constraint firstItem="6Go-E4-Iwy" firstAttribute="top" secondItem="54G-qc-Ihp" secondAttribute="bottom" constant="7" id="U92-RP-PHt"/>
+                                                <constraint firstItem="6Go-E4-Iwy" firstAttribute="top" secondItem="54G-qc-Ihp" secondAttribute="bottom" constant="7" id="bsz-jq-qP1"/>
+                                                <constraint firstItem="HnZ-oa-U2O" firstAttribute="top" secondItem="Mku-jN-cPu" secondAttribute="bottom" constant="10" id="jFE-JG-Abv"/>
+                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" id="kmC-Bz-BD4"/>
+                                                <constraint firstItem="6Go-E4-Iwy" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" constant="8" id="oF8-Cv-sq5"/>
+                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" id="oIg-VL-XAm"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mku-jN-cPu" secondAttribute="trailing" id="tDs-l9-ajv"/>
+                                                <constraint firstAttribute="trailing" secondItem="HnZ-oa-U2O" secondAttribute="trailing" constant="8" id="tR5-1F-D54"/>
+                                                <constraint firstAttribute="trailing" secondItem="54G-qc-Ihp" secondAttribute="trailing" constant="8" id="u0R-Cc-qbO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

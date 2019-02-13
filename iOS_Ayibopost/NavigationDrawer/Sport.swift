@@ -52,8 +52,8 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.delegate = self
-        tableView.rowHeight = 330
-        tableView.estimatedRowHeight = 350
+        tableView.rowHeight = 395
+        tableView.estimatedRowHeight = 395
         
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
