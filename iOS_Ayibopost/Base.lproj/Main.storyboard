@@ -653,6 +653,7 @@
                                             <outlet property="imageCategory" destination="Mku-jN-cPu" id="rI7-m2-egl"/>
                                             <outlet property="nameCategory" destination="G09-FV-830" id="yJb-uM-tFz"/>
                                             <outlet property="titleLabelCat" destination="HnZ-oa-U2O" id="55S-Id-cav"/>
+                                            <segue destination="Uhv-1l-mLN" kind="showDetail" id="LBh-tk-otW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -683,7 +684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPz-Gr-rgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4618" y="149"/>
+            <point key="canvasLocation" x="5449" y="-550"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pJL-HN-7Qe">
@@ -700,15 +701,15 @@
                                 <color key="sectionIndexColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostsCell" rowHeight="330" id="upp-ch-Z2L" customClass="PostsCell" customModule="iOS_Ayibopost" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostsCell" rowHeight="330" id="upp-ch-Z2L" customClass="PostsCell" customModule="iOS_Ayibopost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="330"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="upp-ch-Z2L" id="3aZ-ht-DCZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="329.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="329.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RtL-tg-yLz">
-                                                    <rect key="frame" x="30" y="19" width="260" height="180"/>
+                                                    <rect key="frame" x="30" y="19" width="238" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="238" id="1OV-3O-Bee"/>
                                                         <constraint firstAttribute="height" constant="180" id="Mxd-wO-gfE"/>
@@ -725,7 +726,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-1G-9eg">
-                                                    <rect key="frame" x="15" y="250" width="290" height="50"/>
+                                                    <rect key="frame" x="15" y="250" width="268" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="mnh-a3-xMu"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="n9j-vH-eJS"/>
@@ -753,7 +754,7 @@
                                             <outlet property="imagePost" destination="RtL-tg-yLz" id="qtY-jk-z46"/>
                                             <outlet property="titleLabel" destination="LcE-kj-sku" id="vTS-s4-pIJ"/>
                                             <outletCollection property="gestureRecognizers" destination="0Pc-pO-ym5" appends="YES" id="7K8-rv-PQC"/>
-                                            <segue destination="Uhv-1l-mLN" kind="show" id="fRm-l0-h0a"/>
+                                            <segue destination="Uhv-1l-mLN" kind="show" id="jhQ-Wc-sb5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -843,4 +844,7 @@
         <image name="tabThree" width="26" height="26"/>
         <image name="tabTwo" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jhQ-Wc-sb5"/>
+    </inferredMetricsTieBreakers>
 </document>
