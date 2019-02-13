@@ -19,7 +19,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     var drawerView = UIView()
     
     var tblVw = UITableView()
-    var ayiViewControllers = NSArray()
+    var aryViewControllers = NSArray()
     weak var delegate:DrawerControllerDelegate?
     var currentViewController = UIViewController()
     var cellTextColor:UIColor?
@@ -142,7 +142,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         }
         
         tblVw.separatorStyle = UITableViewCellSeparatorStyle.none
-        ayiViewControllers = controllers
+        aryViewControllers = controllers
         tblVw.delegate = self
         tblVw.dataSource = self
         tblVw.backgroundColor = UIColor.clear   
@@ -180,7 +180,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ayiViewControllers.count
+        return aryViewControllers.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -190,8 +190,8 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DrawerCell") as! DrawerCell
         cell.backgroundColor = UIColor.clear
-        cell.lblController?.text = ayiViewControllers[indexPath.row] as? String
-        cell.imgController?.image = UIImage(named: (ayiViewControllers[indexPath.row] as? String)!)
+        cell.lblController?.text = aryViewControllers[indexPath.row] as? String
+        cell.imgController?.image = UIImage(named: (aryViewControllers[indexPath.row] as? String)!)
         cell.lblController.textColor = self.cellTextColor ?? UIColor.white
         cell.lblController.font = fontNew ?? UIFont(name: "Euphemia UCAS", size: 18)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -202,7 +202,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
-        let controllerName = (storyBoard.instantiateViewController(withIdentifier: ayiViewControllers[indexPath.row] as! String))
+        let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
         controllerName.hidesBottomBarWhenPushed = true
         self.delegate?.pushTo(viewController: controllerName)
     }

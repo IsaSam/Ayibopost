@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fsD-dC-r3m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BLB-Ya-AH5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -677,13 +677,13 @@
                         <viewLayoutGuide key="safeArea" id="bDQ-3J-Qan"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="mak-Bk-NBm" id="vnB-QC-fmA"/>
+                        <outlet property="searchBar" destination="bUF-Xe-C6T" id="48T-Kw-ofD"/>
                         <outlet property="tableView" destination="OB0-1V-izR" id="KzJ-lo-usH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPz-Gr-rgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4710" y="148.94366197183098"/>
+            <point key="canvasLocation" x="4618" y="149"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pJL-HN-7Qe">

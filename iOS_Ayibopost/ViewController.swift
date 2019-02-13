@@ -16,7 +16,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBAction func onTap(_ sender: Any) {
