@@ -33,14 +33,6 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     }
 */
     
-    // -------------------------------
-    /*
-    // 1.Decllare the drawer view
-    var drawerVw = DrawerView()
-    
-    var vwBG = UIView()
-    //--------------------
-    */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,27 +71,6 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         getPostCategory()
     }
 
-  /*
-    @IBAction func actShowMenu(_ sender: Any) {
-        
-        // 2.Implement the drawer view object and set delecate to current view controller
-        drawerVw = DrawerView(aryControllers:DrawerArray.array, isBlurEffect:true, isHeaderInTop:false, controller:self)
-        drawerVw.delegate = self
-        
-        // Can change account holder name
-        drawerVw.changeUserName(name: "WELCOME")
-        
-        // 3.show the Navigation drawer.
-        drawerVw.show()
-       
-    }
- 
-    // 6.To push the viewcontroller which is selected by user.
-    func pushTo(viewController: UIViewController) {
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    //-----------------
-    */
     private func getPostCategory(){
         
         self.activityIndicat.startAnimating() //====================
@@ -153,8 +124,6 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
                 self.tableView.reloadData() // to tell table about new data
             }
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -227,11 +196,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         detailViewController.post = post
         detailViewController.imgPost = imgPost
         //     detailViewController.urlPost1 = urlPost1
-        
-        
     }
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -245,12 +210,6 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
  // do aditional stuff
  }
  */
-/*
-// 7.Struct for add storyboards which you want show on navigation drawer
-struct DrawerArray {
-    static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
-}
-*/
 /*
 extension UIViewController {
     func hideKeyboardOnTap(_ selector: Selector) {

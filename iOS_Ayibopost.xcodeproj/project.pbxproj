@@ -28,7 +28,6 @@
 		9684A8952203EEA20054AF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9684A8942203EEA20054AF55 /* Assets.xcassets */; };
 		9684A8A1220415320054AF55 /* Economie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A0220415320054AF55 /* Economie.swift */; };
 		9684A8A32204160C0054AF55 /* Culture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A22204160C0054AF55 /* Culture.swift */; };
-		9684A8A5220416260054AF55 /* Sport2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A4220416260054AF55 /* Sport2.swift */; };
 		9684A8A7220416360054AF55 /* AyiboTalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A6220416360054AF55 /* AyiboTalk.swift */; };
 		9684A8A9220417BF0054AF55 /* Politique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A8220417BF0054AF55 /* Politique.swift */; };
 		9684A8AB220417D80054AF55 /* Society.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AA220417D80054AF55 /* Society.swift */; };
@@ -67,7 +66,6 @@
 		9684A8992203F0EF0054AF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../NavigationDrawer/Info.plist; sourceTree = "<group>"; };
 		9684A8A0220415320054AF55 /* Economie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economie.swift; sourceTree = "<group>"; };
 		9684A8A22204160C0054AF55 /* Culture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Culture.swift; sourceTree = "<group>"; };
-		9684A8A4220416260054AF55 /* Sport2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport2.swift; sourceTree = "<group>"; };
 		9684A8A6220416360054AF55 /* AyiboTalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboTalk.swift; sourceTree = "<group>"; };
 		9684A8A8220417BF0054AF55 /* Politique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Politique.swift; sourceTree = "<group>"; };
 		9684A8AA220417D80054AF55 /* Society.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Society.swift; sourceTree = "<group>"; };
@@ -123,48 +121,103 @@
 		963D9B8821EECA7900187DA2 /* iOS_Ayibopost */ = {
 			isa = PBXGroup;
 			children = (
+				9681A6AC22149D6300524AD3 /* ManagerAPI */,
+				9681A6AB22149D2B00524AD3 /* ViewCell */,
+				9681A6AA22149CFC00524AD3 /* ViewControllers */,
 				96DE4188220F826D0071B456 /* LaunchImage.gif */,
-				96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */,
-				96DE4189220F826D0071B456 /* Swift+Gif.swift */,
 				963D9B8921EECA7900187DA2 /* AppDelegate.swift */,
 				9684A8962203F0960054AF55 /* NavigationDrawer */,
 				9684A8922203EE8E0054AF55 /* Info.plist */,
 				9684A8942203EEA20054AF55 /* Assets.xcassets */,
-				963D9B8B21EECA7900187DA2 /* ViewController.swift */,
 				963D9B8D21EECA7900187DA2 /* Main.storyboard */,
 				963D9B9021EECA7F00187DA2 /* Assets.xcassets */,
 				963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */,
 				963D9B9521EECA7F00187DA2 /* Info.plist */,
-				963D9B9B21EECD2800187DA2 /* PostsCell.swift */,
-				963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */,
-				96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */,
 			);
 			path = iOS_Ayibopost;
+			sourceTree = "<group>";
+		};
+		9681A6A622149BCC00524AD3 /* DrawerCell */ = {
+			isa = PBXGroup;
+			children = (
+				9684A87622038A330054AF55 /* DrawerCell.swift */,
+				9684A87722038A330054AF55 /* DrawerCell.xib */,
+				9684A8AC2204CF540054AF55 /* CategoryCell.swift */,
+			);
+			path = DrawerCell;
+			sourceTree = "<group>";
+		};
+		9681A6A722149C1400524AD3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9684A87122038A300054AF55 /* Settings.swift */,
+				9684A8A0220415320054AF55 /* Economie.swift */,
+				9684A8A22204160C0054AF55 /* Culture.swift */,
+				9614203B220BEF3C004C59A3 /* Sport.swift */,
+				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
+				9684A8A8220417BF0054AF55 /* Politique.swift */,
+				9684A8AA220417D80054AF55 /* Society.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		9681A6A822149C4500524AD3 /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				9684A87922038A340054AF55 /* DrawerProtocol.swift */,
+				9684A87422038A310054AF55 /* DrawerView.swift */,
+			);
+			path = Drawer;
+			sourceTree = "<group>";
+		};
+		9681A6A922149C5F00524AD3 /* TabControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9684A86F22038A2F0054AF55 /* LayoutThree.swift */,
+				9684A87022038A300054AF55 /* LayoutTwo.swift */,
+			);
+			path = TabControllers;
+			sourceTree = "<group>";
+		};
+		9681A6AA22149CFC00524AD3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */,
+				963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */,
+				963D9B8B21EECA7900187DA2 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9681A6AB22149D2B00524AD3 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				963D9B9B21EECD2800187DA2 /* PostsCell.swift */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		9681A6AC22149D6300524AD3 /* ManagerAPI */ = {
+			isa = PBXGroup;
+			children = (
+				96DE4189220F826D0071B456 /* Swift+Gif.swift */,
+				96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */,
+			);
+			path = ManagerAPI;
 			sourceTree = "<group>";
 		};
 		9684A8962203F0960054AF55 /* NavigationDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				9684A87622038A330054AF55 /* DrawerCell.swift */,
-				9684A87722038A330054AF55 /* DrawerCell.xib */,
-				9684A87922038A340054AF55 /* DrawerProtocol.swift */,
-				9684A87422038A310054AF55 /* DrawerView.swift */,
+				9681A6A922149C5F00524AD3 /* TabControllers */,
+				9681A6A822149C4500524AD3 /* Drawer */,
+				9681A6A722149C1400524AD3 /* Categories */,
+				9681A6A622149BCC00524AD3 /* DrawerCell */,
 				9684A8982203F0990054AF55 /* Info.plist */,
-				9684A86F22038A2F0054AF55 /* LayoutThree.swift */,
-				9684A87022038A300054AF55 /* LayoutTwo.swift */,
 				9684A8992203F0EF0054AF55 /* Info.plist */,
 				9684A88C2203B3FE0054AF55 /* proPicOne.png */,
 				9684A88E2203E9430054AF55 /* proPicTwo.png */,
-				9684A87122038A300054AF55 /* Settings.swift */,
 				9684A8972203F0970054AF55 /* Assets.xcassets */,
-				9684A8A0220415320054AF55 /* Economie.swift */,
-				9684A8A22204160C0054AF55 /* Culture.swift */,
-				9684A8A4220416260054AF55 /* Sport2.swift */,
-				9614203B220BEF3C004C59A3 /* Sport.swift */,
-				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
-				9684A8A8220417BF0054AF55 /* Politique.swift */,
-				9684A8AA220417D80054AF55 /* Society.swift */,
-				9684A8AC2204CF540054AF55 /* CategoryCell.swift */,
 			);
 			path = NavigationDrawer;
 			sourceTree = "<group>";
@@ -313,7 +366,6 @@
 				9684A88222038A340054AF55 /* DrawerView.swift in Sources */,
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A8A1220415320054AF55 /* Economie.swift in Sources */,
-				9684A8A5220416260054AF55 /* Sport2.swift in Sources */,
 				9684A8A9220417BF0054AF55 /* Politique.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
