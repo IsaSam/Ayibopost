@@ -27,10 +27,11 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     var loadNumber = 7
     var categori = "SPORT"
     
+    /*
     @IBAction func onTap(_ sender: Any) {
                 view.endEditing(true)
     }
-
+*/
     
     // -------------------------------
     /*

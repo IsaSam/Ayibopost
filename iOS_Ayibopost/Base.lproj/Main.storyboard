@@ -563,7 +563,7 @@
                                                     <rect key="frame" x="0.0" y="1" width="320" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="5nl-Nb-C0K"/>
-                                                        <constraint firstAttribute="height" constant="200" id="sQJ-z5-aNr"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="sQJ-z5-aNr"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnZ-oa-U2O">
@@ -666,9 +666,6 @@
                             <constraint firstItem="bUF-Xe-C6T" firstAttribute="trailing" secondItem="bDQ-3J-Qan" secondAttribute="trailing" id="vrM-sl-9cC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDQ-3J-Qan"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Mbp-gh-FgK" appends="YES" id="yHJ-BZ-dKQ"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityIndicat" destination="mak-Bk-NBm" id="baN-LH-pIY"/>
@@ -677,11 +674,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPz-Gr-rgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Mbp-gh-FgK">
-                    <connections>
-                        <action selector="onTap:" destination="fsD-dC-r3m" id="8oO-Ip-ni9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2656.875" y="-1347.8873239436621"/>
         </scene>
@@ -844,6 +836,6 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="CCd-zH-p4I"/>
     </inferredMetricsTieBreakers>
 </document>
