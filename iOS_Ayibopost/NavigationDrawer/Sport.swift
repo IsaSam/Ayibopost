@@ -179,7 +179,10 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         }
         
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "NameCatCell", for: indexPath) as! NameCatCell
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         
@@ -209,6 +212,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         }
         
         return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

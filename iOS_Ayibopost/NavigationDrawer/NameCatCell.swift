@@ -1,18 +1,16 @@
 //
-//  CategoryCell.swift
+//  NameCatCell.swift
 //  iOS_Ayibopost
 //
-//  Created by Isaac Samuel on 2/1/19.
+//  Created by Isaac Samuel on 2/12/19.
 //  Copyright © 2019 Isaac Samuel. All rights reserved.
 //
 
 import UIKit
 
-class CategoryCell: UITableViewCell {
-    @IBOutlet weak var imageCategory: UIImageView!
-    @IBOutlet weak var titleLabelCat: UILabel!
-    @IBOutlet weak var dateLabelCat: UILabel!
-    @IBOutlet weak var contentLabelCat: UILabel!
+class NameCatCell: UITableViewCell {
+
+    @IBOutlet weak var nameCategory: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
