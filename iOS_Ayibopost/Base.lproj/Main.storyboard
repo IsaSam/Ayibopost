@@ -549,43 +549,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OB0-1V-izR">
-                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCatCell" id="CYt-kI-aIr" customClass="NameCatCell" customModule="iOS_Ayibopost" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CYt-kI-aIr" id="fya-7X-xtM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARCHIVE BY CATEGORY " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G09-FV-830">
-                                                    <rect key="frame" x="0.0" y="1" width="320" height="21"/>
-                                                    <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="G9M-vq-daY"/>
-                                                        <constraint firstAttribute="height" constant="21" id="ome-tq-EFx"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="G09-FV-830" secondAttribute="trailing" id="YGn-YH-kly"/>
-                                                <constraint firstItem="G09-FV-830" firstAttribute="leading" secondItem="fya-7X-xtM" secondAttribute="leading" id="cIc-4P-Wez"/>
-                                                <constraint firstItem="G09-FV-830" firstAttribute="top" secondItem="fya-7X-xtM" secondAttribute="top" constant="1" id="llX-gj-JAR"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameCategory" destination="G09-FV-830" id="I3y-Ut-dzz"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="330" id="eu5-Yw-JBs" customClass="CategoryCell" customModule="iOS_Ayibopost" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="320" height="330"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="330" id="eu5-Yw-JBs" customClass="CategoryCell" customModule="iOS_Ayibopost" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="330"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eu5-Yw-JBs" id="CfP-yV-Y8c">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="329.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="329.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mku-jN-cPu">
@@ -625,7 +596,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mak-Bk-NBm">
-                                                    <rect key="frame" x="142" y="147" width="37" height="37"/>
+                                                    <rect key="frame" x="141.5" y="147" width="37" height="37"/>
                                                     <color key="color" red="0.56078431370000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </activityIndicatorView>
                                             </subviews>
@@ -636,6 +607,7 @@
                                                 <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" constant="1" id="7q5-lT-BHQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Mku-jN-cPu" secondAttribute="trailing" id="HdJ-ld-wR7"/>
                                                 <constraint firstItem="HnZ-oa-U2O" firstAttribute="top" secondItem="Mku-jN-cPu" secondAttribute="bottom" constant="15" id="IaW-sO-lim"/>
+                                                <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" constant="1" id="LV0-fu-aXt"/>
                                                 <constraint firstItem="mak-Bk-NBm" firstAttribute="centerX" secondItem="CfP-yV-Y8c" secondAttribute="centerX" id="NiN-ra-9sG"/>
                                                 <constraint firstItem="6Go-E4-Iwy" firstAttribute="leading" secondItem="CfP-yV-Y8c" secondAttribute="leading" constant="10" id="aJv-x4-iGi"/>
                                                 <constraint firstItem="Mku-jN-cPu" firstAttribute="top" secondItem="CfP-yV-Y8c" secondAttribute="top" constant="1" id="ab6-ou-D0O"/>
@@ -652,7 +624,7 @@
                                             <outlet property="dateLabelCat" destination="54G-qc-Ihp" id="34l-Vg-2Km"/>
                                             <outlet property="imageCategory" destination="Mku-jN-cPu" id="rI7-m2-egl"/>
                                             <outlet property="titleLabelCat" destination="HnZ-oa-U2O" id="55S-Id-cav"/>
-                                            <segue destination="Uhv-1l-mLN" kind="showDetail" id="LBh-tk-otW"/>
+                                            <segue destination="Uhv-1l-mLN" kind="show" id="CCd-zH-p4I"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -667,16 +639,30 @@
                                 <color key="barTintColor" red="0.15686274510000001" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARCHIVE BY CATEGORY " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G09-FV-830">
+                                <rect key="frame" x="0.0" y="57" width="320" height="14"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="6gQ-mN-eK1"/>
+                                    <constraint firstAttribute="height" constant="14" id="s2S-pe-sTT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OB0-1V-izR" firstAttribute="bottom" secondItem="bDQ-3J-Qan" secondAttribute="bottom" id="3ud-6b-xaU"/>
-                            <constraint firstItem="OB0-1V-izR" firstAttribute="leading" secondItem="bDQ-3J-Qan" secondAttribute="leading" id="RP4-5R-8W2"/>
+                            <constraint firstItem="OB0-1V-izR" firstAttribute="bottom" secondItem="bDQ-3J-Qan" secondAttribute="bottom" id="EzD-1A-7e2"/>
+                            <constraint firstItem="OB0-1V-izR" firstAttribute="trailing" secondItem="bDQ-3J-Qan" secondAttribute="trailing" id="GlK-2B-Mql"/>
+                            <constraint firstItem="G09-FV-830" firstAttribute="leading" secondItem="bDQ-3J-Qan" secondAttribute="leading" id="UDk-6d-3qu"/>
                             <constraint firstItem="bUF-Xe-C6T" firstAttribute="top" secondItem="jyZ-ie-Z0J" secondAttribute="top" id="XBw-7i-sUJ"/>
-                            <constraint firstItem="OB0-1V-izR" firstAttribute="trailing" secondItem="bDQ-3J-Qan" secondAttribute="trailing" id="i3J-mJ-mdj"/>
+                            <constraint firstItem="OB0-1V-izR" firstAttribute="leading" secondItem="bDQ-3J-Qan" secondAttribute="leading" id="hxd-9T-dBc"/>
+                            <constraint firstItem="G09-FV-830" firstAttribute="top" secondItem="bUF-Xe-C6T" secondAttribute="bottom" constant="1" id="kBc-G7-axv"/>
                             <constraint firstItem="bUF-Xe-C6T" firstAttribute="leading" secondItem="bDQ-3J-Qan" secondAttribute="leading" id="lHJ-hN-szh"/>
+                            <constraint firstItem="G09-FV-830" firstAttribute="trailing" secondItem="bDQ-3J-Qan" secondAttribute="trailing" id="qoi-fv-pAH"/>
+                            <constraint firstItem="OB0-1V-izR" firstAttribute="top" secondItem="G09-FV-830" secondAttribute="bottom" id="s5F-55-ccc"/>
                             <constraint firstItem="bUF-Xe-C6T" firstAttribute="trailing" secondItem="bDQ-3J-Qan" secondAttribute="trailing" id="vrM-sl-9cC"/>
-                            <constraint firstItem="OB0-1V-izR" firstAttribute="top" secondItem="bUF-Xe-C6T" secondAttribute="bottom" id="wNq-re-nNU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDQ-3J-Qan"/>
                     </view>
@@ -848,6 +834,6 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LBh-tk-otW"/>
+        <segue reference="CCd-zH-p4I"/>
     </inferredMetricsTieBreakers>
 </document>

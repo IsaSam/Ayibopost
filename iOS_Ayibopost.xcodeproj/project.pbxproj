@@ -15,7 +15,6 @@
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
-		9681A6A52213D3D700524AD3 /* NameCatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9681A6A42213D3D700524AD3 /* NameCatCell.swift */; };
 		9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86F22038A2F0054AF55 /* LayoutThree.swift */; };
 		9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87022038A300054AF55 /* LayoutTwo.swift */; };
 		9684A87F22038A340054AF55 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87122038A300054AF55 /* Settings.swift */; };
@@ -52,7 +51,6 @@
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
-		9681A6A42213D3D700524AD3 /* NameCatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCatCell.swift; sourceTree = "<group>"; };
 		9684A86F22038A2F0054AF55 /* LayoutThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThree.swift; sourceTree = "<group>"; };
 		9684A87022038A300054AF55 /* LayoutTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwo.swift; sourceTree = "<group>"; };
 		9684A87122038A300054AF55 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				9684A8A8220417BF0054AF55 /* Politique.swift */,
 				9684A8AA220417D80054AF55 /* Society.swift */,
 				9684A8AC2204CF540054AF55 /* CategoryCell.swift */,
-				9681A6A42213D3D700524AD3 /* NameCatCell.swift */,
 			);
 			path = NavigationDrawer;
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A8A1220415320054AF55 /* Economie.swift in Sources */,
 				9684A8A5220416260054AF55 /* Sport2.swift in Sources */,
-				9681A6A52213D3D700524AD3 /* NameCatCell.swift in Sources */,
 				9684A8A9220417BF0054AF55 /* Politique.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
