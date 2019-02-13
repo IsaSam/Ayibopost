@@ -13,7 +13,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-  //  @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
     var catPosts: [[String: Any]] = []
     //    var catPosts3 = [String]()
@@ -26,11 +26,11 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
     var categori = "SPORT"
-   /*
+    
     @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true)
+                view.endEditing(true)
     }
-    */
+
     
     // -------------------------------
     /*
@@ -58,10 +58,9 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         tableView.dataSource = self
         
         getPostCategory()
-        //-----------------
         self.navigationController?.navigationBar.isTranslucent = false
-        //-----------------
-    //    self.hideKeyboardOnTap(#selector(self.onTap(_:)))
+  
+       // self.hideKeyboardOnTap(#selector(self.onTap(_:)))
     }
     
     func topBarLogo(){
@@ -102,7 +101,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     */
     private func getPostCategory(){
         
- //       self.activityIndicat.startAnimating() //====================
+        self.activityIndicat.startAnimating() //====================
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
@@ -118,10 +117,10 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
             //print(result!)
             self.posts = result!
             self.tableView.reloadData() // to tell table about new data
-  //          self.activityIndicat.stopAnimating() //====================
+            self.activityIndicat.stopAnimating() //====================
         }
         self.refreshControl.endRefreshing()
- //       self.activityIndicat.stopAnimating()
+        self.activityIndicat.stopAnimating()
         
     }
     
@@ -179,7 +178,9 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         }
         
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         
@@ -209,6 +210,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
         }
         
         return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -247,7 +249,6 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
 struct DrawerArray {
     static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
 }
-//----------------------
 */
 /*
 extension UIViewController {
