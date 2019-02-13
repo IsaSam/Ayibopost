@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9614203C220BEF3C004C59A3 /* Sport1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614203B220BEF3C004C59A3 /* Sport1.swift */; };
+		9614203C220BEF3C004C59A3 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614203B220BEF3C004C59A3 /* Sport.swift */; };
 		963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8921EECA7900187DA2 /* AppDelegate.swift */; };
 		963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController.swift */; };
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
@@ -28,7 +28,7 @@
 		9684A8952203EEA20054AF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9684A8942203EEA20054AF55 /* Assets.xcassets */; };
 		9684A8A1220415320054AF55 /* Economie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A0220415320054AF55 /* Economie.swift */; };
 		9684A8A32204160C0054AF55 /* Culture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A22204160C0054AF55 /* Culture.swift */; };
-		9684A8A5220416260054AF55 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A4220416260054AF55 /* Sport.swift */; };
+		9684A8A5220416260054AF55 /* Sport2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A4220416260054AF55 /* Sport2.swift */; };
 		9684A8A7220416360054AF55 /* AyiboTalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A6220416360054AF55 /* AyiboTalk.swift */; };
 		9684A8A9220417BF0054AF55 /* Politique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8A8220417BF0054AF55 /* Politique.swift */; };
 		9684A8AB220417D80054AF55 /* Society.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AA220417D80054AF55 /* Society.swift */; };
@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9614203B220BEF3C004C59A3 /* Sport1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport1.swift; sourceTree = "<group>"; };
+		9614203B220BEF3C004C59A3 /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963D9B8B21EECA7900187DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		9684A8992203F0EF0054AF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../NavigationDrawer/Info.plist; sourceTree = "<group>"; };
 		9684A8A0220415320054AF55 /* Economie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economie.swift; sourceTree = "<group>"; };
 		9684A8A22204160C0054AF55 /* Culture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Culture.swift; sourceTree = "<group>"; };
-		9684A8A4220416260054AF55 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		9684A8A4220416260054AF55 /* Sport2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport2.swift; sourceTree = "<group>"; };
 		9684A8A6220416360054AF55 /* AyiboTalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboTalk.swift; sourceTree = "<group>"; };
 		9684A8A8220417BF0054AF55 /* Politique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Politique.swift; sourceTree = "<group>"; };
 		9684A8AA220417D80054AF55 /* Society.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Society.swift; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				9684A8972203F0970054AF55 /* Assets.xcassets */,
 				9684A8A0220415320054AF55 /* Economie.swift */,
 				9684A8A22204160C0054AF55 /* Culture.swift */,
-				9684A8A4220416260054AF55 /* Sport.swift */,
-				9614203B220BEF3C004C59A3 /* Sport1.swift */,
+				9684A8A4220416260054AF55 /* Sport2.swift */,
+				9614203B220BEF3C004C59A3 /* Sport.swift */,
 				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
 				9684A8A8220417BF0054AF55 /* Politique.swift */,
 				9684A8AA220417D80054AF55 /* Society.swift */,
@@ -306,14 +306,14 @@
 				96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */,
 				9684A8AB220417D80054AF55 /* Society.swift in Sources */,
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
-				9614203C220BEF3C004C59A3 /* Sport1.swift in Sources */,
+				9614203C220BEF3C004C59A3 /* Sport.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
 				9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */,
 				9684A88222038A340054AF55 /* DrawerView.swift in Sources */,
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A8A1220415320054AF55 /* Economie.swift in Sources */,
-				9684A8A5220416260054AF55 /* Sport.swift in Sources */,
+				9684A8A5220416260054AF55 /* Sport2.swift in Sources */,
 				9684A8A9220417BF0054AF55 /* Politique.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
