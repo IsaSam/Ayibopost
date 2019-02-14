@@ -24,7 +24,7 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
-    var categori = "Economie"
+    var categori = "business"
     
     /*
      @IBAction func onTap(_ sender: Any) {

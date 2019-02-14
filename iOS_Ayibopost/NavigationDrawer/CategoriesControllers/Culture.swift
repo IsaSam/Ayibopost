@@ -24,7 +24,7 @@ class Culture: UIViewController, UITableViewDataSource, UITableViewDelegate, UIS
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
-    var categori = "culture"
+    var categori = "lifestyle"
     
     /*
      @IBAction func onTap(_ sender: Any) {

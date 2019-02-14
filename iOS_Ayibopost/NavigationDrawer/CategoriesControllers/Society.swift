@@ -24,7 +24,7 @@ class Society: UIViewController, UITableViewDataSource, UITableViewDelegate, UIS
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
-    var categori = "SOCIÉTÉ"
+    var categori = "social"
     
     /*
      @IBAction func onTap(_ sender: Any) {
