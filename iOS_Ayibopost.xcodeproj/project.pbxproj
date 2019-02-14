@@ -34,6 +34,7 @@
 		9684A8AB220417D80054AF55 /* Society.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AA220417D80054AF55 /* Society.swift */; };
 		9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A8AC2204CF540054AF55 /* CategoryCell.swift */; };
 		96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */; };
+		96C1BB05221565190029FBFC /* AyiboFanm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BB04221565190029FBFC /* AyiboFanm.swift */; };
 		96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */; };
 		96DE418B220F826E0071B456 /* LaunchImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 96DE4188220F826D0071B456 /* LaunchImage.gif */; };
 		96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4189220F826D0071B456 /* Swift+Gif.swift */; };
@@ -73,6 +74,7 @@
 		9684A8AA220417D80054AF55 /* Society.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Society.swift; sourceTree = "<group>"; };
 		9684A8AC2204CF540054AF55 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboAPIManager.swift; sourceTree = "<group>"; };
+		96C1BB04221565190029FBFC /* AyiboFanm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyiboFanm.swift; sourceTree = "<group>"; };
 		96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		96DE4188220F826D0071B456 /* LaunchImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LaunchImage.gif; sourceTree = "<group>"; };
 		96DE4189220F826D0071B456 /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
@@ -150,7 +152,7 @@
 			path = DrawerCell;
 			sourceTree = "<group>";
 		};
-		9681A6A722149C1400524AD3 /* Categories */ = {
+		9681A6A722149C1400524AD3 /* CategoriesControllers */ = {
 			isa = PBXGroup;
 			children = (
 				9684A87122038A300054AF55 /* Settings.swift */,
@@ -160,8 +162,9 @@
 				9684A8A6220416360054AF55 /* AyiboTalk.swift */,
 				9684A8A8220417BF0054AF55 /* Politique.swift */,
 				9684A8AA220417D80054AF55 /* Society.swift */,
+				96C1BB04221565190029FBFC /* AyiboFanm.swift */,
 			);
-			path = Categories;
+			path = CategoriesControllers;
 			sourceTree = "<group>";
 		};
 		9681A6A822149C4500524AD3 /* Drawer */ = {
@@ -214,7 +217,7 @@
 			children = (
 				9681A6A922149C5F00524AD3 /* TabControllers */,
 				9681A6A822149C4500524AD3 /* Drawer */,
-				9681A6A722149C1400524AD3 /* Categories */,
+				9681A6A722149C1400524AD3 /* CategoriesControllers */,
 				9681A6A622149BCC00524AD3 /* DrawerCell */,
 				9684A8982203F0990054AF55 /* Info.plist */,
 				9684A8992203F0EF0054AF55 /* Info.plist */,
@@ -371,6 +374,7 @@
 				9684A8A1220415320054AF55 /* Economie.swift in Sources */,
 				9681A6AE2214C31400524AD3 /* PolitiqueCell.swift in Sources */,
 				9684A8A9220417BF0054AF55 /* Politique.swift in Sources */,
+				96C1BB05221565190029FBFC /* AyiboFanm.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
 				9684A87F22038A340054AF55 /* Settings.swift in Sources */,

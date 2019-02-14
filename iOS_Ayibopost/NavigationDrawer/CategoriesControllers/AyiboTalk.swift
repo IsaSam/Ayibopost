@@ -1,5 +1,5 @@
 //
-//  Politique.swift
+//  AyiboTalk.swift
 //  iOS_Ayibopost
 //
 //  Created by Isaac Samuel on 2/1/19.
@@ -8,14 +8,11 @@
 
 import UIKit
 
-class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-  //  @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
-    
     
     var catPosts: [[String: Any]] = []
     //    var catPosts3 = [String]()
@@ -27,7 +24,7 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
-    var categori = "politics"
+    var categori = "ayibotalk"
     
     /*
      @IBAction func onTap(_ sender: Any) {
@@ -99,7 +96,7 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 7
+        loadNumber = loadNumber + 1
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
@@ -203,7 +200,20 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
 }
+//----------------------
+
+/*
+ func dismissKeyboard() {
+ view.endEditing(true)
+ // do aditional stuff
+ }
+ */
+/*
+ extension UIViewController {
+ func hideKeyboardOnTap(_ selector: Selector) {
+ let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
+ tap.cancelsTouchesInView = false
+ view.addGestureRecognizer(tap)
+ }
+ }*/
