@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="-225" y="2541"/>
         </scene>
-        <!--Politique-->
+        <!--View Controller-->
         <scene sceneID="Xaz-sN-yGl">
             <objects>
-                <viewController storyboardIdentifier="Politique" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ikK-VI-VTo" customClass="Politique" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="ikK-VI-VTo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lK3-sJ-cub"/>
                         <viewControllerLayoutGuide type="bottom" id="gqq-xB-4Wy"/>
@@ -567,7 +567,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-E4-Iwy">
-                                                    <rect key="frame" x="8" y="328" width="304" height="57"/>
+                                                    <rect key="frame" x="8" y="313" width="304" height="57"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="1KX-dR-OKd"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="85" id="XPO-eM-UG9"/>
@@ -578,7 +578,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 13, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54G-qc-Ihp">
-                                                    <rect key="frame" x="194" y="306" width="118" height="15"/>
+                                                    <rect key="frame" x="194" y="291" width="118" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="F3z-Fw-yQl"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="15" id="LXd-e1-fks"/>
@@ -588,10 +588,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nerlens Noël a été sélectionné à la 6e place au premier tour " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnZ-oa-U2O">
-                                                    <rect key="frame" x="8" y="240" width="304" height="58"/>
+                                                    <rect key="frame" x="8" y="240" width="304" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="rY9-CO-0pq"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="waK-Ep-PD1"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="waK-Ep-PD1"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
@@ -680,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPz-Gr-rgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656.875" y="-1347.8873239436621"/>
+            <point key="canvasLocation" x="2618" y="-1348"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pJL-HN-7Qe">
@@ -831,6 +831,147 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXg-gt-9Lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="249.375" y="954.92957746478874"/>
+        </scene>
+        <!--Politique-->
+        <scene sceneID="kmu-Et-f8T">
+            <objects>
+                <viewController storyboardIdentifier="Politique" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6h2-CF-QPy" customClass="Politique" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pme-no-etV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SfN-CX-z9y">
+                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="390" id="abO-gS-i1H" customClass="CategoryCell" customModule="iOS_Ayibopost" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="390"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="abO-gS-i1H" id="VcP-nH-lUd">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="389.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wDM-Ox-9Eb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="Z8a-dK-pDO"/>
+                                                        <constraint firstAttribute="height" constant="230" id="rY5-iq-tu9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcy-IW-ezh">
+                                                    <rect key="frame" x="8" y="313" width="304" height="57.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="dDJ-aT-7sV"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="85" id="r7p-e9-oiW"/>
+                                                    </constraints>
+                                                    <string key="text">Nerlens Noël a été sélectionné à la 6e place au premier tour du draft par New Orleans puis transféré à Philadelphie 76ers en 2013. Il a été l’un des produits du processus de reconstruction des Sixers intitulé « the process ». L’année de sa sélection, il n’a pas joué le moindre match à cause d’une opération au genou.</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 13, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQP-fX-nWx">
+                                                    <rect key="frame" x="194" y="291" width="118" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="f3v-h2-bUR"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="15" id="q3J-K6-ge9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nerlens Noël a été sélectionné à la 6e place au premier tour " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMw-MP-eRS">
+                                                    <rect key="frame" x="8" y="240" width="304" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="gkC-5w-Dmo"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="nmw-Pz-uju"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xMw-MP-eRS" firstAttribute="leading" secondItem="VcP-nH-lUd" secondAttribute="leading" constant="8" id="3Qh-fL-hdV"/>
+                                                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="qcy-IW-ezh" secondAttribute="bottom" constant="19.5" id="97j-OR-T2Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="wDM-Ox-9Eb" secondAttribute="trailing" id="A9T-jW-P7N"/>
+                                                <constraint firstAttribute="trailing" secondItem="SQP-fX-nWx" secondAttribute="trailing" constant="8" id="FTj-oE-far"/>
+                                                <constraint firstItem="wDM-Ox-9Eb" firstAttribute="top" secondItem="VcP-nH-lUd" secondAttribute="top" id="HVq-F2-4aF"/>
+                                                <constraint firstItem="qcy-IW-ezh" firstAttribute="leading" secondItem="VcP-nH-lUd" secondAttribute="leading" constant="8" id="JPC-7g-Ucu"/>
+                                                <constraint firstItem="qcy-IW-ezh" firstAttribute="top" secondItem="SQP-fX-nWx" secondAttribute="bottom" constant="7" id="Loc-t8-6ks"/>
+                                                <constraint firstItem="SQP-fX-nWx" firstAttribute="top" secondItem="xMw-MP-eRS" secondAttribute="bottom" constant="8" id="M5D-bA-Ur1"/>
+                                                <constraint firstItem="wDM-Ox-9Eb" firstAttribute="top" secondItem="VcP-nH-lUd" secondAttribute="top" id="MV5-Oj-OhT"/>
+                                                <constraint firstItem="SQP-fX-nWx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="VcP-nH-lUd" secondAttribute="leading" constant="194" id="QSj-lW-qx1"/>
+                                                <constraint firstItem="wDM-Ox-9Eb" firstAttribute="leading" secondItem="VcP-nH-lUd" secondAttribute="leading" id="YN6-aN-qFB"/>
+                                                <constraint firstItem="SQP-fX-nWx" firstAttribute="top" secondItem="xMw-MP-eRS" secondAttribute="bottom" constant="8" id="crz-wR-j6O"/>
+                                                <constraint firstAttribute="trailing" secondItem="xMw-MP-eRS" secondAttribute="trailing" constant="8" id="qEN-u2-hnp"/>
+                                                <constraint firstAttribute="trailing" secondItem="qcy-IW-ezh" secondAttribute="trailing" constant="8" id="u4l-BK-iEi"/>
+                                                <constraint firstItem="xMw-MP-eRS" firstAttribute="top" secondItem="wDM-Ox-9Eb" secondAttribute="bottom" constant="10" id="yCx-5H-yVF"/>
+                                                <constraint firstItem="xMw-MP-eRS" firstAttribute="top" secondItem="wDM-Ox-9Eb" secondAttribute="bottom" constant="10" id="zi8-06-Mzz"/>
+                                                <constraint firstItem="qcy-IW-ezh" firstAttribute="top" secondItem="SQP-fX-nWx" secondAttribute="bottom" constant="7" id="zju-5n-b7L"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabelCat" destination="qcy-IW-ezh" id="VWp-eD-I7n"/>
+                                            <outlet property="dateLabelCat" destination="SQP-fX-nWx" id="w9y-nK-8XR"/>
+                                            <outlet property="imageCategory" destination="wDM-Ox-9Eb" id="zVn-49-cEm"/>
+                                            <outlet property="titleLabelCat" destination="xMw-MP-eRS" id="89b-Pc-dSX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aDq-0c-zX8">
+                                <rect key="frame" x="141" y="265" width="37" height="37"/>
+                                <color key="color" red="0.56078431370000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <searchBar contentMode="redraw" barStyle="blackTranslucent" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmn-TF-AID">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="B5T-ak-16z"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="TT8-rU-eLO"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15686274510000001" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARCHIVE BY CATEGORY " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncs-oS-1Fs">
+                                <rect key="frame" x="0.0" y="56" width="320" height="14"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ZIt-du-I3J"/>
+                                    <constraint firstAttribute="height" constant="14" id="q0h-Kf-Qz2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ncs-oS-1Fs" firstAttribute="top" secondItem="Hmn-TF-AID" secondAttribute="bottom" id="2fD-lJ-vwy"/>
+                            <constraint firstItem="aDq-0c-zX8" firstAttribute="centerY" secondItem="Pme-no-etV" secondAttribute="centerY" id="5dA-TY-Lbr"/>
+                            <constraint firstItem="SfN-CX-z9y" firstAttribute="top" secondItem="ncs-oS-1Fs" secondAttribute="bottom" id="DYx-i6-lhq"/>
+                            <constraint firstItem="aDq-0c-zX8" firstAttribute="centerX" secondItem="Pme-no-etV" secondAttribute="centerX" id="UBw-f4-Vdt"/>
+                            <constraint firstItem="SfN-CX-z9y" firstAttribute="leading" secondItem="4HZ-Wf-5QL" secondAttribute="leading" id="Ubv-jh-bT3"/>
+                            <constraint firstItem="Hmn-TF-AID" firstAttribute="top" secondItem="Pme-no-etV" secondAttribute="top" id="WlA-6g-wCH"/>
+                            <constraint firstItem="Hmn-TF-AID" firstAttribute="leading" secondItem="4HZ-Wf-5QL" secondAttribute="leading" id="daB-r0-qFX"/>
+                            <constraint firstItem="ncs-oS-1Fs" firstAttribute="leading" secondItem="4HZ-Wf-5QL" secondAttribute="leading" id="ilx-ix-CS0"/>
+                            <constraint firstItem="ncs-oS-1Fs" firstAttribute="trailing" secondItem="4HZ-Wf-5QL" secondAttribute="trailing" id="lgO-Af-Y1d"/>
+                            <constraint firstItem="SfN-CX-z9y" firstAttribute="bottom" secondItem="4HZ-Wf-5QL" secondAttribute="bottom" id="qK2-cd-Y2w"/>
+                            <constraint firstItem="SfN-CX-z9y" firstAttribute="trailing" secondItem="4HZ-Wf-5QL" secondAttribute="trailing" id="rI9-i8-njy"/>
+                            <constraint firstItem="Hmn-TF-AID" firstAttribute="trailing" secondItem="4HZ-Wf-5QL" secondAttribute="trailing" id="shL-9Z-dIG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4HZ-Wf-5QL"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicat" destination="aDq-0c-zX8" id="MyW-Ax-8ie"/>
+                        <outlet property="searchBar" destination="Hmn-TF-AID" id="9g3-JH-755"/>
+                        <outlet property="tableView" destination="SfN-CX-z9y" id="91m-ZX-bug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2y6-y4-HdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3728" y="-1349"/>
         </scene>
     </scenes>
     <resources>
