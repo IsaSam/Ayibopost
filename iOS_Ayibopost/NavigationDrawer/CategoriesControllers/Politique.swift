@@ -29,6 +29,9 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var loadNumber = 7
     var categori = "politics"
     
+    var convertedDate: String = ""
+    var convertedTime: String = ""
+    
     /*
      @IBAction func onTap(_ sender: Any) {
      view.endEditing(true)
@@ -155,34 +158,32 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
-        
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
-        
         cell.titleLabelCat.text = post["title"] as? String
-        
-        let dicDate = post["date"] as? String
-        let dateFor: DateFormatter = DateFormatter()
-        dateFor.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let theDate: NSDate? = dateFor.date(from: dicDate!)! as NSDate
-        //cell.dateLabelCat.text = theDate as String
-        
-        
-        /*
-        let d = post["date"] as? String
-        let format = "yyyy-MM-dd'T'HH:mm:ss"
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        let theDate = formatter.date(from: d! as! String)
-        let d1 = theDate as? [String : Any]
-        cell.dateLabelCat.text = d1 as? String
-        */
-      
-        cell.dateLabelCat.text = post["date"] as? String
-
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabelCat.text = content
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH-mm-ss"
+        let newTimeFormatter = DateFormatter()
+        newTimeFormatter.dateFormat = "h:mm a"
+        let dateTime = post["date"] as? String
+        let dateComponents = dateTime?.components(separatedBy: "T")
+        let splitDate = dateComponents![0]
+        let splitTime = dateComponents![1]
+        if let date = dateFormatter.date(from: splitDate) {
+            convertedDate = newDateFormatter.string(from: date)
+        }
+        if let time = timeFormatter.date(from: splitTime){
+            convertedTime = newTimeFormatter.string(from: time)
+        }
+        cell.dateLabelCat.text = convertedDate
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
@@ -203,6 +204,22 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         return cell
         
+    }
+    func convertToString (dateString: String, formatIn : String, formatOut : String) -> String {
+        let dateFormater = DateFormatter()
+        dateFormater.timeZone = NSTimeZone(abbreviation: "UTC") as TimeZone?
+        dateFormater.dateFormat = formatIn
+        let date = dateFormater.date(from: dateString)
+        dateFormater.timeZone = NSTimeZone.system
+        dateFormater.dateFormat = formatOut
+        let timeStr = dateFormater.string(from: date!)
+        return timeStr
+    }
+    func formatTimestamp(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
+        let timestamp = dateFormatter.string(from: date)
+        return timestamp
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

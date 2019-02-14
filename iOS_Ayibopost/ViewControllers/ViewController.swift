@@ -30,6 +30,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var refreshControl: UIRefreshControl!
     var loadNumber = 1
     
+    var convertedDate: String = ""
+    var convertedTime: String = ""
+    
      // -------------------------------
         // 1.Decllare the drawer view
         var drawerVw = DrawerView()
@@ -188,6 +191,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH-mm-ss"
+        let newTimeFormatter = DateFormatter()
+        newTimeFormatter.dateFormat = "h:mm a"
+        let dateTime = post["date"] as? String
+        let dateComponents = dateTime?.components(separatedBy: "T")
+        let splitDate = dateComponents![0]
+        let splitTime = dateComponents![1]
+        if let date = dateFormatter.date(from: splitDate) {
+            convertedDate = newDateFormatter.string(from: date)
+        }
+        if let time = timeFormatter.date(from: splitTime){
+            convertedTime = newTimeFormatter.string(from: time)
+        }
+        cell.datePost.text = convertedDate
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")

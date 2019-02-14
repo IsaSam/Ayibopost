@@ -11,6 +11,7 @@ import UIKit
 enum PostKeys {
     static let title = "title"
     static let content = "content"
+    static let date = "date"
     static let link = "link"
 }
 
@@ -18,6 +19,7 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var datePost: UILabel!
     
     @IBOutlet weak var searchBar: UISearchBar!
    
@@ -25,6 +27,9 @@ class DetailsPostViewController: UIViewController{
     var post: [String: Any]?
     var imgPost: [String: Any]?
     var urlPost1: String?
+    
+    var convertedDate: String = ""
+    var convertedTime: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,26 @@ class DetailsPostViewController: UIViewController{
             let htmlTag = post[PostKeys.content] as! String
             let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
             contentLabel.text = content
+            //datePost.text = post[PostKeys.date] as! String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "MMM dd, yyyy"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH-mm-ss"
+            let newTimeFormatter = DateFormatter()
+            newTimeFormatter.dateFormat = "h:mm a"
+            let dateTime = post[PostKeys.date] as? String
+            let dateComponents = dateTime?.components(separatedBy: "T")
+            let splitDate = dateComponents![0]
+            let splitTime = dateComponents![1]
+            if let date = dateFormatter.date(from: splitDate) {
+                convertedDate = newDateFormatter.string(from: date)
+            }
+            if let time = timeFormatter.date(from: splitTime){
+                convertedTime = newTimeFormatter.string(from: time)
+            }
+            datePost.text = convertedDate
             
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
