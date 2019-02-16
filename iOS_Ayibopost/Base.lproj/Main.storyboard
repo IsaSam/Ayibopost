@@ -64,9 +64,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aP" translatesAutoresizingMaskIntoConstraints="NO" id="byl-T6-rKx">
-                                                <rect key="frame" x="111" y="106" width="98" height="91"/>
+                                                <rect key="frame" x="16" y="28" width="70" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ip-GE-nBR">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="RyK-Ac-9N0"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="rjI-f8-knV"/>
+                                                </constraints>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
@@ -75,12 +83,15 @@
                                             <constraint firstItem="are-tx-8Cz" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="7qz-44-hL3"/>
                                             <constraint firstAttribute="trailing" secondItem="kjO-JX-cX6" secondAttribute="trailing" constant="16" id="80a-5z-kpZ"/>
                                             <constraint firstItem="are-tx-8Cz" firstAttribute="top" secondItem="jBR-mi-ok3" secondAttribute="bottom" constant="1" id="Bna-t7-QWv"/>
+                                            <constraint firstItem="0Ip-GE-nBR" firstAttribute="top" secondItem="mHF-2c-wsB" secondAttribute="top" id="Gox-YB-FLM"/>
                                             <constraint firstItem="jBR-mi-ok3" firstAttribute="top" secondItem="mHF-2c-wsB" secondAttribute="top" constant="1" id="Lqh-fc-hBX"/>
                                             <constraint firstItem="o1g-nZ-w4u" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="4" id="TfA-2U-pmY"/>
                                             <constraint firstItem="jBR-mi-ok3" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="Uw6-iO-4W8"/>
                                             <constraint firstAttribute="height" constant="4000" id="Xue-0K-XUS"/>
                                             <constraint firstAttribute="trailing" secondItem="o1g-nZ-w4u" secondAttribute="trailing" constant="8" id="iz2-Op-OwN"/>
                                             <constraint firstAttribute="trailing" secondItem="are-tx-8Cz" secondAttribute="trailing" id="shh-0Z-ECE"/>
+                                            <constraint firstItem="0Ip-GE-nBR" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="wGi-dB-ofN"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Ip-GE-nBR" secondAttribute="trailing" id="yGK-rH-UVf"/>
                                             <constraint firstItem="kjO-JX-cX6" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="25" id="yyT-MU-xxa"/>
                                         </constraints>
                                     </view>
@@ -118,6 +129,7 @@
                         <outlet property="pImage" destination="byl-T6-rKx" id="E2b-Mc-KuG"/>
                         <outlet property="postImageView" destination="jBR-mi-ok3" id="PRs-wt-tWo"/>
                         <outlet property="titleLabel" destination="are-tx-8Cz" id="ipl-CI-dyn"/>
+                        <outlet property="videoView" destination="0Ip-GE-nBR" id="dyo-X2-uGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1d-pW-GDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
