@@ -13,6 +13,8 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var titleLabelCat: UILabel!
     @IBOutlet weak var dateLabelCat: UILabel!
     @IBOutlet weak var contentLabelCat: UILabel!
+    @IBOutlet weak var picMedia: UIImageView!
+    @IBOutlet weak var labelMedia: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

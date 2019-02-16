@@ -266,10 +266,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
-  //      detailViewController.urlYoutube = urlYou1
-   //     detailViewController.urlPost1 = urlPost1
-    
-        
     }
     
     

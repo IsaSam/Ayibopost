@@ -14,12 +14,13 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
-    var catPosts: [[String: Any]] = []
-    var urlYoutube = ""
+
     
+    var catPosts: [[String: Any]] = []
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+    var urlYoutube = ""
     
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
@@ -162,6 +163,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabelCat.text = content
+        //*********
         
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
@@ -174,8 +176,44 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 urlYoutube = String(urlYou)
                 print(urlYoutube)
             }
-            //     urlYou = String(input[range])
         }
+        if urlYoutube != ""{
+           // self.postImageView.isHidden = true
+           // videoView.isHidden = false
+            
+         //   videoView.allowsInlineMediaPlayback = true
+        //    videoView.loadHTMLString("<iframe width=\"\(videoView.frame.width)\" height=\"\(videoView.frame.height)\" src=\"\(urlYoutube)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+            
+        
+        }
+        else{
+            //         self.pImage.isHidden = true
+            videoView.isHidden = true
+            self.postImageView.isHidden = false
+            let imageURL = imgPost!["source"] as? String
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                postImageView.af_setImage(withURL: imgUrl)
+            }
+            else{
+                postImageView.image = nil
+            }
+        }
+        
+        //*********
+        /*let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+            }
+            //     urlYou = String(input[range])
+        }*/
     
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
