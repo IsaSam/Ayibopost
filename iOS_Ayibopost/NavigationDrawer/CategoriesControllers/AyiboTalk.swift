@@ -178,82 +178,49 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             }
         }
         if urlYoutube != ""{
-           // self.postImageView.isHidden = true
-           // videoView.isHidden = false
             
-         //   videoView.allowsInlineMediaPlayback = true
-        //    videoView.loadHTMLString("<iframe width=\"\(videoView.frame.width)\" height=\"\(videoView.frame.height)\" src=\"\(urlYoutube)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
-            
-        
+            cell.picMedia.isHidden = false
+            cell.labelMedia.isHidden = false
         }
         else{
-            //         self.pImage.isHidden = true
-            videoView.isHidden = true
-            self.postImageView.isHidden = false
-            let imageURL = imgPost!["source"] as? String
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                postImageView.af_setImage(withURL: imgUrl)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "MMM dd, yyyy"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH-mm-ss"
+            let newTimeFormatter = DateFormatter()
+            newTimeFormatter.dateFormat = "h:mm a"
+            let dateTime = post["date"] as? String
+            let dateComponents = dateTime?.components(separatedBy: "T")
+            let splitDate = dateComponents![0]
+            let splitTime = dateComponents![1]
+            if let date = dateFormatter.date(from: splitDate) {
+                convertedDate = newDateFormatter.string(from: date)
             }
-            else{
-                postImageView.image = nil
+            if let time = timeFormatter.date(from: splitTime){
+                convertedTime = newTimeFormatter.string(from: time)
             }
-        }
-        
-        //*********
-        /*let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
-        let input = String(describing: html2)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        for match in matches {
-            guard let range = Range(match.range, in: input) else { continue }
-            let urlYou = input[range]
-            if urlYou != ""{
-                urlYoutube = String(urlYou)
-                print(urlYoutube)
-            }
-            //     urlYou = String(input[range])
-        }*/
-    
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let newDateFormatter = DateFormatter()
-        newDateFormatter.dateFormat = "MMM dd, yyyy"
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH-mm-ss"
-        let newTimeFormatter = DateFormatter()
-        newTimeFormatter.dateFormat = "h:mm a"
-        let dateTime = post["date"] as? String
-        let dateComponents = dateTime?.components(separatedBy: "T")
-        let splitDate = dateComponents![0]
-        let splitTime = dateComponents![1]
-        if let date = dateFormatter.date(from: splitDate) {
-            convertedDate = newDateFormatter.string(from: date)
-        }
-        if let time = timeFormatter.date(from: splitTime){
-            convertedTime = newTimeFormatter.string(from: time)
-        }
-        cell.dateLabelCat.text = convertedDate
-        
-        do{
-            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
-            let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
+            cell.dateLabelCat.text = convertedDate
             
-            let remoteImageUrlString = imgPosts[indexPath.row]
-            let imageURL = remoteImageUrlString["source"] as? String
-            //print(imageURL!)
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imageCategory.af_setImage(withURL: imgUrl)
+            do{
+                let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+                let dataDic = imgArray as? [[String: Any]]
+                self.imgPosts = dataDic!
+                
+                let remoteImageUrlString = imgPosts[indexPath.row]
+                let imageURL = remoteImageUrlString["source"] as? String
+                //print(imageURL!)
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    cell.imageCategory.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    cell.imageCategory.image = nil
+                }
             }
-            else{
-                cell.imageCategory.image = nil
-            }
-        }
-        
-        return cell
-        
+    }
+return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
