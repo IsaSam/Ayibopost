@@ -15,7 +15,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
     var catPosts: [[String: Any]] = []
-    var urlYou = ""
+    var urlYoutube = ""
     
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
@@ -164,19 +164,18 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         cell.contentLabelCat.text = content
         
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
-        //print(html2)
-        
         let input = String(describing: html2)
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        
         for match in matches {
             guard let range = Range(match.range, in: input) else { continue }
-           // let url = input[range]
-            urlYou = String(input[range])
-           // print(url)
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+            }
+            //     urlYou = String(input[range])
         }
-        print(urlYou)
     
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -231,7 +230,16 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
-        detailViewController.urlYoutube = urlYou
+      /*  if urlYoutube != ""{
+            //       print(urlYoutube)
+            detailViewController.pImage.isHidden = false
+        }
+        else{
+            detailViewController.pImage.isHidden = true
+        }*/
+        
+        
+        
         //     detailViewController.urlPost1 = urlPost1
     }
     override func didReceiveMemoryWarning() {
@@ -255,7 +263,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
  view.addGestureRecognizer(tap)
  }
  }*/
-
+/*
 extension String{
     
     func allStringsBetween(start: String, end: String) -> [Any] {
@@ -288,4 +296,4 @@ extension String{
         return strings
     }
     
-}
+}*/

@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+ //  var urlYou = ""
 
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
@@ -32,6 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var convertedDate: String = ""
     var convertedTime: String = ""
+    var urlYou1 = ""
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -111,7 +113,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
-                print(error!)
+                //print(error!)
 
          return
          }
@@ -136,7 +138,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
-                    print(error!)
+                    //print(error!)
                     
                     return
                 }
@@ -150,7 +152,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     //self.dataList.add(item)
                     self.posts.append(item)
                 }
-                print(result!)
+                //print(result!)
                 self.tableView.reloadData() // to tell table about new data
             }
         }
@@ -191,6 +193,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+
+        /*
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        //print(html2)
+        
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+             let urlYou = input[range]
+            if urlYou != ""{
+                urlYou1 = String(urlYou)
+            }
+            
+       //     urlYou = String(input[range])
+            // print(url)
+        }
+    //    print(urlYou)
+        */
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -244,6 +266,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
+  //      detailViewController.urlYoutube = urlYou1
    //     detailViewController.urlPost1 = urlPost1
     
         
@@ -275,4 +298,38 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+}
+
+extension String{
+    
+    func allStringsBetween(start: String, end: String) -> [Any] {
+        var strings = [Any]()
+        var startRange: NSRange = (self as NSString).range(of: start)
+        
+        while true {
+            if startRange.location != NSNotFound {
+                var targetRange = NSRange()
+                targetRange.location = startRange.location + startRange.length
+                targetRange.length = self.count - targetRange.location
+                let endRange: NSRange = (self as NSString).range(of: end, options: [], range: targetRange)
+                if endRange.location != NSNotFound {
+                    targetRange.length = endRange.location - targetRange.location
+                    strings.append((self as NSString).substring(with: targetRange))
+                    var restOfString =  NSRange()
+                    restOfString.location = endRange.location + endRange.length
+                    restOfString.length = self.count - restOfString.location
+                    startRange = (self as NSString).range(of: start, options: [], range: restOfString)
+                }
+                else {
+                    break
+                }
+            }
+            else {
+                break
+            }
+            
+        }
+        return strings
+    }
+    
 }

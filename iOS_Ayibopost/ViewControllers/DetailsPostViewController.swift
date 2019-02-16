@@ -20,6 +20,7 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var datePost: UILabel!
+    @IBOutlet weak var pImage: UIImageView!
     
     @IBOutlet weak var searchBar: UISearchBar!
    
@@ -34,10 +35,6 @@ class DetailsPostViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if urlYoutube != ""{
-            print(urlYoutube)
-        }
         
         topBarLogo()
         categoryWeb()
@@ -80,6 +77,27 @@ class DetailsPostViewController: UIViewController{
                 convertedTime = newTimeFormatter.string(from: time)
             }
             datePost.text = convertedDate
+            
+            let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+            let input = String(describing: html2)
+            let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+            for match in matches {
+                guard let range = Range(match.range, in: input) else { continue }
+                let urlYou = input[range]
+                if urlYou != ""{
+                    urlYoutube = String(urlYou)
+                    print(urlYoutube)
+                }
+                //     urlYou = String(input[range])
+            }
+            if urlYoutube != ""{
+         //       print(urlYoutube)
+                self.pImage.isHidden = false
+            }
+            else{
+                self.pImage.isHidden = true
+            }
             
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
