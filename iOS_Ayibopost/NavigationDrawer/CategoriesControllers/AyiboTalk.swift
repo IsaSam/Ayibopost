@@ -15,7 +15,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
     var catPosts: [[String: Any]] = []
-    //    var catPosts3 = [String]()
+    var urlYou = ""
     
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
@@ -163,6 +163,21 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabelCat.text = content
         
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        //print(html2)
+        
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+           // let url = input[range]
+            urlYou = String(input[range])
+           // print(url)
+        }
+        print(urlYou)
+    
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -216,6 +231,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
+        detailViewController.urlYoutube = urlYou
         //     detailViewController.urlPost1 = urlPost1
     }
     override func didReceiveMemoryWarning() {
@@ -239,3 +255,37 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
  view.addGestureRecognizer(tap)
  }
  }*/
+
+extension String{
+    
+    func allStringsBetween(start: String, end: String) -> [Any] {
+        var strings = [Any]()
+        var startRange: NSRange = (self as NSString).range(of: start)
+        
+        while true {
+            if startRange.location != NSNotFound {
+                var targetRange = NSRange()
+                targetRange.location = startRange.location + startRange.length
+                targetRange.length = self.count - targetRange.location
+                let endRange: NSRange = (self as NSString).range(of: end, options: [], range: targetRange)
+                if endRange.location != NSNotFound {
+                    targetRange.length = endRange.location - targetRange.location
+                    strings.append((self as NSString).substring(with: targetRange))
+                    var restOfString =  NSRange()
+                    restOfString.location = endRange.location + endRange.length
+                    restOfString.length = self.count - restOfString.location
+                    startRange = (self as NSString).range(of: start, options: [], range: restOfString)
+                }
+                else {
+                    break
+                }
+            }
+            else {
+                break
+            }
+            
+        }
+        return strings
+    }
+    
+}

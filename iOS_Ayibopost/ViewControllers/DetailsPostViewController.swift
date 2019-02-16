@@ -27,12 +27,17 @@ class DetailsPostViewController: UIViewController{
     var post: [String: Any]?
     var imgPost: [String: Any]?
     var urlPost1: String?
+    var urlYoutube = ""
     
     var convertedDate: String = ""
     var convertedTime: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if urlYoutube != ""{
+            print(urlYoutube)
+        }
         
         topBarLogo()
         categoryWeb()

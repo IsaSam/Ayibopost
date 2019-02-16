@@ -119,6 +119,40 @@
             </objects>
             <point key="canvasLocation" x="4087.5" y="-550.35211267605632"/>
         </scene>
+        <!--Ayibo Talk2-->
+        <scene sceneID="H9s-9B-yi9">
+            <objects>
+                <viewController id="FJ7-GN-CAa" customClass="AyiboTalk2" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RNq-be-UlM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O28-PR-Gna">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bbh-Hz-22T">
+                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                                <color key="color" red="0.47450980390000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bbh-Hz-22T" firstAttribute="centerY" secondItem="RNq-be-UlM" secondAttribute="centerY" id="6IA-47-WIu"/>
+                            <constraint firstItem="bbh-Hz-22T" firstAttribute="centerX" secondItem="RNq-be-UlM" secondAttribute="centerX" id="ksy-b2-zeD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kc8-q1-2Rg"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="bbh-Hz-22T" id="DhQ-T3-mVB"/>
+                        <outlet property="webView" destination="O28-PR-Gna" id="tUB-bb-vvD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muO-kz-xiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5011.875" y="-539.78873239436621"/>
+        </scene>
         <!--Layout Three-->
         <scene sceneID="hya-qw-wM7">
             <objects>
