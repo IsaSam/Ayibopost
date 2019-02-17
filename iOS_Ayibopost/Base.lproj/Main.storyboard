@@ -63,12 +63,12 @@
                                                 <color key="textColor" red="0.4941176471" green="0.21960784310000001" blue="0.21960784310000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xb-3n-qSU">
-                                                <rect key="frame" x="0.0" y="1" width="320" height="301"/>
+                                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xb-3n-qSU">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="301"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="OCj-Lk-vTf"/>
-                                                    <constraint firstAttribute="height" constant="301" id="W1J-Xi-bNX"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="GtS-Yi-frS"/>
+                                                    <constraint firstAttribute="height" constant="301" id="hLb-DA-NPa"/>
                                                 </constraints>
                                             </webView>
                                         </subviews>
@@ -520,6 +520,8 @@
                                             <outlet property="contentLabelCat" destination="6Go-E4-Iwy" id="RMc-RD-kSI"/>
                                             <outlet property="dateLabelCat" destination="54G-qc-Ihp" id="34l-Vg-2Km"/>
                                             <outlet property="imageCategory" destination="Mku-jN-cPu" id="rI7-m2-egl"/>
+                                            <outlet property="labelMedia" destination="9ne-Ft-QI4" id="t8t-D7-hre"/>
+                                            <outlet property="picMedia" destination="Gvi-LL-EX4" id="sde-na-7GD"/>
                                             <outlet property="titleLabelCat" destination="HnZ-oa-U2O" id="55S-Id-cav"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="CCd-zH-p4I"/>
                                         </connections>
@@ -870,6 +872,8 @@
                                             <outlet property="contentLabelCat" destination="qcy-IW-ezh" id="VWp-eD-I7n"/>
                                             <outlet property="dateLabelCat" destination="SQP-fX-nWx" id="w9y-nK-8XR"/>
                                             <outlet property="imageCategory" destination="wDM-Ox-9Eb" id="zVn-49-cEm"/>
+                                            <outlet property="labelMedia" destination="juX-Nk-YQx" id="m39-vc-r0N"/>
+                                            <outlet property="picMedia" destination="8dC-Lk-xN3" id="2Yn-jh-2Xo"/>
                                             <outlet property="titleLabelCat" destination="xMw-MP-eRS" id="89b-Pc-dSX"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="rO5-16-MOR"/>
                                         </connections>
@@ -1033,6 +1037,8 @@
                                             <outlet property="contentLabelCat" destination="2fd-zF-2ns" id="eh4-0M-o1m"/>
                                             <outlet property="dateLabelCat" destination="Qb5-RD-2fl" id="dFV-eT-sJ7"/>
                                             <outlet property="imageCategory" destination="QxT-mz-CUO" id="lYS-TZ-BAU"/>
+                                            <outlet property="labelMedia" destination="auT-2B-zii" id="8jf-78-EXq"/>
+                                            <outlet property="picMedia" destination="qFS-aY-VFb" id="c3c-Tc-grd"/>
                                             <outlet property="titleLabelCat" destination="Fie-zf-yVC" id="v3k-Vt-Oyq"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="PUa-hc-2lS"/>
                                         </connections>
@@ -1196,6 +1202,8 @@
                                             <outlet property="contentLabelCat" destination="Bko-mk-jAs" id="4pS-Hf-JWO"/>
                                             <outlet property="dateLabelCat" destination="ncR-lg-UoQ" id="ROd-ra-Py6"/>
                                             <outlet property="imageCategory" destination="AYF-5i-cuD" id="ZnM-rG-2YF"/>
+                                            <outlet property="labelMedia" destination="w5i-UD-x6W" id="KOn-6S-eHu"/>
+                                            <outlet property="picMedia" destination="zmw-sx-D0Y" id="K9G-Sn-ZEe"/>
                                             <outlet property="titleLabelCat" destination="j7N-8h-rxG" id="wqx-Sv-Ee8"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="3KO-fM-oCS"/>
                                         </connections>
@@ -1359,6 +1367,8 @@
                                             <outlet property="contentLabelCat" destination="zPT-co-Vxz" id="vf4-OY-vJJ"/>
                                             <outlet property="dateLabelCat" destination="YWC-D0-s0x" id="oZG-0H-blg"/>
                                             <outlet property="imageCategory" destination="67H-ES-gfe" id="mfq-gx-3op"/>
+                                            <outlet property="labelMedia" destination="9bx-FM-9PX" id="M2F-rN-Xf4"/>
+                                            <outlet property="picMedia" destination="B5F-Fe-evG" id="DX7-0x-yNj"/>
                                             <outlet property="titleLabelCat" destination="hbv-KN-h3t" id="ALy-cB-bNz"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="lHh-Jp-NVx"/>
                                         </connections>
@@ -1687,6 +1697,8 @@
                                             <outlet property="contentLabelCat" destination="Lzp-dF-sbK" id="t7b-lr-YB2"/>
                                             <outlet property="dateLabelCat" destination="G5a-vt-6cs" id="4k2-80-pLX"/>
                                             <outlet property="imageCategory" destination="x4c-Pn-SF5" id="T1K-3l-9Lx"/>
+                                            <outlet property="labelMedia" destination="7kG-za-B3K" id="Nd1-iU-Z2n"/>
+                                            <outlet property="picMedia" destination="gFn-9b-9fr" id="SgN-xk-Qi3"/>
                                             <outlet property="titleLabelCat" destination="IbM-22-iQB" id="yb0-4v-hRT"/>
                                             <segue destination="Uhv-1l-mLN" kind="show" id="ofs-0O-4gg"/>
                                         </connections>
@@ -1757,6 +1769,6 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="CCd-zH-p4I"/>
     </inferredMetricsTieBreakers>
 </document>
