@@ -14,13 +14,12 @@ class AyiboFanm: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
-    var catPosts: [[String: Any]] = []
-    //    var catPosts3 = [String]()
     
+    var catPosts: [[String: Any]] = []
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
-    
+    var urlYoutube = ""
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
@@ -183,6 +182,25 @@ class AyiboFanm: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
         cell.dateLabelCat.text = convertedDate
         
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+                cell.picMedia.isHidden = false
+                cell.labelMedia.isHidden = false
+            }
+            else{
+                cell.picMedia.isHidden = true
+                cell.labelMedia.isHidden = true
+            }
+        }
+        
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
@@ -223,19 +241,3 @@ class AyiboFanm: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
 }
-//----------------------
-
-/*
- func dismissKeyboard() {
- view.endEditing(true)
- // do aditional stuff
- }
- */
-/*
- extension UIViewController {
- func hideKeyboardOnTap(_ selector: Selector) {
- let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
- tap.cancelsTouchesInView = false
- view.addGestureRecognizer(tap)
- }
- }*/

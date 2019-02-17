@@ -8,19 +8,17 @@
 
 import UIKit
 
-class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     
     var catPosts: [[String: Any]] = []
-    //    var catPosts3 = [String]()
-    
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
-    
+    var urlYoutube = ""
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
@@ -162,7 +160,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabelCat.text = content
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -182,6 +180,25 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             convertedTime = newTimeFormatter.string(from: time)
         }
         cell.dateLabelCat.text = convertedDate
+        
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+                cell.picMedia.isHidden = false
+                cell.labelMedia.isHidden = false
+            }
+            else{
+                cell.picMedia.isHidden = true
+                cell.labelMedia.isHidden = true
+            }
+        }
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
@@ -216,26 +233,9 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
-        //     detailViewController.urlPost1 = urlPost1
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
-//----------------------
-
-/*
- func dismissKeyboard() {
- view.endEditing(true)
- // do aditional stuff
- }
- */
-/*
- extension UIViewController {
- func hideKeyboardOnTap(_ selector: Selector) {
- let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
- tap.cancelsTouchesInView = false
- view.addGestureRecognizer(tap)
- }
- }*/

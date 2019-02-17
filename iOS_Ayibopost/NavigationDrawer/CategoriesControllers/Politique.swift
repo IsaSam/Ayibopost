@@ -10,16 +10,11 @@ import UIKit
 
 class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-  //  @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
-    
-    
     var catPosts: [[String: Any]] = []
-    //    var catPosts3 = [String]()
-    
+    var urlYoutube = ""
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
@@ -185,6 +180,25 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
         cell.dateLabelCat.text = convertedDate
         
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+                cell.picMedia.isHidden = false
+                cell.labelMedia.isHidden = false
+            }
+            else{
+                cell.picMedia.isHidden = true
+                cell.labelMedia.isHidden = true
+            }
+        }
+
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]

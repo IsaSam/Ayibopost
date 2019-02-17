@@ -20,6 +20,9 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var datePost: UILabel!
+//    @IBOutlet weak var pImage: UIImageView!
+    @IBOutlet weak var videoView: UIWebView!
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
    
@@ -27,6 +30,7 @@ class DetailsPostViewController: UIViewController{
     var post: [String: Any]?
     var imgPost: [String: Any]?
     var urlPost1: String?
+    var urlYoutube = ""
     
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -76,6 +80,42 @@ class DetailsPostViewController: UIViewController{
             }
             datePost.text = convertedDate
             
+            let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+            let input = String(describing: html2)
+            let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+            for match in matches {
+                guard let range = Range(match.range, in: input) else { continue }
+                let urlYou = input[range]
+                if urlYou != ""{
+                    urlYoutube = String(urlYou)
+                    print(urlYoutube)
+                }
+                //     urlYou = String(input[range])
+            }
+            if urlYoutube != ""{
+         //       print(urlYoutube)
+          //      self.pImage.isHidden = false
+                self.postImageView.isHidden = true
+                videoView.isHidden = false
+                
+                videoView.allowsInlineMediaPlayback = true
+                videoView.loadHTMLString("<iframe width=\"\(videoView.frame.width)\" height=\"\(videoView.frame.height)\" src=\"\(urlYoutube)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+            }
+            else{
+       //         self.pImage.isHidden = true
+                videoView.isHidden = true
+                self.postImageView.isHidden = false
+                let imageURL = imgPost!["source"] as? String
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    postImageView.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    postImageView.image = nil
+                }
+            }
+            /*
             let imageURL = imgPost!["source"] as? String
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
@@ -84,6 +124,7 @@ class DetailsPostViewController: UIViewController{
             else{
                 postImageView.image = nil
             }
+            */
         }
     }
     @IBAction func btnShareTapped(_ sender: Any) {
