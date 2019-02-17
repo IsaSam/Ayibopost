@@ -163,7 +163,26 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabelCat.text = content
-        //*********
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH-mm-ss"
+        let newTimeFormatter = DateFormatter()
+        newTimeFormatter.dateFormat = "h:mm a"
+        let dateTime = post["date"] as? String
+        let dateComponents = dateTime?.components(separatedBy: "T")
+        let splitDate = dateComponents![0]
+        let splitTime = dateComponents![1]
+        if let date = dateFormatter.date(from: splitDate) {
+            convertedDate = newDateFormatter.string(from: date)
+        }
+        if let time = timeFormatter.date(from: splitTime){
+            convertedTime = newTimeFormatter.string(from: time)
+        }
+        cell.dateLabelCat.text = convertedDate
         
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
@@ -175,52 +194,43 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             if urlYou != ""{
                 urlYoutube = String(urlYou)
                 print(urlYoutube)
+                cell.picMedia.isHidden = false
+                cell.labelMedia.isHidden = false
             }
+            else{
+                cell.picMedia.isHidden = true
+                cell.labelMedia.isHidden = true
+            }
+            //     urlYou = String(input[range])
         }
-        if urlYoutube != ""{
-            
+       /* if urlYoutube != ""{
             cell.picMedia.isHidden = false
             cell.labelMedia.isHidden = false
         }
         else{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let newDateFormatter = DateFormatter()
-            newDateFormatter.dateFormat = "MMM dd, yyyy"
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "HH-mm-ss"
-            let newTimeFormatter = DateFormatter()
-            newTimeFormatter.dateFormat = "h:mm a"
-            let dateTime = post["date"] as? String
-            let dateComponents = dateTime?.components(separatedBy: "T")
-            let splitDate = dateComponents![0]
-            let splitTime = dateComponents![1]
-            if let date = dateFormatter.date(from: splitDate) {
-                convertedDate = newDateFormatter.string(from: date)
-            }
-            if let time = timeFormatter.date(from: splitTime){
-                convertedTime = newTimeFormatter.string(from: time)
-            }
-            cell.dateLabelCat.text = convertedDate
+            cell.picMedia.isHidden = true
+            cell.labelMedia.isHidden = true
+        }*/
+        
+        do{
+            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+            let dataDic = imgArray as? [[String: Any]]
+            self.imgPosts = dataDic!
             
-            do{
-                let imgArray = (posts as AnyObject).value(forKey: "featured_image")
-                let dataDic = imgArray as? [[String: Any]]
-                self.imgPosts = dataDic!
-                
-                let remoteImageUrlString = imgPosts[indexPath.row]
-                let imageURL = remoteImageUrlString["source"] as? String
-                //print(imageURL!)
-                if let imagePath = imageURL,
-                    let imgUrl = URL(string:  imagePath){
-                    cell.imageCategory.af_setImage(withURL: imgUrl)
-                }
-                else{
-                    cell.imageCategory.image = nil
-                }
+            let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = remoteImageUrlString["source"] as? String
+            //print(imageURL!)
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                cell.imageCategory.af_setImage(withURL: imgUrl)
             }
-    }
-return cell
+            else{
+                cell.imageCategory.image = nil
+            }
+        }
+        
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
