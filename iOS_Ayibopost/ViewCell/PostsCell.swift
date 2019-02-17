@@ -14,6 +14,8 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var imagePost: UIImageView!
     @IBOutlet weak var datePost: UILabel!
+    @IBOutlet weak var picMedia: UIImageView!
+    @IBOutlet weak var labelMedia: UILabel!
     
     
     

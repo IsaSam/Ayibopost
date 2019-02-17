@@ -8,20 +8,17 @@
 
 import UIKit
 
-class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
-    
-
     
     var catPosts: [[String: Any]] = []
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var urlYoutube = ""
-    
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 7
@@ -201,16 +198,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 cell.picMedia.isHidden = true
                 cell.labelMedia.isHidden = true
             }
-            //     urlYou = String(input[range])
         }
-       /* if urlYoutube != ""{
-            cell.picMedia.isHidden = false
-            cell.labelMedia.isHidden = false
-        }
-        else{
-            cell.picMedia.isHidden = true
-            cell.labelMedia.isHidden = true
-        }*/
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
@@ -245,70 +233,9 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
-      /*  if urlYoutube != ""{
-            //       print(urlYoutube)
-            detailViewController.pImage.isHidden = false
-        }
-        else{
-            detailViewController.pImage.isHidden = true
-        }*/
-        
-        
-        
-        //     detailViewController.urlPost1 = urlPost1
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
-//----------------------
-
-/*
- func dismissKeyboard() {
- view.endEditing(true)
- // do aditional stuff
- }
- */
-/*
- extension UIViewController {
- func hideKeyboardOnTap(_ selector: Selector) {
- let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
- tap.cancelsTouchesInView = false
- view.addGestureRecognizer(tap)
- }
- }*/
-/*
-extension String{
-    
-    func allStringsBetween(start: String, end: String) -> [Any] {
-        var strings = [Any]()
-        var startRange: NSRange = (self as NSString).range(of: start)
-        
-        while true {
-            if startRange.location != NSNotFound {
-                var targetRange = NSRange()
-                targetRange.location = startRange.location + startRange.length
-                targetRange.length = self.count - targetRange.location
-                let endRange: NSRange = (self as NSString).range(of: end, options: [], range: targetRange)
-                if endRange.location != NSNotFound {
-                    targetRange.length = endRange.location - targetRange.location
-                    strings.append((self as NSString).substring(with: targetRange))
-                    var restOfString =  NSRange()
-                    restOfString.location = endRange.location + endRange.length
-                    restOfString.length = self.count - restOfString.location
-                    startRange = (self as NSString).range(of: start, options: [], range: restOfString)
-                }
-                else {
-                    break
-                }
-            }
-            else {
-                break
-            }
-            
-        }
-        return strings
-    }
-    
-}*/

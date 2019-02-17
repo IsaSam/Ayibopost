@@ -203,6 +203,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
         let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
+
         controllerName.hidesBottomBarWhenPushed = true
         self.delegate?.pushTo(viewController: controllerName)
     }
@@ -217,4 +218,6 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     @objc func actLogOut() {
         exit(0)
     }
+    
 }
+

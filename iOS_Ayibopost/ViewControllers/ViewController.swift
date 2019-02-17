@@ -25,15 +25,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
- //  var urlYou = ""
-
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 1
-    
+    var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
-    var urlYou1 = ""
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -93,7 +90,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             // 3.show the Navigation drawer.
             drawerVw.show()
-            
         }
         
         // 6.To push the viewcontroller which is selected by user.
@@ -233,6 +229,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             convertedTime = newTimeFormatter.string(from: time)
         }
         cell.datePost.text = convertedDate
+        
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+                cell.picMedia.isHidden = false
+                cell.labelMedia.isHidden = false
+            }
+            else{
+                cell.picMedia.isHidden = true
+                cell.labelMedia.isHidden = true
+            }
+        }
         
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
