@@ -246,6 +246,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             else{
                 cell.picMedia.isHidden = true
                 cell.labelMedia.isHidden = true
+               // urlYou = ""
             }
         }
         
