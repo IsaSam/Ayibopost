@@ -21,7 +21,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     var urlYoutube = ""
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 7
+    var loadNumber = 55
     var categori = "SPORT"
     
     var convertedDate: String = ""
@@ -96,7 +96,7 @@ class Sport: UIViewController, UITableViewDataSource, UITableViewDelegate, UISea
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 1
+        loadNumber = loadNumber + 10
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{

@@ -21,7 +21,7 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 7
+    var loadNumber = 55
     var categori = "politics"
     
     var convertedDate: String = ""
@@ -97,7 +97,7 @@ class Politique: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 7
+        loadNumber = loadNumber + 55
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{

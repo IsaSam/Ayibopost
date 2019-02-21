@@ -21,7 +21,7 @@ class Society: UIViewController, UITableViewDataSource, UITableViewDelegate, UIS
     var urlYoutube = ""
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 7
+    var loadNumber = 55
     var categori = "social"
     
     var convertedDate: String = ""
@@ -96,7 +96,7 @@ class Society: UIViewController, UITableViewDataSource, UITableViewDelegate, UIS
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 1
+        loadNumber = loadNumber + 55
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
