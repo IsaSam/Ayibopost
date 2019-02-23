@@ -16,6 +16,7 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var datePost: UILabel!
     @IBOutlet weak var picMedia: UIImageView!
     @IBOutlet weak var labelMedia: UILabel!
+    @IBOutlet weak var favButton: UIButton!
     
     
     

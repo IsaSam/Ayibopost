@@ -39,6 +39,9 @@
 		96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */; };
 		96DE418B220F826E0071B456 /* LaunchImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 96DE4188220F826D0071B456 /* LaunchImage.gif */; };
 		96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4189220F826D0071B456 /* Swift+Gif.swift */; };
+		96E4A103222102DB003CBA45 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A102222102DB003CBA45 /* HTTPHandler.swift */; };
+		96E4A105222106AD003CBA45 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A104222106AD003CBA45 /* BookmarkViewController.swift */; };
+		96E4A10822210B19003CBA45 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A10722210B19003CBA45 /* Post.swift */; };
 		CFC862C5061C516E81952BC4 /* Pods_iOS_Ayibopost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +83,9 @@
 		96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		96DE4188220F826D0071B456 /* LaunchImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LaunchImage.gif; sourceTree = "<group>"; };
 		96DE4189220F826D0071B456 /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
+		96E4A102222102DB003CBA45 /* HTTPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
+		96E4A104222106AD003CBA45 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		96E4A10722210B19003CBA45 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C718080B8D2C3AFE06B23D2D /* Pods-iOS_Ayibopost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.debug.xcconfig"; sourceTree = "<group>"; };
 		CBEC23FFE9B887C0F3A09FD9 /* Pods-iOS_Ayibopost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Ayibopost.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Ayibopost/Pods-iOS_Ayibopost.release.xcconfig"; sourceTree = "<group>"; };
 		D4E6483B06AF031955BC855C /* Pods_iOS_Ayibopost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Ayibopost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +133,7 @@
 		963D9B8821EECA7900187DA2 /* iOS_Ayibopost */ = {
 			isa = PBXGroup;
 			children = (
+				96E4A10622210AF5003CBA45 /* Model */,
 				9681A6AC22149D6300524AD3 /* ManagerAPI */,
 				9681A6AB22149D2B00524AD3 /* ViewCell */,
 				9681A6AA22149CFC00524AD3 /* ViewControllers */,
@@ -194,6 +201,7 @@
 				96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */,
 				963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */,
 				963D9B8B21EECA7900187DA2 /* ViewController.swift */,
+				96E4A104222106AD003CBA45 /* BookmarkViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 			children = (
 				96DE4189220F826D0071B456 /* Swift+Gif.swift */,
 				96879BEF21FF7F4C00BFBE8F /* AyiboAPIManager.swift */,
+				96E4A102222102DB003CBA45 /* HTTPHandler.swift */,
 			);
 			path = ManagerAPI;
 			sourceTree = "<group>";
@@ -229,6 +238,14 @@
 				9684A8972203F0970054AF55 /* Assets.xcassets */,
 			);
 			path = NavigationDrawer;
+			sourceTree = "<group>";
+		};
+		96E4A10622210AF5003CBA45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96E4A10722210B19003CBA45 /* Post.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E70C2A9A6EE1CBAF78D68F5F /* Frameworks */ = {
@@ -371,12 +388,14 @@
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
 				9614203C220BEF3C004C59A3 /* Sport.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
+				96E4A103222102DB003CBA45 /* HTTPHandler.swift in Sources */,
 				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
 				9684A88722038A350054AF55 /* DrawerProtocol.swift in Sources */,
 				9684A88222038A340054AF55 /* DrawerView.swift in Sources */,
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A8A1220415320054AF55 /* Economie.swift in Sources */,
 				9681A6AE2214C31400524AD3 /* PolitiqueCell.swift in Sources */,
+				96E4A10822210B19003CBA45 /* Post.swift in Sources */,
 				9684A8A9220417BF0054AF55 /* Politique.swift in Sources */,
 				96C1BB05221565190029FBFC /* AyiboFanm.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
@@ -384,6 +403,7 @@
 				9684A87F22038A340054AF55 /* Settings.swift in Sources */,
 				96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */,
 				96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */,
+				96E4A105222106AD003CBA45 /* BookmarkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
