@@ -33,7 +33,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var convertedDate: String = ""
     var convertedTime: String = ""
     
-    var favResults: [Post] = []
+ //   var favResults: [Post] = []
+    var favResults: [[String: Any]] = []
+    var idx: Int?
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -44,7 +46,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
-        //      self.delegate.favoritePosts.append(favResults[sender.tag])
+  //      favResults = [posts[idx!]]
+        favResults.append(posts[idx!])
+     //   self.delegate.favoritePosts.append(posts[sender.tag])
+        
+     //   favResults = [posts![idx!]]
+        print(favResults)
+        print(favResults.count)
+        print("###################################################")
+        
+       //  self.delegate.favoritePosts.append([favResults)
+    
+        
     }
     
     override func viewDidLoad() {
@@ -190,12 +203,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         
-        let idx: Int = indexPath.row
-        cell.favButton.tag = idx
+//        let idx: Int = indexPath.row
+        idx = indexPath.row
+        cell.favButton.tag = idx!
 
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
         
+  //      cell.titleLabel?.text = favResults[idx].title
         cell.titleLabel.text = post["title"] as? String
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
@@ -287,12 +302,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ViewFav" {
+   /*    if segue.identifier == "ViewFav" {
             let controller = segue.destination as! BookmarkViewController
-            //controller.delegate = self
-            controller.favoritePosts = favResults
+      //      controller.delegate = self
+            controller.favoritePosts1 = favResults
             
-        }else{
+        }else{ */
         
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
@@ -301,7 +316,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
             detailViewController.imgPost = imgPost
+        if segue.identifier == "ViewFav"{
+            let bookmark = segue.destination as! BookmarkViewController
+            bookmark.favoritePosts1 = favResults
         }
+     //   }
     }
     
     
