@@ -22,7 +22,6 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell",
                                                       for: indexPath) as! PostsCell
         let idx: Int = indexPath.row
-        
       //  moviecell.movieTitle?.text = favoriteMovies[idx].title
         cell.titleLabel.text = favoritePosts[idx].title
   //      cell.titleLabel.text = "ok1"
@@ -60,15 +59,18 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         favTableView.reloadData()
-        /*  if favoriteMovies.count == 0 {
-         favoriteMovies.append(Movie(id: "m000001", title: "Coco", year: "2017", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
-         }*/
+        print(favoritePosts.count)
+          if favoritePosts.count == 0 {
+         favoritePosts.append(Post(id: "001", title: "Coco", content: "the content of", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
+         }
         super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        favTableView.dataSource = self
+        favTableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {

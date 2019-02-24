@@ -46,19 +46,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   //      self.delegate.favoritePosts.append(favResults[sender.tag])
     }
     
-    /*
-   @IBAction func addFav(_ sender: UIButton) {
-        print("Selected Item #\(sender.tag) as a favorite")
-        self.delegate.favoritePosts.append(favResults[sender.tag])
-    }
-    */
-    /*
-    @IBAction func addFav (sender: UIButton) {
-        print("Selected Item #\(sender.tag) as a favorite")
-        self.delegate.favoritePosts.append(favResults[sender.tag])
-    }
-    */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -298,13 +285,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-        let post = posts[(indexPath?.row)!]
-        let imgPost = imgPosts[(indexPath?.row)!]
-        let detailViewController = segue.destination as! DetailsPostViewController
-        detailViewController.post = post
-        detailViewController.imgPost = imgPost
+        
+        if segue.identifier == "ViewFav" {
+            let controller = segue.destination as! BookmarkViewController
+            //controller.delegate = self
+            controller.favoritePosts = favResults
+            
+        }else{
+        
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let post = posts[(indexPath?.row)!]
+            let imgPost = imgPosts[(indexPath?.row)!]
+            let detailViewController = segue.destination as! DetailsPostViewController
+            detailViewController.post = post
+            detailViewController.imgPost = imgPost
+        }
     }
     
     
