@@ -13,16 +13,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var favTableView: UITableView!
     
     var favoritePosts: [Post] = []
-//    var favoritePosts: [[String: Any]] = []
-    
-    
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "searchMoviesSegue" {
-            let controller = segue.destination as! SearchViewController
-            controller.delegate = self
-        }
-    }*/
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritePosts.count
     }

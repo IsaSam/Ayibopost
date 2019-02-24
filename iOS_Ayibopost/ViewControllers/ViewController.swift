@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //--------------------
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
-        self.delegate.favoritePosts.append(favResults[sender.tag])
+  //      self.delegate.favoritePosts.append(favResults[sender.tag])
     }
     
     /*
