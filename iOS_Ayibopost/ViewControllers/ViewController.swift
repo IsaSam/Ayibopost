@@ -41,9 +41,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var vwBG = UIView()
     //--------------------
+
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
-  //      self.delegate.favoritePosts.append(favResults[sender.tag])
+        //      self.delegate.favoritePosts.append(favResults[sender.tag])
     }
     
     override func viewDidLoad() {
