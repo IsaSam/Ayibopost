@@ -40,7 +40,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.titleLabel.text = post["title"] as? String
         let a = post["title"] as? String
-        print(a!)
+        print("index no: \([idx]) \(a!)")
         
         //  moviecell.movieTitle?.text = favoriteMovies[idx].title
  ////       cell.titleLabel.text = favoritePosts[idx].title
@@ -88,7 +88,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         }*/
         
         favTableView.reloadData()
-        print(favoritesPosts.count)
+        print("Counter2: \(favoritesPosts.count)")
         /*  if favoriteMovies.count == 0 {
          favoriteMovies.append(Movie(id: "m000001", title: "Coco", year: "2017", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
          }*/

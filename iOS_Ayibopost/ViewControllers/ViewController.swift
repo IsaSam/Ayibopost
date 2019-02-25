@@ -49,8 +49,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
   //      favResults = [posts[idx!]]
-
-        favResults.append(posts[idx!])
+      //  if idx! > 0{
+            favResults.append(posts[sender.tag])
+  //      }else{
+    //        favResults.append(posts[0])
+      //  }
         
         let vc = ViewController()
         vc.favResults1 = favResults
@@ -59,8 +62,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
      //   favResults = [posts![idx!]]
  //       print(favResults)
-        print(favResults.count)
-        self.favResults.reverse() //sort 
+        print("Counter1: \(favResults.count)")
+        self.favResults.reverse() //sort
         
        // print(vc.favResults1)
 //        print(vc.favResults1.count)
