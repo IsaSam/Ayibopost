@@ -12,9 +12,15 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var favTableView: UITableView!
     
+    var mainViewController:ViewController?
+    
  //   var favoritePosts: [Post] = []
-    var favoritePosts: [[String: Any]] = []
+//    var favoritePosts: [[String: Any]] = []
+//    var favoritePosts: [[String: Any]] = []
+    var favoritePosts: [[String: Any]]?
     var favoritePosts1: [[String: Any]]?
+    var favoritesPosts: [[String: Any]] = []
+    var favoritesPosts1: [[String: Any]] = []
     
  /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewFav" {
@@ -23,14 +29,20 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritePosts.count
+        return favoritesPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell",
                                                       for: indexPath) as! PostsCell
         let idx: Int = indexPath.row
-      //  moviecell.movieTitle?.text = favoriteMovies[idx].title
+        let post = favoritesPosts[idx]
+        
+        cell.titleLabel.text = post["title"] as? String
+        let a = post["title"] as? String
+        print(a!)
+        
+        //  moviecell.movieTitle?.text = favoriteMovies[idx].title
  ////       cell.titleLabel.text = favoritePosts[idx].title
   //      cell.titleLabel.text = "ok1"
    //     cell.titleLabel.text = favoritePosts["title"]
@@ -45,9 +57,9 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  /*  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 205
-    }
+    }*/
     
  /*   func displayPostImage(_ row: Int, cell: PostsCell) {
         let url: String = (URL(string: favoritePosts [row].imageUrl)?.absoluteString)!
@@ -66,11 +78,19 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     }*/
     
     override func viewWillAppear(_ animated: Bool) {
+        favoritesPosts = favoritePosts!
+    //    print(favoritesPosts)
+ /*       for item1 in favoritesPosts1{
+            favoritesPosts1.append(item1)
+        }
+        for item in favoritesPosts{
+            favoritesPosts.append(item)
+        }*/
+        
         favTableView.reloadData()
-        print(favoritePosts.count)
-
-  /*        if favoritePosts.count == 0 {
-         favoritePosts.append(Post(id: "001", title: "Coco", content: "the content of", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
+        print(favoritesPosts.count)
+        /*  if favoriteMovies.count == 0 {
+         favoriteMovies.append(Movie(id: "m000001", title: "Coco", year: "2017", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
          }*/
         super.viewWillAppear(animated)
     }
@@ -80,8 +100,14 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         
 //        favTableView.dataSource = self
   //      favTableView.delegate = self
-        print(favoritePosts.count)
-        print(favoritePosts)
+  //      print(favoritesPosts.count)
+    //    print(favoritesPosts)
+        
+        favTableView.delegate = self
+        favTableView.rowHeight = 330
+        favTableView.estimatedRowHeight = 350
+    
+        favTableView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {

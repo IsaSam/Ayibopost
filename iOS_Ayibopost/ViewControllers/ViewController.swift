@@ -35,6 +35,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
  //   var favResults: [Post] = []
     var favResults: [[String: Any]] = []
+    var favResults1: [[String: Any]] = []
+    
     var idx: Int?
     
      // -------------------------------
@@ -47,18 +49,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
   //      favResults = [posts[idx!]]
+
         favResults.append(posts[idx!])
+        
+        let vc = ViewController()
+        vc.favResults1 = favResults
+        
      //   self.delegate.favoritePosts.append(posts[sender.tag])
         
      //   favResults = [posts![idx!]]
-        print(favResults)
+ //       print(favResults)
         print(favResults.count)
+       // print(vc.favResults1)
+//        print(vc.favResults1.count)
         print("###################################################")
         
        //  self.delegate.favoritePosts.append([favResults)
-    
         
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -302,13 +311,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-   /*    if segue.identifier == "ViewFav" {
+       if segue.identifier == "ViewFav1" {
+            print("is true ++++++++++++++++++++++++++++++++")
             let controller = segue.destination as! BookmarkViewController
       //      controller.delegate = self
-            controller.favoritePosts1 = favResults
+            controller.favoritePosts = favResults
             
-        }else{ */
-        
+        }else{
+            print("is false -------------------------------")
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
@@ -316,11 +326,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
             detailViewController.imgPost = imgPost
-        if segue.identifier == "ViewFav"{
-            let bookmark = segue.destination as! BookmarkViewController
-            bookmark.favoritePosts1 = favResults
         }
-     //   }
     }
     
     

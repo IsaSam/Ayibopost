@@ -799,6 +799,7 @@
                                                     <state key="normal" title="Add to Bookmark"/>
                                                     <connections>
                                                         <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchDown" id="J4D-gY-aya"/>
+                                                        <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="AUY-Fl-0Zl"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1913,6 +1914,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fs2-qy-i9z"/>
+        <segue reference="AUY-Fl-0Zl"/>
         <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>
