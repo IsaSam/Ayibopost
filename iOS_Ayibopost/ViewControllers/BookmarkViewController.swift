@@ -104,8 +104,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     //    print(favoritesPosts)
         
         favTableView.delegate = self
-        favTableView.rowHeight = 330
-        favTableView.estimatedRowHeight = 350
+        favTableView.rowHeight = 170
+        favTableView.estimatedRowHeight = 170
     
         favTableView.dataSource = self
     }
