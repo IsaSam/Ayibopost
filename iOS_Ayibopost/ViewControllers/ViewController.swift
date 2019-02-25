@@ -60,6 +60,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      //   favResults = [posts![idx!]]
  //       print(favResults)
         print(favResults.count)
+        self.favResults.reverse() //sort 
+        
        // print(vc.favResults1)
 //        print(vc.favResults1.count)
         print("###################################################")
