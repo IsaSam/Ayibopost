@@ -134,6 +134,7 @@
         <!--Ayibo Talk2-->
         <scene sceneID="H9s-9B-yi9">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muO-kz-xiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FJ7-GN-CAa" customClass="AyiboTalk2" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RNq-be-UlM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -161,7 +162,6 @@
                         <outlet property="webView" destination="O28-PR-Gna" id="tUB-bb-vvD"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="muO-kz-xiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5011.875" y="-539.78873239436621"/>
         </scene>
@@ -411,13 +411,13 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pH3-tK-Gzg">
                                                     <rect key="frame" x="8" y="8" width="304" height="40"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="LKb-05-TVJ"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="y4S-0f-AzD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9K-rJ-MJM">
@@ -514,11 +514,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E88-Wz-uVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2994.375" y="235.56338028169014"/>
+            <point key="canvasLocation" x="3334" y="236"/>
         </scene>
         <!--Sport2-->
         <scene sceneID="RFg-BA-gWA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zbo-TB-o0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Sport2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Fy-8q-3DD" customClass="Sport2" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OX8-Kd-B82">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -546,7 +547,6 @@
                         <outlet property="webView" destination="8m7-Mh-8dW" id="6aj-js-DQG"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zbo-TB-o0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5796" y="-540"/>
         </scene>
@@ -799,7 +799,6 @@
                                                     <state key="normal" title="Add to Bookmark"/>
                                                     <connections>
                                                         <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchDown" id="J4D-gY-aya"/>
-                                                        <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="AUY-Fl-0Zl"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -876,6 +875,13 @@
                             <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="tqo-lu-cC7">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="viewFav:" destination="3mi-yi-Zhr" id="Jva-gM-kTu"/>
+                                <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="Tv8-zQ-hrO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1913,7 +1919,7 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AUY-Fl-0Zl"/>
+        <segue reference="Tv8-zQ-hrO"/>
         <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>

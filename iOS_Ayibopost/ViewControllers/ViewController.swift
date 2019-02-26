@@ -46,6 +46,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var vwBG = UIView()
     //--------------------
 
+    @IBAction func viewFav(_ sender: Any) {
+        self.performSegue(withIdentifier: "ViewFav1", sender: self)
+        print("whyyyyyyyy")
+    }
+    
+    
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
   //      favResults = [posts[idx!]]
