@@ -48,35 +48,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func viewFav(_ sender: Any) {
         self.performSegue(withIdentifier: "ViewFav1", sender: self)
-        print("whyyyyyyyy")
     }
     
     
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
-  //      favResults = [posts[idx!]]
-      //  if idx! > 0{
-            favResults.append(posts[sender.tag])
-  //      }else{
-    //        favResults.append(posts[0])
-      //  }
-        
-        let vc = ViewController()
-        vc.favResults1 = favResults
-        
-     //   self.delegate.favoritePosts.append(posts[sender.tag])
-        
-     //   favResults = [posts![idx!]]
- //       print(favResults)
+        favResults.append(posts[sender.tag])
+
+ //      print(favResults)
         print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
-        
-       // print(vc.favResults1)
-//        print(vc.favResults1.count)
-        print("###################################################")
-        
-       //  self.delegate.favoritePosts.append([favResults)
-        
     }
     
     

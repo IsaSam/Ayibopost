@@ -26,12 +26,6 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var convertedTime: String = ""
     var urlYoutube = ""
     
- /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewFav" {
-            let controller = segue.destination as! ViewController
-            controller.delegate = self
-        }
-    }*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritesPosts.count
     }
@@ -121,15 +115,27 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        topBarLogo()
         
         favTableView.delegate = self
         favTableView.rowHeight = 170
         favTableView.estimatedRowHeight = 170
     
         favTableView.dataSource = self
+        
     }
     
+    func topBarLogo(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "ayibopost-logo-blanc-2.png")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
