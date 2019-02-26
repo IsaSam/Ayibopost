@@ -230,26 +230,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
 
-        /*
-        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
-        //print(html2)
-        
-        let input = String(describing: html2)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        for match in matches {
-            guard let range = Range(match.range, in: input) else { continue }
-             let urlYou = input[range]
-            if urlYou != ""{
-                urlYou1 = String(urlYou)
-            }
-            
-       //     urlYou = String(input[range])
-            // print(url)
-        }
-    //    print(urlYou)
-        */
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()

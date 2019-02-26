@@ -21,6 +21,10 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var favoritePosts1: [[String: Any]]?
     var favoritesPosts: [[String: Any]] = []
     var favoritesPosts1: [[String: Any]] = []
+    var imgPosts: [[String: Any]] = []
+    var convertedDate: String = ""
+    var convertedTime: String = ""
+    var urlYoutube = ""
     
  /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewFav" {
@@ -42,51 +46,71 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let a = post["title"] as? String
         print("index no: \([idx]) \(a!)")
         
-        //  moviecell.movieTitle?.text = favoriteMovies[idx].title
- ////       cell.titleLabel.text = favoritePosts[idx].title
-  //      cell.titleLabel.text = "ok1"
-   //     cell.titleLabel.text = favoritePosts["title"]
+        let htmlTag = post["content"] as! String
+        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        cell.contentLabel.text = content
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH-mm-ss"
+        let newTimeFormatter = DateFormatter()
+        newTimeFormatter.dateFormat = "h:mm a"
+        let dateTime = post["date"] as? String
+        let dateComponents = dateTime?.components(separatedBy: "T")
+        let splitDate = dateComponents![0]
+        let splitTime = dateComponents![1]
+        if let date = dateFormatter.date(from: splitDate) {
+            convertedDate = newDateFormatter.string(from: date)
+        }
+        if let time = timeFormatter.date(from: splitTime){
+            convertedTime = newTimeFormatter.string(from: time)
+        cell.datePost.text = convertedDate
+        }
         
-        //moviecell.movieYear?.text = favoriteMovies[idx].year
- /////       cell.contentLabel.text = favoritePosts[idx].content
- /////       cell.datePost.text = favoritePosts[idx].date
+        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let urlYou = input[range]
+            if urlYou != ""{
+                urlYoutube = String(urlYou)
+                print(urlYoutube)
+                cell.picMedia.isHidden = false
+     //           cell.labelMedia.isHidden = false
+            }
+            else{
+                cell.picMedia.isHidden = true
+       //         cell.labelMedia.isHidden = true
+                // urlYou = ""
+            }
+        }
         
-    //    displayMovieImage(idx, moviecell: moviecell)
-   //     displayPostImage(idx, cell: PostsCell)
-        
+        do{
+            let imgArray = (favoritesPosts as AnyObject).value(forKey: "featured_image")
+            let dataDic = imgArray as? [[String: Any]]
+            self.imgPosts = dataDic!
+            
+            let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = remoteImageUrlString["source"] as? String
+            //print(imageURL!)
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                cell.imagePost.af_setImage(withURL: imgUrl)
+            }
+            else{
+                cell.imagePost.image = nil
+            }
+        }
         return cell
     }
     
-  /*  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 205
-    }*/
-    
- /*   func displayPostImage(_ row: Int, cell: PostsCell) {
-        let url: String = (URL(string: favoritePosts [row].imageUrl)?.absoluteString)!
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data,
-            response, error) -> Void in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async(execute: {
-                let image = UIImage(data: data!)
-                cell.imagePost.image = image
-            })
-        }).resume()
-    }*/
-    
     override func viewWillAppear(_ animated: Bool) {
         favoritesPosts = favoritePosts!
-    //    print(favoritesPosts)
- /*       for item1 in favoritesPosts1{
-            favoritesPosts1.append(item1)
-        }
-        for item in favoritesPosts{
-            favoritesPosts.append(item)
-        }*/
-        
         favTableView.reloadData()
         print("Counter2: \(favoritesPosts.count)")
         /*  if favoriteMovies.count == 0 {
@@ -97,11 +121,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        favTableView.dataSource = self
-  //      favTableView.delegate = self
-  //      print(favoritesPosts.count)
-    //    print(favoritesPosts)
+
         
         favTableView.delegate = self
         favTableView.rowHeight = 170
@@ -114,8 +134,4 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
-
 }

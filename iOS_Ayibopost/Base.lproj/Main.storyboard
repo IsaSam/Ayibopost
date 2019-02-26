@@ -392,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-nu-6Vc">
-                                <rect key="frame" x="0.0" y="34.5" width="320" height="533.5"/>
+                                <rect key="frame" x="0.0" y="78.5" width="320" height="440.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="526" id="1og-W0-4KQ"/>
@@ -411,12 +411,13 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pH3-tK-Gzg">
                                                     <rect key="frame" x="8" y="8" width="304" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="LKb-05-TVJ"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="y4S-0f-AzD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9K-rJ-MJM">
@@ -425,7 +426,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="196" id="Vin-9M-bkF"/>
                                                         <constraint firstAttribute="height" constant="82" id="ed6-L7-VgS"/>
                                                     </constraints>
-                                                    <mutableString key="text">Depuis bientôt cinq mois, le président de la République devait recevoir les réflexions issues des États généraux sectoriels. Pourtant, au moment de la rédaction de cet article, nous sommes loin de la publication du « Pacte pour la stabilité et le progrès économique et social », principale tâche des mandataires. Le secrétaire exécutif, Dr Louis Naud Pierre, dit ne plus croire en de meilleurs résultats.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;p style="text-align: justify;"&gt;Le 28 mars 2018, le président de la République, Jovenel Moïse a installé les membres du comité de pilotage et d’organisation des États généraux sectoriels assistés d’un secrétariat technique. </mutableString>
+                                                    <string key="text">Depuis bientôt cinq mois, le président de la République devait recevoir les réflexions issues des États généraux sectoriels. Pourtant, au moment de la rédaction de cet article, nous sommes loin de la publication du « Pacte pour la stabilité et le progrès économique et social », principale tâche des mandataires. Le secrétaire exécutif, Dr Louis Naud Pierre, dit ne plus croire en de meilleurs résultats.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;p style="text-align: justify;"&gt;Le 28 mars 2018, le président de la République, Jovenel Moïse a installé les membres du comité de pilotage et d’organisation des États généraux sectoriels assistés d’un secrétariat technique. </string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -438,11 +439,11 @@
                                                         <constraint firstAttribute="height" constant="100" id="pIb-Ip-zAd"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="player" translatesAutoresizingMaskIntoConstraints="NO" id="P7T-RT-bPz">
-                                                    <rect key="frame" x="90" y="139" width="14" height="15"/>
+                                                <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player" translatesAutoresizingMaskIntoConstraints="NO" id="P7T-RT-bPz">
+                                                    <rect key="frame" x="90" y="138" width="14" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="6rT-kl-JCI"/>
-                                                        <constraint firstAttribute="width" constant="19" id="Ch9-yp-bPI"/>
+                                                        <constraint firstAttribute="height" constant="15" id="J0A-ck-Sfb"/>
+                                                        <constraint firstAttribute="width" constant="14" id="bl2-Np-Etb"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bw-F9-FIB">
@@ -462,6 +463,8 @@
                                                 <constraint firstItem="g89-uo-MgY" firstAttribute="top" secondItem="pH3-tK-Gzg" secondAttribute="bottom" constant="8" id="KRg-cJ-UFO"/>
                                                 <constraint firstItem="3Bw-F9-FIB" firstAttribute="leading" secondItem="g89-uo-MgY" secondAttribute="trailing" constant="8" id="PSo-26-HP1"/>
                                                 <constraint firstItem="U9K-rJ-MJM" firstAttribute="leading" secondItem="g89-uo-MgY" secondAttribute="trailing" constant="8" id="Tgy-Wj-XWA"/>
+                                                <constraint firstItem="P7T-RT-bPz" firstAttribute="top" secondItem="pH3-tK-Gzg" secondAttribute="bottom" constant="90" id="WsM-hg-9LJ"/>
+                                                <constraint firstItem="P7T-RT-bPz" firstAttribute="leading" secondItem="X9l-Ci-gYH" secondAttribute="leading" constant="90" id="YVL-Fs-VrD"/>
                                                 <constraint firstItem="pH3-tK-Gzg" firstAttribute="top" secondItem="X9l-Ci-gYH" secondAttribute="top" constant="8" id="bAK-eh-dZ0"/>
                                                 <constraint firstItem="g89-uo-MgY" firstAttribute="leading" secondItem="X9l-Ci-gYH" secondAttribute="leading" constant="8" id="g6J-TM-33Y"/>
                                                 <constraint firstAttribute="trailing" secondItem="U9K-rJ-MJM" secondAttribute="trailing" constant="8" id="gDj-qI-BuT"/>
@@ -485,7 +488,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOKMARKS POSTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-uS-mcJ">
-                                <rect key="frame" x="0.0" y="20" width="320" height="15"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="15"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -504,13 +507,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EEe-T2-rtT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qXd-DZ-fSb">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="UkZ-MN-lLj">
-                            <connections>
-                                <segue destination="3mi-yi-Zhr" kind="show" identifier="ViewFav" id="Fs2-qy-i9z"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qXd-DZ-fSb"/>
                     <connections>
                         <outlet property="favTableView" destination="vRc-nu-6Vc" id="xpM-CD-SlW"/>
                     </connections>
@@ -1916,8 +1913,7 @@
         <image name="tabTwo" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fs2-qy-i9z"/>
         <segue reference="AUY-Fl-0Zl"/>
-        <segue reference="3KO-fM-oCS"/>
+        <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>
