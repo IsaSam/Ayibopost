@@ -36,7 +36,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
-    
+    var imgURLShare: String?
+    var titleShare: String?
+    var imgShare: UIImage?
  //   var favResults: [Post] = []
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
@@ -242,6 +244,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
   //      cell.titleLabel?.text = favResults[idx].title
         cell.titleLabel.text = post["title"] as? String
+        titleShare = cell.titleLabel.text
+        
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
@@ -277,11 +281,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 urlYoutube = String(urlYou)
                 print(urlYoutube)
                 cell.picMedia.isHidden = false
-                cell.labelMedia.isHidden = false
+         //       cell.labelMedia.isHidden = false
             }
             else{
                 cell.picMedia.isHidden = true
-                cell.labelMedia.isHidden = true
+    //            cell.labelMedia.isHidden = true
                // urlYou = ""
             }
         }
@@ -294,13 +298,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
             //print(imageURL!)
+            imgURLShare = imageURL!
+            
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
                 cell.imagePost.af_setImage(withURL: imgUrl)
             }
+                
             else{
                 cell.imagePost.image = nil
             }
+            imgShare = cell.imagePost.image
         }
 
         return cell
@@ -331,6 +339,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    @IBAction func btnSharePosts(_ sender: Any) {
+      //  let title = titleLabel.text
+    //    let title = PostKeys.title
+        let title = titleShare
+       // let URl = post![PostKeys.link]
+        let URl = urlPost1
+        let image = imgShare
+        
+        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+        if let popoverController = vc.popoverPresentationController{
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

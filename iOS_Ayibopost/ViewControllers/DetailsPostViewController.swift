@@ -115,16 +115,6 @@ class DetailsPostViewController: UIViewController{
                     postImageView.image = nil
                 }
             }
-            /*
-            let imageURL = imgPost!["source"] as? String
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                postImageView.af_setImage(withURL: imgUrl)
-            }
-            else{
-                postImageView.image = nil
-            }
-            */
         }
     }
     @IBAction func btnShareTapped(_ sender: Any) {
