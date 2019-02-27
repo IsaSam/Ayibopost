@@ -19,8 +19,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var favButton: UIBarButtonItem!
+    
     @IBAction func onTap(_ sender: Any) {
                 view.endEditing(true)
+          //      searchBar.isHidden = true
     }
     
     var filteredPosts: [[String: Any]]?
@@ -36,6 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
  //   var favResults: [Post] = []
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
+  //  var searchController = UISearchController()
     
     var idx: Int?
     
@@ -50,7 +55,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.performSegue(withIdentifier: "ViewFav1", sender: self)
     }
     
+    @IBAction func searchButton(_ sender: Any) {
+        print("Search...")
+        navigationItem.titleView = searchBar
+        searchBar.isHidden = false
+        //tap.cancelsTouchesInView = false
+       // searchButton.isEnabled = false
+     //   searchButton.accessibilityElementsHidden = true
+     //   favButton.accessibilityElementsHidden = true
+      //  navigationItem.rightBarButtonItem?.isEnabled = true
+    //    other()
+        closeSearch.isEnabled = true
+    }
     
+    @IBOutlet weak var closeSearch: UIBarButtonItem!
+    
+    @IBAction func closeSearch(_ sender: UIBarButtonItem) {
+        searchBar.isHidden = true
+        closeSearch.isEnabled = false
+        searchBar.text = ""
+      //  navigationItem.titleView?.isHidden = true
+    //    navigationController?.barHideOnSwipeGestureRecognizer.isEnabled = true
+    }
+  //  func other(){
+    //    searchButton.is
+   // }
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])
@@ -60,9 +89,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.favResults.reverse() //sort
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    //    navigationItem.titleView = searchBar
+    //    searchBar.isHidden = true
         
         topBarLogo()
 
@@ -83,6 +114,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
         self.hideKeyboardOnTap(#selector(self.onTap(_:)))
+        
     }
     
     func topBarLogo(){
@@ -289,7 +321,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       //      controller.delegate = self
             controller.favoritePosts = favResults
             
-        }else{
+       }
+       else{
             print("is false -------------------------------")
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -724,7 +725,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OvU-I2-MbO">
-                                <rect key="frame" x="0.0" y="57" width="320" height="511"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -840,9 +841,9 @@
                                 <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
+                            <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="1bx-7q-2ej"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="LAw-FT-zWM"/>
@@ -857,9 +858,9 @@
                             <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerX" secondItem="Twa-Dh-WE9" secondAttribute="centerX" id="HzX-2S-sBm"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="top" secondItem="Twa-Dh-WE9" secondAttribute="top" id="Iuv-0J-rPW"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="leading" secondItem="Twa-Dh-WE9" secondAttribute="leading" id="MvT-cR-Ac7"/>
+                            <constraint firstItem="OvU-I2-MbO" firstAttribute="top" secondItem="Twa-Dh-WE9" secondAttribute="top" id="SpK-6p-ENv"/>
                             <constraint firstAttribute="bottom" secondItem="OvU-I2-MbO" secondAttribute="bottom" id="WkF-cD-bGB"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="trailing" secondItem="VJC-h2-1XL" secondAttribute="trailing" id="Xa1-P5-Whv"/>
-                            <constraint firstItem="OvU-I2-MbO" firstAttribute="top" secondItem="CXb-cm-gnQ" secondAttribute="bottom" constant="1" id="XeT-Yc-tc2"/>
                             <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerY" secondItem="Twa-Dh-WE9" secondAttribute="centerY" id="d8Z-g1-2U0"/>
                             <constraint firstAttribute="trailing" secondItem="CXb-cm-gnQ" secondAttribute="trailing" id="eir-Yn-lvX"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="leading" secondItem="VJC-h2-1XL" secondAttribute="leading" id="geb-Lc-hNz"/>
@@ -877,17 +878,34 @@
                                 <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="tqo-lu-cC7">
-                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="viewFav:" destination="3mi-yi-Zhr" id="Jva-gM-kTu"/>
-                                <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="Tv8-zQ-hrO"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="jAR-hC-Nhw">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="3mi-yi-Zhr" id="7r8-zG-KsG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="tqo-lu-cC7">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="viewFav:" destination="3mi-yi-Zhr" id="Jva-gM-kTu"/>
+                                    <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="Tv8-zQ-hrO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="stop" id="46h-B7-vbU">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="closeSearch:" destination="3mi-yi-Zhr" id="5vU-yi-tIl"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
+                        <outlet property="closeSearch" destination="46h-B7-vbU" id="cf4-fl-Ly1"/>
+                        <outlet property="favButton" destination="tqo-lu-cC7" id="DLm-g6-UrA"/>
                         <outlet property="searchBar" destination="CXb-cm-gnQ" id="q5y-iY-fFJ"/>
+                        <outlet property="searchButton" destination="jAR-hC-Nhw" id="xth-yJ-cld"/>
                         <outlet property="tableView" destination="OvU-I2-MbO" id="Dya-Uy-jpX"/>
                     </connections>
                 </viewController>
@@ -898,7 +916,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2656.875" y="-550.35211267605632"/>
+            <point key="canvasLocation" x="2413" y="-595"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bEd-rz-8B5">
