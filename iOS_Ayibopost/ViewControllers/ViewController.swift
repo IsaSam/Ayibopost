@@ -65,21 +65,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      //   favButton.accessibilityElementsHidden = true
       //  navigationItem.rightBarButtonItem?.isEnabled = true
     //    other()
-        closeSearch.isEnabled = true
+  
+   //     closeSearch.isEnabled = true
     }
     
-    @IBOutlet weak var closeSearch: UIBarButtonItem!
-    
+    /*
     @IBAction func closeSearch(_ sender: UIBarButtonItem) {
         searchBar.isHidden = true
         closeSearch.isEnabled = false
         searchBar.text = ""
-      //  navigationItem.titleView?.isHidden = true
-    //    navigationController?.barHideOnSwipeGestureRecognizer.isEnabled = true
-    }
-  //  func other(){
-    //    searchButton.is
-   // }
+ }
+    */
+    
     @IBAction func addFav(_ sender: UIButton) {
         print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])

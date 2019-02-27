@@ -892,17 +892,10 @@
                                     <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="Tv8-zQ-hrO"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="stop" id="46h-B7-vbU">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="closeSearch:" destination="3mi-yi-Zhr" id="5vU-yi-tIl"/>
-                                </connections>
-                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
-                        <outlet property="closeSearch" destination="46h-B7-vbU" id="cf4-fl-Ly1"/>
                         <outlet property="favButton" destination="tqo-lu-cC7" id="DLm-g6-UrA"/>
                         <outlet property="searchBar" destination="CXb-cm-gnQ" id="q5y-iY-fFJ"/>
                         <outlet property="searchButton" destination="jAR-hC-Nhw" id="xth-yJ-cld"/>
