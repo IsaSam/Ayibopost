@@ -18,6 +18,7 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var picMedia: UIImageView!
     @IBOutlet weak var labelMedia: UILabel!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?
@@ -35,7 +36,8 @@ class PostsCell: UITableViewCell {
          //   favB = favButton.tintColor
             print("Bookmark saved succesfully at index \(buttonRow)")
             favButton.index(ofAccessibilityElement: buttonRow)
- //           favButton.setImage(UIImage(named: "add-tag-color100"), for: .normal)
+//            saveButton.setTitle("Saved", for: UIControlState .normal)
+  //          favButton.setImage(UIImage(named: "add-tag-color100"), for: .normal)
  //           favButton.tintColor = UIColor.brown
      //       favButton.isEnabled = false
             buttonTapped = true
@@ -43,6 +45,7 @@ class PostsCell: UITableViewCell {
         }else{
             print("unSaved bookmark at index \(buttonRow)")
             favButton.index(ofAccessibilityElement: buttonRow)
+ //           saveButton.setTitle("Save", for: UIControlState .normal)
             favButton.setImage(UIImage(named: "addtag100"), for: .normal)
             buttonTapped = false
         }
