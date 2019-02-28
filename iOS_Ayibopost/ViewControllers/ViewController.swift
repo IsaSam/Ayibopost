@@ -12,8 +12,6 @@ import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
-
-    
     
     var delegate: BookmarkViewController!
     

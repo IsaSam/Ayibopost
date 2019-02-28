@@ -755,7 +755,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-1G-9eg">
-                                                    <rect key="frame" x="10" y="224.5" width="35" height="17"/>
+                                                    <rect key="frame" x="10" y="225" width="35" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="Bhx-p5-aO1"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="NFh-H3-mpz"/>
@@ -782,53 +782,80 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-70-Amg">
-                                                    <rect key="frame" x="60" y="249.5" width="20" height="17"/>
+                                                    <rect key="frame" x="68" y="249.5" width="20" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="7dG-99-Kjk"/>
                                                         <constraint firstAttribute="height" constant="17" id="gQd-fl-999"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Add to Bookmark" image="addFav100"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Add to Bookmark" image="addtag100"/>
                                                     <connections>
                                                         <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="adq-tq-8th"/>
                                                         <action selector="bookmarkTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="dYt-wv-LAS"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnu-be-6M9">
+                                                    <rect key="frame" x="88" y="253" width="30" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="nHx-Rp-b3s"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="sdE-Kk-7XY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <state key="normal" title="Save">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
                                                 <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uip-td-qMF">
-                                                    <rect key="frame" x="95" y="249.5" width="18" height="17"/>
+                                                    <rect key="frame" x="128" y="249.5" width="18" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="5ug-HC-v3x"/>
                                                         <constraint firstAttribute="width" constant="18" id="ca9-WU-4dM"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="share">
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="shareRight100">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="btnSharePosts:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="e9Q-Yr-bij"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-95-6SB">
+                                                    <rect key="frame" x="147" y="253" width="30" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="Bpw-4X-ZAk"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="nR5-2J-zqg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <state key="normal" title="Share">
+                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6OL-70-Amg" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="8" id="2P6-at-8qa"/>
                                                 <constraint firstItem="RtL-tg-yLz" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="2nc-9Q-dTR"/>
+                                                <constraint firstItem="Uip-td-qMF" firstAttribute="leading" secondItem="Jnu-be-6M9" secondAttribute="trailing" constant="10" id="3jr-lY-2qW"/>
                                                 <constraint firstItem="4Bd-dm-alR" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="8" id="6Tf-Z3-kX3"/>
                                                 <constraint firstItem="g3a-1G-9eg" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="9Mw-dn-xSb"/>
                                                 <constraint firstItem="a5l-fQ-5qU" firstAttribute="trailing" secondItem="3aZ-ht-DCZ" secondAttribute="trailingMargin" id="9se-FX-Lkc"/>
                                                 <constraint firstAttribute="trailing" secondItem="RtL-tg-yLz" secondAttribute="trailing" constant="10" id="Dop-iX-6RU"/>
                                                 <constraint firstItem="LcE-kj-sku" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="G8M-wO-5zS"/>
+                                                <constraint firstItem="e5s-95-6SB" firstAttribute="leading" secondItem="Uip-td-qMF" secondAttribute="trailing" constant="1" id="LVL-Na-t1b"/>
                                                 <constraint firstItem="4Bd-dm-alR" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="UZW-gp-c4f"/>
+                                                <constraint firstItem="e5s-95-6SB" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="ViZ-iS-cN5"/>
                                                 <constraint firstAttribute="bottom" secondItem="Uip-td-qMF" secondAttribute="bottom" constant="8" id="boy-ta-Mvv"/>
                                                 <constraint firstItem="RtL-tg-yLz" firstAttribute="top" secondItem="3aZ-ht-DCZ" secondAttribute="top" constant="10" id="ctZ-Y3-KXo"/>
+                                                <constraint firstItem="Jnu-be-6M9" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="dr0-tw-sR3"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Bd-dm-alR" secondAttribute="bottom" constant="8" id="dzM-zx-O6B"/>
-                                                <constraint firstItem="Uip-td-qMF" firstAttribute="leading" secondItem="6OL-70-Amg" secondAttribute="trailing" constant="15" id="jkd-I1-DQT"/>
-                                                <constraint firstItem="6OL-70-Amg" firstAttribute="leading" secondItem="4Bd-dm-alR" secondAttribute="trailing" constant="15" id="kBF-TI-2lK"/>
+                                                <constraint firstItem="6OL-70-Amg" firstAttribute="leading" secondItem="4Bd-dm-alR" secondAttribute="trailing" constant="23" id="kBF-TI-2lK"/>
                                                 <constraint firstItem="g3a-1G-9eg" firstAttribute="top" secondItem="LcE-kj-sku" secondAttribute="bottom" constant="8" id="liQ-t8-sRk"/>
                                                 <constraint firstItem="LcE-kj-sku" firstAttribute="top" secondItem="RtL-tg-yLz" secondAttribute="bottom" constant="8" id="mC3-tx-gGd"/>
                                                 <constraint firstAttribute="trailing" secondItem="LcE-kj-sku" secondAttribute="trailing" constant="10" id="sbx-B9-mrC"/>
+                                                <constraint firstItem="Jnu-be-6M9" firstAttribute="leading" secondItem="6OL-70-Amg" secondAttribute="trailing" id="syD-o7-i65"/>
                                                 <constraint firstItem="a5l-fQ-5qU" firstAttribute="top" secondItem="3aZ-ht-DCZ" secondAttribute="topMargin" constant="158" id="uQR-Nb-3cr"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g3a-1G-9eg" secondAttribute="trailing" constant="10" id="uda-RB-BBF"/>
                                                 <constraint firstItem="Uip-td-qMF" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="8" id="ya2-cX-pzG"/>
+                                                <constraint firstItem="g3a-1G-9eg" firstAttribute="top" secondItem="LcE-kj-sku" secondAttribute="bottom" constant="8.5" id="ydP-8D-bgP"/>
                                                 <constraint firstAttribute="bottom" secondItem="6OL-70-Amg" secondAttribute="bottom" constant="8" id="yyM-An-MY7"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -881,12 +908,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="uSq-sj-PMw">
                         <barButtonItem key="backBarButtonItem" title="Back" id="A0T-er-e63"/>
-                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="7ar-xa-bwi">
-                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="btnMenu" id="7ar-xa-bwi">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="podcasts30" id="5e3-nc-x1s">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="search" id="jAR-hC-Nhw">
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1930,11 +1962,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addFav100" width="100" height="100"/>
+        <image name="addtag100" width="100" height="100"/>
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="player" width="1024" height="1024"/>
+        <image name="podcasts30" width="30" height="30"/>
         <image name="share" width="30" height="30"/>
+        <image name="shareRight100" width="100" height="100"/>
         <image name="tabThree" width="26" height="26"/>
         <image name="tabTwo" width="26" height="26"/>
     </resources>
