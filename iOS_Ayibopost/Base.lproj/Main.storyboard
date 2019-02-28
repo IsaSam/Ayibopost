@@ -795,10 +795,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnu-be-6M9">
-                                                    <rect key="frame" x="88" y="253" width="30" height="13"/>
+                                                    <rect key="frame" x="88" y="253" width="23" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="nHx-Rp-b3s"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="sdE-Kk-7XY"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="23" id="sdE-Kk-7XY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <state key="normal" title="Save">
@@ -806,7 +806,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uip-td-qMF">
-                                                    <rect key="frame" x="128" y="249.5" width="18" height="17"/>
+                                                    <rect key="frame" x="121" y="249.5" width="18" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="5ug-HC-v3x"/>
                                                         <constraint firstAttribute="width" constant="18" id="ca9-WU-4dM"/>
@@ -820,7 +820,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-95-6SB">
-                                                    <rect key="frame" x="147" y="253" width="30" height="13"/>
+                                                    <rect key="frame" x="140" y="253" width="30" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="Bpw-4X-ZAk"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="nR5-2J-zqg"/>

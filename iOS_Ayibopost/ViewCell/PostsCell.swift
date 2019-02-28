@@ -20,10 +20,27 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     
     weak var delegate: PostsCellDelegate?
+    var favB: UIColor?
+    var buttonTapped = false
     
     
     @IBAction func bookmarkTapped(_ sender: UIButton) {
         delegate?.PostsCellDidTapBookmark(self)
+        
+//            self.favClic?.setImage(UIImage(named: "addFav100"), for: .normal)
+        
+        if buttonTapped == false{
+         //   favB = favButton.tintColor
+            print("Bookmark save succesfully")
+            favButton.tintColor = UIColor.green
+            favButton.isEnabled = false
+            buttonTapped = true
+        }else{
+            print("unSaved bookmark")
+            favButton.tintColor = UIColor.darkGray
+       //     favButton.isEnabled = true
+            buttonTapped = false
+        }
     }
     
 
