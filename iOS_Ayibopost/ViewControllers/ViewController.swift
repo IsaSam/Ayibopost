@@ -12,6 +12,7 @@ import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
+    @IBOutlet weak var titleLogo: UIButton!
     
     var delegate: BookmarkViewController!
     
@@ -64,6 +65,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func searchButton(_ sender: Any) {
         print("Search...")
         navigationItem.titleView = searchBar
+        navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
+        navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
         //tap.cancelsTouchesInView = false
        // searchButton.isEnabled = false
@@ -133,7 +136,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //    searchBar.isHidden = true
         
         topBarLogo()
-
+   //     titleLogoImage()
         searchBar.delegate = self
         
         self.refreshControl = UIRefreshControl()
@@ -174,7 +177,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
  //       favClic?.addTarget(self, action: #selector(myButtonTapped), for: UIControlEvents.touchUpInside)
         //     self.view.addSubview(favClic!)
     }
-    
+    func titleLogoImage(){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        let image = titleLogo.imageView
+    //    imageView.image = image
+        logoContainer.addSubview(image!)
+        navigationItem.titleView = logoContainer
+    }
     func topBarLogo(){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
         

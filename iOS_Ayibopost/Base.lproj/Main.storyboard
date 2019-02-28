@@ -787,7 +787,7 @@
                                                         <constraint firstAttribute="width" constant="20" id="7dG-99-Kjk"/>
                                                         <constraint firstAttribute="height" constant="17" id="gQd-fl-999"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <state key="normal" title="Add to Bookmark" image="addtag100"/>
                                                     <connections>
                                                         <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="adq-tq-8th"/>
@@ -811,7 +811,7 @@
                                                         <constraint firstAttribute="height" constant="17" id="5ug-HC-v3x"/>
                                                         <constraint firstAttribute="width" constant="18" id="ca9-WU-4dM"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <state key="normal" image="shareRight100">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
@@ -907,18 +907,14 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="uSq-sj-PMw">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Back" id="A0T-er-e63"/>
-                        <leftBarButtonItems>
-                            <barButtonItem image="btnMenu" id="7ar-xa-bwi">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="podcasts30" id="5e3-nc-x1s">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="7ar-xa-bwi">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="search" id="jAR-hC-Nhw">
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1966,7 +1962,6 @@
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="player" width="1024" height="1024"/>
-        <image name="podcasts30" width="30" height="30"/>
         <image name="share" width="30" height="30"/>
         <image name="shareRight100" width="100" height="100"/>
         <image name="tabThree" width="26" height="26"/>
