@@ -88,8 +88,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     @IBAction func addFav(_ sender: UIButton) {
+        
        // sender.isSelected = true
-    //    myButtonTapped()
+   //     myButtonTapped()
         
          //   sender.setImage(UIImage(named: "FavYellow96"), for: .highlighted)
         
@@ -127,7 +128,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    //     favButton.setImage(UIImage.addBlueIcon, for: .selected)
         //favButton.tintColor = UIColor.red
         
-
+        let alert = UIAlertController(title: "Bookmark!", message: "Posts saved for reading later successfully", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -308,8 +312,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        let idx: Int = indexPath.row
         idx = indexPath.row
 //=====================================================================
-        cell.favButton.tag = idx!
- 
+       // cell.favButton.tag = idx!
+        cell.favButton.tag = indexPath.row
         
    //     favClic = cell.favButton
         
@@ -417,6 +421,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
 
         return cell
+    }
+    
+    func buttonTapped(_ sender:AnyObject) {
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
     }
     
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

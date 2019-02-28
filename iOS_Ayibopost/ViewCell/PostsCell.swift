@@ -24,21 +24,26 @@ class PostsCell: UITableViewCell {
     var buttonTapped = false
     
     
+
     @IBAction func bookmarkTapped(_ sender: UIButton) {
         delegate?.PostsCellDidTapBookmark(self)
         
-//            self.favClic?.setImage(UIImage(named: "addFav100"), for: .normal)
-        
+        let buttonRow = sender.tag
+
         if buttonTapped == false{
+
          //   favB = favButton.tintColor
-            print("Bookmark save succesfully")
-            favButton.tintColor = UIColor.green
-            favButton.isEnabled = false
+            print("Bookmark saved succesfully at index \(buttonRow)")
+            favButton.index(ofAccessibilityElement: buttonRow)
+ //           favButton.setImage(UIImage(named: "add-tag-color100"), for: .normal)
+ //           favButton.tintColor = UIColor.brown
+     //       favButton.isEnabled = false
             buttonTapped = true
+
         }else{
-            print("unSaved bookmark")
-            favButton.tintColor = UIColor.darkGray
-       //     favButton.isEnabled = true
+            print("unSaved bookmark at index \(buttonRow)")
+            favButton.index(ofAccessibilityElement: buttonRow)
+            favButton.setImage(UIImage(named: "addtag100"), for: .normal)
             buttonTapped = false
         }
     }
