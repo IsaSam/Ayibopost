@@ -396,7 +396,6 @@
                                 <rect key="frame" x="0.0" y="78.5" width="320" height="440.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="526" id="1og-W0-4KQ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="HSo-Dh-bOl"/>
                                 </constraints>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -412,7 +411,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pH3-tK-Gzg">
                                                     <rect key="frame" x="8" y="8" width="304" height="40"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="LKb-05-TVJ"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="y4S-0f-AzD"/>
@@ -488,7 +487,7 @@
                                     <outlet property="delegate" destination="tJM-gX-BEN" id="rQ6-dx-mm5"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOKMARKS POSTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-uS-mcJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOKMARKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-uS-mcJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="15"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
@@ -515,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E88-Wz-uVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="236"/>
+            <point key="canvasLocation" x="3333.75" y="235.56338028169014"/>
         </scene>
         <!--Sport2-->
         <scene sceneID="RFg-BA-gWA">
@@ -726,7 +725,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OvU-I2-MbO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.84313725490196079" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -782,24 +781,24 @@
                                                         <constraint firstAttribute="width" constant="19" id="Odb-Xd-zAM"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-70-Amg">
-                                                    <rect key="frame" x="60" y="249.5" width="17" height="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-70-Amg">
+                                                    <rect key="frame" x="60" y="249.5" width="20" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="7dG-99-Kjk"/>
+                                                        <constraint firstAttribute="width" constant="20" id="7dG-99-Kjk"/>
                                                         <constraint firstAttribute="height" constant="17" id="gQd-fl-999"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add to Bookmark" image="addFav">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Add to Bookmark" image="addFav100"/>
                                                     <connections>
-                                                        <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchDown" id="J4D-gY-aya"/>
+                                                        <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="adq-tq-8th"/>
+                                                        <action selector="bookmarkTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="dYt-wv-LAS"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uip-td-qMF">
-                                                    <rect key="frame" x="92" y="249.5" width="15" height="17"/>
+                                                    <rect key="frame" x="95" y="249.5" width="18" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="5ug-HC-v3x"/>
-                                                        <constraint firstAttribute="width" constant="15" id="ca9-WU-4dM"/>
+                                                        <constraint firstAttribute="width" constant="18" id="ca9-WU-4dM"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="share">
@@ -906,7 +905,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
-                        <outlet property="favButton" destination="tqo-lu-cC7" id="DLm-g6-UrA"/>
                         <outlet property="searchBar" destination="CXb-cm-gnQ" id="q5y-iY-fFJ"/>
                         <outlet property="searchButton" destination="jAR-hC-Nhw" id="xth-yJ-cld"/>
                         <outlet property="tableView" destination="OvU-I2-MbO" id="Dya-Uy-jpX"/>
@@ -1932,7 +1930,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addFav" width="55" height="52"/>
+        <image name="addFav100" width="100" height="100"/>
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="player" width="1024" height="1024"/>

@@ -10,6 +10,7 @@ import UIKit
 
 class PostsCell: UITableViewCell {
     
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var imagePost: UIImageView!
@@ -18,8 +19,14 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var labelMedia: UILabel!
     @IBOutlet weak var favButton: UIButton!
     
+    weak var delegate: PostsCellDelegate?
     
     
+    @IBAction func bookmarkTapped(_ sender: UIButton) {
+        delegate?.PostsCellDidTapBookmark(self)
+    }
+    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,4 +38,7 @@ class PostsCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+protocol PostsCellDelegate : class {
+    func PostsCellDidTapBookmark(_ sender: PostsCell)
 }

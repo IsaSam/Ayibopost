@@ -11,16 +11,19 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
+
+    
     
     var delegate: BookmarkViewController!
+    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var searchButton: UIBarButtonItem!
-    @IBOutlet weak var favButton: UIBarButtonItem!
+  //  @IBOutlet weak var favButton: UIBarButtonItem!
     
     @IBAction func onTap(_ sender: Any) {
                 view.endEditing(true)
@@ -45,6 +48,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   //  var searchController = UISearchController()
     
     var idx: Int?
+    var favClic: UIButton?
+    var favClicked: UIButton?
+    var f = Bool()
     
      // -------------------------------
         // 1.Decllare the drawer view
@@ -78,16 +84,50 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.text = ""
  }
     */
-    
+
+
     @IBAction func addFav(_ sender: UIButton) {
+       // sender.isSelected = true
+    //    myButtonTapped()
+        
+         //   sender.setImage(UIImage(named: "FavYellow96"), for: .highlighted)
+        
+     /*
+        if f == false{
+            print(f)
+            self.favClicked?.setImage(UIImage(named: "FavYellow96"), for: .normal)
+            f = true
+        }else{
+            print(f)
+            self.favClic?.setImage(UIImage(named: "addFav100"), for: .normal)
+            f = false
+        }*/
+ /*       if favClicked == true{
+         //   addFav.setImage(UIImage(named: "FavYellow96"), for: .normal)
+            favClicked = false
+            print("labas")
+        }
+        else{
+            cell.favButton.setImage(UIImage(named: "addFav100"), for: .normal)
+            favClicked = true
+            print("ici")
+        }
+        */
         print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])
 
  //      print(favResults)
         print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
+        
+    //    f?.image = #imageLiteral(resourceName: "FavYellow96")
+  //      let playButton  = UIButton(type: .custom)
+    //    favButton.setImage(UIImage(named: "FavYellow96"), for: .normal)
+   //     favButton.setImage(UIImage.addBlueIcon, for: .selected)
+        //favButton.tintColor = UIColor.red
+        
+
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,6 +154,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //-----------------
         self.hideKeyboardOnTap(#selector(self.onTap(_:)))
         
+    }
+    @objc func myButtonTapped(){
+       
+        if favClic?.isSelected == true {
+            print("first")
+            favClic?.isSelected = false
+          //  favClic?.setImage(UIImage(named : "addFav100"), for: UIControlState.normal)
+            favClic?.backgroundColor = UIColor.green
+            
+        }else {
+            
+            print("second")
+            favClic?.isSelected = true
+            favClic?.setImage(UIImage(named :" #imageLiteral(resourceName: fav)"), for: UIControlState.normal)
+            
+        //    favClic?.setImage(UIImage(named : "favYellow96"), for: UIControlState.normal)
+        //    favClic?.backgroundColor = UIColor.red
+     //       favClic?.colo
+        }
+ //       favClic?.addTarget(self, action: #selector(myButtonTapped), for: UIControlEvents.touchUpInside)
+        //     self.view.addSubview(favClic!)
     }
     
     func topBarLogo(){
@@ -237,7 +298,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 //        let idx: Int = indexPath.row
         idx = indexPath.row
+//=====================================================================
         cell.favButton.tag = idx!
+ 
+        
+   //     favClic = cell.favButton
+        
+    /*    if cell.favButton.isSelected == false{
+            cell.favButton.tintColor = UIColor.yellow
+        }
+        else{
+            cell.favButton.tintColor = UIColor.green
+        }*/
+    /*
+        if favClic?.isSelected == true {
+            print("first 01")
+  //          favClic?.isSelected = false
+   //         cell.favButton.setImage(UIImage(named : "addFav100"), for: UIControlState.normal)
+            favClic?.backgroundColor = UIColor.green
+        }else {
+            print("second 02")
+  //          favClic?.isSelected = true
+      //      cell.favButton.setImage(UIImage(named : "favYellow96"), for: UIControlState.normal)
+     //      favClic?.backgroundColor = UIColor.red
+        }
+        */
+        
+  //      favClicked = cell.favButton
+  //      favClic?.setImage(UIImage(named : "addFav100"), for: UIControlState.normal)
+    //    favClic?.setImage(UIImage(named : "favYellow100"), for: UIControlState.normal)
+//        favClic?.addTarget(self, action: #selector(myButtonTapped), for: UIControlEvents.touchUpInside)
+   //     self.view.addSubview(favClic!)
+ 
+   //     cell.favButton.setImage(UIImage(named: "addFav100"), for: .normal)
+  //      cell.favButton.setImage(UIImage(named: "FavYellow96"), for: .highlighted)
 
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
@@ -310,8 +404,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             imgShare = cell.imagePost.image
         }
+        
+        cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
 
         return cell
+    }
+    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    // The cell calls this method when the user taps the heart button
+    func PostsCellDidTapBookmark(_ sender: PostsCell) {
+        guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+        print("Bookmark", sender, tappedIndexPath)
+        
+        // "Love" this item
+  /////      items[tappedIndexPath.row].love()
+    }
+    
+    @objc func bookmarkTapped(_ sender: Any?) {
+        // We need to call the "love" method on the underlying object, but I don't know which row the user tapped!
+        // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
+        // the view hierarchy until we find the UITableviewCell instance.
+        print("Bookmark Tapped", sender!)
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
