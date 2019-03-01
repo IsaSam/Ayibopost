@@ -28,15 +28,7 @@ class PostsCell: UITableViewCell {
 
     @IBAction func bookmarkTapped(_ sender: UIButton) {
         delegate?.PostsCellDidTapBookmark(self)
-        
-        
-        if let indexPath = sender.tag{
-            print("Button tapped at indexPath \(indexPath)")
-        }
-        else {
-            print("Button indexPath not found")
-        }
-        
+
         
         if buttonTapped == false{
             let buttonRow = sender.tag
