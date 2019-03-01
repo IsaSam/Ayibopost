@@ -29,22 +29,39 @@ class PostsCell: UITableViewCell {
     @IBAction func bookmarkTapped(_ sender: UIButton) {
         delegate?.PostsCellDidTapBookmark(self)
         
-        let buttonRow = sender.tag
-
+        
+        if let indexPath = sender.tag{
+            print("Button tapped at indexPath \(indexPath)")
+        }
+        else {
+            print("Button indexPath not found")
+        }
+        
+        
         if buttonTapped == false{
-
+            let buttonRow = sender.tag
+            favButton.tag = buttonRow
+            
+            favButton.addTarget(self,action:#selector(bookmarkTapped(_:)),
+                              for:.touchUpInside)
+            
          //   favB = favButton.tintColor
-            print("Bookmark saved succesfully at index \(buttonRow)")
+            print("Bookmark saved succesfully of index \(buttonRow)")
             favButton.index(ofAccessibilityElement: buttonRow)
 //            saveButton.setTitle("Saved", for: UIControlState .normal)
-  //          favButton.setImage(UIImage(named: "add-tag-color100"), for: .normal)
+ //           favButton.setImage(UIImage(named: "add-tag-color100"), for: .normal)
  //           favButton.tintColor = UIColor.brown
      //       favButton.isEnabled = false
             buttonTapped = true
 
-        }else{
-            print("unSaved bookmark at index \(buttonRow)")
-            favButton.index(ofAccessibilityElement: buttonRow)
+        }
+        
+        else{
+            let buttonRow = sender.tag
+            favButton.tag = buttonRow
+            favButton.addTarget(self,action:#selector(bookmarkTapped(_:)),
+                                for:.touchUpInside)
+            print("Saved bookmark of index \(buttonRow)")
  //           saveButton.setTitle("Save", for: UIControlState .normal)
             favButton.setImage(UIImage(named: "addtag100"), for: .normal)
             buttonTapped = false

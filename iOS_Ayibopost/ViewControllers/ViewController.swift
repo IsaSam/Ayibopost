@@ -128,7 +128,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    //     favButton.setImage(UIImage.addBlueIcon, for: .selected)
         //favButton.tintColor = UIColor.red
         
-        let alert = UIAlertController(title: "Bookmark!", message: "Posts saved for reading later successfully", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
