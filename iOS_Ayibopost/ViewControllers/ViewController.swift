@@ -423,10 +423,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func buttonTapped(_ sender:AnyObject) {
+ /*   func buttonTapped(_ sender:AnyObject) {
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
-    }
+    }*/
     
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
