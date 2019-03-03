@@ -10,13 +10,13 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
+import SDWebImage
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
     @IBOutlet weak var titleLogo: UIButton!
-    
     var delegate: BookmarkViewController!
     
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -315,6 +315,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
        // cell.favButton.tag = idx!
         cell.favButton.tag = indexPath.row
         
+        
    //     favClic = cell.favButton
         
     /*    if cell.favButton.isSelected == false{
@@ -407,9 +408,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //print(imageURL!)
             imgURLShare = imageURL!
             
+            let url = URL(string: imgURLShare!)
+            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                
+       //         let errorCode = (error! as NSError).code
+                
+                if ((error) != nil) {
+                    print("placeholder image ))))))))))))))")
+                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                    
+                } else {
+                    print("(((((((((((((((((success use the image)")
+                    cell.imagePost.sd_setImage(with: url)
+                }
+            })
+            
+            
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
+                cell.imagePost.image = UIImage(named: "loading4.jpg")
                 cell.imagePost.af_setImage(withURL: imgUrl)
+                
             }
                 
             else{

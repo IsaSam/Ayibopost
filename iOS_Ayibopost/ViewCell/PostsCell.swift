@@ -29,7 +29,6 @@ class PostsCell: UITableViewCell {
     @IBAction func bookmarkTapped(_ sender: UIButton) {
         delegate?.PostsCellDidTapBookmark(self)
 
-        
         if buttonTapped == false{
             let buttonRow = sender.tag
             favButton.tag = buttonRow
