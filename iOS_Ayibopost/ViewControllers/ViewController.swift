@@ -12,6 +12,9 @@ import AlamofireImage
 import SwiftyJSON
 import SDWebImage
 
+var defaults = UserDefaults(suiteName: "com.isasam.iOS-Ayibopost")
+//var defaults = UserDefaults.standard
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
     @IBOutlet weak var titleLogo: UIButton!
     var delegate: BookmarkViewController!
@@ -117,7 +120,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         */
         print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])
-
+        
  //      print(favResults)
         print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
@@ -132,10 +135,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+        
+        storeData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getData()
     //    navigationItem.titleView = searchBar
     //    searchBar.isHidden = true
         
@@ -160,6 +166,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.hideKeyboardOnTap(#selector(self.onTap(_:)))
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        storeData()
+    }
+    
     @objc func myButtonTapped(){
        
         if favClic?.isSelected == true {
@@ -510,6 +526,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Storing app data
+    func storeData(){
+        defaults?.set(favResults, forKey: "savedData")
+   //     UserDefaults.standard.set(favResults, forKey: "savedData")
+        defaults?.synchronize()
+        print("data stored successfully")
+        print(favResults.count)
+    }
+    
+    //Getting app data
+    func getData(){
+  //     let data = UserDefaults.standard.value(forKey: "savedData")
+        let data = defaults?.value(forKey: "savedData")
+        if data != nil{
+            favResults = data as! [[String: Any]]
+            print("data is nil")
+        }
+        else{
+            print("data is not nil")
+        }
     }
 }
 //----------------------

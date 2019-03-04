@@ -46,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96057884222CC4E800619ABB /* iOS_Ayibopost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_Ayibopost.entitlements; sourceTree = "<group>"; };
 		9614203B220BEF3C004C59A3 /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		963D9B8821EECA7900187DA2 /* iOS_Ayibopost */ = {
 			isa = PBXGroup;
 			children = (
+				96057884222CC4E800619ABB /* iOS_Ayibopost.entitlements */,
 				96E4A10622210AF5003CBA45 /* Model */,
 				9681A6AC22149D6300524AD3 /* ManagerAPI */,
 				9681A6AB22149D2B00524AD3 /* ViewCell */,
@@ -290,6 +292,11 @@
 				TargetAttributes = {
 					963D9B8521EECA7900187DA2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
