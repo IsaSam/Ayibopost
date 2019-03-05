@@ -10,16 +10,20 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
+import SDWebImage
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate {
-    
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
+    @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    
+    var delegate: BookmarkViewController!
     
     @IBAction func onTap(_ sender: Any) {
                 view.endEditing(true)
+          //      searchBar.isHidden = true
     }
     
     var filteredPosts: [[String: Any]]?
@@ -31,20 +35,57 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
+    var imgURLShare: String?
+    var titleShare: String?
+    var imgShare: UIImage?
+    var favResults: [[String: Any]] = []
+    var favResults1: [[String: Any]] = []
+    
+    var idx: Int?
+    var favClic: UIButton?
+    var favClicked: UIButton?
+    var f = Bool()
     
      // -------------------------------
         // 1.Decllare the drawer view
         var drawerVw = DrawerView()
-        
         var vwBG = UIView()
     //--------------------
+
+    @IBAction func viewFav(_ sender: Any) {
+        self.performSegue(withIdentifier: "ViewFav1", sender: self)
+    //    storeData()
+    }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        print("Search...")
+        navigationItem.titleView = searchBar
+        navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
+        navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
+        searchBar.isHidden = false
+    }
+    
+    @IBAction func addFav(_ sender: UIButton) {
+        
+        print("Selected Item #\(sender.tag) as a favorite")
+        favResults.append(posts[sender.tag])
+ //      print(favResults)
+        print("Counter1: \(favResults.count)")
+        self.favResults.reverse() //sort
+        
+        storeData() //Saved posts
+        
+        let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        topBarLogo()
-
         searchBar.delegate = self
+        getData() //get bookmarks
+        topBarLogo()
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -52,20 +93,44 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.rowHeight = 330
         tableView.estimatedRowHeight = 350
-        
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
         
         getPostList()
+        
         //-----------------
         self.navigationController?.navigationBar.isTranslucent = false
         //-----------------
+        
         self.hideKeyboardOnTap(#selector(self.onTap(_:)))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getData() // get posts
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        storeData() // saved posts
+    }
+    
+  /*  @objc func myButtonTapped(){
+        if favClic?.isSelected == true {
+            print("first")
+            favClic?.isSelected = false
+          //  favClic?.setImage(UIImage(named : "addFav100"), for: UIControlState.normal)
+            favClic?.backgroundColor = UIColor.green
+            
+        }else {
+            
+            print("second")
+            favClic?.isSelected = true
+            favClic?.setImage(UIImage(named :" #imageLiteral(resourceName: fav)"), for: UIControlState.normal)
+        }
+    }*/
     func topBarLogo(){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
-        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "ayibopost-logo-blanc-2.png")
@@ -79,8 +144,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
         //-----------------
         @IBAction func actShowMenu(_ sender: Any) {
-            
-            //**** REQUIRED ****//
             //**** 2.Implement the drawer view object and set delecate to current view controller
             drawerVw = DrawerView(aryControllers:DrawerArray.array, isBlurEffect:true, isHeaderInTop:false, controller:self)
             drawerVw.delegate = self
@@ -104,56 +167,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
          
          if error != nil{
-        // print(error!)
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
-                //print(error!)
-
          return
          }
-         //print(result!)
          self.posts = result!
          self.tableView.reloadData() // to tell table about new data
          self.activityIndicatory.stopAnimating() //====================
          }
                 self.refreshControl.endRefreshing()
                 self.activityIndicatory.stopAnimating()
-   
     }
-    
     
     func loadMorePosts(){
       loadNumber = loadNumber + 1
       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
             
                 if error != nil{
-                    // print(error!)
                     let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
-                    //print(error!)
                     
                     return
                 }
-        
-                //print(result!)
-                //self.posts = result!
-        
             do{
                 for item in result!
                 {
-                    //self.dataList.add(item)
                     self.posts.append(item)
                 }
-                //print(result!)
                 self.tableView.reloadData() // to tell table about new data
             }
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -181,35 +228,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
-
+        idx = indexPath.row
+//=====================================================================
+        cell.favButton.tag = indexPath.row
+        
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
-        
         cell.titleLabel.text = post["title"] as? String
+        titleShare = cell.titleLabel.text
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
-
-        /*
-        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
-        //print(html2)
         
-        let input = String(describing: html2)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        for match in matches {
-            guard let range = Range(match.range, in: input) else { continue }
-             let urlYou = input[range]
-            if urlYou != ""{
-                urlYou1 = String(urlYou)
-            }
-            
-       //     urlYou = String(input[range])
-            // print(url)
-        }
-    //    print(urlYou)
-        */
-        
+        //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -240,34 +271,57 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if urlYou != ""{
                 urlYoutube = String(urlYou)
                 print(urlYoutube)
-                cell.picMedia.isHidden = false
-                cell.labelMedia.isHidden = false
+                cell.picMedia.isHidden = false //icon for media files
             }
             else{
-                cell.picMedia.isHidden = true
-                cell.labelMedia.isHidden = true
-               // urlYou = ""
+                cell.picMedia.isHidden = true //icon for media files
             }
         }
-        
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-                
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
             //print(imageURL!)
+            imgURLShare = imageURL!
+            
+            let url = URL(string: imgURLShare!)
+            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                if ((error) != nil) {
+                    print("placeholder image...")
+                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                } else {
+                    print("Success let using the image...")
+                    cell.imagePost.sd_setImage(with: url)
+                }
+            })
             if let imagePath = imageURL,
                 let imgUrl = URL(string:  imagePath){
+                cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
                 cell.imagePost.af_setImage(withURL: imgUrl)
             }
             else{
                 cell.imagePost.image = nil
             }
+            imgShare = cell.imagePost.image
         }
+        cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
 
         return cell
+    }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // The cell calls this method when the user taps the heart button
+    func PostsCellDidTapBookmark(_ sender: PostsCell) {
+        guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+        print("Bookmark", sender, tappedIndexPath)
+    }
+    
+    @objc func bookmarkTapped(_ sender: Any?) {
+        // We need to call the method on the underlying object, but I don't know which row the user tapped!
+        // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
+        // the view hierarchy until we find the UITableviewCell instance.
+        print("Bookmark Tapped", sender!)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -275,19 +329,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-        let post = posts[(indexPath?.row)!]
-        let imgPost = imgPosts[(indexPath?.row)!]
-        let detailViewController = segue.destination as! DetailsPostViewController
-        detailViewController.post = post
-        detailViewController.imgPost = imgPost
+        
+       if segue.identifier == "ViewFav1" {
+            print("Bookmarks View segue")
+            let controller = segue.destination as! BookmarkViewController
+            controller.favoritePosts = favResults
+            
+       }
+       else{
+            print("DetailsPost View segue")
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let post = posts[(indexPath?.row)!]
+            let imgPost = imgPosts[(indexPath?.row)!]
+            let detailViewController = segue.destination as! DetailsPostViewController
+            detailViewController.post = post
+            detailViewController.imgPost = imgPost
+        }
     }
     
+    @IBAction func btnSharePosts(_ sender: Any) {
+        let title = titleShare
+        let URl = urlPost1
+        let image = imgShare
+        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+        if let popoverController = vc.popoverPresentationController{
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    //Storing app data
+    func storeData(){
+        let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
+        UserDefaults.standard.set(data, forKey: "savedData1")
+    }
+    
+    //Getting app data
+    func getData(){
+        let outData = UserDefaults.standard.data(forKey: "savedData1")
+        if outData != nil{
+        let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
+        favResults = dict
+        }else{}
     }
 }
 //----------------------

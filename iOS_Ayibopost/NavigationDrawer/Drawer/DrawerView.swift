@@ -204,13 +204,13 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
         let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
 
-        controllerName.hidesBottomBarWhenPushed = true
+        controllerName.hidesBottomBarWhenPushed = false
         self.delegate?.pushTo(viewController: controllerName)
     }
 
     // To dissmiss the current view controller tab bar along with navigation drawer
     @objc func actDissmiss() {
-        currentViewController.tabBarController?.tabBar.isHidden = false
+        currentViewController.tabBarController?.tabBar.isHidden = true
         self.dissmiss()
     }
     

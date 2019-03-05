@@ -8,6 +8,17 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+<<<<<<< HEAD
+=======
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>963D9B8521EECA7900187DA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+>>>>>>> BookmarkPosts_persist
 		</dict>
 	</dict>
 </dict>

@@ -9,6 +9,7 @@ target 'iOS_Ayibopost' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage'
+  pod 'SDWebImage'
 
   #pod 'SwiftyJSON'
   pod 'SwiftyJSON', '~> 4.0'

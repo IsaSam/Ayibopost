@@ -27,6 +27,11 @@
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
+<<<<<<< HEAD
+=======
+			<key>isShown</key>
+			<false/>
+>>>>>>> BookmarkPosts_persist
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
