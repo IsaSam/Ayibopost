@@ -387,7 +387,7 @@
         <!--Bookmark View Controller-->
         <scene sceneID="FvH-Ih-xYs">
             <objects>
-                <viewController id="tJM-gX-BEN" customClass="BookmarkViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Bookmark" id="tJM-gX-BEN" customClass="BookmarkViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkZ-7a-uuy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,6 +479,7 @@
                                             <outlet property="imagePost" destination="g89-uo-MgY" id="knd-Sh-Nr5"/>
                                             <outlet property="picMedia" destination="P7T-RT-bPz" id="pQJ-vO-Lbr"/>
                                             <outlet property="titleLabel" destination="pH3-tK-Gzg" id="EPd-X7-WOB"/>
+                                            <segue destination="Uhv-1l-mLN" kind="show" id="KPg-ES-9U8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1971,6 +1972,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tv8-zQ-hrO"/>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="KPg-ES-9U8"/>
     </inferredMetricsTieBreakers>
 </document>

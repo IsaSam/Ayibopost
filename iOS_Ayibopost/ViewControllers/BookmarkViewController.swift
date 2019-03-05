@@ -138,6 +138,20 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         logoContainer.addSubview(imageView)
         navigationItem.titleView = logoContainer
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = favTableView.indexPath(for: cell)
+        let post = favoritesPosts[(indexPath?.row)!]
+        let imgPost = imgPosts[(indexPath?.row)!]
+        let detailViewController = segue.destination as! DetailsPostViewController
+        detailViewController.post = post
+        detailViewController.imgPost = imgPost
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
