@@ -21,7 +21,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var urlYoutube = ""
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 7
+    var loadNumber = 55
     var categori = "ayibotalk"
     
     var convertedDate: String = ""
@@ -96,7 +96,7 @@ class AyiboTalk: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 1
+        loadNumber = loadNumber + 55
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
