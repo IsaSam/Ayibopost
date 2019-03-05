@@ -12,7 +12,7 @@ import AlamofireImage
 import SwiftyJSON
 import SDWebImage
 
-var defaults = UserDefaults(suiteName: "com.isasam.iOS-Ayibopost")
+//var defaults = UserDefaults(suiteName: "com.isasam.iOS-Ayibopost")
 //var defaults = UserDefaults.standard
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func viewFav(_ sender: Any) {
         self.performSegue(withIdentifier: "ViewFav1", sender: self)
+    //    storeData()
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -125,18 +126,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
         
-    //    f?.image = #imageLiteral(resourceName: "FavYellow96")
-  //      let playButton  = UIButton(type: .custom)
-    //    favButton.setImage(UIImage(named: "FavYellow96"), for: .normal)
-   //     favButton.setImage(UIImage.addBlueIcon, for: .selected)
-        //favButton.tintColor = UIColor.red
+        storeData()
         
         let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
         
-        storeData()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -530,24 +527,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Storing app data
     func storeData(){
-        defaults?.set(favResults, forKey: "savedData")
-   //     UserDefaults.standard.set(favResults, forKey: "savedData")
-        defaults?.synchronize()
+ /*
+        //     defaults?.set(favResults, forKey: "savedData")
+        UserDefaults.standard.set(favResults, forKey: "savedData")
+ //       defaults?.synchronize()
+        UserDefaults.standard.synchronize()
         print("data stored successfully")
         print(favResults.count)
+        */
+        let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
+        UserDefaults.standard.set(data, forKey: "savedData1")
     }
     
     //Getting app data
     func getData(){
-  //     let data = UserDefaults.standard.value(forKey: "savedData")
-        let data = defaults?.value(forKey: "savedData")
+/*
+        let data = UserDefaults.standard.value(forKey: "savedData")
+ //       let data = defaults?.value(forKey: "savedData")
         if data != nil{
             favResults = data as! [[String: Any]]
-            print("data is nil")
+            print("data nil")
         }
         else{
-            print("data is not nil")
+            print("data not nil")
         }
+    */
+        let outData = UserDefaults.standard.data(forKey: "savedData1")
+        if outData != nil{
+        let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
+        favResults = dict
+        }else{}
     }
 }
 //----------------------
