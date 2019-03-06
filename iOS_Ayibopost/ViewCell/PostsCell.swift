@@ -19,10 +19,12 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var labelMedia: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var btnSharePosts: UIButton!
     
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?
     var buttonTapped = false
+    var buttonTapped2 = false
     
     
 
@@ -59,6 +61,32 @@ class PostsCell: UITableViewCell {
         }
     }
     
+    @IBAction func shareTapped(_ sender: UIButton) {
+        delegate?.PostsCellDidTapShare(self)
+        
+        if buttonTapped2 == false{
+            let buttonRow = sender.tag
+            btnSharePosts.tag = buttonRow
+            btnSharePosts.addTarget(self,action:#selector(shareTapped(_:)),
+                                for:.touchUpInside)
+            print("share succesfully of index \(buttonRow)")
+            btnSharePosts.index(ofAccessibilityElement: buttonRow)
+            buttonTapped2 = true
+            
+        }
+            
+        else{
+            let buttonRow = sender.tag
+            btnSharePosts.tag = buttonRow
+            btnSharePosts.addTarget(self,action:#selector(shareTapped(_:)),
+                                for:.touchUpInside)
+            print("share of index \(buttonRow)")
+            //           saveButton.setTitle("Save", for: UIControlState .normal)
+         //   btnSharePosts.setImage(UIImage(named: "addtag100"), for: .normal)
+            buttonTapped = false
+        }
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,4 +102,6 @@ class PostsCell: UITableViewCell {
 }
 protocol PostsCellDelegate : class {
     func PostsCellDidTapBookmark(_ sender: PostsCell)
+    func PostsCellDidTapShare(_ sender: PostsCell)
 }
+

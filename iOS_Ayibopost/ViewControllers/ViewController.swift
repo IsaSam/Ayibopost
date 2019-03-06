@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+    var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 1
@@ -36,10 +37,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var convertedDate: String = ""
     var convertedTime: String = ""
     var imgURLShare: String?
+    var imgURLShare2: String?
     var titleShare: String?
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
+    var post: [[String: Any]] = []
+    var postShare: [String: Any] = [:]
+    var imagePost1: UIImageView?
     
     var idx: Int?
     var favClic: UIButton?
@@ -115,20 +120,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         storeData() // saved posts
     }
     
-  /*  @objc func myButtonTapped(){
-        if favClic?.isSelected == true {
-            print("first")
-            favClic?.isSelected = false
-          //  favClic?.setImage(UIImage(named : "addFav100"), for: UIControlState.normal)
-            favClic?.backgroundColor = UIColor.green
-            
-        }else {
-            
-            print("second")
-            favClic?.isSelected = true
-            favClic?.setImage(UIImage(named :" #imageLiteral(resourceName: fav)"), for: UIControlState.normal)
-        }
-    }*/
     func topBarLogo(){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
@@ -230,12 +221,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
         idx = indexPath.row
 //=====================================================================
+        
         cell.favButton.tag = indexPath.row
+        cell.btnSharePosts.tag = indexPath.row
         
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
+        
         cell.titleLabel.text = post["title"] as? String
         titleShare = cell.titleLabel.text
+        
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
@@ -304,9 +299,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             else{
                 cell.imagePost.image = nil
             }
-            imgShare = cell.imagePost.image
+          //  imgShare = cell.imagePost.image
+            imagePost1 = cell.imagePost
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
+        cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
         return cell
     }
@@ -317,11 +314,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Bookmark", sender, tappedIndexPath)
     }
     
+    
     @objc func bookmarkTapped(_ sender: Any?) {
         // We need to call the method on the underlying object, but I don't know which row the user tapped!
         // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
         // the view hierarchy until we find the UITableviewCell instance.
         print("Bookmark Tapped", sender!)
+    }
+    func PostsCellDidTapShare(_ sender: PostsCell) {
+        guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+        print("Sharing", sender, tappedIndexPath)
+    }
+    
+    @objc func shareTapped(_ sender: Any?) {
+        print("share Tapped", sender!)
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -348,10 +355,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    @IBAction func btnSharePosts(_ sender: Any) {
-        let title = titleShare
-        let URl = urlPost1
-        let image = imgShare
+    @IBAction func btnSharePosts(_ sender: UIButton) {
+        postShare = posts[sender.tag]
+        let title = postShare["title"] as? String
+        let URl = postShare["link"] as? String
+        imgPostShare = imgPosts[(sender.tag)]
+        let imageURL = imgPostShare!["source"] as? String
+    
+        if let imagePath = imageURL,
+            let imgUrl = URL(string:  imagePath){
+            imagePost1?.af_setImage(withURL: imgUrl)
+        }
+        else{
+          //  imagePost1.image = nil
+        }
+        let image = imagePost1?.image
+
+        
         let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
         if let popoverController = vc.popoverPresentationController{
             popoverController.sourceView = self.view

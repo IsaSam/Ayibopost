@@ -819,6 +819,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnSharePosts:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="e9Q-Yr-bij"/>
+                                                        <action selector="shareTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="Ilk-M1-8al"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-95-6SB">
@@ -863,6 +864,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="btnSharePosts" destination="Uip-td-qMF" id="ZIM-uE-8TN"/>
                                             <outlet property="contentLabel" destination="g3a-1G-9eg" id="raC-qm-gHm"/>
                                             <outlet property="datePost" destination="4Bd-dm-alR" id="buc-u3-PT9"/>
                                             <outlet property="favButton" destination="6OL-70-Amg" id="JpC-3a-rDi"/>
@@ -1972,6 +1974,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tv8-zQ-hrO"/>
-        <segue reference="KPg-ES-9U8"/>
+        <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>
