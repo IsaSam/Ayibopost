@@ -45,6 +45,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var post: [[String: Any]] = []
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
+    var imagePost2: UIImage?
     
     var idx: Int?
     var favClic: UIButton?
@@ -301,6 +302,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
           //  imgShare = cell.imagePost.image
             imagePost1 = cell.imagePost
+            imagePost2 = cell.imagePost.image
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
@@ -378,6 +380,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             popoverController.sourceRect = self.view.bounds
         }
         self.present(vc, animated: true, completion: nil)
+        imagePost1?.image = imagePost2
     }
     
     override func didReceiveMemoryWarning() {
