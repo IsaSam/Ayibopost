@@ -55,13 +55,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-nZ-w4u">
-                                                <rect key="frame" x="282" y="364" width="30" height="17"/>
+                                                <rect key="frame" x="285.5" y="364" width="26.5" height="14.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="17" id="Mm7-cr-WSR"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="112" id="OT7-PP-Y7e"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                <color key="textColor" red="0.4941176471" green="0.21960784310000001" blue="0.21960784310000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xb-3n-qSU">
@@ -72,6 +72,26 @@
                                                     <constraint firstAttribute="height" constant="301" id="hLb-DA-NPa"/>
                                                 </constraints>
                                             </webView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-EO-S65">
+                                                <rect key="frame" x="278" y="364" width="6" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="6" id="2K0-3d-PT6"/>
+                                                    <constraint firstAttribute="height" constant="15" id="G5O-z2-obW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6W-ml-bI7">
+                                                <rect key="frame" x="225" y="364" width="49" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="49" id="Qpc-cZ-juM"/>
+                                                    <constraint firstAttribute="height" constant="15" id="svb-iY-UAP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.4941176471" green="0.21960784310000001" blue="0.21960784310000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
@@ -79,14 +99,18 @@
                                             <constraint firstItem="kjO-JX-cX6" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" constant="16" id="5wI-DL-kgo"/>
                                             <constraint firstItem="are-tx-8Cz" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="7qz-44-hL3"/>
                                             <constraint firstAttribute="trailing" secondItem="kjO-JX-cX6" secondAttribute="trailing" constant="16" id="80a-5z-kpZ"/>
+                                            <constraint firstItem="8SL-EO-S65" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="4" id="8Gq-Ih-hLK"/>
                                             <constraint firstItem="are-tx-8Cz" firstAttribute="top" secondItem="jBR-mi-ok3" secondAttribute="bottom" constant="1" id="Bna-t7-QWv"/>
+                                            <constraint firstItem="P6W-ml-bI7" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="4" id="Dbc-r2-U8j"/>
                                             <constraint firstItem="jBR-mi-ok3" firstAttribute="top" secondItem="mHF-2c-wsB" secondAttribute="top" constant="1" id="Lqh-fc-hBX"/>
                                             <constraint firstItem="o1g-nZ-w4u" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="4" id="TfA-2U-pmY"/>
                                             <constraint firstItem="jBR-mi-ok3" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="Uw6-iO-4W8"/>
                                             <constraint firstAttribute="trailing" secondItem="8xb-3n-qSU" secondAttribute="trailing" id="XMH-1N-A2j"/>
                                             <constraint firstAttribute="height" constant="4000" id="Xue-0K-XUS"/>
                                             <constraint firstItem="8xb-3n-qSU" firstAttribute="leading" secondItem="mHF-2c-wsB" secondAttribute="leading" id="Ysa-OW-8V4"/>
+                                            <constraint firstItem="8SL-EO-S65" firstAttribute="leading" secondItem="P6W-ml-bI7" secondAttribute="trailing" constant="4" id="ZyO-e6-lbr"/>
                                             <constraint firstAttribute="trailing" secondItem="o1g-nZ-w4u" secondAttribute="trailing" constant="8" id="iz2-Op-OwN"/>
+                                            <constraint firstItem="o1g-nZ-w4u" firstAttribute="leading" secondItem="8SL-EO-S65" secondAttribute="trailing" constant="2" id="qu7-2q-uHD"/>
                                             <constraint firstAttribute="trailing" secondItem="are-tx-8Cz" secondAttribute="trailing" id="shh-0Z-ECE"/>
                                             <constraint firstItem="8xb-3n-qSU" firstAttribute="top" secondItem="mHF-2c-wsB" secondAttribute="top" id="ylJ-Dn-c6a"/>
                                             <constraint firstItem="kjO-JX-cX6" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="25" id="yyT-MU-xxa"/>
@@ -121,6 +145,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authorNameLabel" destination="P6W-ml-bI7" id="Uhr-BS-l7Z"/>
                         <outlet property="contentLabel" destination="kjO-JX-cX6" id="bXY-83-xzR"/>
                         <outlet property="datePost" destination="o1g-nZ-w4u" id="fpJ-uS-klk"/>
                         <outlet property="postImageView" destination="jBR-mi-ok3" id="PRs-wt-tWo"/>

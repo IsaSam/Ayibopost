@@ -20,12 +20,10 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var datePost: UILabel!
-//    @IBOutlet weak var pImage: UIImageView!
     @IBOutlet weak var videoView: UIWebView!
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
-   
+    @IBOutlet weak var authorNameLabel: UILabel!
+    
     var filteredPosts: [String: Any]?
     var post: [String: Any]?
     var imgPost: [String: Any]?
