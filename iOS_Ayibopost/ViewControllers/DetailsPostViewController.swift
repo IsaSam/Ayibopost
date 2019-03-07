@@ -29,6 +29,7 @@ class DetailsPostViewController: UIViewController{
     var imgPost: [String: Any]?
     var urlPost1: String?
     var urlYoutube = ""
+    var nameString: [String: Any]?
     
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -56,6 +57,15 @@ class DetailsPostViewController: UIViewController{
             let htmlTag = post[PostKeys.content] as! String
             let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
             contentLabel.text = content
+            
+            //Author name
+            let authorName = nameString!["first_name"] as? String
+            if authorName == "Guest author"{
+                authorNameLabel.text = "By Guest"
+            }else{
+                authorNameLabel.text = "By " + authorName!
+            }
+            
             //datePost.text = post[PostKeys.date] as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"

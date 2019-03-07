@@ -364,9 +364,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
             let imgPost = imgPosts[(indexPath?.row)!]
+            let nameString = byName[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
             detailViewController.imgPost = imgPost
+            detailViewController.nameString = nameString
+        
         }
     }
     
