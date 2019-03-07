@@ -20,6 +20,7 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var btnSharePosts: UIButton!
+    @IBOutlet weak var authorNameLabel: UILabel!
     
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?

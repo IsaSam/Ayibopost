@@ -46,6 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
+    var byName: [[String: Any]] = []
     
     var idx: Int?
     var favClic: UIButton?
@@ -235,6 +236,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content
+        
+        //author name
+        let author = (posts as AnyObject).value(forKey: "author")
+        let dataDicAuthor = author as? [[String: Any]]
+        self.byName = dataDicAuthor!
+        let nameString = byName[indexPath.row]
+        let authorName = nameString["first_name"] as? String
+        if authorName == "Guest author"{
+            cell.authorNameLabel.text = "By Guest"
+        }else{
+            cell.authorNameLabel.text = "By " + authorName!
+        }
         
         //date format conversion
         let dateFormatter = DateFormatter()
