@@ -23,6 +23,8 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet weak var videoView: UIWebView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var authorNameLabel2: UILabel!
+    @IBOutlet weak var datePost2: UILabel!
     
     var filteredPosts: [String: Any]?
     var post: [String: Any]?
@@ -62,8 +64,10 @@ class DetailsPostViewController: UIViewController{
             let authorName = nameString!["first_name"] as? String
             if authorName == "Guest author"{
                 authorNameLabel.text = "By Guest"
+                authorNameLabel2.text = "By Guest"
             }else{
                 authorNameLabel.text = "By " + authorName!
+                authorNameLabel2.text = "By " + authorName!
             }
             
             //datePost.text = post[PostKeys.date] as! String
@@ -86,6 +90,7 @@ class DetailsPostViewController: UIViewController{
                 convertedTime = newTimeFormatter.string(from: time)
             }
             datePost.text = convertedDate
+            datePost2.text = convertedDate
             
             let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
             let input = String(describing: html2)
