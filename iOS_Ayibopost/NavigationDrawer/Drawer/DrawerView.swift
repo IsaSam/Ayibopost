@@ -207,8 +207,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
-//        let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
-        let controllerName = (storyBoard.instantiateViewController(withIdentifier: "Economie"))
+        let controllerName = (storyBoard.instantiateViewController(withIdentifier: "Category"))
         print("\(aryViewControllers[indexPath.row])")
         MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
 

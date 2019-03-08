@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -34,8 +34,6 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
      view.endEditing(true)
      }
      */
-    
-    //static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

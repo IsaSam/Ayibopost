@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 1
+    var loadNumber = 55
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -163,8 +163,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func getPostList(){
         
         self.activityIndicatory.startAnimating() //====================
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-//         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[s]=\(searching)&filter[posts_per_page]=100") { (result, error) in
+//         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
