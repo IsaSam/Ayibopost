@@ -132,7 +132,7 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     
     func loadMorePosts(){
         loadNumber = loadNumber + 55
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori!)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
                 // print(error!)
