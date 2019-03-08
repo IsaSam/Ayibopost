@@ -13,6 +13,10 @@ protocol DrawerControllerDelegate: class {
     func pushTo(viewController : UIViewController)
 }
 
+struct MyVariables {
+    static var categoryDrawerName: String?
+}
+
 class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDataSource {
     public let screenSize = UIScreen.main.bounds
     var backgroundView = UIView()
@@ -29,6 +33,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     var lblunderLine = UILabel()
     var imgBg : UIImage?
     var fontNew : UIFont?
+//    var categoryDrawerName: String?
 
     fileprivate var imgProPic = UIImageView()
     fileprivate let imgBG = UIImageView()
@@ -202,10 +207,14 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
-        let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
+//        let controllerName = (storyBoard.instantiateViewController(withIdentifier: aryViewControllers[indexPath.row] as! String))
+        let controllerName = (storyBoard.instantiateViewController(withIdentifier: "Economie"))
+        print("\(aryViewControllers[indexPath.row])")
+        MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
 
         controllerName.hidesBottomBarWhenPushed = false
         self.delegate?.pushTo(viewController: controllerName)
+        
     }
 
     // To dissmiss the current view controller tab bar along with navigation drawer

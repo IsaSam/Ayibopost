@@ -19,13 +19,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
-    var delegate: BookmarkViewController!
-    
-    @IBAction func onTap(_ sender: Any) {
-                view.endEditing(true)
-          //      searchBar.isHidden = true
-    }
-    
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
@@ -47,17 +40,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
     var byName: [[String: Any]] = []
-    
     var idx: Int?
     var favClic: UIButton?
     var favClicked: UIButton?
     var f = Bool()
+    var searching: [String] = []
     
+    var delegate: BookmarkViewController!
+
      // -------------------------------
         // 1.Decllare the drawer view
         var drawerVw = DrawerView()
         var vwBG = UIView()
     //--------------------
+    
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+        searchBar.isHidden = true
+        
+    }
 
     @IBAction func viewFav(_ sender: Any) {
         self.performSegue(withIdentifier: "ViewFav1", sender: self)
@@ -66,10 +67,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func searchButton(_ sender: Any) {
         print("Search...")
-        navigationItem.titleView = searchBar
+  //      navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
         navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
+        searchBar.showsCancelButton = true
+        tableView.tableHeaderView = searchBar
+        searchBar.searchBarStyle = UISearchBarStyle.default
+        searchBar.alpha = 0.96
     }
     
     @IBAction func addFav(_ sender: UIButton) {
@@ -91,6 +96,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        
         getData() //get bookmarks
         topBarLogo()
         
@@ -158,6 +164,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.activityIndicatory.startAnimating() //====================
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+//         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[s]=\(searching)&filter[posts_per_page]=100") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -437,6 +444,7 @@ extension UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
     }
 }
 
@@ -473,3 +481,4 @@ extension String{
     }
     
 }
+

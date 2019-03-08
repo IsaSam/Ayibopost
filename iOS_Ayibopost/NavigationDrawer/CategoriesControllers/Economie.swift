@@ -22,7 +22,9 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
     var loadNumber = 55
-    var categori = "business"
+ //   var categori = "business"
+    var categori: String?
+    var categoryName: String?
     
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -32,8 +34,33 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
      }
      */
     
+    //static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categoryName = MyVariables.categoryDrawerName
+        if categoryName == "Politique"{
+            categori = "politics"
+        }
+        else if categoryName == "Society"{
+            categori = "social"
+        }
+        else if categoryName == "Economie"{
+            categori = "business"
+        }
+        else if categoryName == "Culture"{
+            categori = "lifestyle"
+        }
+        else if categoryName == "Sport"{
+            categori = "SPORT"
+        }
+        else if categoryName == "AyiboTalk"{
+            categori = "ayibotalk"
+        }
+        else{
+            categori = ""
+        }
         
         topBarLogo()
         
@@ -73,7 +100,7 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     private func getPostCategory(){
         
         self.activityIndicat.startAnimating() //====================
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori!)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
             if error != nil{
                 // print(error!)
