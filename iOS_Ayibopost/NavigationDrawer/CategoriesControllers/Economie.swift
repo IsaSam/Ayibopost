@@ -13,6 +13,7 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     var catPosts: [[String: Any]] = []
     var filteredPosts: [[String: Any]]?
@@ -42,24 +43,31 @@ class Economie: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
         categoryName = MyVariables.categoryDrawerName
         if categoryName == "Politique"{
             categori = "politics"
+            categoryLabel.text = "CATEGORIE POLITIQUE"
         }
         else if categoryName == "Society"{
             categori = "social"
+            categoryLabel.text = "CATEGORIE SOCIÉTÉ"
         }
         else if categoryName == "Economie"{
             categori = "business"
+            categoryLabel.text = "CATEGORIE ÉCONOMIE"
         }
         else if categoryName == "Culture"{
             categori = "lifestyle"
+            categoryLabel.text = "CATEGORIE CULTURE"
         }
         else if categoryName == "Sport"{
             categori = "SPORT"
+            categoryLabel.text = "CATEGORIE SPORT"
         }
         else if categoryName == "AyiboTalk"{
             categori = "ayibotalk"
+            categoryLabel.text = "CATEGORIE AYIBOTALK"
         }
         else{
             categori = ""
+            categoryLabel.text = ""
         }
         
         topBarLogo()

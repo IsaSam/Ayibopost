@@ -1546,6 +1546,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicat" destination="5GR-4J-hI9" id="7HR-IO-5TU"/>
+                        <outlet property="categoryLabel" destination="WR0-ty-Hnh" id="taO-VW-HzM"/>
                         <outlet property="searchBar" destination="o98-UQ-2S0" id="Hbz-5Y-L3T"/>
                         <outlet property="tableView" destination="Grs-Pj-h4Y" id="uhk-Ze-A9J"/>
                     </connections>
