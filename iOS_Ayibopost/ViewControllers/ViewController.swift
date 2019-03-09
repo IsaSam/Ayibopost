@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //    storeData()
     }
     
-  /*  @IBAction func searchButton(_ sender: Any) {
+    @IBAction func searchButton(_ sender: Any) {
         print("Search...")
         navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    //     tableView.tableHeaderView = searchBar
    //     searchBar.searchBarStyle = UISearchBarStyle.default
    //     searchBar.alpha = 0.96
-    }*/
+    }
     
     @IBAction func addFav(_ sender: UIButton) {
         

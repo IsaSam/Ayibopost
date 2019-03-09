@@ -602,7 +602,7 @@
                                 <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
+                            <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -868,6 +868,6 @@
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3KO-fM-oCS"/>
+        <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>
