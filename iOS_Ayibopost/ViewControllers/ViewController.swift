@@ -65,17 +65,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //    storeData()
     }
     
-    @IBAction func searchButton(_ sender: Any) {
+  /*  @IBAction func searchButton(_ sender: Any) {
         print("Search...")
-  //      navigationItem.titleView = searchBar
+        navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
         navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
-        searchBar.showsCancelButton = true
-        tableView.tableHeaderView = searchBar
-        searchBar.searchBarStyle = UISearchBarStyle.default
-        searchBar.alpha = 0.96
-    }
+   //     searchBar.showsCancelButton = true
+   //     tableView.tableHeaderView = searchBar
+   //     searchBar.searchBarStyle = UISearchBarStyle.default
+   //     searchBar.alpha = 0.96
+    }*/
     
     @IBAction func addFav(_ sender: UIButton) {
         
@@ -435,7 +435,7 @@ func dismissKeyboard() {
 */
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
+        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk", "Podcast"]
 }
 //----------------------
 

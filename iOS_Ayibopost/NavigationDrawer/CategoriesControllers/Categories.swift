@@ -63,6 +63,10 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "ayibotalk"
             categoryLabel.text = "CATEGORIE AYIBOTALK"
         }
+        else if categoryName == "Podcast"{
+            categori = "podcast"
+            categoryLabel.text = "CATEGORIE PODCAST"
+        }
         else{
             categori = ""
             categoryLabel.text = ""

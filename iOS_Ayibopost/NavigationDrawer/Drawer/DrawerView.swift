@@ -64,6 +64,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     // To change the user name of account
     func changeUserName(name:String) {
         lblUserName.text = name
+        
     }
     
     // To change the background color of background view
@@ -150,7 +151,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         aryViewControllers = controllers
         tblVw.delegate = self
         tblVw.dataSource = self
-        tblVw.backgroundColor = UIColor.clear   
+        tblVw.backgroundColor = UIColor.clear
         drawerView.addSubview(tblVw)
         tblVw.reloadData()
 
