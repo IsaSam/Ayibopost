@@ -106,35 +106,35 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         categoryName = MyVariables.categoryDrawerName
         if categoryName == "Politique"{
             categori = "politics"
-   //         categoryLabel.text = "CATEGORIE POLITIQUE"
+            categoryLabel.text = "CATEGORIE POLITIQUE"
         }
         else if categoryName == "Society"{
             categori = "social"
-  //          categoryLabel.text = "CATEGORIE SOCIÉTÉ"
+            categoryLabel.text = "CATEGORIE SOCIÉTÉ"
         }
         else if categoryName == "Economie"{
             categori = "business"
- //           categoryLabel.text = "CATEGORIE ÉCONOMIE"
+            categoryLabel.text = "CATEGORIE ÉCONOMIE"
         }
         else if categoryName == "Culture"{
             categori = "lifestyle"
-//            categoryLabel.text = "CATEGORIE CULTURE"
+            categoryLabel.text = "CATEGORIE CULTURE"
         }
         else if categoryName == "Sport"{
             categori = "SPORT"
- //           categoryLabel.text = "CATEGORIE SPORT"
+            categoryLabel.text = "CATEGORIE SPORT"
         }
         else if categoryName == "AyiboTalk"{
             categori = "ayibotalk"
- //           categoryLabel.text = "CATEGORIE AYIBOTALK"
+            categoryLabel.text = "CATEGORIE AYIBOTALK"
         }
         else if categoryName == "Podcast"{
             categori = "podcast"
-  //          categoryLabel.text = "CATEGORIE PODCAST"
+            categoryLabel.text = "CATEGORIE PODCAST"
         }
         else{
             categori = ""
-  //          categoryLabel.text = ""
+            categoryLabel.text = ""
         }
         
         getData() //get bookmarks
