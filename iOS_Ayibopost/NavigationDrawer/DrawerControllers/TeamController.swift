@@ -52,32 +52,39 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView.reloadSections(IndexSet(integer: 0))
-        
-        getData() //get bookmarks
+    //    self.collectionView.reloadSections(IndexSet(integer: 0))
+     
         topBarLogo()
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(TeamController.didPullToRefresh(_:)), for: .valueChanged)
-        
+     
         collectionView.delegate = self
-  //      collectionView.insertSubview(refreshControl, at: 0)
         collectionView.dataSource = self
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        let cellsPerLine: CGFloat = 2
+        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
+        let width = (view.frame.size.width - interItemSpacingTotal * 1) / cellsPerLine
+        layout.itemSize = CGSize(width: width, height: width * 3/2)
+   
+/*        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        let cellsPerLine: CGFloat = 2
+        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
+        let width = view.frame.size.width / cellsPerLine - interItemSpacingTotal / cellsPerLine
+        layout.itemSize = CGSize(width: width, height: width * 3 / 2)
+     
+        */
+  //      collectionView.delegate = self
+  //      collectionView.insertSubview(refreshControl, at: 0)
+  //      collectionView.dataSource = self
         
         getPost()
         self.navigationController?.navigationBar.isTranslucent = false
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        getData() // get posts
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        storeData() // saved posts
-    }
-    
     
     func topBarLogo(){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
@@ -200,22 +207,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
            */
         }
     }*/
-    
-    
-    //Storing app data
-    func storeData(){
-        let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
-        UserDefaults.standard.set(data, forKey: "savedData1")
-    }
-    
-    //Getting app data
-    func getData(){
-        let outData = UserDefaults.standard.data(forKey: "savedData1")
-        if outData != nil{
-            let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
-            favResults = dict
-        }else{}
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

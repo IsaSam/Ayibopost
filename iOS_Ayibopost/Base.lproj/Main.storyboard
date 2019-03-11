@@ -1046,33 +1046,50 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="INh-VF-fqb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yDT-7a-4Ck">
-                                    <size key="itemSize" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="568" id="WpO-gT-hKD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ZpU-qU-hi9"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yDT-7a-4Ck">
+                                    <size key="itemSize" width="160" height="220"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeamCollectionViewCell" id="AGK-k0-8Rk" customClass="TeamCollectionViewCell" customModule="iOS_Ayibopost" customModuleProvider="target">
-                                        <rect key="frame" x="2" y="2" width="150" height="150"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-pw-awh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="122"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-pw-awh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="130"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="130" id="duC-X7-TL4"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="sdH-aG-HbF"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-oV-DwY">
-                                                    <rect key="frame" x="60" y="129" width="31" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-oV-DwY">
+                                                    <rect key="frame" x="64.5" y="138" width="31" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="3FU-uD-zUY"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="BVm-oV-DwY" firstAttribute="top" secondItem="GMI-pw-awh" secondAttribute="bottom" constant="8" id="DQP-ld-J4a"/>
+                                            <constraint firstAttribute="trailing" secondItem="GMI-pw-awh" secondAttribute="trailing" constant="4" id="Pkx-rs-Cz6"/>
+                                            <constraint firstItem="BVm-oV-DwY" firstAttribute="centerX" secondItem="AGK-k0-8Rk" secondAttribute="centerX" id="XNg-5B-xik"/>
+                                            <constraint firstItem="GMI-pw-awh" firstAttribute="leading" secondItem="AGK-k0-8Rk" secondAttribute="leading" id="ZKl-qe-3qu"/>
+                                            <constraint firstItem="GMI-pw-awh" firstAttribute="top" secondItem="AGK-k0-8Rk" secondAttribute="top" id="x28-rl-ZcN"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="imageTeam" destination="GMI-pw-awh" id="r7q-n0-tdA"/>
                                             <outlet property="nameTeam" destination="BVm-oV-DwY" id="QEX-yT-AJL"/>
