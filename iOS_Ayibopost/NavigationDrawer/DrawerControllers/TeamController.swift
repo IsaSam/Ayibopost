@@ -61,27 +61,24 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
      
         collectionView.delegate = self
         collectionView.dataSource = self
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 4
+   /*     let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = layout.minimumInteritemSpacing
         let cellsPerLine: CGFloat = 2
         let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
         let width = (view.frame.size.width - interItemSpacingTotal * 1) / cellsPerLine
-        layout.itemSize = CGSize(width: width, height: width * 3/2)
+        layout.itemSize = CGSize(width: width, height: width * 3/2)*/
    
-/*        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 4
-        layout.minimumLineSpacing = layout.minimumInteritemSpacing
-        let cellsPerLine: CGFloat = 2
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 40
+  /*      let cellsPerLine: CGFloat = 2
         let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
         let width = view.frame.size.width / cellsPerLine - interItemSpacingTotal / cellsPerLine
         layout.itemSize = CGSize(width: width, height: width * 3 / 2)
-     
-        */
-  //      collectionView.delegate = self
+     */
   //      collectionView.insertSubview(refreshControl, at: 0)
-  //      collectionView.dataSource = self
-        
+
         getPost()
         self.navigationController?.navigationBar.isTranslucent = false
     }
