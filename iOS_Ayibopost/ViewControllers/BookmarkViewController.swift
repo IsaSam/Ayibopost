@@ -16,9 +16,6 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     
     var mainViewController:ViewController?
     
- //   var favoritePosts: [Post] = []
-//    var favoritePosts: [[String: Any]] = []
-//    var favoritePosts: [[String: Any]] = []
     var favoritePosts: [[String: Any]]?
     var favoritePosts1: [[String: Any]]?
     var favoritesPosts: [[String: Any]] = []

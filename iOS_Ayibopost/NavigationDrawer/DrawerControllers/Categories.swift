@@ -10,12 +10,7 @@ import UIKit
 
 class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate {
 
-//    @IBOutlet weak var titleLogo: UIButton!
-  //  @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var searchBar: UISearchBar!
- //   @IBOutlet weak var activityIndicat: UIActivityIndicatorView!
     @IBOutlet weak var categoryLabel: UILabel!
- //   @IBOutlet weak var searchButton: UIBarButtonItem!
     
     @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!

@@ -14,7 +14,6 @@
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
-		9681A6AE2214C31400524AD3 /* PolitiqueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9681A6AD2214C31300524AD3 /* PolitiqueCell.swift */; };
 		9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86F22038A2F0054AF55 /* LayoutThree.swift */; };
 		9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87022038A300054AF55 /* LayoutTwo.swift */; };
 		9684A88222038A340054AF55 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A87422038A310054AF55 /* DrawerView.swift */; };
@@ -31,6 +30,8 @@
 		96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */; };
 		96DE418B220F826E0071B456 /* LaunchImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 96DE4188220F826D0071B456 /* LaunchImage.gif */; };
 		96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE4189220F826D0071B456 /* Swift+Gif.swift */; };
+		96E047092235DE36005108E4 /* TeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E047082235DE36005108E4 /* TeamController.swift */; };
+		96E0470D2235E017005108E4 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0470C2235E017005108E4 /* TeamCollectionViewCell.swift */; };
 		96E4A10A22212829003CBA45 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A10922212822003CBA45 /* Post.swift */; };
 		96E4A10C22212842003CBA45 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A10B22212842003CBA45 /* HTTPHandler.swift */; };
 		96E4A10E2221284D003CBA45 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E4A10D2221284D003CBA45 /* BookmarkViewController.swift */; };
@@ -48,7 +49,6 @@
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
-		9681A6AD2214C31300524AD3 /* PolitiqueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolitiqueCell.swift; sourceTree = "<group>"; };
 		9684A86F22038A2F0054AF55 /* LayoutThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThree.swift; sourceTree = "<group>"; };
 		9684A87022038A300054AF55 /* LayoutTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwo.swift; sourceTree = "<group>"; };
 		9684A87422038A310054AF55 /* DrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		96DE4187220F826D0071B456 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		96DE4188220F826D0071B456 /* LaunchImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LaunchImage.gif; sourceTree = "<group>"; };
 		96DE4189220F826D0071B456 /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
+		96E047082235DE36005108E4 /* TeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamController.swift; sourceTree = "<group>"; };
+		96E0470C2235E017005108E4 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		96E4A10922212822003CBA45 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		96E4A10B22212842003CBA45 /* HTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
 		96E4A10D2221284D003CBA45 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -142,17 +144,18 @@
 				9684A87622038A330054AF55 /* DrawerCell.swift */,
 				9684A87722038A330054AF55 /* DrawerCell.xib */,
 				9684A8AC2204CF540054AF55 /* CategoryCell.swift */,
-				9681A6AD2214C31300524AD3 /* PolitiqueCell.swift */,
+				96E0470C2235E017005108E4 /* TeamCollectionViewCell.swift */,
 			);
 			path = DrawerCell;
 			sourceTree = "<group>";
 		};
-		9681A6A722149C1400524AD3 /* CategoriesControllers */ = {
+		9681A6A722149C1400524AD3 /* DrawerControllers */ = {
 			isa = PBXGroup;
 			children = (
 				9684A8A0220415320054AF55 /* Categories.swift */,
+				96E047082235DE36005108E4 /* TeamController.swift */,
 			);
-			path = CategoriesControllers;
+			path = DrawerControllers;
 			sourceTree = "<group>";
 		};
 		9681A6A822149C4500524AD3 /* Drawer */ = {
@@ -207,7 +210,7 @@
 			children = (
 				9681A6A922149C5F00524AD3 /* TabControllers */,
 				9681A6A822149C4500524AD3 /* Drawer */,
-				9681A6A722149C1400524AD3 /* CategoriesControllers */,
+				9681A6A722149C1400524AD3 /* DrawerControllers */,
 				9681A6A622149BCC00524AD3 /* DrawerCell */,
 				9684A8982203F0990054AF55 /* Info.plist */,
 				9684A8992203F0EF0054AF55 /* Info.plist */,
@@ -367,6 +370,7 @@
 				96E4A10A22212829003CBA45 /* Post.swift in Sources */,
 				963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */,
 				96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */,
+				96E0470D2235E017005108E4 /* TeamCollectionViewCell.swift in Sources */,
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
 				96E4A10C22212842003CBA45 /* HTTPHandler.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
@@ -375,7 +379,7 @@
 				9684A88222038A340054AF55 /* DrawerView.swift in Sources */,
 				9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */,
 				9684A8A1220415320054AF55 /* Categories.swift in Sources */,
-				9681A6AE2214C31400524AD3 /* PolitiqueCell.swift in Sources */,
+				96E047092235DE36005108E4 /* TeamController.swift in Sources */,
 				963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */,
 				963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */,
 				96E4A10E2221284D003CBA45 /* BookmarkViewController.swift in Sources */,
