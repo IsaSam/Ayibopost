@@ -1065,28 +1065,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-pw-awh">
-                                                    <rect key="frame" x="0.0" y="-1" width="156" height="132"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="130"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="130" id="duC-X7-TL4"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="sdH-aG-HbF"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-oV-DwY">
-                                                    <rect key="frame" x="63" y="138" width="34.5" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-oV-DwY">
+                                                    <rect key="frame" x="7" y="138" width="141" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="3FU-uD-zUY"/>
+                                                        <constraint firstAttribute="width" constant="141" id="Dzb-yz-yjx"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="p6L-pC-rpU"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="BVm-oV-DwY" firstAttribute="top" secondItem="GMI-pw-awh" secondAttribute="bottom" constant="8" id="DQP-ld-J4a"/>
                                             <constraint firstAttribute="trailing" secondItem="GMI-pw-awh" secondAttribute="trailing" constant="4" id="Pkx-rs-Cz6"/>
-                                            <constraint firstItem="BVm-oV-DwY" firstAttribute="centerX" secondItem="AGK-k0-8Rk" secondAttribute="centerX" id="XNg-5B-xik"/>
+                                            <constraint firstItem="BVm-oV-DwY" firstAttribute="centerX" secondItem="AGK-k0-8Rk" secondAttribute="centerX" constant="-2" id="XNg-5B-xik"/>
                                             <constraint firstItem="GMI-pw-awh" firstAttribute="leading" secondItem="AGK-k0-8Rk" secondAttribute="leading" id="ZKl-qe-3qu"/>
                                             <constraint firstItem="GMI-pw-awh" firstAttribute="top" secondItem="AGK-k0-8Rk" secondAttribute="top" id="x28-rl-ZcN"/>
                                         </constraints>
@@ -1145,7 +1145,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4026" y="-697"/>
+            <point key="canvasLocation" x="3830.625" y="-708.80281690140851"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LXf-0u-yhQ">
