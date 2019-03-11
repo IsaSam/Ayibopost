@@ -34,6 +34,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var categori: String?
     var categoryName: String?
     var refreshControl: UIRefreshControl!
+    var titleAuthor = ""
+    var authorArray: [String] = []
     
     var delegate: BookmarkViewController!
     
@@ -61,13 +63,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
      
         collectionView.delegate = self
         collectionView.dataSource = self
-   /*     let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = layout.minimumInteritemSpacing
-        let cellsPerLine: CGFloat = 2
-        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
-        let width = (view.frame.size.width - interItemSpacingTotal * 1) / cellsPerLine
-        layout.itemSize = CGSize(width: width, height: width * 3/2)*/
    
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
@@ -112,7 +107,10 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     private func getPost(){
         
         self.activityIndicatory.startAnimating() //====================
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+     
+ //        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+          
+          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/pages") { (result, error) in
             
             if error != nil{
                 // print(error!)
@@ -124,7 +122,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
                 
                 return
             }
-            //print(result!)
+         //   print(result!)
             self.posts = result!
             self.collectionView.reloadData() // to tell table about new data
             self.activityIndicatory.stopAnimating() //====================
@@ -141,11 +139,37 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
         let post = posts[indexPath.row]
+        let id = post["ID"] as? Int
+     
+     let htmlTag = post["content"] as! String
+     let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+ //    contentLabel.text = content
+      if id == 15790 {
+      print("content 1 |||||||||||||||||||||||||||||||||||||||||||")
+      //print(content)
+       authorArray.append(content)
+       print(authorArray)
+      print("yes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+ //       let htmlTag = post["content"] as! String
+        let html2 = htmlTag.allStringsBetween(start: "<span class=", end: "</span>")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+         guard let range = Range(match.range, in: input) else { continue }
+         let title = input[range]
+         if title != ""{
+          titleAuthor = String(title)
+          print(titleAuthor)
+         }
+         //     urlYou = String(input[range])
+        }
+     //<<<<<<<<<<<,
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
-        cell.nameTeam.text = post["title"] as? String
+ //       cell.nameTeam.text = post["title"] as? String
         
-        
+       /*
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
@@ -176,7 +200,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
             imagePost1 = cell.imageTeam
             imagePost2 = cell.imageTeam.image
         }
-        
+        */
+     }
         return cell
     }
     
