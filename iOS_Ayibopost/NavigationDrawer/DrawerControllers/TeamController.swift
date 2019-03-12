@@ -92,7 +92,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
-        getPost()
+       // getPost()
+     fetchName()
     }
     
     @IBAction func actShowMenu(_ sender: Any) {
@@ -122,9 +123,15 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     print(error.localizedDescription)
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-    print(dataDictionary)
+ //   print(dataDictionary)
  //   self.posts = dataDictionary["content"] as! [[String: Any]]
    // print(self.posts)
+    self.posts = [dataDictionary]
+//    let content = (self.posts as AnyObject).value(forKey: "content")
+//    for item in dataDictionary{
+     
+  //  }
+ //   print(content!)
     self.collectionView.reloadData()
     
    }
@@ -133,6 +140,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   task.resume()
   //activityIndicator.stopAnimating()
  }
+ /*
     private func getPost(){
         
         self.activityIndicatory.startAnimating() //====================
@@ -159,7 +167,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         self.refreshControl.endRefreshing()
         self.activityIndicatory.stopAnimating()
         
-    }
+    }*/
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return self.posts.count
     }
