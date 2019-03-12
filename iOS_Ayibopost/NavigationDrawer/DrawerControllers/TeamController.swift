@@ -135,75 +135,44 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
             return self.posts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-        let post = posts[indexPath.row]
-        let id = post["ID"] as? Int
-     
-     let htmlTag = post["content"] as! String
-     let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
- //    contentLabel.text = content
-      if id == 15790 {
-      print("content 1 |||||||||||||||||||||||||||||||||||||||||||")
-      //print(content)
-       authorArray.append(content)
-       print(authorArray)
-      print("yes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
- //       let htmlTag = post["content"] as! String
-        let html2 = htmlTag.allStringsBetween(start: "<span class=", end: "</span>")
-        let input = String(describing: html2)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        for match in matches {
-         guard let range = Range(match.range, in: input) else { continue }
-         let title = input[range]
-         if title != ""{
-          titleAuthor = String(title)
-          print(titleAuthor)
-         }
-         //     urlYou = String(input[range])
-        }
-     //<<<<<<<<<<<,
-        let urlPost = post["link"] as! String
-        urlPost1 = urlPost as String
- //       cell.nameTeam.text = post["title"] as? String
-        
-       /*
-        do{
-            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
-            let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
-            let remoteImageUrlString = imgPosts[indexPath.row]
-            let imageURL = remoteImageUrlString["source"] as? String
-            //print(imageURL!)
-            
-            let url = URL(string: imageURL!)
-            cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    print("placeholder image...")
-                    cell.imageTeam.image = UIImage(named: "placeholderImage.png")
-                } else {
-                    print("Success let using the image...")
-                    cell.imageTeam.sd_setImage(with: url)
-                }
-            })
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
-                cell.imageTeam.af_setImage(withURL: imgUrl)
-            }
-            else{
-                cell.imageTeam.image = nil
-            }
-            //  imgShare = cell.imagePost.image
-            imagePost1 = cell.imageTeam
-            imagePost2 = cell.imageTeam.image
-        }
-        */
-     }
-        return cell
-    }
+ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  
+  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
+  let post = posts[indexPath.row]
+  let id = post["ID"] as? Int
+  
+  let htmlTag = post["content"] as! String
+  let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
+  //    contentLabel.text = content
+  if id == 15790 {
+   print("content 1 |||||||||||||||||||||||||||||||||||||||||||")
+   //   print("\(content)")
+   //  let fullName    = "First Last Thing"
+   //     let fullNameArr: [String] = []
+   let fullNameArr = content.components(separatedBy: "         ")
+   
+   let size = fullNameArr.count - 1
+   
+   for i in 0...size{
+    let name = fullNameArr[i]
+    print("\(name)^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\(i)")
+    authorArray.append(name)
+   }
+   
+   let urlPost = post["link"] as! String
+   urlPost1 = urlPost as String
+   for item in authorArray{
+    //print(item)
+   // print(authorArray)
+    cell.nameTeam.text = item
+
+    
+   }
+   
+  }
+  
+  return cell
+ }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
