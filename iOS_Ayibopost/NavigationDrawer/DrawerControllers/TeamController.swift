@@ -37,6 +37,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var titleAuthor = ""
     var authorArray: [String] = []
  var authorArray2: [[String: Any]] = []
+     var urlImage = ""
     
     var delegate: BookmarkViewController!
     
@@ -106,6 +107,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     func pushTo(viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+ 
  func fetchName(){
   //activityIndicator.startAnimating()
   
@@ -116,7 +118,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   let task = session.dataTask(with: request) {(data, response, error) in
    //-- This will run when the network request returns
    if let error = error{
-    let errorAlertController = UIAlertController(title: "Cannot Get Movies", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+    let errorAlertController = UIAlertController(title: "Cannot Get Datas", message: "The Internet connections appears to be offline", preferredStyle: .alert)
     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
     errorAlertController.addAction(cancelAction)
     self.present(errorAlertController, animated: true)
@@ -135,6 +137,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
 //      self.posts.append(item)
       for item in self.posts{
        let htmlTag = item["content"] as! String
+       let htmlTag1 = htmlTag
        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
        let fullNameArr = content.components(separatedBy: "         ")
        
@@ -144,6 +147,52 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let name = fullNameArr[i]
         //print(name)
         self.authorArray.append(name)
+
+        
+        //////
+        let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175")
+        let input = String(describing: html2)
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        for match in matches {
+         guard let range = Range(match.range, in: input) else { continue }
+         let urlImg = input[range]
+//         if urlImg != ""{
+          self.urlImage = String(urlImg)
+         
+
+
+         
+    /*     let htmlTag = self.urlImage
+         let occ = "' class=\\'avatar avatar-175 photo\\' height=\\'175\\' width=\\'175\\"
+          let content = htmlTag.replacingOccurrences(of: "\(occ)", with: " ", options: .regularExpression, range: nil)
+   
+         print(content)*/
+         //     let fullNameArr = content.components(separatedBy: "         ")
+          
+       //   let size = fullNameArr.count - 1
+          
+     //     for i in 0...size{
+       //    let name = fullNameArr[i]
+  //       }
+      /*   let html3 = self.urlImage.allStringsBetween(start: "http:// ", end: "/>")
+         let input = String(describing: html2)
+         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+         let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+         for match in matches {
+          guard let range = Range(match.range, in: input) else { continue }
+          let urlImg = input[range]
+         */
+      //   let urlImage1 = self.urlImage.replacingOccurrences(of: "\\' class=\\'avatar avatar-175 photo\\' height=\\'175\\' width=\\'175\\", with: "", options: .regularExpression, range: nil)
+         
+        
+         
+ //        }
+         //     urlYou = String(input[range])
+                  print(self.urlImage)
+        }
+        
+        
         self.collectionView.reloadData() // to tell table about new data
        }
       }
@@ -268,3 +317,4 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     
 
 }
+
