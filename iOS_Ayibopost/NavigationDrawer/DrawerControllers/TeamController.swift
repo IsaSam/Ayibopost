@@ -118,7 +118,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
                 let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
-                print(error!)
+              //  print(error!)
                 
                 return
             }
