@@ -36,6 +36,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var refreshControl: UIRefreshControl!
     var titleAuthor = ""
     var authorArray: [String] = []
+ var authorArray2: [[String: Any]] = []
     
     var delegate: BookmarkViewController!
     
@@ -74,7 +75,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
      */
   //      collectionView.insertSubview(refreshControl, at: 0)
 
-        getPost()
+    //    getPost()
+        fetchName()
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -103,14 +105,41 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     func pushTo(viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+ func fetchName(){
+  //activityIndicator.startAnimating()
+  
+  let url = URL(string: "https://ayibopost.com/wp-json/pages/about-us/lequipe/")!
+  
+  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+  let task = session.dataTask(with: request) {(data, response, error) in
+   //-- This will run when the network request returns
+   if let error = error{
+    let errorAlertController = UIAlertController(title: "Cannot Get Movies", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+    errorAlertController.addAction(cancelAction)
+    self.present(errorAlertController, animated: true)
+    print(error.localizedDescription)
+   } else if let data = data,
+    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+    print(dataDictionary)
+ //   self.posts = dataDictionary["content"] as! [[String: Any]]
+   // print(self.posts)
+    self.collectionView.reloadData()
     
+   }
+   //self.refreshControl.endRefreshing()
+  }
+  task.resume()
+  //activityIndicator.stopAnimating()
+ }
     private func getPost(){
         
         self.activityIndicatory.startAnimating() //====================
      
  //        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
           
-          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/pages") { (result, error) in
+          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/pages/about-us/lequipe") { (result, error) in
             
             if error != nil{
                 // print(error!)
