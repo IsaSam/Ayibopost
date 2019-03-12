@@ -124,17 +124,45 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
  //   print(dataDictionary)
- //   self.posts = dataDictionary["content"] as! [[String: Any]]
+  //  self.posts = dataDictionary["content"] as! [[String: Any]]
    // print(self.posts)
-    self.posts = [dataDictionary]
+    
+    
+ //   do{
+//     for item in dataDictionary
+//     {
+      self.posts = [dataDictionary]
+//      self.posts.append(item)
+      for item in self.posts{
+       let htmlTag = item["content"] as! String
+       let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
+       let fullNameArr = content.components(separatedBy: "         ")
+       
+       let size = fullNameArr.count - 1
+       
+       for i in 0...size{
+        let name = fullNameArr[i]
+        //print(name)
+        self.authorArray.append(name)
+        self.collectionView.reloadData() // to tell table about new data
+       }
+      }
+//     }
+//     self.authorArray2 = self.authorArray
+
+    }
+    
+    
+    
+//    self.posts = [dataDictionary]
 //    let content = (self.posts as AnyObject).value(forKey: "content")
 //    for item in dataDictionary{
      
   //  }
  //   print(content!)
-    self.collectionView.reloadData()
+   ////////// self.collectionView.reloadData()
     
-   }
+ //  }
    //self.refreshControl.endRefreshing()
   }
   task.resume()
@@ -169,16 +197,17 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         
     }*/
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return self.posts.count
+            return self.authorArray.count
     }
     
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-  let post = posts[indexPath.row]
-  let id = post["ID"] as? Int
+  let post = authorArray[indexPath.row]
+  cell.nameTeam.text = post
+ // let id = post["ID"] as? Int
   
-  let htmlTag = post["content"] as! String
+/*  let htmlTag = post["content"] as! String
   let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
   //    contentLabel.text = content
   if id == 15790 {
@@ -192,22 +221,18 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    
    for i in 0...size{
     let name = fullNameArr[i]
-    print("\(name)^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\(i)")
+    print("\(name)---\(i)")
     authorArray.append(name)
    }
-   
-   let urlPost = post["link"] as! String
-   urlPost1 = urlPost as String
-   for item in authorArray{
-    //print(item)
+   */
+  // let urlPost = post["link"] as! String
+ //  urlPost1 = urlPost as String
+/*   for item in authorArray{
+    print(item)
    // print(authorArray)
-    cell.nameTeam.text = item
-
-    
+  //  cell.nameTeam.text = item
    }
-   
-  }
-  
+  */
   return cell
  }
     
