@@ -36,8 +36,9 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var refreshControl: UIRefreshControl!
     var titleAuthor = ""
     var authorArray: [String] = []
- var authorArray2: [[String: Any]] = []
-     var urlImage = ""
+    var authorArray2: [[String: Any]] = []
+    var urlImage = ""
+    var urlImage1: String?
     
     var delegate: BookmarkViewController!
     
@@ -150,17 +151,21 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
 
         
         //////
-        let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175")
-        let input = String(describing: html2)
+        let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175'")
+       let input = String(describing: html2)
+  //      let inputURL = input.replacingOccurrences(of: "'\'", with: " ", options: .regularExpression, range: nil)
+        let convertedStr = input.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        let matches = detector.matches(in: convertedStr, options: [], range: NSRange(location: 0, length: convertedStr.utf16.count))
         for match in matches {
-         guard let range = Range(match.range, in: input) else { continue }
-         let urlImg = input[range]
+         guard let range = Range(match.range, in: convertedStr) else { continue }
+         let urlImg = convertedStr[range]
 //         if urlImg != ""{
           self.urlImage = String(urlImg)
          
-
+         
+     //    self.urlImage1 = self.urlImage
+          
 
          
     /*     let htmlTag = self.urlImage
@@ -254,6 +259,26 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
   let post = authorArray[indexPath.row]
   cell.nameTeam.text = post
+  
+  let url = URL(string: urlImage)
+  cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+   if ((error) != nil) {
+    print("placeholder image...")
+    cell.imageTeam.image = UIImage(named: "placeholderImage.png")
+   } else {
+    print("Success let using the image...")
+    cell.imageTeam.sd_setImage(with: url)
+   }
+  })
+  if let imagePath = urlImage1,
+   let imgUrl = URL(string:  imagePath){
+   cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
+   cell.imageTeam.af_setImage(withURL: imgUrl)
+  }
+  else{
+      cell.imageTeam.image = nil
+  }
+  
  // let id = post["ID"] as? Int
   
 /*  let htmlTag = post["content"] as! String
