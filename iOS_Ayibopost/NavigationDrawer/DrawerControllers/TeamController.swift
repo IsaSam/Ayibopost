@@ -71,14 +71,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
-  /*      let cellsPerLine: CGFloat = 2
-        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
-        let width = view.frame.size.width / cellsPerLine - interItemSpacingTotal / cellsPerLine
-        layout.itemSize = CGSize(width: width, height: width * 3 / 2)
-     */
-  //      collectionView.insertSubview(refreshControl, at: 0)
-
-    //    getPost()
         fetchName()
         self.navigationController?.navigationBar.isTranslucent = false
     }
@@ -127,19 +119,10 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     print(error.localizedDescription)
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
- //   print(dataDictionary)
-  //  self.posts = dataDictionary["content"] as! [[String: Any]]
-   // print(self.posts)
-    
-    
- //   do{
-//     for item in dataDictionary
-//     {
+
       self.posts = [dataDictionary]
-//      self.posts.append(item)
       for item in self.posts{
        let htmlTag = item["content"] as! String
-       let htmlTag1 = htmlTag
        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
        let fullNameArr = content.components(separatedBy: "         ")
        
@@ -147,67 +130,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
        
        for i in 0...size{
         let name = fullNameArr[i]
-        //print(name)
+        print(name)
         self.authorArray.append(name)
-
-        
-        //////
-        let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175'")
-       let input = String(describing: html2)
-  //      let inputURL = input.replacingOccurrences(of: "'\'", with: " ", options: .regularExpression, range: nil)
-        let convertedStr = input.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: convertedStr, options: [], range: NSRange(location: 0, length: convertedStr.utf16.count))
-        for match in matches {
-         guard let range = Range(match.range, in: convertedStr) else { continue }
-         let urlImg = convertedStr[range]
-//         if urlImg != ""{
-         let fullImgArr = urlImg.components(separatedBy: "")
-         self.urlImage = String(urlImg)
-         
-         let size = fullImgArr.count - 1
-         for i in 0...size{
-          let img = fullImgArr[i]
-          self.authorImgArray.append(img)
-          
-    //     for item in self.urlImage!{
-    //         self.authorImgArray.append(item)
-         }
-         
-         
-     //    self.urlImage1 = self.urlImage
-          
-
-         
-    /*     let htmlTag = self.urlImage
-         let occ = "' class=\\'avatar avatar-175 photo\\' height=\\'175\\' width=\\'175\\"
-          let content = htmlTag.replacingOccurrences(of: "\(occ)", with: " ", options: .regularExpression, range: nil)
-   
-         print(content)*/
-         //     let fullNameArr = content.components(separatedBy: "         ")
-          
-       //   let size = fullNameArr.count - 1
-          
-     //     for i in 0...size{
-       //    let name = fullNameArr[i]
-  //       }
-      /*   let html3 = self.urlImage.allStringsBetween(start: "http:// ", end: "/>")
-         let input = String(describing: html2)
-         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-         let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-         for match in matches {
-          guard let range = Range(match.range, in: input) else { continue }
-          let urlImg = input[range]
-         */
-      //   let urlImage1 = self.urlImage.replacingOccurrences(of: "\\' class=\\'avatar avatar-175 photo\\' height=\\'175\\' width=\\'175\\", with: "", options: .regularExpression, range: nil)
-         
-        
-         
- //        }
-         //     urlYou = String(input[range])
-               //   print(self.urlImage)
-        }
-        
         
         self.collectionView.reloadData() // to tell table about new data
        }
@@ -216,51 +140,12 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
 //     self.authorArray2 = self.authorArray
 
     }
-    
-    
-    
-//    self.posts = [dataDictionary]
-//    let content = (self.posts as AnyObject).value(forKey: "content")
-//    for item in dataDictionary{
-     
-  //  }
- //   print(content!)
-   ////////// self.collectionView.reloadData()
-    
- //  }
-   //self.refreshControl.endRefreshing()
+   
   }
   task.resume()
   //activityIndicator.stopAnimating()
  }
- /*
-    private func getPost(){
-        
-        self.activityIndicatory.startAnimating() //====================
-     
- //        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-          
-          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/pages/about-us/lequipe") { (result, error) in
-            
-            if error != nil{
-                // print(error!)
-                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-                errorAlertController.addAction(cancelAction)
-                self.present(errorAlertController, animated: true)
-              //  print(error!)
-                
-                return
-            }
-         //   print(result!)
-            self.posts = result!
-            self.collectionView.reloadData() // to tell table about new data
-            self.activityIndicatory.stopAnimating() //====================
-        }
-        self.refreshControl.endRefreshing()
-        self.activityIndicatory.stopAnimating()
-        
-    }*/
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return self.authorArray.count
     }
@@ -269,84 +154,16 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
   let post = authorArray[indexPath.row]
-  let post2 = authorImgArray[indexPath.row]
+ // let post2 = authorImgArray[indexPath.row]
   cell.nameTeam.text = post
-  
- // let url = URL(string: urlImage!)
-  let url = URL(string: post2)
-  cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-   if ((error) != nil) {
-    print("placeholder image...")
-  //  cell.imageTeam.image = UIImage(named: "placeholderImage.png")
-   } else {
-    print("Success let using the image...")
-    cell.imageTeam.sd_setImage(with: url)
-   }
-  })
-  if let imagePath = urlImage1,
-   let imgUrl = URL(string:  imagePath){
- //  cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
-   cell.imageTeam.af_setImage(withURL: imgUrl)
-  }
-  else{
-   //   cell.imageTeam.image = nil
-  }
-  
- // let id = post["ID"] as? Int
-  
-/*  let htmlTag = post["content"] as! String
-  let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
-  //    contentLabel.text = content
-  if id == 15790 {
-   print("content 1 |||||||||||||||||||||||||||||||||||||||||||")
-   //   print("\(content)")
-   //  let fullName    = "First Last Thing"
-   //     let fullNameArr: [String] = []
-   let fullNameArr = content.components(separatedBy: "         ")
-   
-   let size = fullNameArr.count - 1
-   
-   for i in 0...size{
-    let name = fullNameArr[i]
-    print("\(name)---\(i)")
-    authorArray.append(name)
-   }
-   */
-  // let urlPost = post["link"] as! String
- //  urlPost1 = urlPost as String
-/*   for item in authorArray{
-    print(item)
-   // print(authorArray)
-  //  cell.nameTeam.text = item
-   }
-  */
+
   return cell
  }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-    
-  /*  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ViewFav3" {
-            print("Bookmarks View segue")
-            let controller = segue.destination as! BookmarkViewController
-        }
-        else{/*
-            print("DetailsPost View segue")
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPath(for: cell)
-            let post = posts[(indexPath?.row)!]
-            let imgPost = imgPosts[(indexPath?.row)!]
-            let nameString = byName[(indexPath?.row)!]
-            let detailViewController = segue.destination as! DetailsPostViewController
-            detailViewController.post = post
-            detailViewController.imgPost = imgPost
-            detailViewController.nameString = nameString
-           */
-        }
-    }*/
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
