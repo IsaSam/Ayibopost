@@ -201,17 +201,16 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   */
   
   else{
-   for v in byName{
-      let n = v["name"] as? String
+   for authorPost in byName{
+      let authorPostName = authorPost["name"] as? String
  //  }
-   for item in authorArray1{
-         //print(item)
-    if item == n{
-        print("item\(item)")
-        print("Trouve \(n!) and path \(indexPath.row)")
+   for author in authorArray1{
+    if author == authorPostName{
+        print("item\(author)")
+        print("Trouve \(authorPostName!) and path \(indexPath.row)")
     }else{
-        print("item\(item)")
-        print("item\(n!)")
+        print("item\(author)")
+        print("item\(authorPostName!)")
         print("-------")
     }
    }
