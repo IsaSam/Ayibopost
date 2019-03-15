@@ -201,13 +201,19 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   */
   
   else{
+ //  authorArray.append("")
    for authorPost in byName{
       let authorPostName = authorPost["name"] as? String
  //  }
    for author in authorArray1{
     if author == authorPostName{
+     if authorArray.contains(author){
+      
+     }else{
         print("item\(author)")
-        print("Trouve \(authorPostName!) and path \(indexPath.row)")
+        print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!) and path \(indexPath.row)")
+        authorArray.append(author)
+     }
     }else{
         print("item\(author)")
         print("item\(authorPostName!)")
