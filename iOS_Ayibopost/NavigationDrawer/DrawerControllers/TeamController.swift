@@ -215,13 +215,14 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         authorArray.append(author)
      }
     }else{
-        print("item\(author)")
+      /*  print("item\(author)")
         print("item\(authorPostName!)")
-        print("-------")
+        print("-------")*/
     }
    }
   }
   }
+  print(authorArray)
   
   return cell
  }
