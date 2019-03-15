@@ -18,6 +18,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionView: UICollectionView!
     
     var posts: [[String: Any]] = []
+    var posts1: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var urlPost1: String?
     var loadNumber = 20
@@ -36,8 +37,10 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var refreshControl: UIRefreshControl!
     var titleAuthor = ""
     var authorArray: [String] = []
+    var authorArray1: [String] = []
     var authorArray2: [[String: Any]] = []
     var authorImgArray: [String] = []
+    var byName: [[String: Any]] = []
  var urlImage: String?
     var urlImage1: String?
     
@@ -53,7 +56,10 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         self.performSegue(withIdentifier: "ViewFav3", sender: self)
         //    storeData()
     }
-    
+ 
+ override func viewWillAppear(_ animated: Bool) {
+  fetchName()
+ }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +67,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     //    self.collectionView.reloadSections(IndexSet(integer: 0))
      
         topBarLogo()
-        
+     
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(TeamController.didPullToRefresh(_:)), for: .valueChanged)
      
@@ -71,7 +77,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
-        fetchName()
+ //       fetchName()
+     fetchTeamNamePosts()
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -88,7 +95,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
        // getPost()
-     fetchName()
+ //    fetchName()
     }
     
     @IBAction func actShowMenu(_ sender: Any) {
@@ -120,8 +127,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
 
-      self.posts = [dataDictionary]
-      for item in self.posts{
+      self.posts1 = [dataDictionary]
+      for item in self.posts1{
        let htmlTag = item["content"] as! String
        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
        let fullNameArr = content.components(separatedBy: "         ")
@@ -130,14 +137,12 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
        
        for i in 0...size{
         let name = fullNameArr[i]
-        print(name)
-        self.authorArray.append(name)
+   //     print(name)
+        self.authorArray1.append(name)
         
-        self.collectionView.reloadData() // to tell table about new data
+  //      self.collectionView.reloadData() // to tell table about new data
        }
       }
-//     }
-//     self.authorArray2 = self.authorArray
 
     }
    
@@ -145,18 +150,53 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   task.resume()
   //activityIndicator.stopAnimating()
  }
+ 
+ func fetchTeamNamePosts(){
+   
+   self.activityIndicatory.startAnimating() //====================
+   //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=7") { (result, error) in
+    
+    if error != nil{
+     let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+     errorAlertController.addAction(cancelAction)
+     self.present(errorAlertController, animated: true)
+     return
+    }
+    self.posts = result!
+   // print(self.posts)
+    self.collectionView.reloadData() // to tell table about new data
+ //   self.activityIndicatory.stopAnimating() //====================
+   }
+ //  self.refreshControl.endRefreshing()
+ //  self.activityIndicatory.stopAnimating()
+  }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return self.authorArray.count
+        //    return self.authorArray.count
+     return self.posts.count
     }
     
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-  let post = authorArray[indexPath.row]
- // let post2 = authorImgArray[indexPath.row]
-  cell.nameTeam.text = post
-
+ // let post = authorArray[indexPath.row]
+ // cell.nameTeam.text = post
+  
+  let post = posts[indexPath.row]
+  //author name
+  let author = (posts as AnyObject).value(forKey: "author")
+  let dataDicAuthor = author as? [[String: Any]]
+  self.byName = dataDicAuthor!
+  let nameString = byName[indexPath.row]
+  let authorName = nameString["first_name"] as? String
+  if authorName == "Guest author"{
+  // cell.authorNameLabel.text = "By Guest"
+   print("By Guest")
+  }else if authorName == "Jameson"{
+      print("\(authorName!)\(indexPath.row)")
+  }else{}
   return cell
  }
     
