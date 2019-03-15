@@ -194,9 +194,30 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   if authorName == "Guest author"{
   // cell.authorNameLabel.text = "By Guest"
    print("By Guest")
-  }else if authorName == "Jameson"{
+  }
+ /* else if authorName == "Jameson"{
       print("\(authorName!)\(indexPath.row)")
   }else{}
+  */
+  
+  else{
+   for v in byName{
+      let n = v["name"] as? String
+ //  }
+   for item in authorArray1{
+         //print(item)
+    if item == n{
+        print("item\(item)")
+        print("Trouve \(n!) and path \(indexPath.row)")
+    }else{
+        print("item\(item)")
+        print("item\(n!)")
+        print("-------")
+    }
+   }
+  }
+  }
+  
   return cell
  }
     
