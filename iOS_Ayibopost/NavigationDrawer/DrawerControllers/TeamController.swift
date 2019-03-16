@@ -200,8 +200,9 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
           print("item\(authorPostName!)")
           print("-------")*/
         }
-        print(self.authorArray)
+
        }
+               print(self.authorArray)
       }
      }
     }
@@ -219,14 +220,14 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //    return self.authorArray.count
-     return self.posts.count
+     return self.authorArray.count
     }
     
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
- // let post = authorArray[indexPath.row]
- // cell.nameTeam.text = post
+  let post = authorArray[indexPath.row]
+  cell.nameTeam.text = post
   
  // let post = authorArray[indexPath.row]
   //author name
