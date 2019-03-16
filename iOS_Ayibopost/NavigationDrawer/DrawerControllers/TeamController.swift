@@ -185,6 +185,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
       //  authorArray.append("")
       for authorPost in self.byName{
        let authorPostName = authorPost["name"] as? String
+ //      let authorPostImg = authorPost["avatar"]
        //  }
        for author in self.authorArray1{
         if author == authorPostName{
@@ -194,6 +195,11 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
           print("item\(author)")
           print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!)")
           self.authorArray.append(author)
+          //image
+          let imageURL = authorPost["avatar"] as? String
+          self.authorImgArray.append(imageURL!)
+          
+
          }
         }else{
          /*  print("item\(author)")
@@ -227,7 +233,30 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
   let post = authorArray[indexPath.row]
+  let post2 = authorImgArray[indexPath.row]
+  
   cell.nameTeam.text = post
+  
+  // let url = URL(string: urlImage!)
+  let url = URL(string: post2)
+  cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+   if ((error) != nil) {
+    print("placeholder image...")
+    //  cell.imageTeam.image = UIImage(named: "placeholderImage.png")
+   } else {
+    print("Success let using the image...")
+    cell.imageTeam.sd_setImage(with: url)
+   }
+  })
+  if let imagePath = urlImage1,
+   let imgUrl = URL(string:  imagePath){
+   //  cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
+   cell.imageTeam.af_setImage(withURL: imgUrl)
+  }
+  else{
+   //   cell.imageTeam.image = nil
+  }
+  
   
  // let post = authorArray[indexPath.row]
   //author name
