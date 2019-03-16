@@ -166,6 +166,50 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     }
     self.posts = result!
    // print(self.posts)
+    
+    let author = (self.posts as AnyObject).value(forKey: "author")
+    let dataDicAuthor = author as? [[String: Any]]
+    self.byName = dataDicAuthor!
+//    let nameString = byName[indexPath.row]
+    for nameString in self.byName{
+     let authorName = nameString["first_name"] as? String
+     if authorName == "Guest author"{
+      // cell.authorNameLabel.text = "By Guest"
+      print("By Guest")
+     }
+      /* else if authorName == "Jameson"{
+       print("\(authorName!)\(indexPath.row)")
+       }else{}
+       */
+     else{
+      //  authorArray.append("")
+      for authorPost in self.byName{
+       let authorPostName = authorPost["name"] as? String
+       //  }
+       for author in self.authorArray1{
+        if author == authorPostName{
+         if self.authorArray.contains(author){
+          
+         }else{
+          print("item\(author)")
+          print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!)")
+          self.authorArray.append(author)
+         }
+        }else{
+         /*  print("item\(author)")
+          print("item\(authorPostName!)")
+          print("-------")*/
+        }
+        print(self.authorArray)
+       }
+      }
+     }
+    }
+    
+
+
+    
+    
     self.collectionView.reloadData() // to tell table about new data
  //   self.activityIndicatory.stopAnimating() //====================
    }
@@ -184,47 +228,9 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
  // let post = authorArray[indexPath.row]
  // cell.nameTeam.text = post
   
-  let post = posts[indexPath.row]
+ // let post = authorArray[indexPath.row]
   //author name
   let id = 0
-  
-  let author = (posts as AnyObject).value(forKey: "author")
-  let dataDicAuthor = author as? [[String: Any]]
-  self.byName = dataDicAuthor!
-  let nameString = byName[indexPath.row]
-  let authorName = nameString["first_name"] as? String
-  if authorName == "Guest author"{
-  // cell.authorNameLabel.text = "By Guest"
-   print("By Guest")
-  }
- /* else if authorName == "Jameson"{
-      print("\(authorName!)\(indexPath.row)")
-  }else{}
-  */
-  else{
- //  authorArray.append("")
-   for authorPost in byName{
-      let authorPostName = authorPost["name"] as? String
- //  }
-   for author in authorArray1{
-    if author == authorPostName{
-     if authorArray.contains(author){
-      
-     }else{
-        print("item\(author)")
-        print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!) and path \(indexPath.row)")
-        authorArray.append(author)
-        cell.nameTeam.text = author
-     }
-    }else{
-      /*  print("item\(author)")
-        print("item\(authorPostName!)")
-        print("-------")*/
-    }
-   }
-  }
-  }
-  print(authorArray)
 
   
   return cell
