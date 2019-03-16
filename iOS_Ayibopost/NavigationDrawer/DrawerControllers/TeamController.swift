@@ -186,6 +186,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   
   let post = posts[indexPath.row]
   //author name
+  let id = 0
+  
   let author = (posts as AnyObject).value(forKey: "author")
   let dataDicAuthor = author as? [[String: Any]]
   self.byName = dataDicAuthor!
@@ -199,7 +201,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
       print("\(authorName!)\(indexPath.row)")
   }else{}
   */
-  
   else{
  //  authorArray.append("")
    for authorPost in byName{
@@ -213,6 +214,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         print("item\(author)")
         print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!) and path \(indexPath.row)")
         authorArray.append(author)
+        cell.nameTeam.text = author
      }
     }else{
       /*  print("item\(author)")
@@ -223,6 +225,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   }
   }
   print(authorArray)
+
   
   return cell
  }
