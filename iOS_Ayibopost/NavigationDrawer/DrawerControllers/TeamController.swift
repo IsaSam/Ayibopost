@@ -56,11 +56,11 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         self.performSegue(withIdentifier: "ViewFav3", sender: self)
         //    storeData()
     }
- 
+ /*
  override func viewWillAppear(_ animated: Bool) {
   fetchName()
  }
-    
+   */
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,8 +77,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
- //       fetchName()
-     fetchTeamNamePosts()
+        fetchName()
+ //    fetchTeamNamePosts()
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -126,32 +126,64 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     print(error.localizedDescription)
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+    //   print(dataDictionary)
+    //  self.posts = dataDictionary["content"] as! [[String: Any]]
+    // print(self.posts)
 
-      self.posts1 = [dataDictionary]
-      for item in self.posts1{
-       let htmlTag = item["content"] as! String
-       let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
-       let fullNameArr = content.components(separatedBy: "         ")
+    self.posts = [dataDictionary]
+    //      self.posts.append(item)
+    for item in self.posts{
+     let htmlTag = item["content"] as! String
+     let htmlTag1 = htmlTag
+     let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
+     let fullNameArr = content.components(separatedBy: "         ")
+     
+     let size = fullNameArr.count - 1
+     
+     for i in 0...size{
+      let name = fullNameArr[i]
+      print(name)
+      self.authorArray.append(name)
+      
+      
+      //////
+      let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175'")
+      let input = String(describing: html2)
+      //      let inputURL = input.replacingOccurrences(of: "'\'", with: " ", options: .regularExpression, range: nil)
+      let convertedStr = input.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
+      let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+      let matches = detector.matches(in: convertedStr, options: [], range: NSRange(location: 0, length: convertedStr.utf16.count))
+      for match in matches {
+       guard let range = Range(match.range, in: convertedStr) else { continue }
+       let urlImg = convertedStr[range]
+       //         if urlImg != ""{
+       let fullImgArr = urlImg.components(separatedBy: "")
+       self.urlImage = String(urlImg)
        
-       let size = fullNameArr.count - 1
-       
+       let size = fullImgArr.count - 1
        for i in 0...size{
-        let name = fullNameArr[i]
-   //     print(name)
-        self.authorArray1.append(name)
+        let img = fullImgArr[i]
+        self.authorImgArray.append(img)
         
-  //      self.collectionView.reloadData() // to tell table about new data
        }
-      }
+       
+       
 
+      }
+      
+      
+      self.collectionView.reloadData() // to tell table about new data
+     }
     }
+    
+   }
    
   }
   task.resume()
   //activityIndicator.stopAnimating()
  }
  
- func fetchTeamNamePosts(){
+ /*func fetchTeamNamePosts(){
    
    self.activityIndicatory.startAnimating() //====================
    //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
@@ -222,7 +254,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    }
  //  self.refreshControl.endRefreshing()
  //  self.activityIndicatory.stopAnimating()
-  }
+  }*/
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //    return self.authorArray.count
