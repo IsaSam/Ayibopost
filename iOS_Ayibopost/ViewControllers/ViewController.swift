@@ -302,7 +302,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
             //print(imageURL!)
+            if imageURL != nil{
             imgURLShare = imageURL!
+            }
+            else{}
             
             let url = URL(string: imgURLShare!)
             cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
