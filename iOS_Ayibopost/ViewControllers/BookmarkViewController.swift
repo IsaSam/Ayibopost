@@ -35,13 +35,13 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let idx: Int = indexPath.row
         let post = favoritesPosts[idx]
         
-        cell.titleLabel.text = post["title"] as? String
+        cell.titleLabel.text = (post["title"] as? String)?.stringByDecodingHTMLEntities
         let a = post["title"] as? String
         print("index no: \([idx]) \(a!)")
         
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        cell.contentLabel.text = content
+        cell.contentLabel.text = content.stringByDecodingHTMLEntities
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

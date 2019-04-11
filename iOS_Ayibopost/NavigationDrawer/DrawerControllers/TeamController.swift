@@ -214,9 +214,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   //let post = authorArray[indexPath.row]
   let post = byName[indexPath.row]
   
-  let name = post["name"] as? String
+  let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
   let imageURL = post["avatar"] as? String
-  let description = post["description"] as? String
+  let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
   self.authorImgArray.append(imageURL!)
   cell.nameTeam.text = name
   cell.descripTeam.text = description

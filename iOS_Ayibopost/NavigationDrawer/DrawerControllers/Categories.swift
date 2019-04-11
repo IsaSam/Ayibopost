@@ -293,14 +293,14 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        cell.contentLabel.text = content
+        cell.contentLabel.text = content.stringByDecodingHTMLEntities
         
         //author name
         let author = (posts as AnyObject).value(forKey: "author")
         let dataDicAuthor = author as? [[String: Any]]
         self.byName = dataDicAuthor!
         let nameString = byName[indexPath.row]
-        let authorName = nameString["first_name"] as? String
+        let authorName = (nameString["first_name"] as? String)?.stringByDecodingHTMLEntities
         if authorName == "Guest author"{
             cell.authorNameLabel.text = "By Guest"
         }else{
@@ -439,7 +439,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
         postShare = posts[sender.tag]
-        let title = postShare["title"] as? String
+        let title = (postShare["title"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
         imgPostShare = imgPosts[(sender.tag)]
         let imageURL = imgPostShare!["source"] as? String
