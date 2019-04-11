@@ -11,7 +11,6 @@ import UIKit
 class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var categoryLabel: UILabel!
-    
     @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
@@ -339,7 +338,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
             //print(imageURL!)
-            imgURLShare = imageURL!
+            if imageURL != nil{
+                imgURLShare = imageURL!
+            }else{}
             
             let url = URL(string: imgURLShare!)
             cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in

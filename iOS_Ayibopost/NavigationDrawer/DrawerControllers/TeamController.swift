@@ -21,7 +21,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var posts1: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var urlPost1: String?
-    var loadNumber = 20
+    var loadNumber = 50
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
     var post: [[String: Any]] = []
@@ -58,10 +58,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         //    storeData()
     }
  
-/* override func viewWillAppear(_ animated: Bool) {
-  fetchName()
- }*/
- 
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -76,7 +72,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
-     fetchTeamNamePosts()
+        fetchTeamNamePosts()
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -92,8 +88,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
-       // getPost()
- //    fetchName()
+       fetchTeamNamePosts()
     }
     
     @IBAction func actShowMenu(_ sender: Any) {
@@ -111,7 +106,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    
    self.activityIndicatory.startAnimating() //====================
    //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=50") { (result, error) in
+   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
     
     if error != nil{
      let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -142,9 +137,64 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    }
 
   }
+ 
+ func loadMoreAuthors(){
+  loadNumber = loadNumber + 50
+  self.activityIndicatory.startAnimating() //====================
+  //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+  AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+   
+   if error != nil{
+    let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+    errorAlertController.addAction(cancelAction)
+    self.present(errorAlertController, animated: true)
+    return
+   }
+ //  self.posts1 = result!
+   // print(self.posts)
+   //////
+   do{
+    for item in result!
+    {
+       self.posts1.append(item)
+    }
+    let author = (self.posts1 as AnyObject).value(forKey: "author")
+    let dataDicAuthor = author as? [[String: Any]]
+    
+    for data in dataDicAuthor!{
+     print("===========================\(data)")
+     let name = data["name"] as? String
+     
+     if self.authorArray1.contains(name!){
+     }else{
+      self.authorArray1.append(name!)
+      self.byName.append(data)
+     }
+    }
+    //print(result!)
+    self.collectionView.reloadData()
+    
+   }
+   
+   
+   //////
+   
+   self.collectionView.reloadData() // to tell table about new data
+   //   self.activityIndicatory.stopAnimating() //====================
+  }
+ }
+ 
+/*
+ 
+ }*/
 
+ func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  if indexPath.row + 1 == posts1.count{
+  }
+ }
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //    return self.authorArray.count
      return self.byName.count
     }
  //////
