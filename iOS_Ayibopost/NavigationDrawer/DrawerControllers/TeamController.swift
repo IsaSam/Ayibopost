@@ -56,11 +56,11 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         self.performSegue(withIdentifier: "ViewFav3", sender: self)
         //    storeData()
     }
- /*
+ 
  override func viewWillAppear(_ animated: Bool) {
   fetchName()
  }
-   */
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,8 +77,8 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
-        fetchName()
- //    fetchTeamNamePosts()
+ //       fetchName()
+     fetchTeamNamePosts()
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -127,8 +127,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    } else if let data = data,
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
     //   print(dataDictionary)
-    //  self.posts = dataDictionary["content"] as! [[String: Any]]
-    // print(self.posts)
+
 
     self.posts = [dataDictionary]
     //      self.posts.append(item)
@@ -145,32 +144,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
       print(name)
       self.authorArray.append(name)
       
-      
-      //////
-      let html2 = htmlTag1.allStringsBetween(start: "<img ", end: "class='avatar avatar-175 photo' height='175' width='175'")
-      let input = String(describing: html2)
-      //      let inputURL = input.replacingOccurrences(of: "'\'", with: " ", options: .regularExpression, range: nil)
-      let convertedStr = input.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
-      let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-      let matches = detector.matches(in: convertedStr, options: [], range: NSRange(location: 0, length: convertedStr.utf16.count))
-      for match in matches {
-       guard let range = Range(match.range, in: convertedStr) else { continue }
-       let urlImg = convertedStr[range]
-       //         if urlImg != ""{
-       let fullImgArr = urlImg.components(separatedBy: "")
-       self.urlImage = String(urlImg)
-       
-       let size = fullImgArr.count - 1
-       for i in 0...size{
-        let img = fullImgArr[i]
-        self.authorImgArray.append(img)
-        
-       }
-       
-       
-
-      }
-      
+      //img
       
       self.collectionView.reloadData() // to tell table about new data
      }
@@ -183,11 +157,11 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   //activityIndicator.stopAnimating()
  }
  
- /*func fetchTeamNamePosts(){
+ func fetchTeamNamePosts(){
    
    self.activityIndicatory.startAnimating() //====================
    //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=7") { (result, error) in
+   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=20") { (result, error) in
     
     if error != nil{
      let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -196,105 +170,49 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
      self.present(errorAlertController, animated: true)
      return
     }
-    self.posts = result!
+    self.posts1 = result!
    // print(self.posts)
     
-    let author = (self.posts as AnyObject).value(forKey: "author")
+    let author = (self.posts1 as AnyObject).value(forKey: "author")
     let dataDicAuthor = author as? [[String: Any]]
     self.byName = dataDicAuthor!
 //    let nameString = byName[indexPath.row]
-    for nameString in self.byName{
-     let authorName = nameString["first_name"] as? String
-     if authorName == "Guest author"{
-      // cell.authorNameLabel.text = "By Guest"
-      print("By Guest")
-     }
-      /* else if authorName == "Jameson"{
-       print("\(authorName!)\(indexPath.row)")
-       }else{}
-       */
-     else{
-      //  authorArray.append("")
-      for authorPost in self.byName{
-       let authorPostName = authorPost["name"] as? String
- //      let authorPostImg = authorPost["avatar"]
-       //  }
-       for author in self.authorArray1{
-        if author == authorPostName{
-         if self.authorArray.contains(author){
-          
-         }else{
-          print("item\(author)")
-          print("Trouve >>>>>>>>>>>>>>>>>>>>>>>>\(authorPostName!)")
-          self.authorArray.append(author)
-          //image
-          let imageURL = authorPost["avatar"] as? String
-          self.authorImgArray.append(imageURL!)
-          
-
-         }
-        }else{
-         /*  print("item\(author)")
-          print("item\(authorPostName!)")
-          print("-------")*/
-        }
-
-       }
-               print(self.authorArray)
-      }
-     }
-    }
-    
-
 
     
     
     self.collectionView.reloadData() // to tell table about new data
  //   self.activityIndicatory.stopAnimating() //====================
    }
- //  self.refreshControl.endRefreshing()
- //  self.activityIndicatory.stopAnimating()
-  }*/
+
+  }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //    return self.authorArray.count
-     return self.authorArray.count
+     return self.byName.count
     }
     
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-  let post = authorArray[indexPath.row]
-  let post2 = authorImgArray[indexPath.row]
+  //let post = authorArray[indexPath.row]
+  let post = byName[indexPath.row]
+//  let post2 = authorImgArray[indexPath.row]
   
-  cell.nameTeam.text = post
+  let name = post["name"] as? String
+  let imageURL = post["avatar"] as? String
+  self.authorImgArray.append(imageURL!)
+
+  cell.nameTeam.text = name
   
-  // let url = URL(string: urlImage!)
-  let url = URL(string: post2)
-  cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-   if ((error) != nil) {
-    print("placeholder image...")
-    //  cell.imageTeam.image = UIImage(named: "placeholderImage.png")
-   } else {
-    print("Success let using the image...")
-    cell.imageTeam.sd_setImage(with: url)
-   }
-  })
-  if let imagePath = urlImage1,
+  if let imagePath = imageURL,
    let imgUrl = URL(string:  imagePath){
-   //  cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
    cell.imageTeam.af_setImage(withURL: imgUrl)
   }
   else{
-   //   cell.imageTeam.image = nil
+   cell.imageTeam.image = nil
   }
   
-  
- // let post = authorArray[indexPath.row]
-  //author name
-  let id = 0
 
-  
   return cell
  }
     
