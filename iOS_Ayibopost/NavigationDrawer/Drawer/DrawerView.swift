@@ -64,6 +64,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     // To change the user name of account
     func changeUserName(name:String) {
         lblUserName.text = name
+        
     }
     
     // To change the background color of background view
@@ -150,7 +151,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         aryViewControllers = controllers
         tblVw.delegate = self
         tblVw.dataSource = self
-        tblVw.backgroundColor = UIColor.clear   
+        tblVw.backgroundColor = UIColor.clear
         drawerView.addSubview(tblVw)
         tblVw.reloadData()
 
@@ -207,13 +208,25 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
+        let controllerMain = (storyBoard.instantiateViewController(withIdentifier: "Home"))
         let controllerName = (storyBoard.instantiateViewController(withIdentifier: "Category"))
+        let controllerTeam = (storyBoard.instantiateViewController(withIdentifier: "Team"))
         print("\(aryViewControllers[indexPath.row])")
         MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
-
-        controllerName.hidesBottomBarWhenPushed = false
-        self.delegate?.pushTo(viewController: controllerName)
         
+        let nameCat = aryViewControllers[indexPath.row] as? String
+        if nameCat == "Home"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerMain)
+        }
+        else if nameCat == "The Team"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerTeam)
+        }
+        else{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerName)
+        }
     }
 
     // To dissmiss the current view controller tab bar along with navigation drawer

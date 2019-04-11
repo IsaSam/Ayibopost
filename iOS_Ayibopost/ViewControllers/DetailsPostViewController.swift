@@ -62,9 +62,9 @@ class DetailsPostViewController: UIViewController{
             
             //Author name
             let authorName = nameString!["first_name"] as? String
-            if authorName == "Guest author"{
-                authorNameLabel.text = "By Guest"
-                authorNameLabel2.text = "By Guest"
+            if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
+                authorNameLabel.text = ""
+                authorNameLabel2.text = ""
             }else{
                 authorNameLabel.text = "By " + authorName!
                 authorNameLabel2.text = "By " + authorName!

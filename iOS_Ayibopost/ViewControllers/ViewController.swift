@@ -13,6 +13,7 @@ import SwiftyJSON
 import SDWebImage
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
+    
     @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
@@ -67,14 +68,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func searchButton(_ sender: Any) {
         print("Search...")
-  //      navigationItem.titleView = searchBar
+        navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
         navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
-        searchBar.showsCancelButton = true
-        tableView.tableHeaderView = searchBar
-        searchBar.searchBarStyle = UISearchBarStyle.default
-        searchBar.alpha = 0.96
+   //     searchBar.showsCancelButton = true
+   //     tableView.tableHeaderView = searchBar
+   //     searchBar.searchBarStyle = UISearchBarStyle.default
+   //     searchBar.alpha = 0.96
     }
     
     @IBAction func addFav(_ sender: UIButton) {
@@ -95,6 +96,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.delegate = self
         
         getData() //get bookmarks
@@ -182,7 +184,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-      loadNumber = loadNumber + 1
+      loadNumber = loadNumber + 55
       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
             
                 if error != nil{
@@ -300,7 +302,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let remoteImageUrlString = imgPosts[indexPath.row]
             let imageURL = remoteImageUrlString["source"] as? String
             //print(imageURL!)
+            if imageURL != nil{
             imgURLShare = imageURL!
+            }
+            else{}
             
             let url = URL(string: imgURLShare!)
             cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
@@ -410,6 +415,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
     }
     
+    
     //Storing app data
     func storeData(){
         let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
@@ -425,6 +431,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else{}
     }
 }
+
+
 //----------------------
 
 /*
@@ -435,7 +443,7 @@ func dismissKeyboard() {
 */
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk"]
+        static let array:NSArray = ["Home", "Politique", "Society","Economie", "Culture", "Sport", "AyiboTalk", "Podcast", "The Team"]
 }
 //----------------------
 

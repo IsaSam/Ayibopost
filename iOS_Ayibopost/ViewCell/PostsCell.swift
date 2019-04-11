@@ -22,6 +22,10 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var btnSharePosts: UIButton!
     @IBOutlet weak var authorNameLabel: UILabel!
     
+    @IBOutlet weak var imageTeam: UIImageView!
+    @IBOutlet weak var nameTeam: UILabel!
+    @IBOutlet weak var descripTeam: UILabel!
+    
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?
     var buttonTapped = false
