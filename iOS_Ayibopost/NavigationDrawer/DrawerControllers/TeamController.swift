@@ -43,7 +43,10 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var byName: [[String: Any]] = []
  var urlImage: String?
     var urlImage1: String?
-    
+ var id1: Int?
+ var id2: Int?
+ 
+ 
     var delegate: BookmarkViewController!
     
     // -------------------------------
@@ -141,7 +144,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
      
      for i in 0...size{
       let name = fullNameArr[i]
-      print(name)
+    //  print(name)
       self.authorArray.append(name)
       
       //img
@@ -161,7 +164,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
    
    self.activityIndicatory.startAnimating() //====================
    //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=20") { (result, error) in
+   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=40") { (result, error) in
     
     if error != nil{
      let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -175,9 +178,22 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     
     let author = (self.posts1 as AnyObject).value(forKey: "author")
     let dataDicAuthor = author as? [[String: Any]]
-    self.byName = dataDicAuthor!
-//    let nameString = byName[indexPath.row]
-
+    
+    for data in dataDicAuthor!{
+        print("===========================\(data)")
+        let name = data["name"] as? String
+     
+     if self.authorArray1.contains(name!){
+     }else{
+          self.authorArray1.append(name!)
+          self.byName.append(data)
+     }
+    }
+ 
+    
+  //  self.byName = dataDicAuthor!
+    
+ //   print(self.byName)
     
     
     self.collectionView.reloadData() // to tell table about new data
@@ -190,10 +206,13 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         //    return self.authorArray.count
      return self.byName.count
     }
-    
+ //////
+
+  /////
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
+  
   //let post = authorArray[indexPath.row]
   let post = byName[indexPath.row]
 //  let post2 = authorImgArray[indexPath.row]
@@ -228,4 +247,5 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     
 
 }
+
 
