@@ -43,8 +43,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     var byName: [[String: Any]] = []
  var urlImage: String?
     var urlImage1: String?
- var id1: Int?
- var id2: Int?
  
  
     var delegate: BookmarkViewController!
@@ -60,14 +58,12 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         //    storeData()
     }
  
- override func viewWillAppear(_ animated: Bool) {
+/* override func viewWillAppear(_ animated: Bool) {
   fetchName()
- }
+ }*/
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    //    self.collectionView.reloadSections(IndexSet(integer: 0))
      
         topBarLogo()
      
@@ -80,7 +76,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 40
- //       fetchName()
      fetchTeamNamePosts()
         self.navigationController?.navigationBar.isTranslucent = false
     }
@@ -111,60 +106,12 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
     func pushTo(viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
- 
- func fetchName(){
-  //activityIndicator.startAnimating()
-  
-  let url = URL(string: "https://ayibopost.com/wp-json/pages/about-us/lequipe/")!
-  
-  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-  let task = session.dataTask(with: request) {(data, response, error) in
-   //-- This will run when the network request returns
-   if let error = error{
-    let errorAlertController = UIAlertController(title: "Cannot Get Datas", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-    errorAlertController.addAction(cancelAction)
-    self.present(errorAlertController, animated: true)
-    print(error.localizedDescription)
-   } else if let data = data,
-    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-    //   print(dataDictionary)
 
-
-    self.posts = [dataDictionary]
-    //      self.posts.append(item)
-    for item in self.posts{
-     let htmlTag = item["content"] as! String
-     let htmlTag1 = htmlTag
-     let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
-     let fullNameArr = content.components(separatedBy: "         ")
-     
-     let size = fullNameArr.count - 1
-     
-     for i in 0...size{
-      let name = fullNameArr[i]
-    //  print(name)
-      self.authorArray.append(name)
-      
-      //img
-      
-      self.collectionView.reloadData() // to tell table about new data
-     }
-    }
-    
-   }
-   
-  }
-  task.resume()
-  //activityIndicator.stopAnimating()
- }
- 
  func fetchTeamNamePosts(){
    
    self.activityIndicatory.startAnimating() //====================
    //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=40") { (result, error) in
+   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=50") { (result, error) in
     
     if error != nil{
      let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -189,13 +136,7 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
           self.byName.append(data)
      }
     }
- 
-    
-  //  self.byName = dataDicAuthor!
-    
- //   print(self.byName)
-    
-    
+
     self.collectionView.reloadData() // to tell table about new data
  //   self.activityIndicatory.stopAnimating() //====================
    }
@@ -215,7 +156,6 @@ class TeamController: UIViewController, UICollectionViewDataSource, UICollection
   
   //let post = authorArray[indexPath.row]
   let post = byName[indexPath.row]
-//  let post2 = authorImgArray[indexPath.row]
   
   let name = post["name"] as? String
   let imageURL = post["avatar"] as? String
