@@ -94,10 +94,18 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
+        
         categoryName = MyVariables.categoryDrawerName
+       
+        print("1***********************************************")
+        print(categoryName!)
+        
         if categoryName == "Politique"{
             categori = "politics"
             categoryLabel.text = "CATEGORIE POLITIQUE"
@@ -126,6 +134,11 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "podcast"
             categoryLabel.text = "CATEGORIE PODCAST"
         }
+        else if categoryName == "The Team"{
+            categori = "podcast"
+            categoryLabel.text = "CATEGORIE PODCAST"
+        }
+        
         else{
             categori = ""
             categoryLabel.text = ""

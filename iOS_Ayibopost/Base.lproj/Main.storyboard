@@ -1139,13 +1139,21 @@
                                 <action selector="actShowMenu:" destination="WXc-Ok-vvo" id="7de-Qa-LRy"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="PsL-0y-6Y7">
-                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="viewFav:" destination="WXc-Ok-vvo" id="gAi-fX-YqL"/>
-                                <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav2" id="pJk-VI-pfh"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="bookmarks" id="3tU-ZV-E3k">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="viewFav:" destination="WXc-Ok-vvo" id="c7h-bt-2Ip"/>
+                                    <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav3" id="bjB-Yu-kRn"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="podcasts30" id="Fsd-pE-O4s">
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="ewo-gj-oBa" kind="show" identifier="pod" id="Udz-Bt-fsB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="6Yp-Bx-eoa" id="LSi-8W-IJl"/>
@@ -1159,7 +1167,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3830.625" y="-708.80281690140851"/>
+            <point key="canvasLocation" x="4005" y="-660"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LXf-0u-yhQ">
@@ -1195,11 +1203,13 @@
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="player" width="1024" height="1024"/>
+        <image name="podcasts30" width="30" height="30"/>
         <image name="share" width="30" height="30"/>
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pJk-VI-pfh"/>
+        <segue reference="Udz-Bt-fsB"/>
+        <segue reference="ioK-7P-FM4"/>
         <segue reference="IH8-aK-iMw"/>
     </inferredMetricsTieBreakers>
 </document>

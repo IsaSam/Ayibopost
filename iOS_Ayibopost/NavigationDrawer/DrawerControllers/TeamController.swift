@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate{
+class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate{
  
  
  @IBOutlet weak var tableView: UITableView!
@@ -45,6 +45,15 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var urlImage: String?
  var urlImage1: String?
  
+ var filteredPosts: [[String: Any]]?
+ var urlYoutube = ""
+ var convertedDate: String = ""
+ var convertedTime: String = ""
+ var imgURLShare: String?
+ var imgURLShare2: String?
+ var titleShare: String?
+ var imgShare: UIImage?
+ var searching: [String] = []
  
  var delegate: BookmarkViewController!
  
@@ -229,12 +238,77 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.deselectRow(at: indexPath, animated: true)
  }
  
+ func PostsCellDidTapBookmark(_ sender: PostsCell) {
+  guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+  print("Bookmark", sender, tappedIndexPath)
+ }
+ @objc func bookmarkTapped(_ sender: Any?) {
+  // We need to call the method on the underlying object, but I don't know which row the user tapped!
+  // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
+  // the view hierarchy until we find the UITableviewCell instance.
+  print("Bookmark Tapped", sender!)
+ }
+ func PostsCellDidTapShare(_ sender: PostsCell) {
+  guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+  print("Sharing", sender, tappedIndexPath)
+ }
+ 
+ @objc func shareTapped(_ sender: Any?) {
+  print("share Tapped", sender!)
+  
+ }
+ 
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+  if segue.identifier == "ViewFav3" {
+   print("Bookmarks View segue")
+   let controller = segue.destination as! BookmarkViewController
+   controller.favoritePosts = favResults
+   
+  }
+  else if segue.identifier == "pod"{
+      print("PodCast View")
+  //    let namecat = "CATEGORIE PODCAST"
+      let cate = "podcast"
+      let cat = segue.destination as! Categories
+      cat.categoryName = cate
+  }
+   
+  else{
+   print("DetailsPost View segue")
+   /*
+   let cell = sender as! UITableViewCell
+   let indexPath = tableView.indexPath(for: cell)
+   let post = posts[(indexPath?.row)!]
+   let imgPost = imgPosts[(indexPath?.row)!]
+   let nameString = byName[(indexPath?.row)!]
+   let detailViewController = segue.destination as! DetailsPostViewController
+   detailViewController.post = post
+   detailViewController.imgPost = imgPost
+   detailViewController.nameString = nameString
+   */
+  }
+ }
+ 
  
  override func didReceiveMemoryWarning() {
   super.didReceiveMemoryWarning()
   // Dispose of any resources that can be recreated.
  }
+ //Storing app data
+ func storeData(){
+  let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
+  UserDefaults.standard.set(data, forKey: "savedData1")
+ }
  
+ //Getting app data
+ func getData(){
+  let outData = UserDefaults.standard.data(forKey: "savedData1")
+  if outData != nil{
+   let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
+   favResults = dict
+  }else{}
+ }
  
 }
 
