@@ -215,11 +215,11 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
         
         let nameCat = aryViewControllers[indexPath.row] as? String
-        if nameCat == "Home"{
+        if nameCat == "Acceuil"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerMain)
         }
-        else if nameCat == "The Team"{
+        else if nameCat == "Auteurs"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerTeam)
         }

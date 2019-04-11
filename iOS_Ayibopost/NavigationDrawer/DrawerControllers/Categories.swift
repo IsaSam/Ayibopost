@@ -110,7 +110,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "politics"
             categoryLabel.text = "CATEGORIE POLITIQUE"
         }
-        else if categoryName == "Society"{
+        else if categoryName == "Société"{
             categori = "social"
             categoryLabel.text = "CATEGORIE SOCIÉTÉ"
         }
@@ -128,15 +128,15 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         }
         else if categoryName == "AyiboTalk"{
             categori = "ayibotalk"
-            categoryLabel.text = "CATEGORIE AYIBOTALK"
+            categoryLabel.text = " AYIBOTALK "
         }
         else if categoryName == "Podcast"{
             categori = "podcast"
-            categoryLabel.text = "CATEGORIE PODCAST"
+            categoryLabel.text = " PODCAST "
         }
-        else if categoryName == "The Team"{
+        else if categoryName == "Auteurs"{
             categori = "podcast"
-            categoryLabel.text = "CATEGORIE PODCAST"
+            categoryLabel.text = " PODCAST "
         }
         
         else{
