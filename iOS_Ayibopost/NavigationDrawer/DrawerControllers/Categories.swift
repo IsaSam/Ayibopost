@@ -288,7 +288,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
         
-        cell.titleLabel.text = post["title"] as? String
+        cell.titleLabel.text = (post["title"] as? String)?.stringByDecodingHTMLEntities
         titleShare = cell.titleLabel.text
         
         let htmlTag = post["content"] as! String
