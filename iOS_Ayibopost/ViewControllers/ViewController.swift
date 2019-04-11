@@ -394,7 +394,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
         postShare = posts[sender.tag]
-        let title = postShare["title"] as? String
+        let title = (postShare["title"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
         imgPostShare = imgPosts[(sender.tag)]
         let imageURL = imgPostShare!["source"] as? String

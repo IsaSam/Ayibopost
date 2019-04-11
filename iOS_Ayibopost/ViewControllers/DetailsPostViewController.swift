@@ -55,13 +55,13 @@ class DetailsPostViewController: UIViewController{
     func categoryWeb(){
         if let post = post{
             
-            titleLabel.text = post[PostKeys.title] as? String
+            titleLabel.text = (post[PostKeys.title] as? String)?.stringByDecodingHTMLEntities
             let htmlTag = post[PostKeys.content] as! String
             let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-            contentLabel.text = content
+            contentLabel.text = content.stringByDecodingHTMLEntities
             
             //Author name
-            let authorName = nameString!["first_name"] as? String
+            let authorName = (nameString!["first_name"] as? String)?.stringByDecodingHTMLEntities
             if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
                 authorNameLabel.text = ""
                 authorNameLabel2.text = ""
