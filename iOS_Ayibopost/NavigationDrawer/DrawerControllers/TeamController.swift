@@ -147,6 +147,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
      self.authorArray1.append(name!)
      self.byName.append(data)
     }
+    self.byName.reverse()
     self.tableView.reloadData()
    }
    
@@ -189,8 +190,10 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
      }else{
       self.authorArray1.append(name!)
       self.byName.append(data)
+
      }
     }
+    self.byName.reverse()
     //print(result!)
     self.tableView.reloadData()
     
@@ -236,9 +239,13 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   
   if let imagePath = imageURL,
    let imgUrl = URL(string:  imagePath){
+   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+   cell.imageTeam.clipsToBounds = true
    cell.imageTeam.af_setImage(withURL: imgUrl)
   }
   else{
+   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+   cell.imageTeam.clipsToBounds = true
    cell.imageTeam.image = nil
   }
   
