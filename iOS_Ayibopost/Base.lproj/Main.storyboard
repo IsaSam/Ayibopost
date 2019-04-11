@@ -1130,6 +1130,7 @@
                             <outletCollection property="gestureRecognizers" destination="hOo-bZ-Kqr" appends="YES" id="PAm-F5-dGy"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Vr0-sW-QIJ">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Back" id="7na-S0-OgO"/>
@@ -1139,22 +1140,14 @@
                                 <action selector="actShowMenu:" destination="WXc-Ok-vvo" id="7de-Qa-LRy"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="bookmarks" id="3tU-ZV-E3k">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="viewFav:" destination="WXc-Ok-vvo" id="c7h-bt-2Ip"/>
-                                    <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav3" id="bjB-Yu-kRn"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="podcasts30" id="Fsd-pE-O4s">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="ewo-gj-oBa" kind="show" identifier="pod" id="Udz-Bt-fsB"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="podcasts30" id="Fsd-pE-O4s">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="ewo-gj-oBa" kind="show" identifier="pod" id="Udz-Bt-fsB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatory" destination="6Yp-Bx-eoa" id="LSi-8W-IJl"/>
                         <outlet property="tableView" destination="zQj-ij-fZa" id="gId-rc-VJi"/>
@@ -1209,7 +1202,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Udz-Bt-fsB"/>
-        <segue reference="ioK-7P-FM4"/>
-        <segue reference="IH8-aK-iMw"/>
+        <segue reference="Tv8-zQ-hrO"/>
+        <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>

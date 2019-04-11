@@ -184,7 +184,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-      loadNumber = loadNumber + 1
+      loadNumber = loadNumber + 55
       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
             
                 if error != nil{
@@ -415,6 +415,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
     }
     
+    
     //Storing app data
     func storeData(){
         let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
@@ -430,6 +431,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else{}
     }
 }
+
+
 //----------------------
 
 /*
