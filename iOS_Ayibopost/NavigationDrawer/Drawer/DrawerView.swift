@@ -209,7 +209,6 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         
         //For changing cell color after selected
         let cell:DrawerCell = tableView.cellForRow(at: indexPath) as! DrawerCell
-        //cell.backgroundColor = UIColor.red
         cell.backgroundColor = UIColor(red:0.24, green:0.00, blue:0.00, alpha:0.3)
         
         actDissmiss()

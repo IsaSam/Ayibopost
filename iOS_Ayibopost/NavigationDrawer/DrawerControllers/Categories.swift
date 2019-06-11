@@ -114,7 +114,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "social"
             categoryLabel.text = "SOCIÉTÉ"
         }
-        else if categoryName == "Economie"{
+        else if categoryName == "Économie"{
             categori = "business"
             categoryLabel.text = "ÉCONOMIE"
         }
