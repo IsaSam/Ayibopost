@@ -37,9 +37,9 @@ extension drawerProtocolNew where Self:UIView{
     // UIView animation for hiding the navigation drawer
     func dissmiss()
     {
-       UIView.animate(withDuration: 0.2, animations: {
+       UIView.animate(withDuration: 2.0, animations: {
         self.drawerView.frame.origin = CGPoint(x:-self.frame.size.width, y:0)
-        self.backgroundView.alpha = 0.0
+        self.backgroundView.alpha = 0.2
         
        }) { (completion) in
             self.removeFromSuperview()

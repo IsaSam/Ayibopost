@@ -206,6 +206,12 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //For changing cell color after selected
+        let cell:DrawerCell = tableView.cellForRow(at: indexPath) as! DrawerCell
+        //cell.backgroundColor = UIColor.red
+        cell.backgroundColor = UIColor(red:0.24, green:0.00, blue:0.00, alpha:0.3)
+        
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
         let controllerMain = (storyBoard.instantiateViewController(withIdentifier: "Home"))
