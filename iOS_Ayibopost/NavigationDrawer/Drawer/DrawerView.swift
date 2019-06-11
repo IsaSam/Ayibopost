@@ -106,7 +106,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         backgroundView.addGestureRecognizer(tap)
         addSubview(backgroundView)
         
-        drawerView.frame = CGRect(x:0, y:0, width:screenSize.width/2+75, height:screenSize.height)
+        drawerView.frame = CGRect(x:0, y:0, width:screenSize.width/2+25, height:screenSize.height)
         drawerView.clipsToBounds = true
 
         // Initialize the gradient color for background view
@@ -162,7 +162,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         //------------ btnLogOut.setTitle("LOG OUT", for: .normal)
         btnLogOut.setTitle("ayiboPOST", for: .normal)
         btnLogOut.contentHorizontalAlignment = .left
-        btnLogOut.addTarget(self, action: #selector(actLogOut), for: .touchUpInside)
+       // btnLogOut.addTarget(self, action: #selector(actLogOut), for: .touchUpInside)
         btnLogOut.titleLabel?.font = fontNew ?? UIFont(name: "Euphemia UCAS", size: 15)
         btnLogOut.setTitleColor(UIColor.white, for: .normal)
         vwForHeader.addSubview(btnLogOut)
