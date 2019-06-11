@@ -134,9 +134,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "podcast"
             categoryLabel.text = " PODCAST "
         }
-        else if categoryName == "L'equipe"{
+        else if categoryName == "L'équipe"{
             categori = "podcast"
-            categoryLabel.text = " L'EQUIPE "
+            categoryLabel.text = " L'ÉQUIPE "
         }
         
         else{
