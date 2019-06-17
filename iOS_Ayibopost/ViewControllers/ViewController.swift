@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgURLShare: String?
     var imgURLShare2: String?
     var titleShare: String?
+    var authorNameShare: String?
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
