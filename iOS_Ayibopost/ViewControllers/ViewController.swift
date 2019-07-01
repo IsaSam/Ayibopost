@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
+    var postsTitle1: [[String: Any]] = []
     var postsContent: [[String: Any]] = []
     
     
@@ -246,7 +247,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         do{
             let titleDic = (posts as AnyObject).value(forKey: "title")
-            let contentDic = (posts as AnyObject).value(forKey: "content")
+            let contentDic = (posts as AnyObject).value(forKey: "excerpt")
             let titleDicString = titleDic as? [[String: Any]]
             let contentDicString = contentDic as? [[String: Any]]
             self.postsTitle = titleDicString!
@@ -426,9 +427,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
-        postShare = posts[sender.tag]
-        let title = (postShare["title"] as? String)?.stringByDecodingHTMLEntities
-        let URl = postShare["link"] as? String
+        let postShare1 = posts[sender.tag]
+        postShare = (postShare1 as AnyObject).value(forKey: "title") as! [String : Any]
+     //   let titleDicString = titleDic as? [[String: Any]]
+   //     self.postsTitle1 = titleDicString!
+//////
+        let title = (postShare["rendered"] as? String)?.stringByDecodingHTMLEntities
+        let URl = postShare1["link"] as? String
         imgPostShare = imgPosts[(sender.tag)]
         let imageURL = imgPostShare!["source"] as? String
     
