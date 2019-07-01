@@ -22,11 +22,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
+    var postsTitle: [[String: Any]] = []
+    var postsTitle1: [[String: Any]] = []
+    var postsContent: [[String: Any]] = []
+    
+    
     var imgPosts: [[String: Any]] = []
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 55
+    var loadNumber = 20
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -167,7 +172,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.activityIndicatory.startAnimating() //====================
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -186,8 +191,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-      loadNumber = loadNumber + 55
-      AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+      loadNumber = loadNumber + 20
+      AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)") { (result, error) in
  //       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
                 if error != nil{
@@ -240,20 +245,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         idx = indexPath.row
 //=====================================================================
         
+        do{
+            let titleDic = (posts as AnyObject).value(forKey: "title")
+            let contentDic = (posts as AnyObject).value(forKey: "excerpt")
+            let titleDicString = titleDic as? [[String: Any]]
+            let contentDicString = contentDic as? [[String: Any]]
+            self.postsTitle = titleDicString!
+            self.postsContent = contentDicString!
+            //print(self.posts1)
+        }
+        let postTitle = postsTitle[indexPath.row]
+        let postContent = postsContent[indexPath.row]
+        //old API
+        //    let title = post["title"] as! String
+        
         cell.favButton.tag = indexPath.row
         cell.btnSharePosts.tag = indexPath.row
         
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
-    
-        let encoded = post["title"] as? String
+        
+//        let encoded = post["title"] as? String            //Old API version
+        let encoded = postTitle["rendered"] as? String
         cell.titleLabel.text = encoded?.stringByDecodingHTMLEntities
         titleShare = cell.titleLabel.text
         
-        let htmlTag = post["content"] as! String
+//        let htmlTag = post["content"] as! String          //Old API version
+        let htmlTag =  postContent["rendered"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content.stringByDecodingHTMLEntities
         
+   /*////
         //author name
         let author = (posts as AnyObject).value(forKey: "author")
         let dataDicAuthor = author as? [[String: Any]]
@@ -266,6 +288,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else{
             cell.authorNameLabel.text = "By " + authorName!
         }
+        */
+        cell.authorNameLabel.text = "authorName"
         
         //date format conversion
         let dateFormatter = DateFormatter()
@@ -287,7 +311,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             convertedTime = newTimeFormatter.string(from: time)
         }
         cell.datePost.text = convertedDate
-        
+     
+        /*////
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
@@ -304,6 +329,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.picMedia.isHidden = true //icon for media files
             }
         }
+        
+        */
+        /*
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
@@ -338,6 +366,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
+        */
+        
+        cell.imagePost.image = nil   //TO REMOVE
+        
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
@@ -395,9 +427,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
-        postShare = posts[sender.tag]
-        let title = (postShare["title"] as? String)?.stringByDecodingHTMLEntities
-        let URl = postShare["link"] as? String
+        let postShare1 = posts[sender.tag]
+        postShare = (postShare1 as AnyObject).value(forKey: "title") as! [String : Any]
+     //   let titleDicString = titleDic as? [[String: Any]]
+   //     self.postsTitle1 = titleDicString!
+//////
+        let title = (postShare["rendered"] as? String)?.stringByDecodingHTMLEntities
+        let URl = postShare1["link"] as? String
         imgPostShare = imgPosts[(sender.tag)]
         let imageURL = imgPostShare!["source"] as? String
     
