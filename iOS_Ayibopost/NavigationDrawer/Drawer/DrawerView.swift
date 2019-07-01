@@ -106,7 +106,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         backgroundView.addGestureRecognizer(tap)
         addSubview(backgroundView)
         
-        drawerView.frame = CGRect(x:0, y:0, width:screenSize.width/2+75, height:screenSize.height)
+        drawerView.frame = CGRect(x:0, y:0, width:screenSize.width/2+25, height:screenSize.height)
         drawerView.clipsToBounds = true
 
         // Initialize the gradient color for background view
@@ -162,7 +162,7 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         //------------ btnLogOut.setTitle("LOG OUT", for: .normal)
         btnLogOut.setTitle("ayiboPOST", for: .normal)
         btnLogOut.contentHorizontalAlignment = .left
-        btnLogOut.addTarget(self, action: #selector(actLogOut), for: .touchUpInside)
+       // btnLogOut.addTarget(self, action: #selector(actLogOut), for: .touchUpInside)
         btnLogOut.titleLabel?.font = fontNew ?? UIFont(name: "Euphemia UCAS", size: 15)
         btnLogOut.setTitleColor(UIColor.white, for: .normal)
         vwForHeader.addSubview(btnLogOut)
@@ -206,6 +206,11 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //For changing cell color after selected
+        let cell:DrawerCell = tableView.cellForRow(at: indexPath) as! DrawerCell
+        cell.backgroundColor = UIColor(red:0.24, green:0.00, blue:0.00, alpha:0.3)
+        
         actDissmiss()
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
         let controllerMain = (storyBoard.instantiateViewController(withIdentifier: "Home"))
@@ -215,11 +220,11 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
         
         let nameCat = aryViewControllers[indexPath.row] as? String
-        if nameCat == "Home"{
+        if nameCat == "Accueil"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerMain)
         }
-        else if nameCat == "The Team"{
+        else if nameCat == "L'équipe"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerTeam)
         }

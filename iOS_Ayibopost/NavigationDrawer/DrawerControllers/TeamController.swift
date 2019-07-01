@@ -22,7 +22,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var posts1: [[String: Any]] = []
  var imgPosts: [[String: Any]] = []
  var urlPost1: String?
- var loadNumber = 50
+ var loadNumber = 55
  var favResults: [[String: Any]] = []
  var favResults1: [[String: Any]] = []
  var post: [[String: Any]] = []
@@ -79,9 +79,11 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.delegate = self
   tableView.rowHeight = 170
   tableView.estimatedRowHeight = 170
+  tableView.insertSubview(refreshControl, at: 0)
   tableView.dataSource = self
   
   fetchTeamNamePosts()
+//  loadMoreAuthors()
   self.navigationController?.navigationBar.isTranslucent = false
  }
  
@@ -114,7 +116,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  func fetchTeamNamePosts(){
   
   self.activityIndicatory.startAnimating() //====================
-  //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+//  AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+// AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+//           AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts/") { (result, error) in
   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
    
    if error != nil{
@@ -124,13 +128,17 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
     self.present(errorAlertController, animated: true)
     return
    }
-   self.posts1 = result!
-   // print(self.posts)
+        if result != nil{
+            self.posts1 = result!
+            // print(self.posts)
+            }
+        else{ print("nil")}
    
    let author = (self.posts1 as AnyObject).value(forKey: "author")
    let dataDicAuthor = author as? [[String: Any]]
    
    for data in dataDicAuthor!{
+
     print("===========================\(data)")
     let name = data["name"] as? String
     
@@ -139,6 +147,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
      self.authorArray1.append(name!)
      self.byName.append(data)
     }
+    self.byName.reverse()
+    self.tableView.reloadData()
    }
    
    self.tableView.reloadData() // to tell table about new data
@@ -148,11 +158,12 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  }
  
  func loadMoreAuthors(){
-  loadNumber = loadNumber + 10
+  print("load 01...")
+ // loadNumber = loadNumber + 50
   self.activityIndicatory.startAnimating() //====================
   //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
   AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-   
+// AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
    if error != nil{
     let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
@@ -165,9 +176,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    //////
    do{
     for item in result!
-    {
-     self.posts1.append(item)
-    }
+       {
+         self.posts1.append(item)
+       }
     let author = (self.posts1 as AnyObject).value(forKey: "author")
     let dataDicAuthor = author as? [[String: Any]]
     
@@ -179,8 +190,10 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
      }else{
       self.authorArray1.append(name!)
       self.byName.append(data)
+
      }
     }
+    self.byName.reverse()
     //print(result!)
     self.tableView.reloadData()
     
@@ -189,7 +202,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    
    //////
    
-   self.tableView.reloadData() // to tell table about new data
+//   self.tableView.reloadData() // to tell table about new data
    //   self.activityIndicatory.stopAnimating() //====================
   }
  }
@@ -199,7 +212,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   }*/
  
  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-  if indexPath.row + 1 == posts1.count{
+  if indexPath.row + 55 == posts1.count{
+        print("load 1...")
+        loadMoreAuthors()
   }
  }
  
@@ -224,9 +239,13 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   
   if let imagePath = imageURL,
    let imgUrl = URL(string:  imagePath){
+   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+   cell.imageTeam.clipsToBounds = true
    cell.imageTeam.af_setImage(withURL: imgUrl)
   }
   else{
+   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+   cell.imageTeam.clipsToBounds = true
    cell.imageTeam.image = nil
   }
   

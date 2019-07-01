@@ -108,35 +108,35 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
         if categoryName == "Politique"{
             categori = "politics"
-            categoryLabel.text = "CATEGORIE POLITIQUE"
+            categoryLabel.text = "POLITIQUE"
         }
-        else if categoryName == "Society"{
+        else if categoryName == "Société"{
             categori = "social"
-            categoryLabel.text = "CATEGORIE SOCIÉTÉ"
+            categoryLabel.text = "SOCIÉTÉ"
         }
-        else if categoryName == "Economie"{
+        else if categoryName == "Économie"{
             categori = "business"
-            categoryLabel.text = "CATEGORIE ÉCONOMIE"
+            categoryLabel.text = "ÉCONOMIE"
         }
         else if categoryName == "Culture"{
             categori = "lifestyle"
-            categoryLabel.text = "CATEGORIE CULTURE"
+            categoryLabel.text = "CULTURE"
         }
         else if categoryName == "Sport"{
             categori = "SPORT"
-            categoryLabel.text = "CATEGORIE SPORT"
+            categoryLabel.text = "SPORT"
         }
         else if categoryName == "AyiboTalk"{
             categori = "ayibotalk"
-            categoryLabel.text = "CATEGORIE AYIBOTALK"
+            categoryLabel.text = " AYIBOTALK "
         }
         else if categoryName == "Podcast"{
             categori = "podcast"
-            categoryLabel.text = "CATEGORIE PODCAST"
+            categoryLabel.text = " PODCAST "
         }
-        else if categoryName == "The Team"{
+        else if categoryName == "L'équipe"{
             categori = "podcast"
-            categoryLabel.text = "CATEGORIE PODCAST"
+            categoryLabel.text = " L'ÉQUIPE "
         }
         
         else{
@@ -288,7 +288,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
         
-        cell.titleLabel.text = post["title"] as? String
+        cell.titleLabel.text = (post["title"] as? String)?.stringByDecodingHTMLEntities
         titleShare = cell.titleLabel.text
         
         let htmlTag = post["content"] as! String
