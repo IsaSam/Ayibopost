@@ -22,6 +22,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
+    var postsTitle: [[String: Any]] = []
+    var postsContent: [[String: Any]] = []
+    
+    
     var imgPosts: [[String: Any]] = []
     var imgPostShare: [String: Any]?
     var urlPost1: String?
@@ -240,20 +244,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         idx = indexPath.row
 //=====================================================================
         
+        do{
+            let titleDic = (posts as AnyObject).value(forKey: "title")
+            let contentDic = (posts as AnyObject).value(forKey: "content")
+            let titleDicString = titleDic as? [[String: Any]]
+            let contentDicString = contentDic as? [[String: Any]]
+            self.postsTitle = titleDicString!
+            self.postsContent = contentDicString!
+            //print(self.posts1)
+        }
+        let postTitle = postsTitle[indexPath.row]
+        let postContent = postsContent[indexPath.row]
+        //old API
+        //    let title = post["title"] as! String
+        
         cell.favButton.tag = indexPath.row
         cell.btnSharePosts.tag = indexPath.row
         
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
-    
-        let encoded = post["title"] as? String
+        
+//        let encoded = post["title"] as? String            //Old API version
+        let encoded = postTitle["rendered"] as? String
         cell.titleLabel.text = encoded?.stringByDecodingHTMLEntities
         titleShare = cell.titleLabel.text
         
-////        let htmlTag = post["content"] as! String
-////        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-////        cell.contentLabel.text = content.stringByDecodingHTMLEntities
-        cell.contentLabel.text = "ok"
+//        let htmlTag = post["content"] as! String          //Old API version
+        let htmlTag =  postContent["rendered"] as! String
+        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        cell.contentLabel.text = content.stringByDecodingHTMLEntities
         
    /*////
         //author name
@@ -311,6 +330,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         */
+        /*
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
@@ -345,6 +365,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
+        */
+        
+        cell.imagePost.image = nil   //TO REMOVE
+        
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
