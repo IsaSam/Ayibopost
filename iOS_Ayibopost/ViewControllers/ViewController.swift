@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 55
+    var loadNumber = 20
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -167,7 +167,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.activityIndicatory.startAnimating() //====================
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -186,8 +186,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-      loadNumber = loadNumber + 55
-      AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
+      loadNumber = loadNumber + 20
+      AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)") { (result, error) in
  //       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
                 if error != nil{
@@ -250,10 +250,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.titleLabel.text = encoded?.stringByDecodingHTMLEntities
         titleShare = cell.titleLabel.text
         
-        let htmlTag = post["content"] as! String
-        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        cell.contentLabel.text = content.stringByDecodingHTMLEntities
+////        let htmlTag = post["content"] as! String
+////        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+////        cell.contentLabel.text = content.stringByDecodingHTMLEntities
+        cell.contentLabel.text = "ok"
         
+   /*////
         //author name
         let author = (posts as AnyObject).value(forKey: "author")
         let dataDicAuthor = author as? [[String: Any]]
@@ -266,6 +268,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else{
             cell.authorNameLabel.text = "By " + authorName!
         }
+        */
+        cell.authorNameLabel.text = "authorName"
         
         //date format conversion
         let dateFormatter = DateFormatter()
@@ -287,7 +291,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             convertedTime = newTimeFormatter.string(from: time)
         }
         cell.datePost.text = convertedDate
-        
+     
+        /*////
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
@@ -304,6 +309,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.picMedia.isHidden = true //icon for media files
             }
         }
+        
+        */
         do{
             let imgArray = (posts as AnyObject).value(forKey: "featured_image")
             let dataDic = imgArray as? [[String: Any]]
