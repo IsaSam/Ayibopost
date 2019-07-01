@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgURLShare: String?
     var imgURLShare2: String?
     var titleShare: String?
+    var authorNameShare: String?
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
@@ -451,7 +452,7 @@ func dismissKeyboard() {
 */
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-        static let array:NSArray = ["Acceuil", "Politique", "Société", "Sport", "AyiboTalk", "Podcast", "Auteurs"]
+        static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk", "L'équipe", "A propos"]
 }
 //----------------------
 

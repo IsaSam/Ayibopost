@@ -21,6 +21,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var favoritesPosts: [[String: Any]] = []
     var favoritesPosts1: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
+    var byName: [[String: Any]] = []
     var convertedDate: String = ""
     var convertedTime: String = ""
     var urlYoutube = ""
@@ -42,7 +43,21 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let htmlTag = post["content"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content.stringByDecodingHTMLEntities
-
+        
+        //author name
+        
+        let author = (favoritePosts as AnyObject).value(forKey: "author")
+        let dataDicAuthor = author as? [[String: Any]]
+        self.byName = dataDicAuthor!
+        let nameString = byName[idx]
+        let authorName = (nameString["first_name"] as? String)?.stringByDecodingHTMLEntities
+        if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
+            cell.authorNameLabel.text = ""
+        }else{
+            cell.authorNameLabel.text = "By " + authorName!
+        }
+        
+        //format date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -144,9 +159,12 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let indexPath = favTableView.indexPath(for: cell)
         let post = favoritesPosts[(indexPath?.row)!]
         let imgPost = imgPosts[(indexPath?.row)!]
+        let nameString = byName[(indexPath?.row)!]
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
         detailViewController.imgPost = imgPost
+        detailViewController.nameString = nameString
+        
     }
     
     override func didReceiveMemoryWarning() {

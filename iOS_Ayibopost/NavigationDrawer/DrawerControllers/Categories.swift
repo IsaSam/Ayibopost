@@ -108,23 +108,23 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
         if categoryName == "Politique"{
             categori = "politics"
-            categoryLabel.text = "CATEGORIE POLITIQUE"
+            categoryLabel.text = "POLITIQUE"
         }
         else if categoryName == "Société"{
             categori = "social"
-            categoryLabel.text = "CATEGORIE SOCIÉTÉ"
+            categoryLabel.text = "SOCIÉTÉ"
         }
-        else if categoryName == "Economie"{
+        else if categoryName == "Économie"{
             categori = "business"
-            categoryLabel.text = "CATEGORIE ÉCONOMIE"
+            categoryLabel.text = "ÉCONOMIE"
         }
         else if categoryName == "Culture"{
             categori = "lifestyle"
-            categoryLabel.text = "CATEGORIE CULTURE"
+            categoryLabel.text = "CULTURE"
         }
         else if categoryName == "Sport"{
             categori = "SPORT"
-            categoryLabel.text = "CATEGORIE SPORT"
+            categoryLabel.text = "SPORT"
         }
         else if categoryName == "AyiboTalk"{
             categori = "ayibotalk"
@@ -134,9 +134,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             categori = "podcast"
             categoryLabel.text = " PODCAST "
         }
-        else if categoryName == "Auteurs"{
+        else if categoryName == "L'équipe"{
             categori = "podcast"
-            categoryLabel.text = " PODCAST "
+            categoryLabel.text = " L'ÉQUIPE "
         }
         
         else{
