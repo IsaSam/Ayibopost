@@ -536,24 +536,13 @@
                                                         <constraint firstAttribute="width" constant="22" id="ca9-WU-4dM"/>
                                                     </constraints>
                                                     <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <state key="normal" image="shareRight100">
+                                                    <state key="normal" image="share">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="btnSharePosts:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="e9Q-Yr-bij"/>
                                                         <action selector="shareTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="Ilk-M1-8al"/>
                                                     </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-95-6SB">
-                                                    <rect key="frame" x="213" y="253" width="30" height="13"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="13" id="Bpw-4X-ZAk"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="nR5-2J-zqg"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Share">
-                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWW-Vq-7gV">
                                                     <rect key="frame" x="12" y="250" width="49" height="15"/>
@@ -586,12 +575,10 @@
                                                 <constraint firstItem="LcE-kj-sku" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="G8M-wO-5zS"/>
                                                 <constraint firstItem="1Ut-me-H0m" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="5" id="HC8-K1-oVR"/>
                                                 <constraint firstItem="Uip-td-qMF" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="3.5" id="IPa-MT-CSP"/>
-                                                <constraint firstItem="e5s-95-6SB" firstAttribute="leading" secondItem="Uip-td-qMF" secondAttribute="trailing" constant="1" id="LVL-Na-t1b"/>
                                                 <constraint firstItem="Jnu-be-6M9" firstAttribute="leading" secondItem="6OL-70-Amg" secondAttribute="trailing" constant="1" id="Nla-xI-K3g"/>
                                                 <constraint firstItem="ZWW-Vq-7gV" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="8" id="Qus-Mg-cOp"/>
                                                 <constraint firstItem="4Bd-dm-alR" firstAttribute="leading" secondItem="1Ut-me-H0m" secondAttribute="trailing" constant="2" id="SBy-mZ-j5l"/>
                                                 <constraint firstItem="ZWW-Vq-7gV" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="12" id="UGu-Dx-4ZG"/>
-                                                <constraint firstItem="e5s-95-6SB" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="ViZ-iS-cN5"/>
                                                 <constraint firstAttribute="bottom" secondItem="Uip-td-qMF" secondAttribute="bottom" constant="8" id="boy-ta-Mvv"/>
                                                 <constraint firstItem="RtL-tg-yLz" firstAttribute="top" secondItem="3aZ-ht-DCZ" secondAttribute="top" constant="10" id="ctZ-Y3-KXo"/>
                                                 <constraint firstItem="Jnu-be-6M9" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="dr0-tw-sR3"/>
