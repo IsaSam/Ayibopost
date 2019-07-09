@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 20
+    var loadNumber = 10
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -176,7 +176,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.activityIndicatory.startAnimating() //====================
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=10&_embed=\(loadNumber)") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=\(loadNumber)&_embed") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -195,8 +195,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 20
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=10&_embed=\(loadNumber)") { (result, error) in
+        loadNumber = loadNumber + 10
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=\(loadNumber)&_embed") { (result, error) in
  //       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
             
                 if error != nil{
@@ -251,13 +251,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         do{
             let titleDic = (posts as AnyObject).value(forKey: "title")
-            let contentDic = (posts as AnyObject).value(forKey: "excerpt")
+            let contentDic = (posts as AnyObject).value(forKey: "content")
             let embedDic = (posts as AnyObject).value(forKey: "_embedded")
             
             let titleDicString = titleDic as? [[String: Any]]
             let contentDicString = contentDic as? [[String: Any]]
             let embedDicString = embedDic as? [[String: Any]]
-    //        let embedDicString = embedDic as? String
             
             self.postsTitle = titleDicString!
             self.postsContent = contentDicString!
@@ -288,6 +287,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         //Author Name
         let postAuthor = postsEmbed[indexPath.row]
+        let postImage = postsEmbed[indexPath.row]
         if let author = (postAuthor as AnyObject).value(forKey: "author"){
             let dataDicAuthor = author as? [[String: Any]]
             self.byName = dataDicAuthor!
@@ -301,7 +301,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.authorNameLabel.text = "Par " + authorName!
             }
          }
-         
+        
         //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -323,8 +323,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             convertedTime = newTimeFormatter.string(from: time)
         }
         cell.datePost.text = convertedDate
-     
-        /*////
+        
         let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
@@ -334,25 +333,214 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let urlYou = input[range]
             if urlYou != ""{
                 urlYoutube = String(urlYou)
+                print("********************************************************************** 1")
                 print(urlYoutube)
                 cell.picMedia.isHidden = false //icon for media files
             }
             else{
                 cell.picMedia.isHidden = true //icon for media files
+                print("********************************************************************** 2")
             }
         }
         
-        */
-        /*
-        do{
-            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+        
+/*
+        ////////////////////////
+        
+  //       let postImage = postsEmbed[indexPath.row]
+         if let imgArray = (postImage as AnyObject).value(forkey: "wp:featuredmedia"){
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-            let remoteImageUrlString = imgPosts[indexPath.row]
-            let imageURL = remoteImageUrlString["source"] as? String
+         //   let remoteImageUrlString = imgPosts[indexPath.row]
+         }
+         for images in imgPosts{
+            let imageURL = images["source_url"] as? String
             //print(imageURL!)
             if imageURL != nil{
+                imgURLShare = imageURL!
+         }
+         else{}
+         }
+         let url = URL(string: imgURLShare!)
+         cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+         if ((error) != nil) {
+            print("placeholder image...")
+            cell.imagePost.image = UIImage(named: "placeholderImage.png")
+         } else {
+                print("Success let using the image...")
+                cell.imagePost.sd_setImage(with: url)
+            }
+         })
+         if let imagePath = imageURL,
+            let imgUrl = URL(string:  imagePath){
+            cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+            cell.imagePost.af_setImage(withURL: imgUrl)
+         }
+         else{
+            cell.imagePost.image = nil
+        }
+         //  imgShare = cell.imagePost.image
+         imagePost1 = cell.imagePost
+         imagePost2 = cell.imagePost.image
+        
+         ///////////////////
+ */
+       
+        //to remove
+        
+        /*
+         //Load Image
+         if let imgArray = (postImages as AnyObject).value(forKey: "wp:featuredmedia"){
+         let dataDic = imgArray as? [[String: Any]]
+         self.imgPosts = dataDic!
+         let remoteImageUrlString = imgPosts[indexPath.row]
+         
+         for images in imgPosts{
+            let imageURL = images["source_url"] as? String
+         }
+         */
+        
+        /*
+         //Load Image
+         let postImages = postsEmbed[indexPath.row]
+         if let imgArray = (postImages as AnyObject).value(forKey: "wp:featuredmedia"){
+         let dataDic = imgArray as? [[String: Any]]
+         self.imgPosts = dataDic!
+         }
+         for image in imgPosts{
+         let remoteImageUrlString = imgPosts[indexPath.row]
+         let imageURL = remoteImageUrlString["source_url"] as? String
+         //print(imageURL!)
+         
+         if imageURL != nil{
             imgURLShare = imageURL!
+         }
+         else{}
+         }
+         let url = URL(string: imgURLShare!)
+         cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+         if ((error) != nil) {
+         print("placeholder image...")
+         cell.imagePost.image = UIImage(named: "placeholderImage.png")
+         } else {
+         print("Success let using the image...")
+         cell.imagePost.sd_setImage(with: url)
+         }
+         })
+         if let imagePath = imageURL,
+         let imgUrl = URL(string:  imagePath){
+         cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+         cell.imagePost.af_setImage(withURL: imgUrl)
+         }
+         else{
+         cell.imagePost.image = nil
+         }
+         //  imgShare = cell.imagePost.image
+         imagePost1 = cell.imagePost
+         imagePost2 = cell.imagePost.image
+         }*/
+ //----------------------------
+/*
+         let postImages = postsEmbed[indexPath.row]
+   //      if let imgArray = (postImages as AnyObject).value(forKey: "wp:featuredmedia"){
+    //     let dataDic = imgArray as? [[String: Any]]
+     //    self.imgPosts = dataDic!
+         do{
+             let imgArray = (postImages as AnyObject).value(forKey: "wp:featuredmedia")
+             let dataDic = imgArray as? [[String: Any]]
+             self.imgPosts = dataDic!
+ //            let remoteImageUrlString = imgPosts[indexPath.row]
+             let imageURL = remoteImageUrlString["source_url"] as? String
+             //print(imageURL!)
+             if imageURL != nil{
+             imgURLShare = imageURL!
+         }
+         else{}
+ 
+         let url = URL(string: imgURLShare!)
+         cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+         if ((error) != nil) {
+         print("placeholder image...")
+         cell.imagePost.image = UIImage(named: "placeholderImage.png")
+         } else {
+         print("Success let using the image...")
+         cell.imagePost.sd_setImage(with: url)
+         }
+         })
+         if let imagePath = imageURL,
+         let imgUrl = URL(string:  imagePath){
+         cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+         cell.imagePost.af_setImage(withURL: imgUrl)
+         }
+         else{
+         cell.imagePost.image = nil
+         }
+         //  imgShare = cell.imagePost.image
+         imagePost1 = cell.imagePost
+         imagePost2 = cell.imagePost.image
+         }
+ */
+ //-------------------------------------------------
+///////
+        
+        
+        if let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia"){
+            let dataDic = imgArray as? [[String: Any]]
+            self.imgPosts = dataDic!
+        }
+        ////
+        for images in imgPosts{
+            //        let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = images["source_url"] as? String
+            //print(imageURL!)
+            if imageURL != nil{
+                imgURLShare = imageURL!
+            }
+            else{}
+            
+            let url = URL(string: imgURLShare!)
+            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                if ((error) != nil) {
+                    print("placeholder image...")
+                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                } else {
+                    print("Success let using the image...")
+                    cell.imagePost.sd_setImage(with: url)
+                }
+            })
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                cell.imagePost.af_setImage(withURL: imgUrl)
+            }
+            else{
+                cell.imagePost.image = nil
+            }
+        }
+        ////
+            
+
+            //  imgShare = cell.imagePost.image
+            imagePost1 = cell.imagePost
+            imagePost2 = cell.imagePost.image
+        
+        
+///////
+    /*
+        do{
+            let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")
+            let dataDic = imgArray as? [[String: Any]]
+            self.imgPosts = dataDic!
+            
+            
+            
+            
+            
+            let remoteImageUrlString = imgPosts[indexPath.row]
+            let imageURL = remoteImageUrlString["source_url"] as? String
+            //print(imageURL!)
+            if imageURL != nil{
+                imgURLShare = imageURL!
             }
             else{}
             
@@ -378,9 +566,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
-        */
+      */
         
-        cell.imagePost.image = nil   //TO REMOVE
+     //   cell.imagePost.image = nil   //TO REMOVE
         
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
