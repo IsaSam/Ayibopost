@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 10
+    var loadNumber = 1
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -176,7 +176,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.activityIndicatory.startAnimating() //====================
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?page=\(loadNumber)") { (result, error) in
 //         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=\(loadNumber)&_embed") { (result, error) in
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
+        //AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=\(loadNumber)&_embed") { (result, error) in
          
          if error != nil{
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -195,9 +196,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 10
-         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?per_page=\(loadNumber)&_embed") { (result, error) in
- //       AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=&filter[posts_per_page]=\(loadNumber)") { (result, error) in
+        loadNumber = loadNumber + 1
+         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
             
                 if error != nil{
                     let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
