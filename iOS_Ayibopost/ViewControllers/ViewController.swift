@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
-    var postsTitle1: [[String: Any]] = []
+ //   var postsTitle1: [[String: Any]] = []
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var postsEmbed1: String?
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
-    var post: [[String: Any]] = []
+//    var post: [[String: Any]] = []
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
@@ -432,12 +432,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
-            let imgPost = imgPosts[(indexPath?.row)!]
-            let nameString = byName[(indexPath?.row)!]
+            let postTitle = postsTitle[(indexPath?.row)!]
+            let postContent = postsContent[(indexPath?.row)!]
+ //           let postAuthor = postsEmbed[(indexPath?.row)!]
+   //         let postImage = postsEmbed[(indexPath?.row)!]
+            let imgPost = postsEmbed[(indexPath?.row)!]
+   //         let imgPost = imgPosts[(indexPath?.row)!]
+   //         let nameString = byName[(indexPath?.row)!]
+            let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
-            detailViewController.imgPost = imgPost
+  //          detailViewController.imgPost = imgPost
             detailViewController.nameString = nameString
+            detailViewController.postTitle = postTitle
+            detailViewController.postContent = postContent
+//            detailViewController.nameString = postAuthor
+            detailViewController.imgPost = imgPost
+//            detailViewController.postImage = postImage
         
         }
     }
