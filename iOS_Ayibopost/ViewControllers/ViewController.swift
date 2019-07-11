@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var postsEmbed: [[String: Any]] = []
     var postsEmbed1: String?
     var authorDic: [[String: Any]] = []
+    var author: String?
 
     
     var imgPosts: [[String: Any]] = []
@@ -288,6 +289,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let dataDicAuthor = author as? [[String: Any]]
             self.byName = dataDicAuthor!
         }
+ //       let authorN = byName[(indexPath.row)]
         for author in byName{
             let authorNameE = author["name"] as? String
             let authorName = authorNameE?.stringByDecodingHTMLEntities
@@ -295,6 +297,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.authorNameLabel.text = ""
             }else{
                 cell.authorNameLabel.text = "Par " + authorName!
+                
+                
             }
          }
         
@@ -434,11 +438,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let post = posts[(indexPath?.row)!]
             let postTitle = postsTitle[(indexPath?.row)!]
             let postContent = postsContent[(indexPath?.row)!]
- //           let postAuthor = postsEmbed[(indexPath?.row)!]
    //         let postImage = postsEmbed[(indexPath?.row)!]
             let imgPost = postsEmbed[(indexPath?.row)!]
    //         let imgPost = imgPosts[(indexPath?.row)!]
-   //         let nameString = byName[(indexPath?.row)!]
             let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
@@ -446,9 +448,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             detailViewController.nameString = nameString
             detailViewController.postTitle = postTitle
             detailViewController.postContent = postContent
-//            detailViewController.nameString = postAuthor
             detailViewController.imgPost = imgPost
 //            detailViewController.postImage = postImage
+            detailViewController.nameString = nameString
+        
         
         }
     }

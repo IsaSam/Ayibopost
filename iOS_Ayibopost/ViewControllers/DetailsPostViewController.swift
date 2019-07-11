@@ -35,8 +35,10 @@ class DetailsPostViewController: UIViewController{
     var nameString: [String: Any]?
     var postTitle: [String: Any]?
     var postContent: [String: Any]?
-//    var postAuthor: [String: Any]?
+    var postAuthor: [String: Any]?
     var postImage: [String: Any]?
+  //  var author: String?
+    var Name: [[String: Any]] = []
     
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -70,15 +72,26 @@ class DetailsPostViewController: UIViewController{
             contentLabel.text = content.stringByDecodingHTMLEntities
             
             //Author name
-            let authorName = (nameString!["name"] as? String)?.stringByDecodingHTMLEntities
-            if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
-                authorNameLabel.text = ""
-                authorNameLabel2.text = ""
-            }else{
-      //          authorNameLabel.text = "By " + authorName!
-      //          authorNameLabel2.text = "By " + authorName!
-            }
-            
+                    
+                    if let author = (nameString as AnyObject).value(forKey: "author"){
+                        let dataDicAuthor = author as? [[String: Any]]
+                        self.Name = dataDicAuthor!
+                    }
+                    //       let authorN = byName[(indexPath.row)]
+                    for author in Name{
+                        let authorNameE = author["name"] as? String
+                        let authorName = authorNameE?.stringByDecodingHTMLEntities
+                        if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
+                            authorNameLabel.text = ""
+                            authorNameLabel2.text = ""
+                        }else{
+                                authorNameLabel.text = "Par " + authorName!
+                                authorNameLabel2.text = "Par " + authorName!
+                            
+                            
+                        }
+                    }
+
             //datePost.text = post[PostKeys.date] as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
