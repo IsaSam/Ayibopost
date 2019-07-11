@@ -39,6 +39,8 @@ class DetailsPostViewController: UIViewController{
     var postImage: [String: Any]?
   //  var author: String?
     var Name: [[String: Any]] = []
+    var imgPosts: [[String: Any]] = []
+    
     
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -140,13 +142,19 @@ class DetailsPostViewController: UIViewController{
                 //         self.pImage.isHidden = true
                 videoView.isHidden = true
                 self.postImageView.isHidden = false
-                let imageURL = imgPost!["source_url"] as? String
-                if let imagePath = imageURL,
-                    let imgUrl = URL(string:  imagePath){
-                    postImageView.af_setImage(withURL: imgUrl)
-                }
-                else{
-                    postImageView.image = nil
+                if let img = (nameString as AnyObject).value(forKey: "wp:featuredmedia"){
+                    let dataDic = img as? [[String: Any]]
+                    self.imgPosts = dataDic!
+                    for images in imgPosts{
+                        let imageURL = images["source_url"] as? String
+                        if let imagePath = imageURL,
+                            let imgUrl = URL(string:  imagePath){
+                            postImageView.af_setImage(withURL: imgUrl)
+                        }
+                        else{
+                            postImageView.image = nil
+                        }
+                    }
                 }
             }
                     }
