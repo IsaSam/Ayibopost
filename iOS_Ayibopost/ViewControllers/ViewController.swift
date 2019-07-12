@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.delegate = self
-        tableView.rowHeight = 420
+        tableView.rowHeight = 440
         tableView.estimatedRowHeight = 500
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
