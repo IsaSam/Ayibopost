@@ -157,8 +157,8 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.delegate = self
-        tableView.rowHeight = 330
-        tableView.estimatedRowHeight = 350
+        tableView.rowHeight = 420
+        tableView.estimatedRowHeight = 500
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
     
@@ -460,22 +460,28 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
-            let imgPost = imgPosts[(indexPath?.row)!]
-            let nameString = byName[(indexPath?.row)!]
+            let postTitle = postsTitle[(indexPath?.row)!]
+            let postContent = postsContent[(indexPath?.row)!]
+            let imgPost = postsEmbed[(indexPath?.row)!]
+            let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
+            
             detailViewController.post = post
+            detailViewController.nameString = nameString
+            detailViewController.postTitle = postTitle
+            detailViewController.postContent = postContent
             detailViewController.imgPost = imgPost
             detailViewController.nameString = nameString
-            
         }
     }
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
         postShare = posts[sender.tag]
-        let title = (postShare["title"] as? String)?.stringByDecodingHTMLEntities
+        let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
+        let title = (postShare1["rendered"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
         imgPostShare = imgPosts[(sender.tag)]
-        let imageURL = imgPostShare!["source"] as? String
+        let imageURL = imgPostShare!["source_url"] as? String
         
         if let imagePath = imageURL,
             let imgUrl = URL(string:  imagePath){
@@ -485,7 +491,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             //  imagePost1.image = nil
         }
         let image = imagePost1?.image
-        
         
         let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
         if let popoverController = vc.popoverPresentationController{
