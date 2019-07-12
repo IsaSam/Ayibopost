@@ -23,7 +23,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
- //   var postsTitle1: [[String: Any]] = []
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var postsEmbed1: String?
@@ -263,6 +262,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let postTitle = postsTitle[indexPath.row]
         let postContent = postsContent[indexPath.row]
+        let postAuthor = postsEmbed[indexPath.row]
+        let postImage = postsEmbed[indexPath.row]
         //old API
         //    let title = post["title"] as! String
         
@@ -283,13 +284,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.contentLabel.text = content.stringByDecodingHTMLEntities
 
         //Author Name
-        let postAuthor = postsEmbed[indexPath.row]
-        let postImage = postsEmbed[indexPath.row]
+
         if let author = (postAuthor as AnyObject).value(forKey: "author"){
             let dataDicAuthor = author as? [[String: Any]]
             self.byName = dataDicAuthor!
         }
- //       let authorN = byName[(indexPath.row)]
         for author in byName{
             let authorNameE = author["name"] as? String
             let authorName = authorNameE?.stringByDecodingHTMLEntities
@@ -297,8 +296,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.authorNameLabel.text = ""
             }else{
                 cell.authorNameLabel.text = "Par " + authorName!
-                
-                
             }
          }
         
@@ -388,7 +385,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
-///////
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)

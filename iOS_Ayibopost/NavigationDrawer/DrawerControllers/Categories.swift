@@ -19,11 +19,14 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
+    var postsTitle: [[String: Any]] = []
+    var postsContent: [[String: Any]] = []
+    var postsEmbed: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     var imgPostShare: [String: Any]?
     var urlPost1: String?
     var refreshControl: UIRefreshControl!
-    var loadNumber = 55
+    var loadNumber = 1
     var urlYoutube = ""
     var convertedDate: String = ""
     var convertedTime: String = ""
@@ -45,8 +48,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     var searching: [String] = []
     var catPosts: [[String: Any]] = []
  //   var categori = "business"
-    var categori: String?
+    var catID: Int?
     var categoryName: String?
+    var teamID = false
     
     var delegate: BookmarkViewController!
     
@@ -107,40 +111,40 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         print(categoryName!)
         
         if categoryName == "Politique"{
-            categori = "politics"
+            catID = 1
             categoryLabel.text = "POLITIQUE"
         }
         else if categoryName == "Société"{
-            categori = "social"
+            catID = 3
             categoryLabel.text = "SOCIÉTÉ"
         }
         else if categoryName == "Économie"{
-            categori = "business"
+            catID = 37
             categoryLabel.text = "ÉCONOMIE"
         }
         else if categoryName == "Culture"{
-            categori = "lifestyle"
+            catID = 7
             categoryLabel.text = "CULTURE"
         }
         else if categoryName == "Sport"{
-            categori = "SPORT"
+            catID = 4
             categoryLabel.text = "SPORT"
         }
         else if categoryName == "AyiboTalk"{
-            categori = "ayibotalk"
+            catID = 1287
             categoryLabel.text = " AYIBOTALK "
         }
         else if categoryName == "Podcast"{
-            categori = "podcast"
+            catID = 3053
             categoryLabel.text = " PODCAST "
         }
         else if categoryName == "L'équipe"{
-            categori = "podcast"
+            teamID = true
             categoryLabel.text = " L'ÉQUIPE "
         }
         
         else{
-            categori = ""
+            catID = 0
             categoryLabel.text = ""
         }
         
@@ -201,8 +205,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     private func getPostCategory(){
         
         self.activityIndicatory.startAnimating() //====================
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori!)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-            
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
             if error != nil{
                 // print(error!)
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -224,9 +227,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     }
     
     func loadMorePosts(){
-        loadNumber = loadNumber + 55
-        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/posts?filter[category_name]=\(categori!)&filter[posts_per_page]=\(loadNumber)") { (result, error) in
-            
+        loadNumber = loadNumber + 1
+        AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
+
             if error != nil{
                 // print(error!)
                 let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
@@ -240,7 +243,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             
             //print(result!)
             //self.posts = result!
-            
             do{
                 for item in result!
                 {
@@ -258,8 +260,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             loadMorePosts()
         }
     }
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filteredPosts = searchText.isEmpty ? self.posts : self.posts.filter({(post) -> Bool in
             return (post["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
@@ -288,30 +288,54 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         let urlPost = post["link"] as! String
         urlPost1 = urlPost as String
         
-        cell.titleLabel.text = (post["title"] as? String)?.stringByDecodingHTMLEntities
-        titleShare = cell.titleLabel.text
+
+         do{
+         let titleDic = (posts as AnyObject).value(forKey: "title")
+         let contentDic = (posts as AnyObject).value(forKey: "content")
+         let embedDic = (posts as AnyObject).value(forKey: "_embedded")
+         
+         let titleDicString = titleDic as? [[String: Any]]
+         let contentDicString = contentDic as? [[String: Any]]
+         let embedDicString = embedDic as? [[String: Any]]
+         
+         self.postsTitle = titleDicString!
+         self.postsContent = contentDicString!
+         self.postsEmbed = embedDicString!
+         }
+        let postTitle = postsTitle[indexPath.row]
+        let postContent = postsContent[indexPath.row]
+        let postAuthor = postsEmbed[indexPath.row]
+        let postImage = postsEmbed[indexPath.row]
         
-        let htmlTag = post["content"] as! String
+        let encoded = postTitle["rendered"] as? String
+        cell.titleLabel.text = encoded?.stringByDecodingHTMLEntities
+        titleShare = cell.titleLabel.text
+
+        let htmlTag =  postContent["rendered"] as! String
         let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.contentLabel.text = content.stringByDecodingHTMLEntities
         
-        //author name
-        let author = (posts as AnyObject).value(forKey: "author")
-        let dataDicAuthor = author as? [[String: Any]]
-        self.byName = dataDicAuthor!
-        let nameString = byName[indexPath.row]
-        let authorName = (nameString["first_name"] as? String)?.stringByDecodingHTMLEntities
-        if authorName == "Guest author"{
-            cell.authorNameLabel.text = "By Guest"
-        }else{
-            cell.authorNameLabel.text = "By " + authorName!
+        //Author Name
+        if let author = (postAuthor as AnyObject).value(forKey: "author"){
+            let dataDicAuthor = author as? [[String: Any]]
+            self.byName = dataDicAuthor!
+        }
+        for author in byName{
+            let authorNameE = author["name"] as? String
+            let authorName = authorNameE?.stringByDecodingHTMLEntities
+            if authorName == "Guest author"{
+                cell.authorNameLabel.text = ""
+            }else{
+                cell.authorNameLabel.text = "Par " + authorName!
+            }
         }
         
         //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
-        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        //        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        newDateFormatter.dateFormat = "dd MMM, yyyy"
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH-mm-ss"
         let newTimeFormatter = DateFormatter()
@@ -344,39 +368,48 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 cell.picMedia.isHidden = true //icon for media files
             }
         }
+
         do{
-            let imgArray = (posts as AnyObject).value(forKey: "featured_image")
+            let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-            let remoteImageUrlString = imgPosts[indexPath.row]
-            let imageURL = remoteImageUrlString["source"] as? String
-            //print(imageURL!)
-            if imageURL != nil{
-                imgURLShare = imageURL!
-            }else{}
-            
-            let url = URL(string: imgURLShare!)
-            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    print("placeholder image...")
-                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
-                } else {
-                    print("Success let using the image...")
-                    cell.imagePost.sd_setImage(with: url)
+            //          let remoteImageUrlString = imgPosts[indexPath.row]
+            //   }
+            ////
+            for images in imgPosts{
+                //   let remoteImageUrlString = imgPosts[indexPath.row]
+                //      let imageURL = remoteImageUrlString["source_url"] as? String
+                let imageURL = images["source_url"] as? String
+                //print(imageURL!)
+                if imageURL != nil{
+                    imgURLShare = imageURL!
                 }
-            })
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
-                cell.imagePost.af_setImage(withURL: imgUrl)
+                else{}
+                
+                let url = URL(string: imgURLShare!)
+                cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                    if ((error) != nil) {
+                        print("placeholder image...")
+                        cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                    } else {
+                        print("Success let using the image...")
+                        cell.imagePost.sd_setImage(with: url)
+                    }
+                })
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                    cell.imagePost.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    cell.imagePost.image = nil
+                }
+                //  imgShare = cell.imagePost.image
+                imagePost1 = cell.imagePost
+                imagePost2 = cell.imagePost.image
             }
-            else{
-                cell.imagePost.image = nil
-            }
-            //  imgShare = cell.imagePost.image
-            imagePost1 = cell.imagePost
-            imagePost2 = cell.imagePost.image
         }
+        
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
         
