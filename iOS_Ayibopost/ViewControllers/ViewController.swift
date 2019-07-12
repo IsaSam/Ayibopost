@@ -23,11 +23,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
-    var postsTitle1: [[String: Any]] = []
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var postsEmbed1: String?
     var authorDic: [[String: Any]] = []
+    var author: String?
 
     
     var imgPosts: [[String: Any]] = []
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
-    var post: [[String: Any]] = []
+//    var post: [[String: Any]] = []
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
@@ -115,8 +115,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.refreshControl.addTarget(self, action: #selector(ViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.delegate = self
-        tableView.rowHeight = 330
-        tableView.estimatedRowHeight = 350
+        tableView.rowHeight = 420
+        tableView.estimatedRowHeight = 500
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
         
@@ -262,6 +262,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let postTitle = postsTitle[indexPath.row]
         let postContent = postsContent[indexPath.row]
+        let postAuthor = postsEmbed[indexPath.row]
+        let postImage = postsEmbed[indexPath.row]
         //old API
         //    let title = post["title"] as! String
         
@@ -282,8 +284,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.contentLabel.text = content.stringByDecodingHTMLEntities
 
         //Author Name
-        let postAuthor = postsEmbed[indexPath.row]
-        let postImage = postsEmbed[indexPath.row]
+
         if let author = (postAuthor as AnyObject).value(forKey: "author"){
             let dataDicAuthor = author as? [[String: Any]]
             self.byName = dataDicAuthor!
@@ -341,14 +342,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 ///////
         
-        
-        if let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia"){
+        do{
+            let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-        }
+  //          let remoteImageUrlString = imgPosts[indexPath.row]
+     //   }
         ////
         for images in imgPosts{
-            //        let remoteImageUrlString = imgPosts[indexPath.row]
+         //   let remoteImageUrlString = imgPosts[indexPath.row]
+     //      let imageURL = remoteImageUrlString["source_url"] as? String
             let imageURL = images["source_url"] as? String
             //print(imageURL!)
             if imageURL != nil{
@@ -374,16 +377,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             else{
                 cell.imagePost.image = nil
             }
-        }
+        
         ////
             
 
             //  imgShare = cell.imagePost.image
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
-        
-///////
-        
+        }
+        }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
@@ -430,12 +432,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
-            let imgPost = imgPosts[(indexPath?.row)!]
-            let nameString = byName[(indexPath?.row)!]
+            let postTitle = postsTitle[(indexPath?.row)!]
+            let postContent = postsContent[(indexPath?.row)!]
+   //         let postImage = postsEmbed[(indexPath?.row)!]
+            let imgPost = postsEmbed[(indexPath?.row)!]
+   //         let imgPost = imgPosts[(indexPath?.row)!]
+            let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
-            detailViewController.imgPost = imgPost
+  //          detailViewController.imgPost = imgPost
             detailViewController.nameString = nameString
+            detailViewController.postTitle = postTitle
+            detailViewController.postContent = postContent
+            detailViewController.imgPost = imgPost
+//            detailViewController.postImage = postImage
+            detailViewController.nameString = nameString
+        
         
         }
     }
