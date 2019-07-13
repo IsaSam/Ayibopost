@@ -20,6 +20,7 @@ struct AyiboAPIManager{
                 completion(nil, error?.localizedDescription)
                 return
             }
+           
             
             do{
                 
@@ -37,6 +38,7 @@ struct AyiboAPIManager{
                 
             }catch{
                 print("Error: \(error.localizedDescription)")
+                
             }
                 
         }.resume()

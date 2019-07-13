@@ -25,6 +25,10 @@ class HTTPHandler {
                     print("return to completion handler with the data")
                     completionHandler(data as Data)
                 }
+                else if (statusCode == 400) {
+                    print("No more pages to load *************************************")
+                    completionHandler(data as Data)
+                }
             } else if let error = error {
                 print("***There was an error making the HTTP request***")
                 print(error.localizedDescription)

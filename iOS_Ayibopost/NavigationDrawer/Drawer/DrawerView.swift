@@ -215,6 +215,9 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         let storyBoard = UIStoryboard(name:"Main", bundle:nil)
         let controllerMain = (storyBoard.instantiateViewController(withIdentifier: "Home"))
         let controllerName = (storyBoard.instantiateViewController(withIdentifier: "Category"))
+        let controllerVideo = (storyBoard.instantiateViewController(withIdentifier: "Video"))
+        let controllerBook = (storyBoard.instantiateViewController(withIdentifier: "Bookmark"))
+        let controllerPage = (storyBoard.instantiateViewController(withIdentifier: "Page"))   //webView apropos, contact
         let controllerTeam = (storyBoard.instantiateViewController(withIdentifier: "Team"))
         print("\(aryViewControllers[indexPath.row])")
         MyVariables.categoryDrawerName = aryViewControllers[indexPath.row] as? String
@@ -223,6 +226,22 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
         if nameCat == "Accueil"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerMain)
+        }
+        else if nameCat == "Vidéo"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerVideo)
+        }
+        else if nameCat == "Bookmarks"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerBook)
+        }
+        else if nameCat == "Partager"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerMain)
+        }
+        else if nameCat == "Partager" || nameCat == "À propos" || nameCat == "Contact"{
+            controllerName.hidesBottomBarWhenPushed = false
+            self.delegate?.pushTo(viewController: controllerPage)
         }
         else if nameCat == "L'équipe"{
             controllerName.hidesBottomBarWhenPushed = false

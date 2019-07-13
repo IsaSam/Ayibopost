@@ -195,6 +195,36 @@
             </objects>
             <point key="canvasLocation" x="3053" y="146"/>
         </scene>
+        <!--Video View Controller-->
+        <scene sceneID="9mm-Jc-DEV">
+            <objects>
+                <viewController storyboardIdentifier="Video" id="bE9-XP-5pX" customClass="VideoViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JAV-Vm-uR7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RJZ-fC-tep"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qb-hV-IYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4035" y="146"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="yBi-t9-Vgi">
+            <objects>
+                <viewController storyboardIdentifier="Page" id="LrO-st-CqO" customClass="PageViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b60-Ri-qkG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hQZ-Yz-NQr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r2p-uF-kV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4781" y="143"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZLu-Kd-xdm">
             <objects>
@@ -1191,6 +1221,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Udz-Bt-fsB"/>
         <segue reference="ioK-7P-FM4"/>
-        <segue reference="IH8-aK-iMw"/>
+        <segue reference="KPg-ES-9U8"/>
     </inferredMetricsTieBreakers>
 </document>
