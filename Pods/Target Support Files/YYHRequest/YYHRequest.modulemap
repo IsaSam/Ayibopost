@@ -1,0 +1,6 @@
+framework module YYHRequest {
+  umbrella header "YYHRequest-umbrella.h"
+
+  export *
+  module * { export * }
+}

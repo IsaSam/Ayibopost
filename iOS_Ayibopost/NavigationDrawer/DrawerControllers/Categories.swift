@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YYHRequest
 
 class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate {
 
@@ -287,16 +288,24 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             //self.posts = result!
             do{
                 
-                
-                
-                for item in result!
+                ////
+                if YYHRequest(url: NSURL(string: self.imgURLShare!)! as URL) != nil {
+                    ////
+                    print("===========================================")
+                    print("body nil")
+                    //print(request?.body as Any)
+                }else{
                     
-                {
-                    
-                    self.posts.append(item)
+                    for item in result!
+                        
+                    {
+                        
+                        self.posts.append(item)
+                    }
+                    print(result!)
+                    self.tableView.reloadData() // to tell table about new data
                 }
-                print(result!)
-                self.tableView.reloadData() // to tell table about new data
+
                 }
             
         }
@@ -437,16 +446,22 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 else{}
                 
                 let url = URL(string: imgURLShare!)
-////
-                let request = YYHRequest(url: NSURL(string: imgURLShare))
-////
-                request.loadWithCompletion {response, data, error in
+
+                /*
+                if request?.body == nil{
+                    print("body nil =================================")
+                }else{
+                    print("nonoonononononononononononononnon")
+                }
+                
+                */
+            /*    request.loadWithCompletion {response, data, error in
                     if let actualError = error {
                         // handle error
                     } else if let actualResponse = response {
                         // handle success
                     }
-                }
+                }*/
                 
                 cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
                     if ((error) != nil) {
