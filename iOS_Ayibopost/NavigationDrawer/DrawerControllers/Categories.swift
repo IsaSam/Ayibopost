@@ -153,7 +153,12 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             catID = "3196"
             categoryLabel.text = " SEXUALITÉ "
         }
-/*        else if categoryName == "Vidéo"{
+/*
+        else if categoryName == " "{
+            catID = ""
+        //    categoryLabel.text = " SEXUALITÉ "
+        }
+       else if categoryName == "Vidéo"{
             videoID = true
             categoryLabel.text = " VIDÉOS "
         }

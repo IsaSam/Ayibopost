@@ -516,7 +516,7 @@ func dismissKeyboard() {
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
 //        static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk", "L'équipe", "A propos"]
-    static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk","Le blog", "Sexualité","Vidéo", "Bookmarks", "Partager", "AppStore", "À propos", "Contact", "L'équipe"]
+    static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk","Le blog", "Sexualité","Vidéo", " ", "Bookmarks", "Partager", "AppStore", " ", "À propos", "Contact", "L'équipe"]
 }
 //----------------------
 

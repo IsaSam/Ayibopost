@@ -247,6 +247,10 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerTeam)
         }
+        else if nameCat == " "{
+            controllerName.hidesBottomBarWhenPushed = false
+        }
+        
         else{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerName)
