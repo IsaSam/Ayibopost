@@ -235,11 +235,11 @@ class DrawerView: UIView, drawerProtocolNew, UITableViewDelegate, UITableViewDat
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerBook)
         }
-        else if nameCat == "Partager"{
+  /*      else if nameCat == "Partager"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerMain)
-        }
-        else if nameCat == "Partager" || nameCat == "À propos" || nameCat == "Contact"{
+        }*/
+        else if nameCat == "Partager" || nameCat == "AppStore" || nameCat == "À propos" || nameCat == "Contact"{
             controllerName.hidesBottomBarWhenPushed = false
             self.delegate?.pushTo(viewController: controllerPage)
         }

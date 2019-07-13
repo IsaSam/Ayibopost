@@ -153,10 +153,11 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             catID = "3196"
             categoryLabel.text = " SEXUALITÉ "
         }
-        else if categoryName == "Vidéo"{
+/*        else if categoryName == "Vidéo"{
             videoID = true
             categoryLabel.text = " VIDÉOS "
         }
+
         else if categoryName == "Bookmarks"{
             bookID = true
             categoryLabel.text = " BOOKMARKS "
@@ -167,7 +168,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         }
         else if categoryName == "AppStore"{
             appID = true
-            categoryLabel.text = " PARTAGER "
+            categoryLabel.text = " AppStore "
         }
         else if categoryName == "À propos"{
             aboutID = true
@@ -177,14 +178,15 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             contactID = true
             categoryLabel.text = " CONTACT "
         }
+ 
         else if categoryName == "L'équipe"{
             teamID = true
             categoryLabel.text = " L'ÉQUIPE "
         }
-        
+        */
         else{
-            catID = ""
-            categoryLabel.text = ""
+       //     catID = ""
+         //   categoryLabel.text = ""
         }
         
         getData() //get bookmarks
