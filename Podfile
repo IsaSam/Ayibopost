@@ -14,4 +14,7 @@ target 'iOS_Ayibopost' do
   #pod 'SwiftyJSON'
   pod 'SwiftyJSON', '~> 4.0'
 
+  pod 'YYHRequest'
+  pod 'YYHRequest/JSON'
+
 end

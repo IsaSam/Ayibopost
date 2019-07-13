@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YYHRequest
 
 class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate {
 
@@ -48,9 +49,15 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     var searching: [String] = []
     var catPosts: [[String: Any]] = []
  //   var categori = "business"
-    var catID: Int?
+    var catID: String?
     var categoryName: String?
     var teamID = false
+    var bookID = false
+    var shareID = false
+    var aboutID = false
+    var contactID = false
+    var videoID = false
+    var appID = false
     
     var delegate: BookmarkViewController!
     
@@ -111,41 +118,80 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         print(categoryName!)
         
         if categoryName == "Politique"{
-            catID = 1
+            catID = "1"
             categoryLabel.text = "POLITIQUE"
         }
         else if categoryName == "Société"{
-            catID = 3
+            catID = "3"
             categoryLabel.text = "SOCIÉTÉ"
         }
         else if categoryName == "Économie"{
-            catID = 37
+            catID = "37"
             categoryLabel.text = "ÉCONOMIE"
         }
         else if categoryName == "Culture"{
-            catID = 7
+            catID = "7"
             categoryLabel.text = "CULTURE"
         }
         else if categoryName == "Sport"{
-            catID = 4
+            catID = "4"
             categoryLabel.text = "SPORT"
         }
-        else if categoryName == "AyiboTalk"{
-            catID = 1287
-            categoryLabel.text = " AYIBOTALK "
-        }
         else if categoryName == "Podcast"{
-            catID = 3053
+            catID = "3053"
             categoryLabel.text = " PODCAST "
         }
+        else if categoryName == "AyiboTalk"{
+            catID = "1287"
+            categoryLabel.text = " AYIBOTALK "
+        }
+        else if categoryName == "Le blog"{
+            catID = "3199"
+            categoryLabel.text = " LE BLOG "
+        }
+        else if categoryName == "Sexualité"{
+            catID = "3196"
+            categoryLabel.text = " SEXUALITÉ "
+        }
+/*
+        else if categoryName == " "{
+            catID = ""
+        //    categoryLabel.text = " SEXUALITÉ "
+        }
+       else if categoryName == "Vidéo"{
+            videoID = true
+            categoryLabel.text = " VIDÉOS "
+        }
+
+        else if categoryName == "Bookmarks"{
+            bookID = true
+            categoryLabel.text = " BOOKMARKS "
+        }
+        else if categoryName == "Partager"{
+            shareID = true
+            categoryLabel.text = " PARTAGER "
+        }
+        else if categoryName == "AppStore"{
+            appID = true
+            categoryLabel.text = " AppStore "
+        }
+        else if categoryName == "À propos"{
+            aboutID = true
+            categoryLabel.text = " À PROPOS "
+        }
+        else if categoryName == "Contact"{
+            contactID = true
+            categoryLabel.text = " CONTACT "
+        }
+ 
         else if categoryName == "L'équipe"{
             teamID = true
             categoryLabel.text = " L'ÉQUIPE "
         }
-        
+        */
         else{
-            catID = 0
-            categoryLabel.text = ""
+       //     catID = ""
+         //   categoryLabel.text = ""
         }
         
         getData() //get bookmarks
@@ -228,6 +274,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     func loadMorePosts(){
         loadNumber = loadNumber + 1
+        
+
+        
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
 
             if error != nil{
@@ -241,19 +290,36 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
+            
             //print(result!)
             //self.posts = result!
             do{
-                for item in result!
-                {
-                    //self.dataList.add(item)
-                    self.posts.append(item)
+                
+                ////
+                if YYHRequest(url: NSURL(string: self.imgURLShare!)! as URL) != nil {
+                    ////
+                    print("===========================================")
+                    print("body nil")
+                    //print(request?.body as Any)
+                }else{
+                    
+                    for item in result!
+                        
+                    {
+                        
+                        self.posts.append(item)
+                    }
+                    print(result!)
+                    self.tableView.reloadData() // to tell table about new data
                 }
-                print(result!)
-                self.tableView.reloadData() // to tell table about new data
-            }
+
+                }
+            
         }
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row + 1 == posts.count{
@@ -387,6 +453,23 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 else{}
                 
                 let url = URL(string: imgURLShare!)
+
+                /*
+                if request?.body == nil{
+                    print("body nil =================================")
+                }else{
+                    print("nonoonononononononononononononnon")
+                }
+                
+                */
+            /*    request.loadWithCompletion {response, data, error in
+                    if let actualError = error {
+                        // handle error
+                    } else if let actualResponse = response {
+                        // handle success
+                    }
+                }*/
+                
                 cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
                     if ((error) != nil) {
                         print("placeholder image...")
