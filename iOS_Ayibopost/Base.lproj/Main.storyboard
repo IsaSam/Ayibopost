@@ -1300,7 +1300,9 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                     </navigationItem>
                     <connections>
                         <outlet property="PageLabel" destination="8DB-CS-zeX" id="3X7-fU-AU1"/>
+                        <outlet property="contactPage" destination="bV8-LK-lWD" id="Zmw-bk-zP7"/>
                         <outlet property="contentLabel" destination="8EE-c0-hsM" id="eZT-EA-qFY"/>
+                        <outlet property="sendEmail" destination="Ggr-6q-9jl" id="AuD-GY-OUB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9i-1f-7ff" userLabel="First Responder" sceneMemberID="firstResponder"/>

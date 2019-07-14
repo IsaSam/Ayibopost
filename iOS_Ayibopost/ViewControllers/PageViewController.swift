@@ -13,6 +13,8 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
     
     @IBOutlet weak var PageLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contactPage: UIView!
+    @IBOutlet weak var sendEmail: UIButton!
     
     var postsPage: [[String: Any]] = []
     var categoryName: String?
@@ -30,7 +32,24 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
      
         if categoryName == "Contact"{
             pageID = "19399"
+            sendEmail.isHidden = false
             PageLabel.text? = "CONTACT"
+        }
+        else if categoryName == "À propos"{
+            pageID = "2"
+            sendEmail.isHidden = true
+            PageLabel.text? = "À PROPOS"
+            contentLabel.text? = """
+            Bien plus qu’un média en ligne, Ayibopost est une plateforme d’auto-defense intellectuelle. Informer, éduquer et sensibiliser : voici le triptyque que nous mettons en oeuvre, et ceci surtout lorsqu’il s’agit de vulgariser des informations ou concepts d’utilité publique. Nous sommes fiers de faire du journalisme explicatif.
+            
+            Ayibopost est un projet collectif, basé sur la collaboration. Dans ou hors les murs nous donnons la parole à ceux et celles qui font, qui pensent, qui créent, qui luttent, qui innovent quel que soit le domaine, et quel que soit le sujet. À Ayibopost nous sommes convaincus que la rigueur et l’exigence intellectuelle forment la pierre angulaire d’un journalisme de qualité.
+            
+            Cette rigueur et cette exigence sont indispensables lorsque que nous traitons des sujets parfois impopulaires, tabous qui, en général, ne sont pas ou peu discutés. Nous abordons aussi des thèmes sur lesquels la société choisit –  de manière consciente ou non– de garder le silence. Ayibopost est un espace où les opinions, parfois contraires, sont diffusées et débattues.
+            
+            "La mission d’Ayibopost est d’être à la hauteur des défis qui se posent à la société haïtienne et des attentes de nos lecteurs.
+            """
+ 
+
         }
         topBarLogo()
    //     getContact()
