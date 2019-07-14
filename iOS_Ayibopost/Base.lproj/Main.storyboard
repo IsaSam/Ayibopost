@@ -1227,29 +1227,29 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggr-6q-9jl">
-                                                        <rect key="frame" x="62" y="307" width="157" height="30"/>
+                                                        <rect key="frame" x="62" y="307" width="157" height="40"/>
                                                         <color key="backgroundColor" red="0.91498006245645469" green="0.91498006245645469" blue="0.91498006245645469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="157" id="5Og-a1-zes"/>
-                                                            <constraint firstAttribute="height" constant="30" id="rxx-7n-uP4"/>
+                                                            <constraint firstAttribute="height" constant="40" id="rxx-7n-uP4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                         <state key="normal" title="📧 Contactez-nous">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="sendEmail:" destination="sWG-5r-vpW" eventType="touchUpInside" id="rXV-2p-rfb"/>
+                                                            <action selector="sendEmail:" destination="sWG-5r-vpW" eventType="touchUpInside" id="YM0-O4-MhS"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phj-Ic-B0N">
-                                                        <rect key="frame" x="62" y="307" width="157" height="30"/>
+                                                        <rect key="frame" x="62" y="307" width="157" height="40"/>
                                                         <color key="backgroundColor" red="0.91498006249999997" green="0.91498006249999997" blue="0.91498006249999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="157" id="7Nl-Yj-Yfq"/>
-                                                            <constraint firstAttribute="height" constant="30" id="Hi6-vP-5O7"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Hi6-vP-5O7"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                        <state key="normal" title=" Allez à l'AppStore!">
+                                                        <state key="normal" title="Allez à l'AppStore! ">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
@@ -1265,6 +1265,85 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="d04-uT-9tA"/>
                                                     <constraint firstItem="Ggr-6q-9jl" firstAttribute="top" secondItem="8EE-c0-hsM" secondAttribute="bottom" constant="8" id="jDv-XJ-FOi"/>
                                                     <constraint firstAttribute="trailing" secondItem="8EE-c0-hsM" secondAttribute="trailing" constant="8" id="pzf-uk-tIx"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ2-g6-Vqz">
+                                                <rect key="frame" x="20" y="78" width="280" height="300"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iS-Hc-xaO">
+                                                        <rect key="frame" x="8" y="8" width="264" height="148"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aP" translatesAutoresizingMaskIntoConstraints="NO" id="WsU-gf-I6j">
+                                                                <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <color key="backgroundColor" red="1" green="0.88627450980392153" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ayibo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-hq-a3o">
+                                                                <rect key="frame" x="96" y="12" width="47" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="POST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVo-CV-vVe">
+                                                                <rect key="frame" x="144" y="12" width="49" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <color key="textColor" red="0.75686274509999996" green="0.0" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ayibopost.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2n0-Ft-RYr">
+                                                                <rect key="frame" x="96" y="38" width="94" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gratuit sur l'AppStore " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rA-ch-qlI">
+                                                                <rect key="frame" x="96" y="60" width="162" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atH-f4-68h">
+                                                                <rect key="frame" x="83" y="96" width="114" height="41"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <color key="backgroundColor" red="0.77429677581918943" green="0.8706707557896749" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                <state key="normal" title="Partager"/>
+                                                                <connections>
+                                                                    <action selector="shareButton:" destination="sWG-5r-vpW" eventType="touchUpInside" id="dNz-fj-8D7"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="148" id="Xvm-2a-W33"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="ahn-oU-B6E"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N’hésitez pas à partager l’application à votre entourage à travers les réseaux sociaux. Merci d'utiliser ayiboPOST." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-0Q-URw">
+                                                        <rect key="frame" x="8" y="164" width="264" height="97"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="97" id="Fft-Zh-phM"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="RUE-CX-tFo"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="7iS-Hc-xaO" secondAttribute="trailing" constant="8" id="0sx-mb-gGg"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="JoH-Yc-WWZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="s7b-0Q-URw" secondAttribute="trailing" constant="8" id="MPH-Iq-d9O"/>
+                                                    <constraint firstItem="7iS-Hc-xaO" firstAttribute="top" secondItem="EQ2-g6-Vqz" secondAttribute="top" constant="8" id="av2-bQ-Hb8"/>
+                                                    <constraint firstItem="s7b-0Q-URw" firstAttribute="top" secondItem="7iS-Hc-xaO" secondAttribute="bottom" constant="8" id="b2e-bV-6Uz"/>
+                                                    <constraint firstAttribute="height" constant="300" id="f6Y-L5-KyN"/>
+                                                    <constraint firstItem="s7b-0Q-URw" firstAttribute="leading" secondItem="EQ2-g6-Vqz" secondAttribute="leading" constant="8" id="ljP-cC-tgh"/>
+                                                    <constraint firstItem="7iS-Hc-xaO" firstAttribute="leading" secondItem="EQ2-g6-Vqz" secondAttribute="leading" constant="8" id="uLI-oT-3UD"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-CS-zeX">
@@ -1284,6 +1363,9 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                                             <constraint firstItem="8DB-CS-zeX" firstAttribute="leading" secondItem="q8n-Rh-IgB" secondAttribute="leading" id="4eb-wv-KLG"/>
                                             <constraint firstItem="8DB-CS-zeX" firstAttribute="top" secondItem="q8n-Rh-IgB" secondAttribute="top" id="GGR-El-zFN"/>
                                             <constraint firstItem="bV8-LK-lWD" firstAttribute="leading" secondItem="q8n-Rh-IgB" secondAttribute="leading" constant="20" id="Rxv-2D-4Gz"/>
+                                            <constraint firstItem="EQ2-g6-Vqz" firstAttribute="leading" secondItem="q8n-Rh-IgB" secondAttribute="leading" constant="20" id="Ukc-Cj-ahB"/>
+                                            <constraint firstItem="EQ2-g6-Vqz" firstAttribute="top" secondItem="8DB-CS-zeX" secondAttribute="bottom" constant="20" id="V1o-h0-ZgL"/>
+                                            <constraint firstAttribute="trailing" secondItem="EQ2-g6-Vqz" secondAttribute="trailing" constant="20" id="hKO-mk-u2u"/>
                                             <constraint firstAttribute="height" constant="568" id="v1q-t9-WNM"/>
                                             <constraint firstAttribute="trailing" secondItem="8DB-CS-zeX" secondAttribute="trailing" id="ynI-JA-ezv"/>
                                             <constraint firstAttribute="trailing" secondItem="bV8-LK-lWD" secondAttribute="trailing" constant="20" id="zTP-ww-14G"/>
@@ -1314,18 +1396,23 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                     </navigationItem>
                     <connections>
                         <outlet property="PageLabel" destination="8DB-CS-zeX" id="3X7-fU-AU1"/>
-                        <outlet property="appSoreBtn" destination="phj-Ic-B0N" id="eWL-zC-HJf"/>
+                        <outlet property="appStoreBtn" destination="phj-Ic-B0N" id="mhT-7o-fJU"/>
                         <outlet property="contactPage" destination="bV8-LK-lWD" id="Zmw-bk-zP7"/>
-                        <outlet property="contentLabel" destination="8EE-c0-hsM" id="eZT-EA-qFY"/>
-                        <outlet property="sendEmail" destination="Ggr-6q-9jl" id="AuD-GY-OUB"/>
+                        <outlet property="contentLabel" destination="8EE-c0-hsM" id="CJ0-nj-pad"/>
+                        <outlet property="contentShare" destination="7iS-Hc-xaO" id="FL4-MK-Xq5"/>
+                        <outlet property="imageLogo" destination="WsU-gf-I6j" id="304-u3-EC5"/>
+                        <outlet property="sendEmail" destination="Ggr-6q-9jl" id="9PP-wE-Yft"/>
+                        <outlet property="shareButton" destination="atH-f4-68h" id="sJp-bh-WJz"/>
+                        <outlet property="sharePage" destination="EQ2-g6-Vqz" id="WLd-es-hmy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9i-1f-7ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3859" y="146"/>
+            <point key="canvasLocation" x="3858.75" y="145.77464788732394"/>
         </scene>
     </scenes>
     <resources>
+        <image name="aP" width="900" height="900"/>
         <image name="addtag100" width="100" height="100"/>
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
