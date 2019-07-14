@@ -33,7 +33,7 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             PageLabel.text? = "CONTACT"
         }
         topBarLogo()
-        getContact()
+   //     getContact()
     }
     
     func topBarLogo(){
@@ -45,33 +45,6 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
         imageView.image = image
         logoContainer.addSubview(imageView)
         navigationItem.titleView = logoContainer
-    }
-    
-    private func getContact(){
-        
-        let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/pages/\(pageID!)?&_embed")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) {(data, response, error) in
-            //-- This will run when the network request returns
-            if let error = error{
-                let errorAlertController = UIAlertController(title: "Cannot Get Movies", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-                errorAlertController.addAction(cancelAction)
-                self.present(errorAlertController, animated: true)
-                print(error.localizedDescription)
-            } else if let data = data,
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-      
-                let pageContent = dataDictionary["content"] as! Dictionary<String,AnyObject>
-                let htmlTag =  pageContent["rendered"] as! String
-                let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    //            self.contentLabel.text = content.stringByDecodingHTMLEntities
-                print(content)
- 
-            }
-        }
-        task.resume()
     }
     
     @IBAction func sendEmail(_ sender: Any) {

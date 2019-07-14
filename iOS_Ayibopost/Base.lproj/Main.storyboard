@@ -208,22 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qb-hV-IYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4035" y="146"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yBi-t9-Vgi">
-            <objects>
-                <viewController storyboardIdentifier="Page1" id="LrO-st-CqO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="b60-Ri-qkG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="hQZ-Yz-NQr"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r2p-uF-kV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4781" y="143"/>
+            <point key="canvasLocation" x="4584" y="146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZLu-Kd-xdm">
@@ -1231,13 +1216,13 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="291" id="5kJ-Zm-cpt"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="660-gE-Oba"/>
                                                         </constraints>
-                                                        <mutableString key="text">N’hésitez pas à nous contacter. Pour réagir à une de nos publication, qu’elle vous ait plu, révoltée, dérangée, questionnée. Échangez avec nous, en général ou en particulier.
+                                                        <string key="text">N’hésitez pas à nous contacter. Pour réagir à une de nos publication, qu’elle vous ait plu, révoltée, dérangée, questionnée. Échangez avec nous, en général ou en particulier.
 
 Dites-nous à quel point vous nous aimez, nous détestez, ou êtes indifférents. Dites nous tout.
 
 Nous sommes là pour communiquer, il y a de grandes chances que vous soyez  surpris par le retour que l’on vous fera…
 
-Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubliez pas de nous y suivre pour ne rien rater de Ayibopost.</mutableString>
+Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubliez pas de nous y suivre pour ne rien rater de Ayibopost.</string>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1320,7 +1305,7 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9i-1f-7ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3052.5" y="863.02816901408448"/>
+            <point key="canvasLocation" x="3859" y="146"/>
         </scene>
     </scenes>
     <resources>
