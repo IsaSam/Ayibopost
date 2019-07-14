@@ -66,7 +66,7 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
                 let pageContent = dataDictionary["content"] as! Dictionary<String,AnyObject>
                 let htmlTag =  pageContent["rendered"] as! String
                 let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-                self.contentLabel.text = content.stringByDecodingHTMLEntities
+    //            self.contentLabel.text = content.stringByDecodingHTMLEntities
                 print(content)
  
             }
