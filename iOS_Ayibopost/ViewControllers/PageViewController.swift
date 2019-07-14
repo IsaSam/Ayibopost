@@ -64,7 +64,8 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             
             Vous aimez AyiboPost ? N'oubliez pas de noter notre application et Laissez-nous un commentaire dans l’App Store !
             
-            N’hésitez pas à nous faire part de vos envies et de vos besoins pour les prochaines mises à jour ! Nous sommes toujours à l’écoute de nos membres :) Merci d’être toujours plus nombreux chaque jour à utiliser AyiboPost! Et n’oubliez pas d’en parler à votre entourage, pour que chacun puisse être informer, éduquer et se sensibiser au maximum!
+            N’hésitez pas à nous faire part de vos envies et de vos besoins pour les prochaines mises à jour ! Nous sommes toujours à l’écoute de nos membres :) Merci d’être toujours plus nombreux chaque jour à utiliser AyiboPost!
+            Et n’oubliez pas d’en parler à votre entourage, pour que chacun puisse être informer, éduquer et se sensibiser au maximum!
             """
         }
         topBarLogo()
