@@ -15,6 +15,7 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var contactPage: UIView!
     @IBOutlet weak var sendEmail: UIButton!
+    @IBOutlet weak var appSoreBtn: UIButton!
     
     var postsPage: [[String: Any]] = []
     var categoryName: String?
@@ -33,11 +34,13 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
         if categoryName == "Contact"{
             pageID = "19399"
             sendEmail.isHidden = false
+            appSoreBtn.isHidden = true
             PageLabel.text? = "CONTACT"
         }
         else if categoryName == "À propos"{
             pageID = "2"
             sendEmail.isHidden = true
+            appSoreBtn.isHidden = true
             PageLabel.text? = "À PROPOS"
             contentLabel.text? = """
             Bien plus qu’un média en ligne, Ayibopost est une plateforme d’auto-defense intellectuelle. Informer, éduquer et sensibiliser : voici le triptyque que nous mettons en oeuvre, et ceci surtout lorsqu’il s’agit de vulgariser des informations ou concepts d’utilité publique. Nous sommes fiers de faire du journalisme explicatif.
@@ -46,10 +49,23 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             
             Cette rigueur et cette exigence sont indispensables lorsque que nous traitons des sujets parfois impopulaires, tabous qui, en général, ne sont pas ou peu discutés. Nous abordons aussi des thèmes sur lesquels la société choisit –  de manière consciente ou non– de garder le silence. Ayibopost est un espace où les opinions, parfois contraires, sont diffusées et débattues.
             
-            "La mission d’Ayibopost est d’être à la hauteur des défis qui se posent à la société haïtienne et des attentes de nos lecteurs.
+            La mission d’Ayibopost est d’être à la hauteur des défis qui se posent à la société haïtienne et des attentes de nos lecteurs.
             """
  
 
+        }
+        else if categoryName == "AppStore"{
+            pageID = ""
+            sendEmail.isHidden = true
+            appSoreBtn.isHidden = false
+            PageLabel.text? = "L'APPLICATION"
+            contentLabel.text? = """
+            Merci d’utiliser l'application AyiboPost! Pour vous offrir la meilleure expérience possible, nous mettons régulièrement l’application à jour dans l’App Store. Profitez des dernières améliorations en téléchargeant la version la plus récente !
+            
+            Vous aimez AyiboPost ? N'oubliez pas de noter notre application et Laissez-nous un commentaire dans l’App Store !
+            
+            N’hésitez pas à nous faire part de vos envies et de vos besoins pour les prochaines mises à jour ! Nous sommes toujours à l’écoute de nos membres :) Merci d’être toujours plus nombreux chaque jour à utiliser AyiboPost! Et n’oubliez pas d’en parler à votre entourage, pour que chacun puisse être informer, éduquer et se sensibiser au maximum!
+            """
         }
         topBarLogo()
    //     getContact()

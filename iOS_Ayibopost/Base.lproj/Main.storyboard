@@ -1241,19 +1241,33 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                                                             <action selector="sendEmail:" destination="sWG-5r-vpW" eventType="touchUpInside" id="rXV-2p-rfb"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phj-Ic-B0N">
+                                                        <rect key="frame" x="62" y="307" width="157" height="30"/>
+                                                        <color key="backgroundColor" red="0.91498006249999997" green="0.91498006249999997" blue="0.91498006249999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="157" id="7Nl-Yj-Yfq"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Hi6-vP-5O7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                        <state key="normal" title=" Allez à l'AppStore!">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.99449307009999999" green="0.99449307009999999" blue="0.99449307009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="8EE-c0-hsM" firstAttribute="leading" secondItem="bV8-LK-lWD" secondAttribute="leading" constant="8" id="4Kf-Mu-Fbv"/>
                                                     <constraint firstItem="8EE-c0-hsM" firstAttribute="top" secondItem="bV8-LK-lWD" secondAttribute="top" constant="8" id="B7J-MI-QMK"/>
                                                     <constraint firstAttribute="height" constant="349" id="DrB-aj-6RL"/>
+                                                    <constraint firstItem="phj-Ic-B0N" firstAttribute="centerX" secondItem="bV8-LK-lWD" secondAttribute="centerX" id="LHU-Be-uHk"/>
+                                                    <constraint firstItem="phj-Ic-B0N" firstAttribute="top" secondItem="8EE-c0-hsM" secondAttribute="bottom" constant="8" id="OA8-y7-nIq"/>
                                                     <constraint firstItem="Ggr-6q-9jl" firstAttribute="centerX" secondItem="bV8-LK-lWD" secondAttribute="centerX" id="Zg7-bS-GQ1"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="d04-uT-9tA"/>
                                                     <constraint firstItem="Ggr-6q-9jl" firstAttribute="top" secondItem="8EE-c0-hsM" secondAttribute="bottom" constant="8" id="jDv-XJ-FOi"/>
                                                     <constraint firstAttribute="trailing" secondItem="8EE-c0-hsM" secondAttribute="trailing" constant="8" id="pzf-uk-tIx"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-CS-zeX">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-CS-zeX">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1300,6 +1314,7 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                     </navigationItem>
                     <connections>
                         <outlet property="PageLabel" destination="8DB-CS-zeX" id="3X7-fU-AU1"/>
+                        <outlet property="appSoreBtn" destination="phj-Ic-B0N" id="eWL-zC-HJf"/>
                         <outlet property="contactPage" destination="bV8-LK-lWD" id="Zmw-bk-zP7"/>
                         <outlet property="contentLabel" destination="8EE-c0-hsM" id="eZT-EA-qFY"/>
                         <outlet property="sendEmail" destination="Ggr-6q-9jl" id="AuD-GY-OUB"/>
