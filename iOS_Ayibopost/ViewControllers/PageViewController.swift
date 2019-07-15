@@ -47,16 +47,16 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             PageLabel.text? = "CONTACT"
             
             sendEmail.layer.cornerRadius = 7
-            sendEmail.backgroundColor = .clear
+           // sendEmail.backgroundColor = .clear
             sendEmail.layer.borderWidth = 1
-            sendEmail.layer.borderColor = UIColor.black.cgColor
+            sendEmail.layer.borderColor = UIColor.lightGray.cgColor
             
         }
         else if categoryName == "Partager"{
-            shareButton.backgroundColor = .clear
+            //shareButton.backgroundColor = .clear
             shareButton.layer.cornerRadius = 7
             shareButton.layer.borderWidth = 1
-            shareButton.layer.borderColor = UIColor.black.cgColor
+            shareButton.layer.borderColor = UIColor.lightGray.cgColor
             
 //            imageLogo.layer.cornerRadius = imageLogo.frame.height / 2
   //          imageLogo.clipsToBounds = true
@@ -100,7 +100,7 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             appStoreBtn.layer.cornerRadius = 7
             appStoreBtn.backgroundColor = .clear
             appStoreBtn.layer.borderWidth = 1
-            appStoreBtn.layer.borderColor = UIColor.black.cgColor
+            appStoreBtn.layer.borderColor = UIColor.lightGray.cgColor
             
             sharePage.isHidden = true
             sendEmail.isHidden = true
