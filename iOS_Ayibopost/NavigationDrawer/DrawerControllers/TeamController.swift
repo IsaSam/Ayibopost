@@ -82,7 +82,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.insertSubview(refreshControl, at: 0)
   tableView.dataSource = self
   
-  fetchTeamNamePosts()
+  fetchTeam()
+//  fetchTeamNamePosts()
 //  loadMoreAuthors()
   self.navigationController?.navigationBar.isTranslucent = false
  }
@@ -112,6 +113,67 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  func pushTo(viewController: UIViewController) {
   self.navigationController?.pushViewController(viewController, animated: true)
  }
+ 
+ 
+  private func fetchTeam(){
+  
+  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/pages/19405?&_embed")!
+  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+  let task = session.dataTask(with: request) {(data, response, error) in
+  //-- This will run when the network request returns
+  if let error = error{
+       let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+       let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+       errorAlertController.addAction(cancelAction)
+       self.present(errorAlertController, animated: true)
+       print(error.localizedDescription)
+  } else if let data = data,
+        let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+   
+        let pageContent = dataDictionary["content"] as! Dictionary<String,AnyObject>
+        let htmlTag =  pageContent["rendered"] as! String
+        //let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        //            self.contentLabel.text = content.stringByDecodingHTMLEntities
+      //  print(content)
+        print(htmlTag)
+   
+
+
+  
+  }
+  }
+  task.resume()
+  }
+ 
+ /*  private func fetchTeam(){
+  
+  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/pages/19405?&_embed")!
+  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+  let task = session.dataTask(with: request) {(data, response, error) in
+  //-- This will run when the network request returns
+  if let error = error{
+  let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+  let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+  errorAlertController.addAction(cancelAction)
+  self.present(errorAlertController, animated: true)
+  print(error.localizedDescription)
+  } else if let data = data,
+  let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+  
+  let pageContent = dataDictionary["content"] as! Dictionary<String,AnyObject>
+  let htmlTag =  pageContent["rendered"] as! String
+  let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+  //            self.contentLabel.text = content.stringByDecodingHTMLEntities
+  print(content)
+  
+  }
+  }
+  task.resume()
+  }*/
+ 
+ 
  
  func fetchTeamNamePosts(){
   
@@ -284,13 +346,6 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    let controller = segue.destination as! BookmarkViewController
    controller.favoritePosts = favResults
    
-  }
-  else if segue.identifier == "pod"{
-      print("PodCast View")
-  //    let namecat = "CATEGORIE PODCAST"
-      let cate = "podcast"
-      let cat = segue.destination as! Categories
-      cat.categoryName = cate
   }
    
   else{

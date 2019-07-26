@@ -304,7 +304,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-nu-6Vc">
-                                <rect key="frame" x="0.0" y="78.5" width="320" height="396.5"/>
+                                <rect key="frame" x="0.0" y="78.5" width="320" height="440.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="HSo-Dh-bOl"/>
@@ -1045,12 +1045,21 @@
                                 <color key="barTintColor" red="0.15686274510000001" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ÉQUIPE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-ip-kem">
+                                <rect key="frame" x="0.0" y="64" width="320" height="58"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="tfD-vQ-BA4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ycK-g9-e91"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQj-ij-fZa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="122" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="VzN-aw-TfG"/>
-                                    <constraint firstAttribute="height" constant="568" id="aGG-mZ-qZF"/>
                                 </constraints>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1119,12 +1128,15 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zQj-ij-fZa" firstAttribute="trailing" secondItem="vum-Wn-xiu" secondAttribute="trailing" id="0MI-EV-vea"/>
-                            <constraint firstItem="zQj-ij-fZa" firstAttribute="top" secondItem="w35-vr-8YN" secondAttribute="top" id="Cxa-cH-r6K"/>
+                            <constraint firstItem="UJc-ip-kem" firstAttribute="trailing" secondItem="vum-Wn-xiu" secondAttribute="trailing" id="GEk-AA-ggR"/>
+                            <constraint firstItem="UJc-ip-kem" firstAttribute="top" secondItem="vum-Wn-xiu" secondAttribute="top" id="H5D-ZA-G3R"/>
                             <constraint firstItem="zQj-ij-fZa" firstAttribute="leading" secondItem="vum-Wn-xiu" secondAttribute="leading" id="K5N-hP-9O3"/>
                             <constraint firstItem="YRZ-VK-tz0" firstAttribute="top" secondItem="w35-vr-8YN" secondAttribute="top" id="Qr0-Je-GHz"/>
                             <constraint firstAttribute="trailing" secondItem="YRZ-VK-tz0" secondAttribute="trailing" id="RrM-kj-krv"/>
+                            <constraint firstItem="zQj-ij-fZa" firstAttribute="top" secondItem="UJc-ip-kem" secondAttribute="bottom" id="Upn-Rc-jEh"/>
                             <constraint firstItem="6Yp-Bx-eoa" firstAttribute="centerX" secondItem="w35-vr-8YN" secondAttribute="centerX" id="djp-E2-OUq"/>
                             <constraint firstItem="6Yp-Bx-eoa" firstAttribute="centerY" secondItem="w35-vr-8YN" secondAttribute="centerY" id="fnL-8F-9YY"/>
+                            <constraint firstItem="UJc-ip-kem" firstAttribute="leading" secondItem="vum-Wn-xiu" secondAttribute="leading" id="iZ4-wg-L9A"/>
                             <constraint firstItem="YRZ-VK-tz0" firstAttribute="leading" secondItem="w35-vr-8YN" secondAttribute="leading" id="ltD-6A-wFT"/>
                             <constraint firstAttribute="bottom" secondItem="zQj-ij-fZa" secondAttribute="bottom" id="ybl-fb-Xr6"/>
                         </constraints>
@@ -1143,12 +1155,6 @@
                                 <action selector="actShowMenu:" destination="WXc-Ok-vvo" id="7de-Qa-LRy"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="podcasts30" id="Fsd-pE-O4s">
-                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="ewo-gj-oBa" kind="show" identifier="pod" id="Udz-Bt-fsB"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1163,7 +1169,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4035" y="-660"/>
+            <point key="canvasLocation" x="4035" y="-660.21126760563379"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LXf-0u-yhQ">
@@ -1448,12 +1454,10 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="player" width="1024" height="1024"/>
-        <image name="podcasts30" width="30" height="30"/>
         <image name="share" width="30" height="30"/>
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Udz-Bt-fsB"/>
         <segue reference="ioK-7P-FM4"/>
         <segue reference="IH8-aK-iMw"/>
     </inferredMetricsTieBreakers>
