@@ -229,77 +229,10 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   else{
    cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
    cell.imageTeam.clipsToBounds = true
-   cell.imageTeam.image = nil
+   //cell.imageTeam.image = nil
+   cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
   }
   
-         //===================
- /* do{
-   let embedDic = (posts as AnyObject).value(forKey: "simple_local_avatar")
-   let embedDicString = embedDic as? [[String: Any]]
-   self.postsEmbed = embedDicString!
-  }*/
-  
-  
- // let postImage = posts[indexPath.row]
-  
- //// do{
-//   let imgArray = (post as AnyObject).value(forKey: "simple_local_avatar")//{
-//  let avatarString = imgArray as? [[String: Any]]
-
-  
-  
-////   let dataDic = imgArray as? [[String: Any]]
-//   self.imgPosts = imgArray as! [[String : Any]]
-   
-   //self.imgPosts = dataDic!
-   //          let remoteImageUrlString = imgPosts[indexPath.row]
-   //   }
-   ////
-////   for images in imgPosts{
-    //   let remoteImageUrlString = imgPosts[indexPath.row]
-    //      let imageURL = remoteImageUrlString["source_url"] as? String
-  
-  
-  
-  
-  //let dataDic = imgArray as? [[String: Any]]
- // print(dataDic!)
-   /*
-   for images in dataDic!{
-    let imageURL = images["100"] as? String
-    print(imageURL!)
-    if imageURL != nil{
-     imgURLShare = imageURL!
-    }
-    else{}
-    
-    let url = URL(string: imgURLShare!)
-    
-    cell.imageTeam.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-     if ((error) != nil) {
-      print("placeholder image...")
-      cell.imageTeam.image = UIImage(named: "placeholderImage.png")
-     } else {
-      print("Success let using the image...")
-      cell.imageTeam.sd_setImage(with: url)
-     }
-    })
-    if let imagePath = imageURL,
-     let imgUrl = URL(string:  imagePath){
-     cell.imageTeam.image = UIImage(named: "loading4.jpg") //image place
-     cell.imageTeam.af_setImage(withURL: imgUrl)
-    }
-    else{
-     cell.imageTeam.image = nil
-    }
-    //  imgShare = cell.imagePost.image
-    imagePost1 = cell.imageTeam
-    imagePost2 = cell.imageTeam.image
-  }*/
- //// }
-  
-  //=============
-// }
   return cell
  }
  
