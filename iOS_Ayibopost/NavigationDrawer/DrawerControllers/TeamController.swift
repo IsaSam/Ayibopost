@@ -85,6 +85,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.estimatedRowHeight = 170
   tableView.insertSubview(refreshControl, at: 0)
   tableView.dataSource = self
+  self.tableView.separatorColor = UIColor.white
+  
   
   fetchTeamID()
   self.navigationController?.navigationBar.isTranslucent = false
@@ -200,6 +202,10 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
   let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
   
+  cell.layer.borderColor = UIColor.white.cgColor
+  cell.layer.borderWidth = 10.0
+  cell.layer.masksToBounds = true
+  
   do{
 
    
@@ -215,18 +221,22 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
   let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
   //// self.authorImgArray.append(imageURL!)
-  cell.nameTeam.text = name
+  cell.nameTeam.text = name?.uppercased()
   cell.descripTeam.text = description
   
   let imageURL = postImage["180"] as? String
   print(imageURL!)
   if let imagePath = imageURL,
    let imgUrl = URL(string:  imagePath){
+   cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+   cell.imageTeam.layer.borderWidth = 6.0
    cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
    cell.imageTeam.clipsToBounds = true
    cell.imageTeam.af_setImage(withURL: imgUrl)
   }
   else{
+   cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+   cell.imageTeam.layer.borderWidth = 6.0
    cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
    cell.imageTeam.clipsToBounds = true
    //cell.imageTeam.image = nil
