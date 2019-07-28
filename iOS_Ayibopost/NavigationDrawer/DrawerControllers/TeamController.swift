@@ -81,8 +81,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   self.refreshControl.addTarget(self, action: #selector(TeamController.didPullToRefresh(_:)), for: .valueChanged)
   
   tableView.delegate = self
-  tableView.rowHeight = 170
-  tableView.estimatedRowHeight = 170
+  tableView.rowHeight = 370
+  tableView.estimatedRowHeight = 370
   tableView.insertSubview(refreshControl, at: 0)
   tableView.dataSource = self
   self.tableView.separatorColor = UIColor.white
