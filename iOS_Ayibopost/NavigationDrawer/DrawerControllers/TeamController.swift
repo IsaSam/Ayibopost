@@ -20,9 +20,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  
  var posts: [[String: Any]] = []
  var posts1: [[String: Any]] = []
+ var posts2: [String: Any] = [:]
  var imgPosts: [[String: Any]] = []
  var urlPost1: String?
- var loadNumber = 55
  var favResults: [[String: Any]] = []
  var favResults1: [[String: Any]] = []
  var post: [[String: Any]] = []
@@ -54,6 +54,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var titleShare: String?
  var imgShare: UIImage?
  var searching: [String] = []
+ let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+ var loadNumber = 0
  
  var delegate: BookmarkViewController!
  
@@ -82,7 +84,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.insertSubview(refreshControl, at: 0)
   tableView.dataSource = self
   
-  fetchTeam()
+  fetchTeamID()
+ // fetchTeam()
 //  fetchTeamNamePosts()
 //  loadMoreAuthors()
   self.navigationController?.navigationBar.isTranslucent = false
@@ -114,7 +117,74 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   self.navigationController?.pushViewController(viewController, animated: true)
  }
  
+ func fetchTeamID(){
+  let ID = intArrID[loadNumber]
+  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
+  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+  let task = session.dataTask(with: request) {(data, response, error) in
+   //-- This will run when the network request returns
+   if let error = error{
+    let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+    errorAlertController.addAction(cancelAction)
+    self.present(errorAlertController, animated: true)
+    print(error.localizedDescription)
+   } else if let data = data,
+    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+    
+    self.posts2 = dataDictionary
+   //   print(self.posts2)
+    
+      let name = dataDictionary["name"] as! String
+      print(name)
+    
+   }
+   self.posts.append(self.posts2)
+   self.tableView.reloadData()
+   
+  }
+  task.resume()
+
+ }
+ func fetchMoreTeamID(){
+  loadNumber = loadNumber + 1
+  if loadNumber < intArrID.count{
+     let ID = intArrID[loadNumber]
+  
+  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
+  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+  let task = session.dataTask(with: request) {(data, response, error) in
+   //-- This will run when the network request returns
+   if let error = error{
+    let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+    errorAlertController.addAction(cancelAction)
+    self.present(errorAlertController, animated: true)
+    print(error.localizedDescription)
+   } else if let data = data,
+    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+    
+    self.posts2 = dataDictionary
+    
+    
+    let name = dataDictionary["name"] as! String
+    print(name)
+    
+   }
+   self.posts.append(self.posts2)
+   self.tableView.reloadData()
+   
+  }
+  task.resume()
+   
+  }else{}
+  
+ }
  
+ /* 1111111
+  
   private func fetchTeam(){
   
   let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/pages/19405?&_embed")!
@@ -145,6 +215,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
   task.resume()
   }
+ */
+ 
  
  /*  private func fetchTeam(){
   
@@ -274,14 +346,19 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   }*/
  
  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-  if indexPath.row + 55 == posts1.count{
+  if indexPath.row + 1 == posts.count{
         print("load 1...")
-        loadMoreAuthors()
+        //loadMoreAuthors()
+   
+        fetchMoreTeamID()
+   
   }
+  //   fetchMoreTeamID()
  }
  
  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.byName.count
+   // return self.byName.count
+    return self.posts.count
  }
  
  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -289,16 +366,17 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
   
   //let post = authorArray[indexPath.row]
-  let post = byName[indexPath.row]
+////  let post = byName[indexPath.row]
+  let post = posts[indexPath.row]
   
   let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
-  let imageURL = post["avatar"] as? String
+////  let imageURL = post["avatar"] as? String
   let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
-  self.authorImgArray.append(imageURL!)
+ //// self.authorImgArray.append(imageURL!)
   cell.nameTeam.text = name
   cell.descripTeam.text = description
   
-  
+ /*////
   if let imagePath = imageURL,
    let imgUrl = URL(string:  imagePath){
    cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
@@ -309,7 +387,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
    cell.imageTeam.clipsToBounds = true
    cell.imageTeam.image = nil
-  }
+  }*/
   
   
   return cell

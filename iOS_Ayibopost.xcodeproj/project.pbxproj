@@ -14,6 +14,7 @@
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
+		9671409622ED423800971AEA /* TheTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671409522ED423800971AEA /* TheTeamController.swift */; };
 		9674DCF822D96D770082B29C /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674DCF722D96D770082B29C /* VideoViewController.swift */; };
 		9674DCFA22D96D910082B29C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674DCF922D96D910082B29C /* PageViewController.swift */; };
 		9684A87D22038A340054AF55 /* LayoutThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684A86F22038A2F0054AF55 /* LayoutThree.swift */; };
@@ -51,6 +52,7 @@
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
+		9671409522ED423800971AEA /* TheTeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheTeamController.swift; sourceTree = "<group>"; };
 		9674DCF722D96D770082B29C /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		9674DCF922D96D910082B29C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9684A86F22038A2F0054AF55 /* LayoutThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThree.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				9684A8A0220415320054AF55 /* Categories.swift */,
 				96E047082235DE36005108E4 /* TeamController.swift */,
+				9671409522ED423800971AEA /* TheTeamController.swift */,
 			);
 			path = DrawerControllers;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				96E4A10E2221284D003CBA45 /* BookmarkViewController.swift in Sources */,
 				96DE418A220F826E0071B456 /* LaunchScreenViewController.swift in Sources */,
 				9674DCF822D96D770082B29C /* VideoViewController.swift in Sources */,
+				9671409622ED423800971AEA /* TheTeamController.swift in Sources */,
 				96879BF021FF7F4C00BFBE8F /* AyiboAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
