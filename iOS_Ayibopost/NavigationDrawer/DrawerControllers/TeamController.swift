@@ -58,6 +58,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var loadNumber = 0
  var postsEmbed: [[String: Any]] = []
  var postsAvatar: [[String: Any]] = []
+ var id: String?
  
  var delegate: BookmarkViewController!
  
@@ -206,20 +207,23 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   cell.layer.borderWidth = 10.0
   cell.layer.masksToBounds = true
   
-  do{
-
-   
-      //=============
+  
+ // do{
+      //============
       let embedDic = (posts as AnyObject).value(forKey: "simple_local_avatar")
       let embedDicString = embedDic as? [[String: Any]]
-      self.postsEmbed = embedDicString!
-   
-  }
+      if embedDicString != nil{
+         self.postsEmbed = embedDicString!
+      
+ //  }
+  
+  
     let post = posts[indexPath.row]
     let postImage = postsEmbed[indexPath.row]
    
   let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
   let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
+  id = post["id"] as? String
   //// self.authorImgArray.append(imageURL!)
   cell.nameTeam.text = name?.uppercased()
   cell.descripTeam.text = description
@@ -242,8 +246,9 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    //cell.imageTeam.image = nil
    cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
   }
-  
+  }else{}
   return cell
+       
  }
  
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -280,19 +285,22 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
    
   else{
-   print("DetailsPost View segue")
-   /*
+   print("By AuthorPost View segue")
+   
    let cell = sender as! UITableViewCell
    let indexPath = tableView.indexPath(for: cell)
    let post = posts[(indexPath?.row)!]
-   let imgPost = imgPosts[(indexPath?.row)!]
-   let nameString = byName[(indexPath?.row)!]
-   let detailViewController = segue.destination as! DetailsPostViewController
-   detailViewController.post = post
-   detailViewController.imgPost = imgPost
-   detailViewController.nameString = nameString
-   */
+ //  let imgPost = imgPosts[(indexPath?.row)!]
+//   let nameString = byName[(indexPath?.row)!]
+   let authorPosts = segue.destination as! AuthorPosts
+   authorPosts.post = post
+   authorPosts.id = id
+   
+//   detailViewController.imgPost = imgPost
+//   detailViewController.nameString = nameString
+   
   }
+  
  }
  
  
