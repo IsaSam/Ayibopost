@@ -218,7 +218,7 @@ import UIKit
       let embedDicString = embedDic as? [[String: Any]]
       if embedDicString != nil{
          self.postsEmbed = embedDicString!
-      
+      print("You selected cell #\(indexPath.row)!")
  //  }
   
   
@@ -256,8 +256,8 @@ import UIKit
  }
  
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   print("You selected cell #\(indexPath.row)!")
   tableView.deselectRow(at: indexPath, animated: true)
+  performSegue(withIdentifier: "authorPosts", sender: indexPath)
  }
 /***
  func PostsCellDidTapBookmark(_ sender: PostsCell) {
@@ -315,7 +315,7 @@ import UIKit
  }
   
   ***/
-  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+  /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
    
    if (segue.identifier == "authorPosts") {
     print("segue............")
@@ -325,8 +325,18 @@ import UIKit
     //authorPosts.post = post
     authorPosts.post = post
    }
+  }*/
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   
+   // Get the index path from the cell that was tapped
+   let indexPath = tableView.indexPathForSelectedRow
+   // Get the Row of the Index Path and set as index
+   let index = indexPath?.row
+   // Get in touch with the DetailViewController
+   let authorPosts = segue.destination as! AuthorPosts
+   // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+   authorPosts.index = index
   }
- 
  
  override func didReceiveMemoryWarning() {
   super.didReceiveMemoryWarning()

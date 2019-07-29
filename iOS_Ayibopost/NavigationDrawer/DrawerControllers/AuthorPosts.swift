@@ -11,13 +11,15 @@ import UIKit
 class AuthorPosts: UIViewController {
     
  //   var id: String?
+    var index: Int!
     var post: [[String: Any]]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
       //  print(id!)
-        print(post!)
+      //  print(post!)
+        print(index)
     }
 
     override func didReceiveMemoryWarning() {
