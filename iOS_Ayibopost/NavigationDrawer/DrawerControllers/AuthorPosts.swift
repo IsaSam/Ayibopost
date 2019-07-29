@@ -10,13 +10,13 @@ import UIKit
 
 class AuthorPosts: UIViewController {
     
-    var id: String?
-    var post: [String: Any]?
+ //   var id: String?
+    var post: [[String: Any]]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(id!)
+      //  print(id!)
         print(post!)
     }
 

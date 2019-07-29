@@ -10,7 +10,8 @@ import UIKit
 
 
 
-class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate{
+//class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate{
+ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate{
  
  
  @IBOutlet weak var tableView: UITableView!
@@ -59,6 +60,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var postsEmbed: [[String: Any]] = []
  var postsAvatar: [[String: Any]] = []
  var id: String?
+  var valueToPass:String!
  
  var delegate: BookmarkViewController!
  
@@ -68,11 +70,12 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  var vwBG = UIView()
  //--------------------
  
+ /***
  @IBAction func viewFav(_ sender: Any) {
   self.performSegue(withIdentifier: "ViewFav3", sender: self)
   //    storeData()
  }
- 
+ ***/
  override func viewDidLoad() {
   super.viewDidLoad()
   
@@ -85,9 +88,10 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   tableView.rowHeight = 370
   tableView.estimatedRowHeight = 370
   tableView.insertSubview(refreshControl, at: 0)
-  tableView.dataSource = self
   self.tableView.separatorColor = UIColor.white
   
+  tableView.delegate = self
+  tableView.dataSource = self
   
   fetchTeamID()
   self.navigationController?.navigationBar.isTranslucent = false
@@ -190,7 +194,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  
  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
   if indexPath.row + 1 == posts.count{
-        print("load 1...")
+        print("load More...")
         fetchMoreTeamID()
   }
  }
@@ -248,13 +252,14 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
   }else{}
   return cell
-       
+  
  }
  
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   print("You selected cell #\(indexPath.row)!")
   tableView.deselectRow(at: indexPath, animated: true)
  }
- 
+/***
  func PostsCellDidTapBookmark(_ sender: PostsCell) {
   guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
   print("Bookmark", sender, tappedIndexPath)
@@ -273,20 +278,23 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
  @objc func shareTapped(_ sender: Any?) {
   print("share Tapped", sender!)
   
- }
+ }***/
  
+  /***
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  
+  print("segue........")
+/***
   if segue.identifier == "ViewFav3" {
    print("Bookmarks View segue")
    let controller = segue.destination as! BookmarkViewController
    controller.favoritePosts = favResults
    
-  }
+  }***/
    
-  else{
+  if segue.identifier == "authorPosts"{
    print("By AuthorPost View segue")
    
+   /***
    let cell = sender as! UITableViewCell
    let indexPath = tableView.indexPath(for: cell)
    let post = posts[(indexPath?.row)!]
@@ -294,14 +302,30 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
 //   let nameString = byName[(indexPath?.row)!]
    let authorPosts = segue.destination as! AuthorPosts
    authorPosts.post = post
-   authorPosts.id = id
+  // authorPosts.id = id
    
 //   detailViewController.imgPost = imgPost
 //   detailViewController.nameString = nameString
    
+   ***/
+   
   }
+  else{}
   
  }
+  
+  ***/
+  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+   
+   if (segue.identifier == "authorPosts") {
+    print("segue............")
+    // initialize new view controller and cast it as your view controller
+    let authorPosts = segue.destination as! AuthorPosts
+    // your new view controller should have property that will store passed value
+    //authorPosts.post = post
+    authorPosts.post = post
+   }
+  }
  
  
  override func didReceiveMemoryWarning() {
@@ -309,6 +333,8 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
   // Dispose of any resources that can be recreated.
  }
  //Storing app data
+ 
+ /***
  func storeData(){
   let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
   UserDefaults.standard.set(data, forKey: "savedData1")
@@ -322,6 +348,7 @@ class TeamController: UIViewController, UITableViewDataSource, UITableViewDelega
    favResults = dict
   }else{}
  }
+ ***/
  
 }
 
