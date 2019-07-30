@@ -208,6 +208,7 @@ import UIKit
   let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
   
   cell.layer.borderColor = UIColor.white.cgColor
+  cell.layer.cornerRadius = 25.0
   cell.layer.borderWidth = 10.0
   cell.layer.masksToBounds = true
   
