@@ -345,7 +345,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do{
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
+            if dataDic != nil{
+                self.imgPosts = dataDic!
   //          let remoteImageUrlString = imgPosts[indexPath.row]
      //   }
         ////
@@ -385,6 +386,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
+        }else{}
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
