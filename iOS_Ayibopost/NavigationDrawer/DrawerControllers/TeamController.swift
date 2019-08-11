@@ -55,11 +55,12 @@ import UIKit
  var titleShare: String?
  var imgShare: UIImage?
  var searching: [String] = []
- let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+ let intArrID = [55, 102, 120, 107, 3, 117, 118, 116, 105]
  var loadNumber = 0
  var postsEmbed: [[String: Any]] = []
  var postsAvatar: [[String: Any]] = []
  var id: String?
+  var ID1: Int?
   var valueToPass:String!
  
  var delegate: BookmarkViewController!
@@ -124,10 +125,12 @@ import UIKit
  }
  
  func fetchTeamID(){
-  let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+  let intArrID = [55, 102, 120, 107, 3, 117, 118, 116, 105]
   let loadNumber = 0
   let ID = intArrID[loadNumber]
+  ID1 = ID
   let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
+        
   let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
   let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
   let task = session.dataTask(with: request) {(data, response, error) in
@@ -158,7 +161,20 @@ import UIKit
  func fetchMoreTeamID(){
   loadNumber = loadNumber + 1
   if loadNumber < intArrID.count{
-     let ID = intArrID[loadNumber]
+  let ID = intArrID[loadNumber]
+    if ID == 107{
+     print("ID IS 107 LLLLLLLLL")
+     ID1 = ID
+     
+//     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
+//     self.posts.append(self.posts2)
+  //   tableView.reloadData()
+     
+//==============
+      //  self.tableView.reloadData()
+    }
+ //   else{
+     ID1 = ID
   
   let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
   let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -171,21 +187,34 @@ import UIKit
     errorAlertController.addAction(cancelAction)
     self.present(errorAlertController, animated: true)
     print(error.localizedDescription)
-   } else if let data = data,
+   }
+   else if self.ID1 == 107{
+    let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
+    self.posts2 = datadictionary
+    let name = datadictionary["name"] as! String
+    print(name)
+    print("---------------------")
+   }
+   
+   else if let data = data,
+    
+    
     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
     
     self.posts2 = dataDictionary
     
-    
-    let name = dataDictionary["name"] as! String
-    print(name)
+ ////   let name = dataDictionary["name"] as! String
+ ////   print(name)
     
    }
+   
+   
    self.posts.append(self.posts2)
    self.tableView.reloadData()
    
   }
   task.resume()
+ //   }
    
   }else{}
   
@@ -213,6 +242,7 @@ import UIKit
   cell.layer.masksToBounds = true
   
   
+  
  // do{
       //============
       let embedDic = (posts as AnyObject).value(forKey: "simple_local_avatar")
@@ -229,6 +259,18 @@ import UIKit
   let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
   let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
   id = post["id"] as? String
+  
+       print(ID1!)
+       print("****************")
+       
+       if ID1 == 107{
+        //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
+        //     self.posts.append(self.posts2)
+           cell.nameTeam.text = "Wendy Jean"
+           cell.descripTeam.text = "Infographiste"
+           cell.imageTeam.image = nil
+       }
+       else{
   //// self.authorImgArray.append(imageURL!)
   cell.nameTeam.text = name?.uppercased()
   cell.descripTeam.text = description
@@ -251,6 +293,8 @@ import UIKit
    //cell.imageTeam.image = nil
    cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
   }
+  }
+       
   }else{}
   return cell
   
