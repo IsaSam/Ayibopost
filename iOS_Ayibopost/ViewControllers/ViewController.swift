@@ -350,6 +350,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   //          let remoteImageUrlString = imgPosts[indexPath.row]
      //   }
         ////
+        cell.imagePost.layer.borderColor = UIColor.white.cgColor
+        cell.imagePost.layer.borderWidth = 2.0
+        cell.imagePost.layer.cornerRadius = 12.0
         for images in imgPosts{
          //   let remoteImageUrlString = imgPosts[indexPath.row]
      //      let imageURL = remoteImageUrlString["source_url"] as? String
