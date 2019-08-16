@@ -58,6 +58,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     var contactID = false
     var videoID = false
     var appID = false
+    var id: String?
     
     var delegate: BookmarkViewController!
     
@@ -153,42 +154,7 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             catID = "3196"
             categoryLabel.text = " SEXUALITÉ "
         }
-/*
-        else if categoryName == " "{
-            catID = ""
-        //    categoryLabel.text = " SEXUALITÉ "
-        }
-       else if categoryName == "Vidéo"{
-            videoID = true
-            categoryLabel.text = " VIDÉOS "
-        }
 
-        else if categoryName == "Bookmarks"{
-            bookID = true
-            categoryLabel.text = " BOOKMARKS "
-        }
-        else if categoryName == "Partager"{
-            shareID = true
-            categoryLabel.text = " PARTAGER "
-        }
-        else if categoryName == "AppStore"{
-            appID = true
-            categoryLabel.text = " AppStore "
-        }
-        else if categoryName == "À propos"{
-            aboutID = true
-            categoryLabel.text = " À PROPOS "
-        }
-        else if categoryName == "Contact"{
-            contactID = true
-            categoryLabel.text = " CONTACT "
-        }
- 
-        else if categoryName == "L'équipe"{
-            teamID = true
-            categoryLabel.text = " L'ÉQUIPE "
-        }
-        */
         else{
        //     catID = ""
          //   categoryLabel.text = ""

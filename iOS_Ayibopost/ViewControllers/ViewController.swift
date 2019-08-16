@@ -345,10 +345,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do{
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
+            if dataDic != nil{
+                self.imgPosts = dataDic!
   //          let remoteImageUrlString = imgPosts[indexPath.row]
      //   }
         ////
+        cell.imagePost.layer.borderColor = UIColor.white.cgColor
+        cell.imagePost.layer.borderWidth = 2.0
+        cell.imagePost.layer.cornerRadius = 12.0
         for images in imgPosts{
          //   let remoteImageUrlString = imgPosts[indexPath.row]
      //      let imageURL = remoteImageUrlString["source_url"] as? String
@@ -385,6 +389,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1 = cell.imagePost
             imagePost2 = cell.imagePost.image
         }
+        }else{}
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)

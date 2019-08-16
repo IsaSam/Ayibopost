@@ -26,42 +26,62 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var convertedTime: String = ""
     var urlYoutube = ""
     
+    var postsTitle: [[String: Any]] = []
+    var postsContent: [[String: Any]] = []
+    var postsEmbed: [[String: Any]] = []
+    var imgURLShare: String?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritesPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell",
-                                                      for: indexPath) as! PostsCell
+                                                 for: indexPath) as! PostsCell
         let idx: Int = indexPath.row
         let post = favoritesPosts[idx]
         
-        cell.titleLabel.text = (post["title"] as? String)?.stringByDecodingHTMLEntities
-        let a = post["title"] as? String
-        print("index no: \([idx]) \(a!)")
+        let titleDic = (post as AnyObject).value(forKey: "title")
+        let contentDic = (post as AnyObject).value(forKey: "content")
+        let embedDic = (post as AnyObject).value(forKey: "_embedded")
         
-        let htmlTag = post["content"] as! String
-        let content = htmlTag.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        cell.contentLabel.text = content.stringByDecodingHTMLEntities
+        let titleDicString = titleDic! as! [String : Any]
+        let contentDicString = contentDic! as! [String: Any]
+        let embedDicString = embedDic! as! [String: Any]
         
-        //author name
+        self.postsTitle = [titleDicString]
+        self.postsContent = [contentDicString]
+        self.postsEmbed = [embedDicString]
         
-        let author = (favoritePosts as AnyObject).value(forKey: "author")
-        let dataDicAuthor = author as? [[String: Any]]
-        self.byName = dataDicAuthor!
-        let nameString = byName[idx]
-        let authorName = (nameString["first_name"] as? String)?.stringByDecodingHTMLEntities
-        if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
-            cell.authorNameLabel.text = ""
-        }else{
-            cell.authorNameLabel.text = "By " + authorName!
+        //        print(self.postsTitle)
+        //      let postTitle = postsTitle[indexPath.row]
+        cell.titleLabel.text = (titleDicString as AnyObject).value(forKey: "rendered") as? String
+        let htmlTag = (contentDicString as AnyObject).value(forKey: "rendered") as? String
+        let content = htmlTag?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        cell.contentLabel.text = content?.stringByDecodingHTMLEntities
+        
+        //Author Name
+        if let author = (embedDicString as AnyObject).value(forKey: "author"){
+            let dataDicAuthor = author as? [[String: Any]]
+            self.byName = dataDicAuthor!
         }
+        for author in byName{
+            let authorNameE = author["name"] as? String
+            let authorName = authorNameE?.stringByDecodingHTMLEntities
+            if authorName == "Guest author"{
+                cell.authorNameLabel.text = ""
+            }else{
+                cell.authorNameLabel.text = "Par " + authorName!
+            }
+        }
+        //Date
         
-        //format date
+        //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
-        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        //        newDateFormatter.dateFormat = "MMM dd, yyyy"
+        newDateFormatter.dateFormat = "dd MMM, yyyy"
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH-mm-ss"
         let newTimeFormatter = DateFormatter()
@@ -75,45 +95,63 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         }
         if let time = timeFormatter.date(from: splitTime){
             convertedTime = newTimeFormatter.string(from: time)
+        }
         cell.datePost.text = convertedDate
-        }
-        
-        let html2 = htmlTag.allStringsBetween(start: "<iframe src=", end: "</iframe>")
-        let input = String(describing: html2)
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
-        for match in matches {
-            guard let range = Range(match.range, in: input) else { continue }
-            let urlYou = input[range]
-            if urlYou != ""{
-                urlYoutube = String(urlYou)
-                print(urlYoutube)
-                cell.picMedia.isHidden = false
-     //           cell.labelMedia.isHidden = false
-            }
-            else{
-                cell.picMedia.isHidden = true
-       //         cell.labelMedia.isHidden = true
-                // urlYou = ""
-            }
-        }
+        //Images
         
         do{
-            let imgArray = (favoritesPosts as AnyObject).value(forKey: "featured_image")
+            let imgArray = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
-            
-            let remoteImageUrlString = imgPosts[indexPath.row]
-            let imageURL = remoteImageUrlString["source"] as? String
-            //print(imageURL!)
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imagePost.af_setImage(withURL: imgUrl)
-            }
-            else{
-                cell.imagePost.image = nil
-            }
+            if dataDic != nil{
+                self.imgPosts = dataDic!
+                //          let remoteImageUrlString = imgPosts[indexPath.row]
+                //   }
+                ////
+                for images in imgPosts{
+                    //   let remoteImageUrlString = imgPosts[indexPath.row]
+                    //      let imageURL = remoteImageUrlString["source_url"] as? String
+                    let imageURL = images["source_url"] as? String
+                    //print(imageURL!)
+                    if imageURL != nil{
+                        imgURLShare = imageURL!
+                    }
+                    else{}
+                    
+                    let url = URL(string: imgURLShare!)
+                    cell.imagePost.layer.borderColor = UIColor.white.cgColor
+                    cell.imagePost.layer.borderWidth = 2.0
+                    cell.imagePost.layer.cornerRadius = 12.0
+                    cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                        if ((error) != nil) {
+                            print("placeholder image...")
+                            cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                        } else {
+                            print("Success let using the image...")
+                            cell.imagePost.sd_setImage(with: url)
+                        }
+                    })
+                    if let imagePath = imageURL,
+                        let imgUrl = URL(string:  imagePath){
+                        cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                        cell.imagePost.af_setImage(withURL: imgUrl)
+                    }
+                    else{
+                        cell.imagePost.image = nil
+                    }
+                    
+                    ////
+                    
+                    
+                    //  imgShare = cell.imagePost.image
+                    //      imagePost1 = cell.imagePost
+                    //     imagePost2 = cell.imagePost.image
+                }
+            }else{}
         }
+        
+        //end Img
+        
+        
         return cell
     }
     
