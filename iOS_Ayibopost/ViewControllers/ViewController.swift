@@ -457,15 +457,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
-//        let postShare1 = posts[sender.tag]
         postShare = posts[sender.tag]
         let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
-     //   let titleDicString = titleDic as? [[String: Any]]
-   //     self.postsTitle1 = titleDicString!
-//////
         let title = (postShare1["rendered"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
-        imgPostShare = imgPosts[(sender.tag)]
+        imgPostShare = postsEmbed[(sender.tag)]
         let imageURL = imgPostShare!["source_url"] as? String
     
         if let imagePath = imageURL,
@@ -473,7 +469,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imagePost1?.af_setImage(withURL: imgUrl)
         }
         else{
-          //  imagePost1.image = nil
         }
         let image = imagePost1?.image
 

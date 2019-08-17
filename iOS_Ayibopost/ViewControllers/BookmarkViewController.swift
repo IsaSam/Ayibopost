@@ -30,6 +30,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var imgURLShare: String?
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritesPosts.count
@@ -143,9 +144,9 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
                     ////
                     
                     
-                    //  imgShare = cell.imagePost.image
-                    //      imagePost1 = cell.imagePost
-                    //     imagePost2 = cell.imagePost.image
+              //        imgShare = cell.imagePost.image
+                      //imagePost1 = cell.imagePost
+                      //imagePost2 = cell.imagePost.image
                 }
             }else{}
         }
@@ -198,21 +199,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let indexPath = favTableView.indexPath(for: cell)
         let post = favoritesPosts[(indexPath?.row)!]
         
- //       let postTitle = postsTitle[(indexPath?.row)!]
-  //      let postContent = postsContent[(indexPath?.row)!]
-    //    let imgPost = postsEmbed[(indexPath?.row)!]
-      //  let nameString = postsEmbed[(indexPath?.row)!]
-  //      let BookmarksUp = true
-    //    let imgPost = imgPosts[(indexPath?.row)!]
- //       let nameString = byName[(indexPath?.row)!]
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
-   //     detailViewController.BookmarksUp = true
-//        detailViewController.nameString = nameString
-  //      detailViewController.postTitle = postTitle
-    //    detailViewController.postContent = postContent
-   //     detailViewController.imgPost = imgPost
-    
         
     }
     
