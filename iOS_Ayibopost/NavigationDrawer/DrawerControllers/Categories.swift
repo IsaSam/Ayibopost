@@ -114,6 +114,10 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
         
         categoryName = MyVariables.categoryDrawerName
+        
+        categoryLabel.layer.borderWidth = 0.3
+        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
+        
        
         print("1***********************************************")
         print(categoryName!)
@@ -405,9 +409,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
             let dataDic = imgArray as? [[String: Any]]
             self.imgPosts = dataDic!
-            //          let remoteImageUrlString = imgPosts[indexPath.row]
-            //   }
-            ////
+            cell.imagePost.layer.borderColor = UIColor.white.cgColor
+            cell.imagePost.layer.borderWidth = 1.0
+            cell.imagePost.layer.cornerRadius = 10.0
             for images in imgPosts{
                 //   let remoteImageUrlString = imgPosts[indexPath.row]
                 //      let imageURL = remoteImageUrlString["source_url"] as? String

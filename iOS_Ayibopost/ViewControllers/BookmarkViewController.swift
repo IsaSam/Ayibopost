@@ -30,7 +30,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var imgURLShare: String?
-
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritesPosts.count
@@ -177,6 +178,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         topBarLogo()
+        categoryLabel.layer.borderWidth = 0.3
+        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
         
         favTableView.delegate = self
         favTableView.rowHeight = 170

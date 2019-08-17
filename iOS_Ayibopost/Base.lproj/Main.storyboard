@@ -427,7 +427,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOKMARKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-uS-mcJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="15"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -446,6 +446,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qXd-DZ-fSb"/>
                     <connections>
+                        <outlet property="categoryLabel" destination="wjF-uS-mcJ" id="YlE-pS-L7C"/>
                         <outlet property="favTableView" destination="vRc-nu-6Vc" id="xpM-CD-SlW"/>
                     </connections>
                 </viewController>
@@ -753,21 +754,9 @@
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WR0-ty-Hnh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="7dS-Rf-lHM"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ZQn-t7-BFV"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostsCell" rowHeight="368" id="QAb-4u-lpk" customClass="PostsCell" customModule="iOS_Ayibopost" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="42" width="320" height="368"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="368"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QAb-4u-lpk" id="ycr-KN-K35">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="367.5"/>
@@ -947,6 +936,17 @@
                                 <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ty-Hnh">
+                                <rect key="frame" x="0.0" y="64" width="320" height="14"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="7dS-Rf-lHM"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="ZQn-t7-BFV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="OIj-ug-O7U">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -963,12 +963,15 @@
                         <constraints>
                             <constraint firstItem="Lca-bY-pl8" firstAttribute="centerX" secondItem="QY4-PM-wFV" secondAttribute="centerX" id="3Gw-ZN-kgZ"/>
                             <constraint firstItem="YNx-sL-MQN" firstAttribute="top" secondItem="QY4-PM-wFV" secondAttribute="top" id="94L-tX-kZy"/>
+                            <constraint firstItem="WR0-ty-Hnh" firstAttribute="leading" secondItem="eEb-MI-Xsu" secondAttribute="leading" id="98Q-hK-GCp"/>
                             <constraint firstItem="OIj-ug-O7U" firstAttribute="leading" secondItem="QY4-PM-wFV" secondAttribute="leading" id="Knv-nn-4SX"/>
                             <constraint firstAttribute="bottom" secondItem="YNx-sL-MQN" secondAttribute="bottom" id="Z86-al-K9s"/>
                             <constraint firstAttribute="trailing" secondItem="OIj-ug-O7U" secondAttribute="trailing" id="b6Q-9V-Cdu"/>
+                            <constraint firstItem="WR0-ty-Hnh" firstAttribute="trailing" secondItem="eEb-MI-Xsu" secondAttribute="trailing" id="dS0-kW-nht"/>
                             <constraint firstItem="OIj-ug-O7U" firstAttribute="top" secondItem="QY4-PM-wFV" secondAttribute="top" id="fax-6U-K7P"/>
                             <constraint firstItem="YNx-sL-MQN" firstAttribute="trailing" secondItem="eEb-MI-Xsu" secondAttribute="trailing" id="jod-Ip-D8c"/>
                             <constraint firstItem="YNx-sL-MQN" firstAttribute="leading" secondItem="eEb-MI-Xsu" secondAttribute="leading" id="leS-9w-SdE"/>
+                            <constraint firstItem="WR0-ty-Hnh" firstAttribute="top" secondItem="eEb-MI-Xsu" secondAttribute="top" id="o6M-jX-cgk"/>
                             <constraint firstItem="Lca-bY-pl8" firstAttribute="centerY" secondItem="QY4-PM-wFV" secondAttribute="centerY" id="pmC-t5-dE9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eEb-MI-Xsu"/>
@@ -1774,6 +1777,6 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ioK-7P-FM4"/>
-        <segue reference="IH8-aK-iMw"/>
+        <segue reference="KPg-ES-9U8"/>
     </inferredMetricsTieBreakers>
 </document>
