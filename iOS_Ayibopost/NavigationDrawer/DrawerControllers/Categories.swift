@@ -527,27 +527,37 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBAction func btnSharePosts(_ sender: UIButton) {
         postShare = posts[sender.tag]
         let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
+        let embedDic = (postShare as AnyObject).value(forKey: "_embedded")
+        let embedDicString = embedDic! as! [String: Any]
         let title = (postShare1["rendered"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
-        imgPostShare = imgPosts[(sender.tag)]
-        let imageURL = imgPostShare!["source_url"] as? String
-        
-        if let imagePath = imageURL,
-            let imgUrl = URL(string:  imagePath){
-            imagePost1?.af_setImage(withURL: imgUrl)
-        }
-        else{
-            //  imagePost1.image = nil
-        }
-        let image = imagePost1?.image
-        
-        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
-        if let popoverController = vc.popoverPresentationController{
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = self.view.bounds
-        }
-        self.present(vc, animated: true, completion: nil)
-        imagePost1?.image = imagePost2
+        if let img = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia"){
+            let dataDic = img as? [[String: Any]]
+            
+            self.imgPosts = dataDic!
+            for images in imgPosts{
+                let imageURL = images["source_url"] as? String
+                print(imageURL!)
+                
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    imagePost1?.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    imagePost1?.image = nil
+                }
+                let image = imagePost1?.image
+                
+                let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+                if let popoverController = vc.popoverPresentationController{
+                    popoverController.sourceView = self.view
+                    popoverController.sourceRect = self.view.bounds
+                }
+                self.present(vc, animated: true, completion: nil)
+                imagePost1?.image = imagePost2
+            }
+            
+    }
     }
     
     override func didReceiveMemoryWarning() {

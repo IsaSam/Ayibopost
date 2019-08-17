@@ -551,7 +551,7 @@
                                                         <constraint firstAttribute="width" constant="22" id="ca9-WU-4dM"/>
                                                     </constraints>
                                                     <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <state key="normal" image="share">
+                                                    <state key="normal" image="shareRight100">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
                                                     <connections>
@@ -579,6 +579,21 @@
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clN-Od-ltb">
+                                                    <rect key="frame" x="213" y="348" width="30" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="BAB-8W-vL2"/>
+                                                        <constraint firstAttribute="height" constant="13" id="aKq-r8-93U"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Share">
+                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnSharePosts:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="MX1-6t-LDt"/>
+                                                        <action selector="shareTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="sGM-xe-0E9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RtL-tg-yLz" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="10" id="2nc-9Q-dTR"/>
@@ -595,6 +610,8 @@
                                                 <constraint firstItem="4Bd-dm-alR" firstAttribute="leading" secondItem="1Ut-me-H0m" secondAttribute="trailing" constant="2" id="SBy-mZ-j5l"/>
                                                 <constraint firstItem="ZWW-Vq-7gV" firstAttribute="leading" secondItem="3aZ-ht-DCZ" secondAttribute="leading" constant="12" id="UGu-Dx-4ZG"/>
                                                 <constraint firstItem="LcE-kj-sku" firstAttribute="top" secondItem="a5l-fQ-5qU" secondAttribute="bottom" constant="11.5" id="Uen-wv-whF"/>
+                                                <constraint firstItem="clN-Od-ltb" firstAttribute="leading" secondItem="Uip-td-qMF" secondAttribute="trailing" constant="1" id="VVm-le-nSL"/>
+                                                <constraint firstItem="clN-Od-ltb" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="aPk-3j-J1f"/>
                                                 <constraint firstAttribute="bottom" secondItem="Uip-td-qMF" secondAttribute="bottom" constant="8" id="boy-ta-Mvv"/>
                                                 <constraint firstItem="RtL-tg-yLz" firstAttribute="top" secondItem="3aZ-ht-DCZ" secondAttribute="top" constant="10" id="ctZ-Y3-KXo"/>
                                                 <constraint firstItem="Jnu-be-6M9" firstAttribute="top" secondItem="g3a-1G-9eg" secondAttribute="bottom" constant="11" id="dr0-tw-sR3"/>
@@ -614,6 +631,7 @@
                                         <connections>
                                             <outlet property="authorNameLabel" destination="ZWW-Vq-7gV" id="TX7-6j-3dZ"/>
                                             <outlet property="btnSharePosts" destination="Uip-td-qMF" id="ZIM-uE-8TN"/>
+                                            <outlet property="btnSharePosts2" destination="clN-Od-ltb" id="w2U-ZQ-J7d"/>
                                             <outlet property="contentLabel" destination="g3a-1G-9eg" id="raC-qm-gHm"/>
                                             <outlet property="datePost" destination="4Bd-dm-alR" id="buc-u3-PT9"/>
                                             <outlet property="favButton" destination="6OL-70-Amg" id="JpC-3a-rDi"/>
@@ -699,7 +717,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2214" y="-660"/>
+            <point key="canvasLocation" x="2212.5" y="-660.21126760563379"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bEd-rz-8B5">
@@ -849,6 +867,10 @@
                                                     <state key="normal" title="Share">
                                                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnSharePosts:" destination="ewo-gj-oBa" eventType="touchUpInside" id="2xC-MT-dS2"/>
+                                                        <action selector="shareTapped:" destination="QAb-4u-lpk" eventType="touchUpInside" id="Jwd-Gb-uMj"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80o-Dj-a3t">
                                                     <rect key="frame" x="12" y="345" width="49" height="15"/>
@@ -907,6 +929,7 @@
                                         <connections>
                                             <outlet property="authorNameLabel" destination="80o-Dj-a3t" id="AI9-QZ-viB"/>
                                             <outlet property="btnSharePosts" destination="kmd-xG-AQg" id="GUI-DT-szY"/>
+                                            <outlet property="btnSharePosts2" destination="DNN-5F-raE" id="yqd-Zp-x3X"/>
                                             <outlet property="contentLabel" destination="D7j-6z-VhC" id="kJ9-El-bv7"/>
                                             <outlet property="datePost" destination="Zto-jm-pzm" id="rCL-UZ-Bkh"/>
                                             <outlet property="favButton" destination="lSQ-0e-iJE" id="jFX-jh-J8Z"/>
@@ -1750,7 +1773,7 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tv8-zQ-hrO"/>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="ioK-7P-FM4"/>
+        <segue reference="IH8-aK-iMw"/>
     </inferredMetricsTieBreakers>
 </document>

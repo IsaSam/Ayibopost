@@ -20,6 +20,7 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var btnSharePosts: UIButton!
+    @IBOutlet weak var btnSharePosts2: UIButton!
     @IBOutlet weak var authorNameLabel: UILabel!
     
     @IBOutlet weak var imageTeam: UIImageView!
@@ -31,6 +32,7 @@ class PostsCell: UITableViewCell {
     var buttonTapped = false
     var buttonTapped2 = false
     
+
     
 
     @IBAction func bookmarkTapped(_ sender: UIButton) {

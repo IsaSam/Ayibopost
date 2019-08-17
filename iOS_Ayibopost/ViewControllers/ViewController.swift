@@ -462,11 +462,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
         
-        print(sender.tag)
-        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
         postShare = posts[sender.tag]
-    //    imgPostShare = postsEmbed[(sender.tag)]
-        print("^^^^^^^^^^^^^^^^^^^^^^^^^^")
         let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
         let embedDic = (postShare as AnyObject).value(forKey: "_embedded")
         let embedDicString = embedDic! as! [String: Any]
