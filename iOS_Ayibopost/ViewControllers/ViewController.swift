@@ -12,6 +12,10 @@ import AlamofireImage
 import SwiftyJSON
 import SDWebImage
 
+struct favResultsGlobal {
+    static var favResultsData: [[String: Any]]?
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
     
     @IBOutlet weak var titleLogo: UIButton!
@@ -499,6 +503,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if outData != nil{
         let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
         favResults = dict
+        favResultsGlobal.favResultsData = favResults
         }else{}
     }
 }

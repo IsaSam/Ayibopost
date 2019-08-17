@@ -158,13 +158,19 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        favoritesPosts = favoritePosts!
+        if favoritePosts != nil{
+            favoritesPosts = favoritePosts!
+        
         favTableView.reloadData()
         print("Counter2: \(favoritesPosts.count)")
-        /*  if favoriteMovies.count == 0 {
-         favoriteMovies.append(Movie(id: "m000001", title: "Coco", year: "2017", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
-         }*/
         super.viewWillAppear(animated)
+        }else{
+            favoritesPosts = favResultsGlobal.favResultsData!
+            favTableView.reloadData()
+            print("Counter3: \(favoritesPosts.count)")
+            super.viewWillAppear(animated)
+            
+        }
     }
     
     override func viewDidLoad() {
