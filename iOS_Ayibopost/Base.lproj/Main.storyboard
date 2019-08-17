@@ -188,7 +188,7 @@
                         <outlet property="datePost2" destination="b7H-z2-QZ7" id="8zz-lt-FeA"/>
                         <outlet property="postImageView" destination="jBR-mi-ok3" id="PRs-wt-tWo"/>
                         <outlet property="titleLabel" destination="are-tx-8Cz" id="ipl-CI-dyn"/>
-                        <outlet property="videoView" destination="8xb-3n-qSU" id="pBM-ut-067"/>
+                        <outlet property="videoView" destination="8xb-3n-qSU" id="jVp-4v-hYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1d-pW-GDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
