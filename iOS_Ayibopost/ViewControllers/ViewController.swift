@@ -451,7 +451,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             detailViewController.postContent = postContent
             detailViewController.imgPost = imgPost
 //            detailViewController.postImage = postImage
-            detailViewController.nameString = nameString
         
         
         }
