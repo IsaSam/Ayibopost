@@ -277,7 +277,15 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                             print(result!)
                             self.tableView.reloadData() // to tell table about new data
                         }
-                    }else{print("nil")}
+                    }else{
+                        print("nil")
+                        let errorAlertController = UIAlertController(title: "Désolé, Fin des articles!", message: "Remonter la liste", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                        errorAlertController.addAction(cancelAction)
+                        self.present(errorAlertController, animated: true)
+                        
+                        
+                    }
 
                 }else{
                     print("===========================================")

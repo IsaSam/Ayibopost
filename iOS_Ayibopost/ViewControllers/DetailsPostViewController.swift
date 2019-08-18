@@ -133,7 +133,7 @@ class DetailsPostViewController: UIViewController{
             let urlYou = input[range]
             if urlYou != ""{
                 urlYoutube = String(urlYou)
-                print(urlYoutube)
+           //     print(urlYoutube)
                 videoView.isHidden = false
             }
             //     urlYou = String(input[range])
