@@ -244,9 +244,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     func loadMorePosts(){
         loadNumber = loadNumber + 1
-        
-
-        
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
 
             if error != nil{
@@ -260,7 +257,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
-            
             //print(result!)
             //self.posts = result!
             do{
@@ -268,20 +264,27 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 ////
                 if YYHRequest(url: NSURL(string: self.imgURLShare!)! as URL) != nil {
                     ////
+                    let r = result
+                //    if r != nil{}
+                    if result != nil{
+                        do{
+                            for item in result!
+                                
+                            {
+                                
+                                self.posts.append(item)
+                            }
+                            print(result!)
+                            self.tableView.reloadData() // to tell table about new data
+                        }
+                    }else{print("nil")}
+
+                }else{
                     print("===========================================")
                     print("body nil")
                     //print(request?.body as Any)
-                }else{
-                    
-                    for item in result!
-                        
-                    {
-                        
-                        self.posts.append(item)
-                    }
-                    print(result!)
-                    self.tableView.reloadData() // to tell table about new data
-                }
+
+            }
 
                 }
             

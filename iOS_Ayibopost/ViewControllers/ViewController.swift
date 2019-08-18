@@ -101,7 +101,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         storeData() //Saved posts
         
-        let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
+    //    let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Post enregistré avec succès!", message: "A lire plutard dans la liste des signets 📖", preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
@@ -163,7 +165,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             drawerVw.delegate = self
             
             // Can change account holder name
-            drawerVw.changeUserName(name: "WELCOME")
+            drawerVw.changeUserName(name: "BIENVENUE")
             
             // 3.show the Navigation drawer.
             drawerVw.show()
@@ -181,8 +183,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
          
          if error != nil{
-                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                let errorAlertController = UIAlertController(title: "On ne peut pas obtenir de données", message: "Les connexions Internet semblent être hors ligne", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Réessayer", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
          return
@@ -201,8 +203,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
             
                 if error != nil{
-                    let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                    let errorAlertController = UIAlertController(title: "On ne peut pas obtenir de données", message: "Les connexions Internet semblent être hors ligne", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Réessayer", style: .cancel)
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
                     
