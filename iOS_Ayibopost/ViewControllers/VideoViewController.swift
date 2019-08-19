@@ -8,19 +8,38 @@
 
 import UIKit
 
-class VideoViewController: UIViewController {
-
+class VideoViewController: UIViewController, UITableViewDataSource{
+    @IBOutlet weak var tableView: UITableView!
+    
+    var categories = ["Nos explainers", "Discussions", "ANRIYAN", "Reportages", "AyiboSport", "Documentaires", "AyiboStudio", "FinTech Haïti 2018", "Forum International sur la Finance"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+ /*   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return categories.count
+    }*/
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categories.count
     }
     
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section]
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CategoryRow
+        return cell
+    }
+
 
 
 

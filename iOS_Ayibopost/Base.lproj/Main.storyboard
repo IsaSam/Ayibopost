@@ -204,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="3052.5" y="145.77464788732394"/>
         </scene>
-        <!--Video View Controller-->
+        <!--View Controller-->
         <scene sceneID="9mm-Jc-DEV">
             <objects>
-                <viewController storyboardIdentifier="Video" id="bE9-XP-5pX" customClass="VideoViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bE9-XP-5pX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAV-Vm-uR7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,6 +218,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qb-hV-IYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4584" y="146"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="P9w-hR-MLT">
+            <objects>
+                <viewController storyboardIdentifier="Video" id="ZJZ-IE-6Zd" customClass="VideoViewController" customModule="iOS_Ayibopost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PCX-WO-9iZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CRw-vR-tQD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="r3C-MU-w30" customClass="CategoryRow" customModule="iOS_Ayibopost" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r3C-MU-w30" id="dql-yt-QP5">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZJZ-IE-6Zd" id="LP5-ch-em0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CRw-vR-tQD" firstAttribute="bottom" secondItem="jPM-Oe-fVr" secondAttribute="bottom" id="Toz-dG-h9m"/>
+                            <constraint firstItem="CRw-vR-tQD" firstAttribute="top" secondItem="PCX-WO-9iZ" secondAttribute="top" id="cAx-Lh-Lc5"/>
+                            <constraint firstItem="CRw-vR-tQD" firstAttribute="leading" secondItem="jPM-Oe-fVr" secondAttribute="leading" id="hQv-Gx-hta"/>
+                            <constraint firstItem="CRw-vR-tQD" firstAttribute="trailing" secondItem="jPM-Oe-fVr" secondAttribute="trailing" id="y26-gb-HU8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jPM-Oe-fVr"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="CRw-vR-tQD" id="rcz-gz-FRk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avr-o3-mQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5343.75" y="145.77464788732394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZLu-Kd-xdm">

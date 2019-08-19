@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9635B73C230AFA5A00CF32D2 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635B73B230AFA5A00CF32D2 /* CategoryRow.swift */; };
 		963D9B8A21EECA7900187DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8921EECA7900187DA2 /* AppDelegate.swift */; };
 		963D9B8C21EECA7900187DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B8B21EECA7900187DA2 /* ViewController.swift */; };
 		963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B8D21EECA7900187DA2 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		96057884222CC4E800619ABB /* iOS_Ayibopost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_Ayibopost.entitlements; sourceTree = "<group>"; };
+		9635B73B230AFA5A00CF32D2 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		963D9B8621EECA7900187DA2 /* iOS_Ayibopost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Ayibopost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D9B8921EECA7900187DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963D9B8B21EECA7900187DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				963D9B9B21EECD2800187DA2 /* PostsCell.swift */,
+				9635B73B230AFA5A00CF32D2 /* CategoryRow.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				96DE418C220F826E0071B456 /* Swift+Gif.swift in Sources */,
 				96E0470D2235E017005108E4 /* TeamCollectionViewCell.swift in Sources */,
 				9684A8AD2204CF550054AF55 /* CategoryCell.swift in Sources */,
+				9635B73C230AFA5A00CF32D2 /* CategoryRow.swift in Sources */,
 				96E4A10C22212842003CBA45 /* HTTPHandler.swift in Sources */,
 				963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */,
 				9684A87E22038A340054AF55 /* LayoutTwo.swift in Sources */,
