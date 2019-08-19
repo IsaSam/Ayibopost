@@ -174,7 +174,7 @@
                     <navigationItem key="navigationItem" id="6n0-jD-o2y">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Home" id="AOf-iF-1Wg"/>
-                        <barButtonItem key="rightBarButtonItem" title="Share" image="share" style="plain" id="vXC-SJ-gQg">
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="icons8-share-24" style="plain" id="vXC-SJ-gQg">
                             <connections>
                                 <action selector="btnShareTapped:" destination="Uhv-1l-mLN" id="DaA-F3-Elf"/>
                             </connections>
@@ -527,7 +527,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="gQd-fl-999"/>
                                                     </constraints>
                                                     <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <state key="normal" title="Add to Bookmark" image="addtag100"/>
+                                                    <state key="normal" title="Add to Bookmark" image="icons8-add-bookmark-50"/>
                                                     <connections>
                                                         <action selector="addFav:" destination="3mi-yi-Zhr" eventType="touchUpInside" id="adq-tq-8th"/>
                                                         <action selector="bookmarkTapped:" destination="upp-ch-Z2L" eventType="touchUpInside" id="dYt-wv-LAS"/>
@@ -689,13 +689,13 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="jAR-hC-Nhw">
+                            <barButtonItem image="icons8-search-26" id="jAR-hC-Nhw">
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="searchButton:" destination="3mi-yi-Zhr" id="7r8-zG-KsG"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="bookmarks" id="tqo-lu-cC7">
+                            <barButtonItem image="icons8-save-search-24" id="tqo-lu-cC7">
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="viewFav:" destination="3mi-yi-Zhr" id="Jva-gM-kTu"/>
@@ -1771,12 +1771,15 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
         <image name="addtag100" width="100" height="100"/>
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
+        <image name="icons8-add-bookmark-50" width="50" height="50"/>
+        <image name="icons8-save-search-24" width="24" height="24"/>
+        <image name="icons8-search-26" width="26" height="26"/>
+        <image name="icons8-share-24" width="24" height="24"/>
         <image name="player" width="1024" height="1024"/>
-        <image name="share" width="30" height="30"/>
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ioK-7P-FM4"/>
-        <segue reference="KPg-ES-9U8"/>
+        <segue reference="Tv8-zQ-hrO"/>
+        <segue reference="jhQ-Wc-sb5"/>
     </inferredMetricsTieBreakers>
 </document>
