@@ -304,7 +304,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-nu-6Vc">
-                                <rect key="frame" x="0.0" y="78.5" width="320" height="440.5"/>
+                                <rect key="frame" x="0.0" y="34.5" width="320" height="533.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="HSo-Dh-bOl"/>
@@ -425,7 +425,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOKMARKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-uS-mcJ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="15"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="15"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -682,27 +682,18 @@
                     <navigationItem key="navigationItem" id="uSq-sj-PMw">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Back" id="A0T-er-e63"/>
-                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="7ar-xa-bwi">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-pull-down-30 (1)" id="7ar-xa-bwi">
                             <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actShowMenu:" destination="3mi-yi-Zhr" id="HeQ-B1-GWO"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="icons8-search-26" id="jAR-hC-Nhw">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="3mi-yi-Zhr" id="7r8-zG-KsG"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="icons8-save-search-24" id="tqo-lu-cC7">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="viewFav:" destination="3mi-yi-Zhr" id="Jva-gM-kTu"/>
-                                    <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav1" id="Tv8-zQ-hrO"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="icons8-search-26" id="jAR-hC-Nhw">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchButton:" destination="3mi-yi-Zhr" id="7r8-zG-KsG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
@@ -982,27 +973,18 @@
                     <navigationItem key="navigationItem" id="ifC-jL-xAJ">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Back" id="Dnq-3x-vlR"/>
-                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="AqH-9I-utt">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-pull-down-30 (1)" id="AqH-9I-utt">
                             <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actShowMenu:" destination="ewo-gj-oBa" id="l82-oA-NSj"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="tcc-GQ-oTD">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="ewo-gj-oBa" id="46B-iC-vNn"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="bookmarks" id="s1n-6x-Psq">
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="viewFav:" destination="ewo-gj-oBa" id="WGU-bt-ERX"/>
-                                    <segue destination="tJM-gX-BEN" kind="show" identifier="ViewFav2" id="ioK-7P-FM4"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="icons8-search-26" id="tcc-GQ-oTD">
+                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchButton:" destination="ewo-gj-oBa" id="46B-iC-vNn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatory" destination="Lca-bY-pl8" id="Syb-uw-ebA"/>
@@ -1179,7 +1161,7 @@
                     <navigationItem key="navigationItem" id="Vr0-sW-QIJ">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Back" id="7na-S0-OgO"/>
-                        <barButtonItem key="leftBarButtonItem" image="btnMenu" id="12a-Wx-glb">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-pull-down-30 (1)" id="12a-Wx-glb">
                             <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actShowMenu:" destination="WXc-Ok-vvo" id="7de-Qa-LRy"/>
@@ -1772,14 +1754,13 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
         <image name="btnMenu" width="22" height="17"/>
         <image name="home" width="30" height="30"/>
         <image name="icons8-add-bookmark-50" width="50" height="50"/>
-        <image name="icons8-save-search-24" width="24" height="24"/>
+        <image name="icons8-pull-down-30 (1)" width="30" height="30"/>
         <image name="icons8-search-26" width="26" height="26"/>
         <image name="icons8-share-24" width="24" height="24"/>
         <image name="player" width="1024" height="1024"/>
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tv8-zQ-hrO"/>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="IH8-aK-iMw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -73,11 +73,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.isHidden = true
         
     }
-
+/*
     @IBAction func viewFav(_ sender: Any) {
         self.performSegue(withIdentifier: "ViewFav1", sender: self)
     //    storeData()
-    }
+    }*/
     
     @IBAction func searchButton(_ sender: Any) {
         print("Search...")
