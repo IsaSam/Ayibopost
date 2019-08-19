@@ -26,6 +26,9 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel2: UILabel!
     @IBOutlet weak var datePost2: UILabel!
+    @IBOutlet weak var authorPicture: UIImageView!
+    @IBOutlet weak var authorPicture2: UIImageView!
+    @IBOutlet weak var authorDesc: UILabel!
     
     var filteredPosts: [String: Any]?
     var post: [String: Any]?
@@ -39,6 +42,7 @@ class DetailsPostViewController: UIViewController{
     var postImage: [String: Any]?
   //  var author: String?
     var Name: [[String: Any]] = []
+    var authorsImg: [[String: Any]] = []
     var imgPosts: [[String: Any]] = []
     
     
@@ -85,20 +89,52 @@ class DetailsPostViewController: UIViewController{
         if let author = (embedDicString as AnyObject).value(forKey: "author"){
             let dataDicAuthor = author as? [[String: Any]]
             self.Name = dataDicAuthor!
+            
+            let authorImg = (author as AnyObject).value(forKey: "simple_local_avatar")
+            let authorImgDic = authorImg as? [[String: Any]]
+            if authorImgDic != nil{
+                self.authorsImg = authorImgDic!
+            }
+
         }
+        
         for author in Name{
             let authorNameE = author["name"] as? String
+            let authorDescR = author["description"] as? String
             let authorName = authorNameE?.stringByDecodingHTMLEntities
+            let authorDescr = authorDescR?.stringByDecodingHTMLEntities
             if authorName == "Guest author" || authorName == "Admin" || authorName == "Ayibopost" {
                 authorNameLabel.text = ""
                 authorNameLabel2.text = ""
             }else{
                 authorNameLabel.text = "Par " + authorName!
-                authorNameLabel2.text = "Par " + authorName!
-                
-                
+                authorNameLabel2.text = authorName!
             }
+            authorDesc.text = authorDescr!
         }
+        
+        for image in authorsImg{
+            let imageURL = image["80"] as? String
+            let imageURL2 = image["80"] as? String
+            if let imagePath = imageURL,
+                let imgUrl = URL(string:  imagePath){
+                authorPicture.layer.borderColor = UIColor.white.cgColor
+                authorPicture.layer.borderWidth = 2.0
+                authorPicture.layer.cornerRadius = authorPicture.frame.height / 2
+                authorPicture.clipsToBounds = true
+                authorPicture.af_setImage(withURL: imgUrl)
+            }
+            if let imagePath2 = imageURL2,
+                let imgUrl2 = URL(string: imagePath2){
+                authorPicture2.layer.borderColor = UIColor.white.cgColor
+                authorPicture2.layer.borderWidth = 2.0
+                authorPicture2.layer.cornerRadius = authorPicture2.frame.height / 2
+                authorPicture2.clipsToBounds = true
+                authorPicture2.af_setImage(withURL: imgUrl2)
+            }
+        
+        }
+        
         //Date
         
         //date format conversion
@@ -122,7 +158,6 @@ class DetailsPostViewController: UIViewController{
             convertedTime = newTimeFormatter.string(from: time)
         }
         datePost.text = convertedDate
-        datePost2.text = convertedDate
         //Images
         let html2 = htmlTag?.allStringsBetween(start: "<iframe src=", end: "</iframe>")
         let input = String(describing: html2)
