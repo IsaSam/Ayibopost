@@ -55,7 +55,7 @@ import UIKit
  var titleShare: String?
  var imgShare: UIImage?
  var searching: [String] = []
- let intArrID = [55, 102, 120, 107, 3, 117, 118, 116, 105]
+ let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
  var loadNumber = 0
  var postsEmbed: [[String: Any]] = []
  var postsAvatar: [[String: Any]] = []
@@ -123,254 +123,255 @@ import UIKit
  func pushTo(viewController: UIViewController) {
   self.navigationController?.pushViewController(viewController, animated: true)
  }
- 
- func fetchTeamID(){
-  let intArrID = [55, 102, 120, 107, 3, 117, 118, 116, 105]
-  let loadNumber = 0
-  let ID = intArrID[loadNumber]
-  ID1 = ID
-  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
-        
-  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-  let task = session.dataTask(with: request) {(data, response, error) in
-   //-- This will run when the network request returns
-   if let error = error{
-    let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-    errorAlertController.addAction(cancelAction)
-    self.present(errorAlertController, animated: true)
-    print(error.localizedDescription)
-   } else if let data = data,
-    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-    
-    self.posts2 = dataDictionary
-   //   print(self.posts2)
-    
-      let name = dataDictionary["name"] as! String
-      print(name)
+
+  
+  func fetchTeamID(){
+   let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+   let loadNumber = 0
+   let ID = intArrID[loadNumber]
+//   ID1 = ID
+   let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
+   
+   let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+   let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+   let task = session.dataTask(with: request) {(data, response, error) in
+    //-- This will run when the network request returns
+    if let error = error{
+     let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+     let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+     errorAlertController.addAction(cancelAction)
+     self.present(errorAlertController, animated: true)
+     print(error.localizedDescription)
+    } else if let data = data,
+     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+     
+     self.posts2 = dataDictionary
+     //   print(self.posts2)
+     
+     let name = dataDictionary["name"] as! String
+     print(name)
+     
+    }
+    self.posts.append(self.posts2)
+    self.tableView.reloadData()
     
    }
-   self.posts.append(self.posts2)
-   self.tableView.reloadData()
+   task.resume()
    
   }
-  task.resume()
-
- }
- func fetchMoreTeamID(){
-  loadNumber = loadNumber + 1
-  if loadNumber < intArrID.count{
-  let ID = intArrID[loadNumber]
-    if ID == 107{
+  func fetchMoreTeamID(){
+   loadNumber = loadNumber + 1
+   if loadNumber < intArrID.count{
+    let ID = intArrID[loadNumber]
+/*    if ID == 107{
      print("ID IS 107 LLLLLLLLL")
      ID1 = ID
      
-//     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
-//     self.posts.append(self.posts2)
-  //   tableView.reloadData()
+     //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
+     //     self.posts.append(self.posts2)
+     //   tableView.reloadData()
      
-//==============
-      //  self.tableView.reloadData()
+     //==============
+     //  self.tableView.reloadData()
+    }*/
+    //   else{
+ //   ID1 = ID
+    
+    let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
+    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+    let task = session.dataTask(with: request) {(data, response, error) in
+     //-- This will run when the network request returns
+     if let error = error{
+      let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+      errorAlertController.addAction(cancelAction)
+      self.present(errorAlertController, animated: true)
+      print(error.localizedDescription)
+     }
+  /*   else if self.ID1 == 107{
+      let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
+      self.posts2 = datadictionary
+      let name = datadictionary["name"] as! String
+      print(name)
+      print("---------------------")
+     }*/
+      
+     else if let data = data,
+      
+      
+      let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
+      
+      self.posts2 = dataDictionary
+      
+      ////   let name = dataDictionary["name"] as! String
+      ////   print(name)
+      
+     }
+     
+     
+     self.posts.append(self.posts2)
+     self.tableView.reloadData()
+     
     }
- //   else{
-     ID1 = ID
-  
-  let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
-  let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-  let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-  let task = session.dataTask(with: request) {(data, response, error) in
-   //-- This will run when the network request returns
-   if let error = error{
-    let errorAlertController = UIAlertController(title: "Cannot Get data Authors", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
-    errorAlertController.addAction(cancelAction)
-    self.present(errorAlertController, animated: true)
-    print(error.localizedDescription)
-   }
-   else if self.ID1 == 107{
-    let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
-    self.posts2 = datadictionary
-    let name = datadictionary["name"] as! String
-    print(name)
-    print("---------------------")
-   }
-   
-   else if let data = data,
+    task.resume()
+    //   }
     
-    
-    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-    
-    self.posts2 = dataDictionary
-    
- ////   let name = dataDictionary["name"] as! String
- ////   print(name)
-    
-   }
-   
-   
-   self.posts.append(self.posts2)
-   self.tableView.reloadData()
+   }else{}
    
   }
-  task.resume()
- //   }
-   
-  }else{}
   
- }
- 
- 
- func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-  if indexPath.row + 1 == posts.count{
-        print("load More...")
-        fetchMoreTeamID()
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+   if indexPath.row + 1 == posts.count{
+    print("load More...")
+    fetchMoreTeamID()
+   }
   }
- }
- 
- func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
    // return self.byName.count
-    return self.posts.count
- }
- 
- func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-  let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+   return self.posts.count
+  }
   
-  cell.layer.borderColor = UIColor.white.cgColor
-  cell.layer.cornerRadius = 25.0
-  cell.layer.borderWidth = 10.0
-  cell.layer.masksToBounds = true
-  
-  
-  
- // do{
-      //============
-      let embedDic = (posts as AnyObject).value(forKey: "simple_local_avatar")
-      let embedDicString = embedDic as? [[String: Any]]
-      if embedDicString != nil{
-         self.postsEmbed = embedDicString!
-      print("You selected cell #\(indexPath.row)!")
- //  }
-  
-  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
+   
+   cell.layer.borderColor = UIColor.white.cgColor
+   cell.layer.cornerRadius = 25.0
+   cell.layer.borderWidth = 10.0
+   cell.layer.masksToBounds = true
+   
+   
+   
+   // do{
+   //============
+   let embedDic = (posts as AnyObject).value(forKey: "simple_local_avatar")
+   let embedDicString = embedDic as? [[String: Any]]
+   if embedDicString != nil{
+    self.postsEmbed = embedDicString!
+    print("You selected cell #\(indexPath.row)!")
+    //  }
+    
+    
     let post = posts[indexPath.row]
     let postImage = postsEmbed[indexPath.row]
+    
+    let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
+    let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
+    id = post["id"] as? String
+/*
+    print(ID1!)
+    print("****************")
+    
+    if ID1 == 107{
+     //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
+     //     self.posts.append(self.posts2)
+     cell.nameTeam.text = "Wendy Jean"
+     cell.descripTeam.text = "Infographiste"
+     cell.imageTeam.image = nil
+    }*/
+//    else{
+     //// self.authorImgArray.append(imageURL!)
+     cell.nameTeam.text = name?.uppercased()
+     cell.descripTeam.text = description
+     
+     let imageURL = postImage["180"] as? String
+     print(imageURL!)
+     if let imagePath = imageURL,
+      let imgUrl = URL(string:  imagePath){
+      cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+      cell.imageTeam.layer.borderWidth = 6.0
+      cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+      cell.imageTeam.clipsToBounds = true
+      cell.imageTeam.af_setImage(withURL: imgUrl)
+     }
+     else{
+      cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+      cell.imageTeam.layer.borderWidth = 6.0
+      cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+      cell.imageTeam.clipsToBounds = true
+      //cell.imageTeam.image = nil
+      cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
+     }
+ //   }
+    
+   }else{}
+   return cell
    
-  let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
-  let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
-  id = post["id"] as? String
-  
-       print(ID1!)
-       print("****************")
-       
-       if ID1 == 107{
-        //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
-        //     self.posts.append(self.posts2)
-           cell.nameTeam.text = "Wendy Jean"
-           cell.descripTeam.text = "Infographiste"
-           cell.imageTeam.image = nil
-       }
-       else{
-  //// self.authorImgArray.append(imageURL!)
-  cell.nameTeam.text = name?.uppercased()
-  cell.descripTeam.text = description
-  
-  let imageURL = postImage["180"] as? String
-  print(imageURL!)
-  if let imagePath = imageURL,
-   let imgUrl = URL(string:  imagePath){
-   cell.imageTeam.layer.borderColor = UIColor.white.cgColor
-   cell.imageTeam.layer.borderWidth = 6.0
-   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
-   cell.imageTeam.clipsToBounds = true
-   cell.imageTeam.af_setImage(withURL: imgUrl)
   }
-  else{
-   cell.imageTeam.layer.borderColor = UIColor.white.cgColor
-   cell.imageTeam.layer.borderWidth = 6.0
-   cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
-   cell.imageTeam.clipsToBounds = true
-   //cell.imageTeam.image = nil
-   cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
-  }
-  }
-       
-  }else{}
-  return cell
   
- }
- 
- func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  tableView.deselectRow(at: indexPath, animated: true)
-  performSegue(withIdentifier: "authorPosts", sender: indexPath)
- }
-/***
- func PostsCellDidTapBookmark(_ sender: PostsCell) {
-  guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-  print("Bookmark", sender, tappedIndexPath)
- }
- @objc func bookmarkTapped(_ sender: Any?) {
-  // We need to call the method on the underlying object, but I don't know which row the user tapped!
-  // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
-  // the view hierarchy until we find the UITableviewCell instance.
-  print("Bookmark Tapped", sender!)
- }
- func PostsCellDidTapShare(_ sender: PostsCell) {
-  guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-  print("Sharing", sender, tappedIndexPath)
- }
- 
- @objc func shareTapped(_ sender: Any?) {
-  print("share Tapped", sender!)
-  
- }***/
- 
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   tableView.deselectRow(at: indexPath, animated: true)
+   performSegue(withIdentifier: "authorPosts", sender: indexPath)
+  }
   /***
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  print("segue........")
-/***
-  if segue.identifier == "ViewFav3" {
+   func PostsCellDidTapBookmark(_ sender: PostsCell) {
+   guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+   print("Bookmark", sender, tappedIndexPath)
+   }
+   @objc func bookmarkTapped(_ sender: Any?) {
+   // We need to call the method on the underlying object, but I don't know which row the user tapped!
+   // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
+   // the view hierarchy until we find the UITableviewCell instance.
+   print("Bookmark Tapped", sender!)
+   }
+   func PostsCellDidTapShare(_ sender: PostsCell) {
+   guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
+   print("Sharing", sender, tappedIndexPath)
+   }
+   
+   @objc func shareTapped(_ sender: Any?) {
+   print("share Tapped", sender!)
+   
+   }***/
+  
+  /***
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   print("segue........")
+   /***
+   if segue.identifier == "ViewFav3" {
    print("Bookmarks View segue")
    let controller = segue.destination as! BookmarkViewController
    controller.favoritePosts = favResults
    
-  }***/
+   }***/
    
-  if segue.identifier == "authorPosts"{
+   if segue.identifier == "authorPosts"{
    print("By AuthorPost View segue")
    
    /***
    let cell = sender as! UITableViewCell
    let indexPath = tableView.indexPath(for: cell)
    let post = posts[(indexPath?.row)!]
- //  let imgPost = imgPosts[(indexPath?.row)!]
-//   let nameString = byName[(indexPath?.row)!]
+   //  let imgPost = imgPosts[(indexPath?.row)!]
+   //   let nameString = byName[(indexPath?.row)!]
    let authorPosts = segue.destination as! AuthorPosts
    authorPosts.post = post
-  // authorPosts.id = id
+   // authorPosts.id = id
    
-//   detailViewController.imgPost = imgPost
-//   detailViewController.nameString = nameString
+   //   detailViewController.imgPost = imgPost
+   //   detailViewController.nameString = nameString
    
    ***/
    
-  }
-  else{}
-  
- }
-  
-  ***/
+   }
+   else{}
+   
+   }
+   
+   ***/
   /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
    
    if (segue.identifier == "authorPosts") {
-    print("segue............")
-    // initialize new view controller and cast it as your view controller
-    let authorPosts = segue.destination as! AuthorPosts
-    // your new view controller should have property that will store passed value
-    //authorPosts.post = post
-    authorPosts.post = post
+   print("segue............")
+   // initialize new view controller and cast it as your view controller
+   let authorPosts = segue.destination as! AuthorPosts
+   // your new view controller should have property that will store passed value
+   //authorPosts.post = post
+   authorPosts.post = post
    }
-  }*/
+   }*/
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
    // Get the index path from the cell that was tapped
@@ -382,29 +383,28 @@ import UIKit
    // Pass on the data to the Detail ViewController by setting it's indexPathRow value
    authorPosts.index = index
   }
- 
- override func didReceiveMemoryWarning() {
-  super.didReceiveMemoryWarning()
-  // Dispose of any resources that can be recreated.
- }
- //Storing app data
- 
- /***
- func storeData(){
-  let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
-  UserDefaults.standard.set(data, forKey: "savedData1")
- }
- 
- //Getting app data
- func getData(){
-  let outData = UserDefaults.standard.data(forKey: "savedData1")
-  if outData != nil{
+  
+  override func didReceiveMemoryWarning() {
+   super.didReceiveMemoryWarning()
+   // Dispose of any resources that can be recreated.
+  }
+  //Storing app data
+  
+  /***
+   func storeData(){
+   let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
+   UserDefaults.standard.set(data, forKey: "savedData1")
+   }
+   
+   //Getting app data
+   func getData(){
+   let outData = UserDefaults.standard.data(forKey: "savedData1")
+   if outData != nil{
    let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
    favResults = dict
-  }else{}
- }
- ***/
- 
+   }else{}
+   }
+   ***/
+  
 }
-
 

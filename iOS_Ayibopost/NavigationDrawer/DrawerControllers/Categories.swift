@@ -387,7 +387,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         timeFormatter.dateFormat = "HH-mm-ss"
         let newTimeFormatter = DateFormatter()
         newTimeFormatter.dateFormat = "h:mm a"
+        
         let dateTime = post["date"] as? String
+        
         let dateComponents = dateTime?.components(separatedBy: "T")
         let splitDate = dateComponents![0]
         let splitTime = dateComponents![1]
