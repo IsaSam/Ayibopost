@@ -55,7 +55,7 @@ import UIKit
  var titleShare: String?
  var imgShare: UIImage?
  var searching: [String] = []
- let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+ let intArrID = [55, 102, 120, 3, 117, 118, 116, 105, 1]
  var loadNumber = 0
  var postsEmbed: [[String: Any]] = []
  var postsAvatar: [[String: Any]] = []
@@ -126,10 +126,10 @@ import UIKit
 
   
   func fetchTeamID(){
-   let intArrID = [55, 102, 120, 3, 117, 118, 116, 105]
+   let intArrID = [55, 102, 120, 3, 117, 118, 116, 105, 1]
    let loadNumber = 0
    let ID = intArrID[loadNumber]
-//   ID1 = ID
+   ID1 = ID
    let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
    
    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -163,6 +163,7 @@ import UIKit
    loadNumber = loadNumber + 1
    if loadNumber < intArrID.count{
     let ID = intArrID[loadNumber]
+ //   if ID != 107{
 /*    if ID == 107{
      print("ID IS 107 LLLLLLLLL")
      ID1 = ID
@@ -176,6 +177,7 @@ import UIKit
     }*/
     //   else{
  //   ID1 = ID
+    ID1 = ID
     
     let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
     let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -215,9 +217,20 @@ import UIKit
      
     }
     task.resume()
-    //   }
+//       }
+/*    else{
+     ID1 = 107
+     let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
+     self.posts2 = datadictionary
+     let name = datadictionary["name"] as! String
+     print(name)
+     print("---------------------")
+     self.posts.append(posts2)
+     self.tableView.reloadData()
+    }*/
     
    }else{}
+   
    
   }
   
@@ -242,7 +255,7 @@ import UIKit
    cell.layer.borderWidth = 10.0
    cell.layer.masksToBounds = true
    
-   
+ //  if ID1 != 107{
    
    // do{
    //============
@@ -260,43 +273,65 @@ import UIKit
     let name = (post["name"] as? String)?.stringByDecodingHTMLEntities
     let description = (post["description"] as? String)?.stringByDecodingHTMLEntities
     id = post["id"] as? String
-/*
+
     print(ID1!)
     print("****************")
-    
-    if ID1 == 107{
+/*////////////
+    if ID1 == 1{
      //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
      //     self.posts.append(self.posts2)
      cell.nameTeam.text = "Wendy Jean"
      cell.descripTeam.text = "Infographiste"
      cell.imageTeam.image = nil
-    }*/
-//    else{
+    }////////// */
+ //   else{
      //// self.authorImgArray.append(imageURL!)
-     cell.nameTeam.text = name?.uppercased()
-     cell.descripTeam.text = description
+    
+    if name == "Ayibopost Team"{
+       cell.nameTeam.text = "WENDY JEAN"
+       cell.descripTeam.text = "Infographiste"
      
-     let imageURL = postImage["180"] as? String
-     print(imageURL!)
-     if let imagePath = imageURL,
-      let imgUrl = URL(string:  imagePath){
-      cell.imageTeam.layer.borderColor = UIColor.white.cgColor
-      cell.imageTeam.layer.borderWidth = 6.0
-      cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
-      cell.imageTeam.clipsToBounds = true
-      cell.imageTeam.af_setImage(withURL: imgUrl)
-     }
-     else{
-      cell.imageTeam.layer.borderColor = UIColor.white.cgColor
-      cell.imageTeam.layer.borderWidth = 6.0
-      cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
-      cell.imageTeam.clipsToBounds = true
-      //cell.imageTeam.image = nil
-      cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
-     }
+       cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+       cell.imageTeam.layer.borderWidth = 6.0
+       cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+       cell.imageTeam.clipsToBounds = true
+       //cell.imageTeam.image = nil
+       cell.imageTeam.image = UIImage(named: "WJ.jpg") //image place
+     
+    }else{
+       cell.nameTeam.text = name?.uppercased()
+       cell.descripTeam.text = description
+       let imageURL = postImage["180"] as? String
+       print(imageURL!)
+       if let imagePath = imageURL,
+        let imgUrl = URL(string:  imagePath){
+        cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+        cell.imageTeam.layer.borderWidth = 6.0
+        cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+        cell.imageTeam.clipsToBounds = true
+        cell.imageTeam.af_setImage(withURL: imgUrl)
+       }
+       else{
+        cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+        cell.imageTeam.layer.borderWidth = 6.0
+        cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+        cell.imageTeam.clipsToBounds = true
+        //cell.imageTeam.image = nil
+        cell.imageTeam.image = UIImage(named: "FN.jpg") //image place
+       }
+    }
+
  //   }
     
    }else{}
+ // }////
+/*   else{
+       print("id 107")
+       cell.nameTeam.text = "Wendy Jean"
+       cell.descripTeam.text = "Infographiste"
+       cell.imageTeam.image = nil
+   }*/
+   
    return cell
    
   }
