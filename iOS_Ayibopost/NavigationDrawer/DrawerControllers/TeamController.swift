@@ -294,13 +294,15 @@ import UIKit
     if name == "Ayibopost Team"{
        cell.nameTeam.text = "WENDY JEAN"
        cell.descripTeam.text = "Infographiste"
+       let imageURL = "https://ayibopost.com/wp-content/uploads/2018/04/Wendy-Jean_avatar_1524084999-180x180.jpg"
+       print(imageURL)
      
-       cell.imageTeam.layer.borderColor = UIColor.white.cgColor
-       cell.imageTeam.layer.borderWidth = 6.0
-       cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
-       cell.imageTeam.clipsToBounds = true
-       //cell.imageTeam.image = nil
-       cell.imageTeam.image = UIImage(named: "WJ.jpg") //image place
+      let imgUrl = URL(string:  imageURL)
+      cell.imageTeam.layer.borderColor = UIColor.white.cgColor
+      cell.imageTeam.layer.borderWidth = 6.0
+      cell.imageTeam.layer.cornerRadius = cell.imageTeam.frame.height / 2
+      cell.imageTeam.clipsToBounds = true
+     cell.imageTeam.af_setImage(withURL: imgUrl!)
      
     }else{
        cell.nameTeam.text = name?.uppercased()

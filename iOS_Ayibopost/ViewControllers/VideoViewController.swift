@@ -16,11 +16,7 @@ class VideoViewController: UIViewController, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
- /*   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categories.count
-    }*/
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
     }
@@ -31,7 +27,7 @@ class VideoViewController: UIViewController, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 1
         
     }
     
