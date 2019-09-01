@@ -86,8 +86,11 @@ import UIKit
   self.refreshControl.addTarget(self, action: #selector(TeamController.didPullToRefresh(_:)), for: .valueChanged)
   
   tableView.delegate = self
-  tableView.rowHeight = 370
-  tableView.estimatedRowHeight = 370
+ // tableView.rowHeight = 370
+ // tableView.estimatedRowHeight = 370
+  tableView.rowHeight = UITableViewAutomaticDimension
+  tableView.estimatedRowHeight = 230
+  
   tableView.insertSubview(refreshControl, at: 0)
   self.tableView.separatorColor = UIColor.white
   
@@ -236,6 +239,7 @@ import UIKit
   
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+   
    if indexPath.row + 1 == posts.count{
     print("load More...")
     fetchMoreTeamID()

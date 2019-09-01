@@ -15,6 +15,7 @@
 		963D9B9421EECA7F00187DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */; };
 		963D9B9C21EECD2800187DA2 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9B21EECD2800187DA2 /* PostsCell.swift */; };
 		963D9B9E21EECDDC00187DA2 /* DetailsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */; };
+		963FED5E231BB39D00223D0F /* iconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963FED5D231BB39D00223D0F /* iconAssets.xcassets */; };
 		9671409822EE707600971AEA /* AuthorPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671409722EE707600971AEA /* AuthorPosts.swift */; };
 		9674DCF822D96D770082B29C /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674DCF722D96D770082B29C /* VideoViewController.swift */; };
 		9674DCFA22D96D910082B29C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674DCF922D96D910082B29C /* PageViewController.swift */; };
@@ -54,6 +55,7 @@
 		963D9B9521EECA7F00187DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963D9B9B21EECD2800187DA2 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		963D9B9D21EECDDC00187DA2 /* DetailsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPostViewController.swift; sourceTree = "<group>"; };
+		963FED5D231BB39D00223D0F /* iconAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iconAssets.xcassets; sourceTree = "<group>"; };
 		9671409722EE707600971AEA /* AuthorPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPosts.swift; sourceTree = "<group>"; };
 		9674DCF722D96D770082B29C /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		9674DCF922D96D910082B29C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				963D9B9021EECA7F00187DA2 /* Assets.xcassets */,
 				963D9B9221EECA7F00187DA2 /* LaunchScreen.storyboard */,
 				963D9B9521EECA7F00187DA2 /* Info.plist */,
+				963FED5D231BB39D00223D0F /* iconAssets.xcassets */,
 			);
 			path = iOS_Ayibopost;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				9684A8952203EEA20054AF55 /* Assets.xcassets in Resources */,
 				963D9B9121EECA7F00187DA2 /* Assets.xcassets in Resources */,
 				9684A88522038A350054AF55 /* DrawerCell.xib in Resources */,
+				963FED5E231BB39D00223D0F /* iconAssets.xcassets in Resources */,
 				963D9B8F21EECA7900187DA2 /* Main.storyboard in Resources */,
 				9684A8932203EE8F0054AF55 /* Info.plist in Resources */,
 			);
