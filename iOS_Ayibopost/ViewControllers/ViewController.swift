@@ -367,52 +367,72 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         do{
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
-            let dataDic = imgArray as? [[String: Any]]
-            if dataDic != nil{
-                self.imgPosts = dataDic!
-  //          let remoteImageUrlString = imgPosts[indexPath.row]
-     //   }
-        ////
-        cell.imagePost.layer.borderColor = UIColor.white.cgColor
-        cell.imagePost.layer.borderWidth = 1.0
-        cell.imagePost.layer.cornerRadius = 10.0
-        for images in imgPosts{
-         //   let remoteImageUrlString = imgPosts[indexPath.row]
-     //      let imageURL = remoteImageUrlString["source_url"] as? String
-            let imageURL = images["source_url"] as? String
-            //print(imageURL!)
-            if imageURL != nil{
-                imgURLShare = imageURL!
-            }
-            else{}
-            
-            let url = URL(string: imgURLShare!)
-            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    print("placeholder image...")
-                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
-                } else {
-                    print("Success let using the image...")
-                    cell.imagePost.sd_setImage(with: url)
+            let mediaDetails = (imgArray as AnyObject).value(forKey: "media_details")
+            let sizes = (mediaDetails as AnyObject).value(forKey: "sizes")
+            do{
+                if let compressImg =  (sizes as AnyObject).value(forKey: "blog_half_ft"){
+                    if let compressImg2 =  (sizes as AnyObject).value(forKey: "tnm-xs-4_3"){
+                         if let compressImg3 =  (sizes as AnyObject).value(forKey: "tnm-xs-1_1"){
+                let dataDic = compressImg as? [[String: Any]]
+                let dataDic2 = compressImg2 as? [[String: Any]]
+                let dataDic3 = compressImg3 as? [[String: Any]]
+                        if dataDic != nil{
+                            self.imgPosts = dataDic!
+                            print("image size 1: 300x300 founded")
+                        }else if dataDic2 != nil{
+                            self.imgPosts = dataDic2!
+                            print("image size 2: 400x300 founded")
+                        }else if dataDic3 != nil{
+                            self.imgPosts = dataDic3!
+                            print("image size 3: 400x400 founded")
+                        }
+                        else{
+                            print("saved sizes not founded")
+                        }
+        //        if dataDic != nil{
+           //         self.imgPosts = dataDic!
+                    cell.imagePost.layer.borderColor = UIColor.white.cgColor
+                    cell.imagePost.layer.borderWidth = 1.0
+                    cell.imagePost.layer.cornerRadius = 10.0
+                    
+                    for images in imgPosts{
+                        let imageURL = images["source_url"] as? String
+                        if imageURL != nil{
+                            imgURLShare = imageURL!
+                        }
+                        else{}
+                        let url = URL(string: imgURLShare!)
+                        cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                            if ((error) != nil) {
+                                print("placeholder image...")
+                                cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                            } else {
+                           //     print("Success let using the image...")
+                                cell.imagePost.sd_setImage(with: url)
+                            }
+                        })
+                        
+                        if let imagePath = imageURL,
+                            let imgUrl = URL(string:  imagePath){
+                            cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                            cell.imagePost.af_setImage(withURL: imgUrl)
+                        }
+                        else{
+                            cell.imagePost.image = nil
+                        }
+                        //  imgShare = cell.imagePost.image
+                        imagePost1 = cell.imagePost
+                        imagePost2 = cell.imagePost.image
+                    }
+           /*     }else{
+                    print("no size 1 oioioioioioioioioioioi")
+                }*/
                 }
-            })
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
-                cell.imagePost.af_setImage(withURL: imgUrl)
+                }
             }
-            else{
-                cell.imagePost.image = nil
+             
             }
-        
-        ////
-            
-
-            //  imgShare = cell.imagePost.image
-            imagePost1 = cell.imagePost
-            imagePost2 = cell.imagePost.image
-        }
-        }else{}
+ 
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)

@@ -239,23 +239,51 @@ class DetailsPostViewController: UIViewController{
         else{
             webView.isHidden = true
             self.activityIndicatoryWeb.stopAnimating()
-            if let img = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia"){
-                let dataDic = img as? [[String: Any]]
-        
-                self.imgPosts = dataDic!
-                for images in imgPosts{
-                    let imageURL = images["source_url"] as? String
-                    if let imagePath = imageURL,
-                        let imgUrl = URL(string:  imagePath){
-                        postImageView.af_setImage(withURL: imgUrl)
-                    }
-                    else{
-                        postImageView.image = nil
+            //for images
+            let imgArray = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia")//{
+            let mediaDetails = (imgArray as AnyObject).value(forKey: "media_details")
+            let sizes = (mediaDetails as AnyObject).value(forKey: "sizes")
+            //   do{
+            if let compressImg =  (sizes as AnyObject).value(forKey: "blog_half_ft"){
+                if let compressImg2 =  (sizes as AnyObject).value(forKey: "tnm-xs-4_3"){
+                    if let compressImg3 =  (sizes as AnyObject).value(forKey: "tnm-xs-1_1"){
+                        let dataDic = compressImg as? [[String: Any]]
+                        let dataDic2 = compressImg2 as? [[String: Any]]
+                        let dataDic3 = compressImg3 as? [[String: Any]]
+                        //   if dataDic != nil{
+                        //     self.imgPosts = dataDic!
+                        
+                        //         let imgPosts = dataDic!
+                        
+                        if dataDic != nil{
+                            self.imgPosts = dataDic!
+                            print("image size 1: 300x300 founded")
+                        }else if dataDic2 != nil{
+                            self.imgPosts = dataDic2!
+                            print("image size 2: 400x300 founded")
+                        }else if dataDic3 != nil{
+                            self.imgPosts = dataDic3!
+                            print("image size 3: 400x400 founded")
+                        }
+                        else{
+                            print("saved sizes not founded")
+                        }
+                        for images in imgPosts{
+                            let imageURL = images["source_url"] as? String
+                            if let imagePath = imageURL,
+                                let imgUrl = URL(string:  imagePath){
+                                postImageView.af_setImage(withURL: imgUrl)
+                            }
+                            else{
+                                postImageView.image = nil
+                            }
+                        }
+                        //    }else{}
                     }
                 }
-           
             }
-    }
+            
+        }
 
         
     }
