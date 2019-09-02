@@ -26,17 +26,17 @@ Here's a walkthrough of implemented user stories:
 <table>
     <tr>
         <td><img src='https://i.imgur.com/xIvzb3m.png' title='Logo part 1' height='350' width='220' alt='Ayibopost part 1' /></td>
-        <td><img src='https://i.imgur.com/JbTX0Qs.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/AVBIkDR.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/OBmuF4q.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/WQrkGvU.png' title='posts' height='350' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/JbTX0Qs.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/AVBIkDR.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/OBmuF4q.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/WQrkGvU.png' title='posts' height='300' width='220'  alt='posts image' /></td>
     </tr>
     <tr>
-        <td><img src='https://i.imgur.com/gXb1ikH.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/4oV5EWZ.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/mZidN9X.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/cUYjlOy.png' title='posts' height='350' width='220'  alt='posts image' /></td>
-        <td><img src='https://i.imgur.com/pIHKcuY.png' title='posts' height='350' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/gXb1ikH.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/4oV5EWZ.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/mZidN9X.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/cUYjlOy.png' title='posts' height='300' width='220'  alt='posts image' /></td>
+        <td><img src='https://i.imgur.com/pIHKcuY.png' title='posts' height='300' width='220'  alt='posts image' /></td>
     </tr>
 
 </table>
