@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import WebKit
 
 enum PostKeys {
     static let title = "rendered"
@@ -21,7 +22,6 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var datePost: UILabel!
-    @IBOutlet weak var videoView: UIWebView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel2: UILabel!
@@ -29,6 +29,8 @@ class DetailsPostViewController: UIViewController{
     @IBOutlet weak var authorPicture: UIImageView!
     @IBOutlet weak var authorPicture2: UIImageView!
     @IBOutlet weak var authorDesc: UILabel!
+    @IBOutlet weak var activityIndicatoryWeb: UIActivityIndicatorView!
+    @IBOutlet weak var webView: UIWebView!
     
     var filteredPosts: [String: Any]?
     var post: [String: Any]?
@@ -50,8 +52,12 @@ class DetailsPostViewController: UIViewController{
     var convertedTime: String = ""
   //  var BookmarksUp = false
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicatoryWeb.hidesWhenStopped = true
+        
         
         //print(post!)
 //        print(BookmarksUp)
@@ -59,6 +65,35 @@ class DetailsPostViewController: UIViewController{
         PostSelect()
 
          }
+  /*  func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        activityIndicatoryWeb.startAnimating()
+        return true
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        activityIndicatoryWeb.stopAnimating()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        activityIndicatoryWeb.stopAnimating()
+    }*/
+    
+    // show indicator
+    func webViewDidStartLoad(_ webView: UIWebView){
+        activityIndicatoryWeb.startAnimating()
+        activityIndicatoryWeb.isHidden = false
+    }
+    // hide indicator
+    func webViewDidFinishLoad(_ webView: UIWebView){
+        activityIndicatoryWeb.stopAnimating()
+        activityIndicatoryWeb.isHidden = true
+    }
+     // hide indicator
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error){
+        activityIndicatoryWeb.stopAnimating()
+        activityIndicatoryWeb.isHidden = true
+    }
+    
     func topBarLogo(){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 30))
@@ -71,6 +106,7 @@ class DetailsPostViewController: UIViewController{
     
     
     func PostSelect(){
+        
         let titleDic = (post as AnyObject).value(forKey: "title")
         let contentDic = (post as AnyObject).value(forKey: "content")
         let embedDic = (post as AnyObject).value(forKey: "_embedded")
@@ -124,6 +160,14 @@ class DetailsPostViewController: UIViewController{
                 authorPicture.clipsToBounds = true
                 authorPicture.af_setImage(withURL: imgUrl)
             }
+            else{
+                authorPicture.layer.borderColor = UIColor.white.cgColor
+                authorPicture.layer.borderWidth = 2.0
+                authorPicture.layer.cornerRadius = authorPicture.frame.height / 2
+                authorPicture.clipsToBounds = true
+                //cell.imageTeam.image = nil
+                authorPicture.image = UIImage(named: "FN.jpg") //image place
+            }
             if let imagePath2 = imageURL2,
                 let imgUrl2 = URL(string: imagePath2){
                 authorPicture2.layer.borderColor = UIColor.white.cgColor
@@ -132,9 +176,16 @@ class DetailsPostViewController: UIViewController{
                 authorPicture2.clipsToBounds = true
                 authorPicture2.af_setImage(withURL: imgUrl2)
             }
+            else{
+                authorPicture2.layer.borderColor = UIColor.white.cgColor
+                authorPicture2.layer.borderWidth = 2.0
+                authorPicture2.layer.cornerRadius = authorPicture2.frame.height / 2
+                authorPicture2.clipsToBounds = true
+                //cell.imageTeam.image = nil
+                authorPicture2.image = UIImage(named: "FN.jpg") //image place
+            }
         
         }
-        
         //Date
         
         //date format conversion
@@ -169,7 +220,7 @@ class DetailsPostViewController: UIViewController{
             if urlYou != ""{
                 urlYoutube = String(urlYou)
            //     print(urlYoutube)
-                videoView.isHidden = false
+                webView.isHidden = false
             }
             //     urlYou = String(input[range])
         }
@@ -177,13 +228,17 @@ class DetailsPostViewController: UIViewController{
                    print(urlYoutube)
             //      self.pImage.isHidden = false
             self.postImageView.isHidden = true
-            videoView.isHidden = false
+            webView.isHidden = false
             
-            videoView.allowsInlineMediaPlayback = true
-            videoView.loadHTMLString("<iframe width=\"\(videoView.frame.width)\" height=\"\(videoView.frame.height)\" src=\"\(urlYoutube)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+            webView.allowsInlineMediaPlayback = true
+            webView.loadHTMLString("<iframe width=\"\(webView.frame.width)\" height=\"\(webView.frame.height)\" src=\"\(urlYoutube)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+       //     webView.delegate = self as? UIWebViewDelegate
+            self.activityIndicatoryWeb.stopAnimating()
+            self.activityIndicatoryWeb.isHidden = true
         }
         else{
-            videoView.isHidden = true
+            webView.isHidden = true
+            self.activityIndicatoryWeb.stopAnimating()
             if let img = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia"){
                 let dataDic = img as? [[String: Any]]
         

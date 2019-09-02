@@ -106,13 +106,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        
-        
         categoryName = MyVariables.categoryDrawerName
         
         categoryLabel.layer.borderWidth = 0.3
@@ -219,8 +215,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     //-----------------
     
     private func getPostCategory(){
+        self.activityIndicatory.startAnimating()
+    //    self.activityIndicatory.isHidden = false
         
-        self.activityIndicatory.startAnimating() //====================
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
             if error != nil{
                 // print(error!)
@@ -234,15 +231,19 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             }
             //print(result!)
             self.posts = result!
-            self.tableView.reloadData() // to tell table about new data
-            self.activityIndicatory.stopAnimating() //====================
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
+                self.activityIndicatory.stopAnimating()
+                self.activityIndicatory.isHidden = true
+            }//====================
         }
         self.refreshControl.endRefreshing()
-        self.activityIndicatory.stopAnimating()
         
     }
     
     func loadMorePosts(){
+        self.activityIndicatory.startAnimating()
+        self.activityIndicatory.isHidden = false
         loadNumber = loadNumber + 1
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
 
@@ -257,15 +258,11 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
-            //print(result!)
-            //self.posts = result!
             do{
                 
                 ////
                 if YYHRequest(url: NSURL(string: self.imgURLShare!)! as URL) != nil {
-                    ////
-                    let r = result
-                //    if r != nil{}
+            
                     if result != nil{
                         do{
                             for item in result!
@@ -274,15 +271,21 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                                 
                                 self.posts.append(item)
                             }
-                            print(result!)
-                            self.tableView.reloadData() // to tell table about new data
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                                self.activityIndicatory.stopAnimating()
+                                self.activityIndicatory.isHidden = true
+                            }
                         }
                     }else{
                         print("nil")
+                            self.activityIndicatory.stopAnimating()
+                            self.activityIndicatory.isHidden = true
                         let errorAlertController = UIAlertController(title: "Désolé, Fin des articles!", message: "Remonter la liste", preferredStyle: .alert)
                         let cancelAction = UIAlertAction(title: "OK", style: .cancel)
                         errorAlertController.addAction(cancelAction)
                         self.present(errorAlertController, animated: true)
+                        
                         
                         
                     }
@@ -290,7 +293,6 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 }else{
                     print("===========================================")
                     print("body nil")
-                    //print(request?.body as Any)
 
             }
 

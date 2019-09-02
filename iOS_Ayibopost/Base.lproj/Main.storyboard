@@ -148,14 +148,19 @@
                                             <constraint firstItem="WjS-Wl-bVo" firstAttribute="top" secondItem="are-tx-8Cz" secondAttribute="bottom" constant="4" id="z3m-qt-fXN"/>
                                         </constraints>
                                     </view>
-                                    <webView contentMode="scaleAspectFill" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="8xb-3n-qSU">
+                                    <webView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="8xb-3n-qSU">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="GtS-Yi-frS"/>
                                             <constraint firstAttribute="height" constant="300" id="hLb-DA-NPa"/>
                                         </constraints>
                                     </webView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kNW-3v-f36">
+                                        <rect key="frame" x="141" y="201" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="mHF-2c-wsB" firstAttribute="leading" secondItem="bTc-aR-zaI" secondAttribute="leading" id="9cT-gZ-tnZ"/>
@@ -188,6 +193,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatoryWeb" destination="kNW-3v-f36" id="ecW-pG-UsX"/>
                         <outlet property="authorDesc" destination="rIF-i9-wFf" id="LjM-zz-KYe"/>
                         <outlet property="authorNameLabel" destination="P6W-ml-bI7" id="Uhr-BS-l7Z"/>
                         <outlet property="authorNameLabel2" destination="jZf-qv-GBn" id="hoi-Lh-QH3"/>
@@ -197,7 +203,7 @@
                         <outlet property="datePost" destination="o1g-nZ-w4u" id="fpJ-uS-klk"/>
                         <outlet property="postImageView" destination="jBR-mi-ok3" id="PRs-wt-tWo"/>
                         <outlet property="titleLabel" destination="are-tx-8Cz" id="ipl-CI-dyn"/>
-                        <outlet property="videoView" destination="8xb-3n-qSU" id="jVp-4v-hYs"/>
+                        <outlet property="webView" destination="8xb-3n-qSU" id="Vsm-eb-bZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1d-pW-GDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -733,8 +739,8 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-PQ-7WA">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="141" y="265" width="37" height="37"/>
+                                <color key="color" red="0.47450980392156861" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="CXb-cm-gnQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -750,15 +756,15 @@
                         <color key="backgroundColor" red="0.59999999999999998" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerX" secondItem="Twa-Dh-WE9" secondAttribute="centerX" id="HzX-2S-sBm"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="top" secondItem="Twa-Dh-WE9" secondAttribute="top" id="Iuv-0J-rPW"/>
                             <constraint firstItem="CXb-cm-gnQ" firstAttribute="leading" secondItem="Twa-Dh-WE9" secondAttribute="leading" id="MvT-cR-Ac7"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="top" secondItem="Twa-Dh-WE9" secondAttribute="top" id="SpK-6p-ENv"/>
                             <constraint firstAttribute="bottom" secondItem="OvU-I2-MbO" secondAttribute="bottom" id="WkF-cD-bGB"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="trailing" secondItem="VJC-h2-1XL" secondAttribute="trailing" id="Xa1-P5-Whv"/>
-                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerY" secondItem="Twa-Dh-WE9" secondAttribute="centerY" id="d8Z-g1-2U0"/>
                             <constraint firstAttribute="trailing" secondItem="CXb-cm-gnQ" secondAttribute="trailing" id="eir-Yn-lvX"/>
                             <constraint firstItem="OvU-I2-MbO" firstAttribute="leading" secondItem="VJC-h2-1XL" secondAttribute="leading" id="geb-Lc-hNz"/>
+                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerX" secondItem="Twa-Dh-WE9" secondAttribute="centerX" id="moN-1l-tF4"/>
+                            <constraint firstItem="jeK-PQ-7WA" firstAttribute="centerY" secondItem="Twa-Dh-WE9" secondAttribute="centerY" id="vvv-Lv-ACB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VJC-h2-1XL"/>
                         <connections>
@@ -782,7 +788,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="6DW-FZ-Zcf"/>
+                        <outlet property="activityIndicatory" destination="jeK-PQ-7WA" id="ddE-xw-IYM"/>
                         <outlet property="searchBar" destination="CXb-cm-gnQ" id="q5y-iY-fFJ"/>
                         <outlet property="searchButton" destination="jAR-hC-Nhw" id="xth-yJ-cld"/>
                         <outlet property="tableView" destination="OvU-I2-MbO" id="Dya-Uy-jpX"/>
@@ -1011,7 +1017,7 @@
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lca-bY-pl8">
                                 <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" red="0.47450980392156861" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ty-Hnh">
                                 <rect key="frame" x="0.0" y="64" width="320" height="14"/>
@@ -1125,10 +1131,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Yp-Bx-eoa">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                             <searchBar hidden="YES" contentMode="redraw" barStyle="blackTranslucent" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="YRZ-VK-tz0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1241,6 +1243,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Yp-Bx-eoa">
+                                <rect key="frame" x="141" y="265" width="37" height="37"/>
+                                <color key="color" red="0.47450980390000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -1837,7 +1843,6 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicatory" destination="2Pz-gX-ZA2" id="99G-CO-GcM"/>
                         <outlet property="categoryLabel" destination="EOs-6P-cZB" id="3wh-jq-R77"/>
                         <outlet property="searchBar" destination="nUQ-42-lee" id="j5b-h5-bCZ"/>
                         <outlet property="searchButton" destination="LZv-zb-2h6" id="DzG-2C-vnk"/>
@@ -1870,6 +1875,6 @@ Vous pouvez nous retrouver sur Facebook, Twitter, Youtube et Instagram. N’oubl
         <image name="shareRight100" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jhQ-Wc-sb5"/>
+        <segue reference="IH8-aK-iMw"/>
     </inferredMetricsTieBreakers>
 </document>

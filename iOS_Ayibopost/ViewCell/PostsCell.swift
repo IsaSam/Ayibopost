@@ -27,6 +27,7 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var nameTeam: UILabel!
     @IBOutlet weak var descripTeam: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?
     var buttonTapped = false

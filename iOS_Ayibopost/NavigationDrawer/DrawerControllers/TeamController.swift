@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-//class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, PostsCellDelegate, UISearchBarDelegate{
  class TeamController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate{
  
  
@@ -71,12 +68,6 @@ import UIKit
  var vwBG = UIView()
  //--------------------
  
- /***
- @IBAction func viewFav(_ sender: Any) {
-  self.performSegue(withIdentifier: "ViewFav3", sender: self)
-  //    storeData()
- }
- ***/
  override func viewDidLoad() {
   super.viewDidLoad()
   
@@ -86,8 +77,6 @@ import UIKit
   self.refreshControl.addTarget(self, action: #selector(TeamController.didPullToRefresh(_:)), for: .valueChanged)
   
   tableView.delegate = self
- // tableView.rowHeight = 370
- // tableView.estimatedRowHeight = 370
   tableView.rowHeight = UITableViewAutomaticDimension
   tableView.estimatedRowHeight = 230
   
@@ -129,6 +118,8 @@ import UIKit
 
   
   func fetchTeamID(){
+   self.activityIndicatory.startAnimating()
+   
    let intArrID = [55, 102, 120, 3, 117, 118, 116, 105, 1]
    let loadNumber = 0
    let ID = intArrID[loadNumber]
@@ -157,29 +148,19 @@ import UIKit
     }
     self.posts.append(self.posts2)
     self.tableView.reloadData()
+    self.activityIndicatory.stopAnimating()
     
    }
    task.resume()
    
   }
   func fetchMoreTeamID(){
+   self.activityIndicatory.startAnimating()
+   self.activityIndicatory.isHidden = false
+   
    loadNumber = loadNumber + 1
    if loadNumber < intArrID.count{
     let ID = intArrID[loadNumber]
- //   if ID != 107{
-/*    if ID == 107{
-     print("ID IS 107 LLLLLLLLL")
-     ID1 = ID
-     
-     //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
-     //     self.posts.append(self.posts2)
-     //   tableView.reloadData()
-     
-     //==============
-     //  self.tableView.reloadData()
-    }*/
-    //   else{
- //   ID1 = ID
     ID1 = ID
     
     let url = URL(string: "https://ayibopost.com/wp-json/wp/v2/users/\(ID)")!
@@ -194,14 +175,6 @@ import UIKit
       self.present(errorAlertController, animated: true)
       print(error.localizedDescription)
      }
-  /*   else if self.ID1 == 107{
-      let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
-      self.posts2 = datadictionary
-      let name = datadictionary["name"] as! String
-      print(name)
-      print("---------------------")
-     }*/
-      
      else if let data = data,
       
       
@@ -209,28 +182,20 @@ import UIKit
       
       self.posts2 = dataDictionary
       
-      ////   let name = dataDictionary["name"] as! String
-      ////   print(name)
       
      }
-     
-     
-     self.posts.append(self.posts2)
-     self.tableView.reloadData()
-     
+     if response != nil{
+        self.posts.append(self.posts2)
+        self.tableView.reloadData()
+        self.activityIndicatory.stopAnimating()
+        self.activityIndicatory.isHidden = true
+     }else{
+      print("nil")
+        self.activityIndicatory.stopAnimating()
+        self.activityIndicatory.isHidden = true
+     }
     }
     task.resume()
-//       }
-/*    else{
-     ID1 = 107
-     let datadictionary = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"] as [String : Any]
-     self.posts2 = datadictionary
-     let name = datadictionary["name"] as! String
-     print(name)
-     print("---------------------")
-     self.posts.append(posts2)
-     self.tableView.reloadData()
-    }*/
     
    }else{}
    
@@ -280,16 +245,6 @@ import UIKit
 
     print(ID1!)
     print("****************")
-/*////////////
-    if ID1 == 1{
-     //     self.posts2 = ["id": 107, "name": "Wendy Jean", "description": "Infographiste"]
-     //     self.posts.append(self.posts2)
-     cell.nameTeam.text = "Wendy Jean"
-     cell.descripTeam.text = "Infographiste"
-     cell.imageTeam.image = nil
-    }////////// */
- //   else{
-     //// self.authorImgArray.append(imageURL!)
     
     if name == "Ayibopost Team"{
        cell.nameTeam.text = "WENDY JEAN"
@@ -304,6 +259,8 @@ import UIKit
       cell.imageTeam.clipsToBounds = true
      cell.imageTeam.af_setImage(withURL: imgUrl!)
      
+ //    self.activityIndicatory.stopAnimating()
+ //    self.activityIndicatory.isHidden = true
     }else{
        cell.nameTeam.text = name?.uppercased()
        cell.descripTeam.text = description
@@ -327,16 +284,13 @@ import UIKit
        }
     }
 
- //   }
+    self.activityIndicatory.stopAnimating()
+    self.activityIndicatory.isHidden = true
     
-   }else{}
- // }////
-/*   else{
-       print("id 107")
-       cell.nameTeam.text = "Wendy Jean"
-       cell.descripTeam.text = "Infographiste"
-       cell.imageTeam.image = nil
-   }*/
+   }else{
+        self.activityIndicatory.stopAnimating()
+        self.activityIndicatory.isHidden = true
+   }
    
    return cell
    
@@ -346,73 +300,7 @@ import UIKit
    tableView.deselectRow(at: indexPath, animated: true)
    performSegue(withIdentifier: "authorPosts", sender: indexPath)
   }
-  /***
-   func PostsCellDidTapBookmark(_ sender: PostsCell) {
-   guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-   print("Bookmark", sender, tappedIndexPath)
-   }
-   @objc func bookmarkTapped(_ sender: Any?) {
-   // We need to call the method on the underlying object, but I don't know which row the user tapped!
-   // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
-   // the view hierarchy until we find the UITableviewCell instance.
-   print("Bookmark Tapped", sender!)
-   }
-   func PostsCellDidTapShare(_ sender: PostsCell) {
-   guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-   print("Sharing", sender, tappedIndexPath)
-   }
-   
-   @objc func shareTapped(_ sender: Any?) {
-   print("share Tapped", sender!)
-   
-   }***/
-  
-  /***
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   print("segue........")
-   /***
-   if segue.identifier == "ViewFav3" {
-   print("Bookmarks View segue")
-   let controller = segue.destination as! BookmarkViewController
-   controller.favoritePosts = favResults
-   
-   }***/
-   
-   if segue.identifier == "authorPosts"{
-   print("By AuthorPost View segue")
-   
-   /***
-   let cell = sender as! UITableViewCell
-   let indexPath = tableView.indexPath(for: cell)
-   let post = posts[(indexPath?.row)!]
-   //  let imgPost = imgPosts[(indexPath?.row)!]
-   //   let nameString = byName[(indexPath?.row)!]
-   let authorPosts = segue.destination as! AuthorPosts
-   authorPosts.post = post
-   // authorPosts.id = id
-   
-   //   detailViewController.imgPost = imgPost
-   //   detailViewController.nameString = nameString
-   
-   ***/
-   
-   }
-   else{}
-   
-   }
-   
-   ***/
-  /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-   
-   if (segue.identifier == "authorPosts") {
-   print("segue............")
-   // initialize new view controller and cast it as your view controller
-   let authorPosts = segue.destination as! AuthorPosts
-   // your new view controller should have property that will store passed value
-   //authorPosts.post = post
-   authorPosts.post = post
-   }
-   }*/
+
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
    // Get the index path from the cell that was tapped
@@ -427,25 +315,8 @@ import UIKit
   
   override func didReceiveMemoryWarning() {
    super.didReceiveMemoryWarning()
-   // Dispose of any resources that can be recreated.
   }
-  //Storing app data
-  
-  /***
-   func storeData(){
-   let data = NSKeyedArchiver.archivedData(withRootObject: favResults)
-   UserDefaults.standard.set(data, forKey: "savedData1")
-   }
-   
-   //Getting app data
-   func getData(){
-   let outData = UserDefaults.standard.data(forKey: "savedData1")
-   if outData != nil{
-   let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
-   favResults = dict
-   }else{}
-   }
-   ***/
+
   
 }
 

@@ -20,10 +20,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
+    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
@@ -191,14 +191,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          }
             
          self.posts = result!
-         self.tableView.reloadData() // to tell table about new data
-         self.activityIndicatory.stopAnimating() //====================
-         }
-                self.refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
                 self.activityIndicatory.stopAnimating()
+                self.activityIndicatory.isHidden = true
+            }
+         }
+         self.refreshControl.endRefreshing()
+        
     }
     
     func loadMorePosts(){
+        self.activityIndicatory.startAnimating()
+        self.activityIndicatory.isHidden = false
         loadNumber = loadNumber + 1
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
             
@@ -220,7 +225,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                     }
                     
-                    self.tableView.reloadData() // to tell table about new data
+                    DispatchQueue.main.async {
+                        self.tableView?.reloadData()
+                        self.activityIndicatory.stopAnimating()
+                        self.activityIndicatory.isHidden = true
+                    }
                 }
         }else{
                 let errorAlertController = UIAlertController(title: "Désolé, Fin des articles!", message: "Remonter la liste", preferredStyle: .alert)
@@ -347,13 +356,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let urlYou = input[range]
             if urlYou != ""{
                 urlYoutube = String(urlYou)
-                print("********************************************************************** 1")
-                print(urlYoutube)
                 cell.picMedia.isHidden = false //icon for media files
             }
             else{
                 cell.picMedia.isHidden = true //icon for media files
-                print("********************************************************************** 2")
             }
         }
         
@@ -412,6 +418,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
         return cell
+        
+        
     }
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // The cell calls this method when the user taps the heart button
@@ -488,8 +496,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.imgPosts = dataDic!
             for images in imgPosts{
                 let imageURL = images["source_url"] as? String
-                print(imageURL!)
-                
                 if let imagePath = imageURL,
                     let imgUrl = URL(string:  imagePath){
                     imagePost1?.af_setImage(withURL: imgUrl)
