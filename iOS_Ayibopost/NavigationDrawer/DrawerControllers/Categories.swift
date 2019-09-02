@@ -106,14 +106,14 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        
-        
         categoryName = MyVariables.categoryDrawerName
+        
+        categoryLabel.layer.borderWidth = 0.3
+        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
+        
        
         print("1***********************************************")
         print(categoryName!)
@@ -215,8 +215,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     //-----------------
     
     private func getPostCategory(){
+        self.activityIndicatory.startAnimating()
+    //    self.activityIndicatory.isHidden = false
         
-        self.activityIndicatory.startAnimating() //====================
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
             if error != nil{
                 // print(error!)
@@ -230,19 +231,20 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             }
             //print(result!)
             self.posts = result!
-            self.tableView.reloadData() // to tell table about new data
-            self.activityIndicatory.stopAnimating() //====================
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
+                self.activityIndicatory.stopAnimating()
+                self.activityIndicatory.isHidden = true
+            }//====================
         }
         self.refreshControl.endRefreshing()
-        self.activityIndicatory.stopAnimating()
         
     }
     
     func loadMorePosts(){
+        self.activityIndicatory.startAnimating()
+        self.activityIndicatory.isHidden = false
         loadNumber = loadNumber + 1
-        
-
-        
         AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?page=\(loadNumber)&categories=\(catID!)&_embed") { (result, error) in
 
             if error != nil{
@@ -256,28 +258,43 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
-            
-            //print(result!)
-            //self.posts = result!
             do{
                 
                 ////
                 if YYHRequest(url: NSURL(string: self.imgURLShare!)! as URL) != nil {
-                    ////
+            
+                    if result != nil{
+                        do{
+                            for item in result!
+                                
+                            {
+                                
+                                self.posts.append(item)
+                            }
+                            DispatchQueue.main.async {
+                                self.tableView?.reloadData()
+                                self.activityIndicatory.stopAnimating()
+                                self.activityIndicatory.isHidden = true
+                            }
+                        }
+                    }else{
+                        print("nil")
+                            self.activityIndicatory.stopAnimating()
+                            self.activityIndicatory.isHidden = true
+                        let errorAlertController = UIAlertController(title: "Désolé, Fin des articles!", message: "Remonter la liste", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                        errorAlertController.addAction(cancelAction)
+                        self.present(errorAlertController, animated: true)
+                        
+                        
+                        
+                    }
+
+                }else{
                     print("===========================================")
                     print("body nil")
-                    //print(request?.body as Any)
-                }else{
-                    
-                    for item in result!
-                        
-                    {
-                        
-                        self.posts.append(item)
-                    }
-                    print(result!)
-                    self.tableView.reloadData() // to tell table about new data
-                }
+
+            }
 
                 }
             
@@ -372,7 +389,9 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         timeFormatter.dateFormat = "HH-mm-ss"
         let newTimeFormatter = DateFormatter()
         newTimeFormatter.dateFormat = "h:mm a"
+        
         let dateTime = post["date"] as? String
+        
         let dateComponents = dateTime?.components(separatedBy: "T")
         let splitDate = dateComponents![0]
         let splitTime = dateComponents![1]
@@ -403,60 +422,69 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
 
         do{
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
-            let dataDic = imgArray as? [[String: Any]]
-            self.imgPosts = dataDic!
-            //          let remoteImageUrlString = imgPosts[indexPath.row]
-            //   }
-            ////
-            for images in imgPosts{
-                //   let remoteImageUrlString = imgPosts[indexPath.row]
-                //      let imageURL = remoteImageUrlString["source_url"] as? String
-                let imageURL = images["source_url"] as? String
-                //print(imageURL!)
-                if imageURL != nil{
-                    imgURLShare = imageURL!
-                }
-                else{}
-                
-                let url = URL(string: imgURLShare!)
-
-                /*
-                if request?.body == nil{
-                    print("body nil =================================")
-                }else{
-                    print("nonoonononononononononononononnon")
-                }
-                
-                */
-            /*    request.loadWithCompletion {response, data, error in
-                    if let actualError = error {
-                        // handle error
-                    } else if let actualResponse = response {
-                        // handle success
+            let mediaDetails = (imgArray as AnyObject).value(forKey: "media_details")
+            let sizes = (mediaDetails as AnyObject).value(forKey: "sizes")
+            do{
+                if let compressImg =  (sizes as AnyObject).value(forKey: "blog_half_ft"){
+                    if let compressImg2 =  (sizes as AnyObject).value(forKey: "tnm-xs-4_3"){
+                        if let compressImg3 =  (sizes as AnyObject).value(forKey: "tnm-xs-1_1"){
+                            let dataDic = compressImg as? [[String: Any]]
+                            let dataDic2 = compressImg2 as? [[String: Any]]
+                            let dataDic3 = compressImg3 as? [[String: Any]]
+                            if dataDic != nil{
+                                self.imgPosts = dataDic!
+                                print("image size 1: 300x300 founded")
+                            }else if dataDic2 != nil{
+                                self.imgPosts = dataDic2!
+                                print("image size 2: 400x300 founded")
+                            }else if dataDic3 != nil{
+                                self.imgPosts = dataDic3!
+                                print("image size 3: 400x400 founded")
+                            }
+                            else{
+                                print("saved sizes not founded")
+                            }
+                            //        if dataDic != nil{
+                            //         self.imgPosts = dataDic!
+                            cell.imagePost.layer.borderColor = UIColor.white.cgColor
+                            cell.imagePost.layer.borderWidth = 1.0
+                            cell.imagePost.layer.cornerRadius = 10.0
+                            
+                            for images in imgPosts{
+                                let imageURL = images["source_url"] as? String
+                                if imageURL != nil{
+                                    imgURLShare = imageURL!
+                                }
+                                else{}
+                                let url = URL(string: imgURLShare!)
+                                cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                                    if ((error) != nil) {
+                                        print("placeholder image...")
+                                        cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                                    } else {
+                                        //     print("Success let using the image...")
+                                        cell.imagePost.sd_setImage(with: url)
+                                    }
+                                })
+                                
+                                if let imagePath = imageURL,
+                                    let imgUrl = URL(string:  imagePath){
+                                    cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                                    cell.imagePost.af_setImage(withURL: imgUrl)
+                                }
+                                else{
+                                    cell.imagePost.image = nil
+                                }
+                                //  imgShare = cell.imagePost.image
+                                imagePost1 = cell.imagePost
+                                imagePost2 = cell.imagePost.image
+                            }
+                        }
                     }
-                }*/
+                }
                 
-                cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                    if ((error) != nil) {
-                        print("placeholder image...")
-                        cell.imagePost.image = UIImage(named: "placeholderImage.png")
-                    } else {
-                        print("Success let using the image...")
-                        cell.imagePost.sd_setImage(with: url)
-                    }
-                })
-                if let imagePath = imageURL,
-                    let imgUrl = URL(string:  imagePath){
-                    cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
-                    cell.imagePost.af_setImage(withURL: imgUrl)
-                }
-                else{
-                    cell.imagePost.image = nil
-                }
-                //  imgShare = cell.imagePost.image
-                imagePost1 = cell.imagePost
-                imagePost2 = cell.imagePost.image
             }
+            
         }
         
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
@@ -527,27 +555,37 @@ class Categories: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBAction func btnSharePosts(_ sender: UIButton) {
         postShare = posts[sender.tag]
         let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
+        let embedDic = (postShare as AnyObject).value(forKey: "_embedded")
+        let embedDicString = embedDic! as! [String: Any]
         let title = (postShare1["rendered"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
-        imgPostShare = imgPosts[(sender.tag)]
-        let imageURL = imgPostShare!["source_url"] as? String
-        
-        if let imagePath = imageURL,
-            let imgUrl = URL(string:  imagePath){
-            imagePost1?.af_setImage(withURL: imgUrl)
-        }
-        else{
-            //  imagePost1.image = nil
-        }
-        let image = imagePost1?.image
-        
-        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
-        if let popoverController = vc.popoverPresentationController{
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = self.view.bounds
-        }
-        self.present(vc, animated: true, completion: nil)
-        imagePost1?.image = imagePost2
+        if let img = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia"){
+            let dataDic = img as? [[String: Any]]
+            
+            self.imgPosts = dataDic!
+            for images in imgPosts{
+                let imageURL = images["source_url"] as? String
+                print(imageURL!)
+                
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    imagePost1?.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    imagePost1?.image = nil
+                }
+                let image = imagePost1?.image
+                
+                let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+                if let popoverController = vc.popoverPresentationController{
+                    popoverController.sourceView = self.view
+                    popoverController.sourceRect = self.view.bounds
+                }
+                self.present(vc, animated: true, completion: nil)
+                imagePost1?.image = imagePost2
+            }
+            
+    }
     }
     
     override func didReceiveMemoryWarning() {

@@ -20,6 +20,8 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var appStoreBtn: UIButton!
     @IBOutlet weak var contentShare: UIView!
+    @IBOutlet weak var shareButton1: UIButton!
+    @IBOutlet weak var contentShare1: UIView!
     
     var postsPage: [[String: Any]] = []
     var categoryName: String?
@@ -63,14 +65,18 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
             
             imageLogo.backgroundColor = .clear
             imageLogo.layer.cornerRadius = 10
-            imageLogo.layer.borderWidth = 1
-            imageLogo.layer.borderColor = UIColor.lightGray.cgColor
+          //  imageLogo.layer.borderWidth = 1
+         //   imageLogo.layer.borderColor = UIColor.lightGray.cgColor
             
             pageID = ""
             contentShare.isHidden = false
             contentShare.layer.cornerRadius = 12
             contentShare.layer.borderWidth = 1
             contentShare.layer.borderColor = UIColor.lightGray.cgColor
+            contentShare1.isHidden = false
+            contentShare1.layer.cornerRadius = 12
+            contentShare1.layer.borderWidth = 1
+            contentShare1.layer.borderColor = UIColor.lightGray.cgColor
             contactPage.isHidden = true
             PageLabel.text? = "PARTAGER À VOS AMIS"
             
@@ -131,6 +137,18 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
         }
         self.present(vc, animated: true, completion: nil)
     }
+    @IBAction func shareButton1(_ sender: Any) {
+        let title = "Je vous invite à utiliser l'application ayiboPOST"
+        let URl = "https://play.google.com/store/apps/details?id=com.ayibopost&hl=fr"
+        let image = imageLogo.image
+        
+        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+        if let popoverController = vc.popoverPresentationController{
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = self.view.bounds
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
     
     func topBarLogo(){
@@ -156,7 +174,7 @@ class PageViewController: UIViewController, MFMailComposeViewControllerDelegate{
     func configureMailController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["isaacsamuel27@gmail.com"])
+        mailComposerVC.setToRecipients(["ayibopost@gmail.com"])
         mailComposerVC.setSubject("Contact")
         mailComposerVC.setMessageBody("Composez votre message ici...", isHTML: false)
         return mailComposerVC

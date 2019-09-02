@@ -30,6 +30,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     var postsContent: [[String: Any]] = []
     var postsEmbed: [[String: Any]] = []
     var imgURLShare: String?
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritesPosts.count
@@ -53,8 +55,6 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         self.postsContent = [contentDicString]
         self.postsEmbed = [embedDicString]
         
-        //        print(self.postsTitle)
-        //      let postTitle = postsTitle[indexPath.row]
         cell.titleLabel.text = (titleDicString as AnyObject).value(forKey: "rendered") as? String
         let htmlTag = (contentDicString as AnyObject).value(forKey: "rendered") as? String
         let content = htmlTag?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
@@ -73,10 +73,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
             }else{
                 cell.authorNameLabel.text = "Par " + authorName!
             }
-        }
-        //Date
-        
-        //date format conversion
+        }        //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -101,52 +98,66 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         
         do{
             let imgArray = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia")//{
-            let dataDic = imgArray as? [[String: Any]]
-            if dataDic != nil{
-                self.imgPosts = dataDic!
-                //          let remoteImageUrlString = imgPosts[indexPath.row]
-                //   }
-                ////
-                for images in imgPosts{
-                    //   let remoteImageUrlString = imgPosts[indexPath.row]
-                    //      let imageURL = remoteImageUrlString["source_url"] as? String
-                    let imageURL = images["source_url"] as? String
-                    //print(imageURL!)
-                    if imageURL != nil{
-                        imgURLShare = imageURL!
-                    }
-                    else{}
-                    
-                    let url = URL(string: imgURLShare!)
-                    cell.imagePost.layer.borderColor = UIColor.white.cgColor
-                    cell.imagePost.layer.borderWidth = 2.0
-                    cell.imagePost.layer.cornerRadius = 12.0
-                    cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                        if ((error) != nil) {
-                            print("placeholder image...")
-                            cell.imagePost.image = UIImage(named: "placeholderImage.png")
-                        } else {
-                            print("Success let using the image...")
-                            cell.imagePost.sd_setImage(with: url)
+            let mediaDetails = (imgArray as AnyObject).value(forKey: "media_details")
+            let sizes = (mediaDetails as AnyObject).value(forKey: "sizes")
+            do{
+                if let compressImg =  (sizes as AnyObject).value(forKey: "thumbnail"){
+                    if let compressImg2 =  (sizes as AnyObject).value(forKey: "tnm-xxs-4_3"){
+                        if let compressImg3 =  (sizes as AnyObject).value(forKey: "tnm-xxs-1_1"){
+                            let dataDic = compressImg as? [[String: Any]]
+                            let dataDic2 = compressImg2 as? [[String: Any]]
+                            let dataDic3 = compressImg3 as? [[String: Any]]
+                            if dataDic != nil{
+                                self.imgPosts = dataDic!
+                                print("image size 1: 150x150 founded")
+                            }else if dataDic2 != nil{
+                                self.imgPosts = dataDic2!
+                                print("image size 2: 180x135 founded")
+                            }else if dataDic3 != nil{
+                                self.imgPosts = dataDic3!
+                                print("image size 3: 180x180 founded")
+                            }
+                            else{
+                                print("saved sizes not founded")
+                            }
+                            //        if dataDic != nil{
+                            //         self.imgPosts = dataDic!
+                            cell.imagePost.layer.borderColor = UIColor.white.cgColor
+                            cell.imagePost.layer.borderWidth = 2.0
+                            cell.imagePost.layer.cornerRadius = 12.0
+                            
+                            for images in imgPosts{
+                                let imageURL = images["source_url"] as? String
+                                if imageURL != nil{
+                                    imgURLShare = imageURL!
+                                }
+                                else{}
+                                let url = URL(string: imgURLShare!)
+                                cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                                    if ((error) != nil) {
+                //                        print("placeholder image...")
+                                        cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                                    } else {
+                                        //     print("Success let using the image...")
+                                        cell.imagePost.sd_setImage(with: url)
+                                    }
+                                })
+                                
+                                if let imagePath = imageURL,
+                                    let imgUrl = URL(string:  imagePath){
+                                    cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                                    cell.imagePost.af_setImage(withURL: imgUrl)
+                                }
+                                else{
+                                    cell.imagePost.image = nil
+                                }
+                            }
                         }
-                    })
-                    if let imagePath = imageURL,
-                        let imgUrl = URL(string:  imagePath){
-                        cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
-                        cell.imagePost.af_setImage(withURL: imgUrl)
                     }
-                    else{
-                        cell.imagePost.image = nil
-                    }
-                    
-                    ////
-                    
-                    
-                    //  imgShare = cell.imagePost.image
-                    //      imagePost1 = cell.imagePost
-                    //     imagePost2 = cell.imagePost.image
                 }
-            }else{}
+                
+            }
+            
         }
         
         //end Img
@@ -156,19 +167,27 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        favoritesPosts = favoritePosts!
+        if favoritePosts != nil{
+            favoritesPosts = favoritePosts!
+        
         favTableView.reloadData()
-        print("Counter2: \(favoritesPosts.count)")
-        /*  if favoriteMovies.count == 0 {
-         favoriteMovies.append(Movie(id: "m000001", title: "Coco", year: "2017", imageUrl: "https://i.pinimg.com/originals/48/6d/84/486d84da85de346d0a007af688f4ed31.jpg"))
-         }*/
+ //       print("Counter2: \(favoritesPosts.count)")
         super.viewWillAppear(animated)
+        }else{
+            favoritesPosts = favResultsGlobal.favResultsData!
+            favTableView.reloadData()
+  //          print("Counter3: \(favoritesPosts.count)")
+            super.viewWillAppear(animated)
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         topBarLogo()
+        categoryLabel.layer.borderWidth = 0.3
+        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
         
         favTableView.delegate = self
         favTableView.rowHeight = 170
@@ -196,12 +215,9 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = sender as! UITableViewCell
         let indexPath = favTableView.indexPath(for: cell)
         let post = favoritesPosts[(indexPath?.row)!]
-        let imgPost = imgPosts[(indexPath?.row)!]
-        let nameString = byName[(indexPath?.row)!]
+        
         let detailViewController = segue.destination as! DetailsPostViewController
         detailViewController.post = post
-        detailViewController.imgPost = imgPost
-        detailViewController.nameString = nameString
         
     }
     

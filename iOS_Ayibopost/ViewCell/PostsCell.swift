@@ -20,17 +20,20 @@ class PostsCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var btnSharePosts: UIButton!
+    @IBOutlet weak var btnSharePosts2: UIButton!
     @IBOutlet weak var authorNameLabel: UILabel!
     
     @IBOutlet weak var imageTeam: UIImageView!
     @IBOutlet weak var nameTeam: UILabel!
     @IBOutlet weak var descripTeam: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     weak var delegate: PostsCellDelegate?
     var favB: UIColor?
     var buttonTapped = false
     var buttonTapped2 = false
     
+
     
 
     @IBAction func bookmarkTapped(_ sender: UIButton) {

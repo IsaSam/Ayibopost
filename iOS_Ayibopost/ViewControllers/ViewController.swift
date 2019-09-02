@@ -12,14 +12,18 @@ import AlamofireImage
 import SwiftyJSON
 import SDWebImage
 
+struct favResultsGlobal {
+    static var favResultsData: [[String: Any]]?
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DrawerControllerDelegate, UISearchBarDelegate, PostsCellDelegate {
     
     @IBOutlet weak var titleLogo: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
+    @IBOutlet weak var activityIndicatory: UIActivityIndicatorView!
     var filteredPosts: [[String: Any]]?
     var posts: [[String: Any]] = []
     var postsTitle: [[String: Any]] = []
@@ -45,7 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
-//    var post: [[String: Any]] = []
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
@@ -69,35 +72,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.isHidden = true
         
     }
-
-    @IBAction func viewFav(_ sender: Any) {
-        self.performSegue(withIdentifier: "ViewFav1", sender: self)
-    //    storeData()
-    }
-    
     @IBAction func searchButton(_ sender: Any) {
-        print("Search...")
+//        print("Search...")
         navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
         navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
-   //     searchBar.showsCancelButton = true
-   //     tableView.tableHeaderView = searchBar
-   //     searchBar.searchBarStyle = UISearchBarStyle.default
-   //     searchBar.alpha = 0.96
     }
     
     @IBAction func addFav(_ sender: UIButton) {
         
-        print("Selected Item #\(sender.tag) as a favorite")
+//        print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])
  //      print(favResults)
-        print("Counter1: \(favResults.count)")
+  //      print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
         
         storeData() //Saved posts
         
-        let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Post enregistré avec succès!", message: "A lire plutard dans la liste des signets 📖", preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
@@ -159,7 +153,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             drawerVw.delegate = self
             
             // Can change account holder name
-            drawerVw.changeUserName(name: "WELCOME")
+            drawerVw.changeUserName(name: "BIENVENUE")
             
             // 3.show the Navigation drawer.
             drawerVw.show()
@@ -177,49 +171,66 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
          
          if error != nil{
-                let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                let errorAlertController = UIAlertController(title: "On ne peut pas obtenir de données", message: "Les connexions Internet semblent être hors ligne", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Réessayer", style: .cancel)
                 errorAlertController.addAction(cancelAction)
                 self.present(errorAlertController, animated: true)
          return
          }
             
          self.posts = result!
-         self.tableView.reloadData() // to tell table about new data
-         self.activityIndicatory.stopAnimating() //====================
-         }
-                self.refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
                 self.activityIndicatory.stopAnimating()
+                self.activityIndicatory.isHidden = true
+            }
+         }
+         self.refreshControl.endRefreshing()
+        
     }
     
     func loadMorePosts(){
+        self.activityIndicatory.startAnimating()
+        self.activityIndicatory.isHidden = false
         loadNumber = loadNumber + 1
          AyiboAPIManager.shared.get(url: "https://ayibopost.com/wp-json/wp/v2/posts?&page=\(loadNumber)&_embed") { (result, error) in
             
                 if error != nil{
-                    let errorAlertController = UIAlertController(title: "Cannot Get Data", message: "The Internet connections appears to be offline", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                    let errorAlertController = UIAlertController(title: "On ne peut pas obtenir de données", message: "Les connexions Internet semblent être hors ligne", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Réessayer", style: .cancel)
                     errorAlertController.addAction(cancelAction)
                     self.present(errorAlertController, animated: true)
                     
                     return
                 }
-            do{
+            if result != nil{
+                do{
 
-                for item in result!
-                {
+                    for item in result!
+                    {
+                        
+                        self.posts.append(item)
+                        
+                    }
                     
-                    self.posts.append(item)
-                    
+                    DispatchQueue.main.async {
+                        self.tableView?.reloadData()
+                        self.activityIndicatory.stopAnimating()
+                        self.activityIndicatory.isHidden = true
+                    }
                 }
-                
-                self.tableView.reloadData() // to tell table about new data
+        }else{
+                let errorAlertController = UIAlertController(title: "Désolé, Fin des articles!", message: "Remonter la liste", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                errorAlertController.addAction(cancelAction)
+                self.present(errorAlertController, animated: true)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row + 1 == posts.count{
+            
             loadMorePosts()
         }
     }
@@ -240,6 +251,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsCell", for: indexPath) as! PostsCell
         let post = self.searchBar.text!.isEmpty ? posts[indexPath.row] : filteredPosts![indexPath.row]
@@ -330,13 +344,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let urlYou = input[range]
             if urlYou != ""{
                 urlYoutube = String(urlYou)
-                print("********************************************************************** 1")
-                print(urlYoutube)
                 cell.picMedia.isHidden = false //icon for media files
             }
             else{
                 cell.picMedia.isHidden = true //icon for media files
-                print("********************************************************************** 2")
             }
         }
         
@@ -344,79 +355,95 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         do{
             let imgArray = (postImage as AnyObject).value(forKey: "wp:featuredmedia")//{
-            let dataDic = imgArray as? [[String: Any]]
-            if dataDic != nil{
-                self.imgPosts = dataDic!
-  //          let remoteImageUrlString = imgPosts[indexPath.row]
-     //   }
-        ////
-        cell.imagePost.layer.borderColor = UIColor.white.cgColor
-        cell.imagePost.layer.borderWidth = 2.0
-        cell.imagePost.layer.cornerRadius = 12.0
-        for images in imgPosts{
-         //   let remoteImageUrlString = imgPosts[indexPath.row]
-     //      let imageURL = remoteImageUrlString["source_url"] as? String
-            let imageURL = images["source_url"] as? String
-            //print(imageURL!)
-            if imageURL != nil{
-                imgURLShare = imageURL!
-            }
-            else{}
-            
-            let url = URL(string: imgURLShare!)
-            cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    print("placeholder image...")
-                    cell.imagePost.image = UIImage(named: "placeholderImage.png")
-                } else {
-                    print("Success let using the image...")
-                    cell.imagePost.sd_setImage(with: url)
+            let mediaDetails = (imgArray as AnyObject).value(forKey: "media_details")
+            let sizes = (mediaDetails as AnyObject).value(forKey: "sizes")
+            do{
+                if let compressImg =  (sizes as AnyObject).value(forKey: "blog_half_ft"){
+                    if let compressImg2 =  (sizes as AnyObject).value(forKey: "tnm-xs-4_3"){
+                         if let compressImg3 =  (sizes as AnyObject).value(forKey: "tnm-xs-1_1"){
+                let dataDic = compressImg as? [[String: Any]]
+                let dataDic2 = compressImg2 as? [[String: Any]]
+                let dataDic3 = compressImg3 as? [[String: Any]]
+                        if dataDic != nil{
+                            self.imgPosts = dataDic!
+                            print("image size 1: 300x300 founded")
+                        }else if dataDic2 != nil{
+                            self.imgPosts = dataDic2!
+                            print("image size 2: 400x300 founded")
+                        }else if dataDic3 != nil{
+                            self.imgPosts = dataDic3!
+                            print("image size 3: 400x400 founded")
+                        }
+                        else{
+                            print("saved sizes not founded")
+                        }
+        //        if dataDic != nil{
+           //         self.imgPosts = dataDic!
+                    cell.imagePost.layer.borderColor = UIColor.white.cgColor
+                    cell.imagePost.layer.borderWidth = 1.0
+                    cell.imagePost.layer.cornerRadius = 10.0
+                    
+                    for images in imgPosts{
+                        let imageURL = images["source_url"] as? String
+                        if imageURL != nil{
+                            imgURLShare = imageURL!
+                        }
+                        else{}
+                        let url = URL(string: imgURLShare!)
+                        cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
+                            if ((error) != nil) {
+              //                  print("placeholder image...")
+                                cell.imagePost.image = UIImage(named: "placeholderImage.png")
+                            } else {
+                           //     print("Success let using the image...")
+                                cell.imagePost.sd_setImage(with: url)
+                            }
+                        })
+                        
+                        if let imagePath = imageURL,
+                            let imgUrl = URL(string:  imagePath){
+                            cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
+                            cell.imagePost.af_setImage(withURL: imgUrl)
+                        }
+                        else{
+                            cell.imagePost.image = nil
+                        }
+                        //  imgShare = cell.imagePost.image
+                        imagePost1 = cell.imagePost
+                        imagePost2 = cell.imagePost.image
+                    }
                 }
-            })
-            if let imagePath = imageURL,
-                let imgUrl = URL(string:  imagePath){
-                cell.imagePost.image = UIImage(named: "loading4.jpg") //image place
-                cell.imagePost.af_setImage(withURL: imgUrl)
+                }
             }
-            else{
-                cell.imagePost.image = nil
+             
             }
-        
-        ////
-            
-
-            //  imgShare = cell.imagePost.image
-            imagePost1 = cell.imagePost
-            imagePost2 = cell.imagePost.image
-        }
-        }else{}
+ 
         }
         cell.favButton.addTarget(self, action: #selector(ViewController.bookmarkTapped(_:)), for: .touchUpInside)
         cell.btnSharePosts.addTarget(self, action: #selector(ViewController.shareTapped(_:)), for: .touchUpInside)
 
         return cell
+        
+        
     }
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // The cell calls this method when the user taps the heart button
     func PostsCellDidTapBookmark(_ sender: PostsCell) {
         guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        print("Bookmark", sender, tappedIndexPath)
+//        print("Bookmark", sender, tappedIndexPath)
     }
     
     
     @objc func bookmarkTapped(_ sender: Any?) {
-        // We need to call the method on the underlying object, but I don't know which row the user tapped!
-        // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
-        // the view hierarchy until we find the UITableviewCell instance.
-        print("Bookmark Tapped", sender!)
+//        print("Bookmark Tapped", sender!)
     }
     func PostsCellDidTapShare(_ sender: PostsCell) {
         guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        print("Sharing", sender, tappedIndexPath)
+ //       print("Sharing", sender, tappedIndexPath)
     }
     
     @objc func shareTapped(_ sender: Any?) {
-        print("share Tapped", sender!)
+ //       print("share Tapped", sender!)
         
     }
     
@@ -427,65 +454,63 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
        if segue.identifier == "ViewFav1" {
-            print("Bookmarks View segue")
+   //         print("Bookmarks View segue")
             let controller = segue.destination as! BookmarkViewController
             controller.favoritePosts = favResults
             
        }
        else{
-            print("DetailsPost View segue")
+    //        print("DetailsPost View segue")
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
             let postTitle = postsTitle[(indexPath?.row)!]
             let postContent = postsContent[(indexPath?.row)!]
-   //         let postImage = postsEmbed[(indexPath?.row)!]
             let imgPost = postsEmbed[(indexPath?.row)!]
-   //         let imgPost = imgPosts[(indexPath?.row)!]
             let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
-  //          detailViewController.imgPost = imgPost
             detailViewController.nameString = nameString
             detailViewController.postTitle = postTitle
             detailViewController.postContent = postContent
             detailViewController.imgPost = imgPost
-//            detailViewController.postImage = postImage
-            detailViewController.nameString = nameString
-        
         
         }
     }
     
     @IBAction func btnSharePosts(_ sender: UIButton) {
-//        let postShare1 = posts[sender.tag]
+        
         postShare = posts[sender.tag]
         let postShare1 = (postShare as AnyObject).value(forKey: "title") as! [String : Any]
-     //   let titleDicString = titleDic as? [[String: Any]]
-   //     self.postsTitle1 = titleDicString!
-//////
+        let embedDic = (postShare as AnyObject).value(forKey: "_embedded")
+        let embedDicString = embedDic! as! [String: Any]
+        
         let title = (postShare1["rendered"] as? String)?.stringByDecodingHTMLEntities
         let URl = postShare["link"] as? String
-        imgPostShare = imgPosts[(sender.tag)]
-        let imageURL = imgPostShare!["source_url"] as? String
-    
-        if let imagePath = imageURL,
-            let imgUrl = URL(string:  imagePath){
-            imagePost1?.af_setImage(withURL: imgUrl)
+        if let img = (embedDicString as AnyObject).value(forKey: "wp:featuredmedia"){
+            let dataDic = img as? [[String: Any]]
+            
+            self.imgPosts = dataDic!
+            for images in imgPosts{
+                let imageURL = images["source_url"] as? String
+                if let imagePath = imageURL,
+                    let imgUrl = URL(string:  imagePath){
+                    imagePost1?.af_setImage(withURL: imgUrl)
+                }
+                else{
+                    imagePost1?.image = nil
+                }
+                let image = imagePost1?.image
+                
+                let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
+                if let popoverController = vc.popoverPresentationController{
+                    popoverController.sourceView = self.view
+                    popoverController.sourceRect = self.view.bounds
+                }
+                self.present(vc, animated: true, completion: nil)
+                imagePost1?.image = imagePost2
+            }
         }
-        else{
-          //  imagePost1.image = nil
-        }
-        let image = imagePost1?.image
-
-        
-        let vc = UIActivityViewController(activityItems: [title, URl, image], applicationActivities: [])
-        if let popoverController = vc.popoverPresentationController{
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = self.view.bounds
-        }
-        self.present(vc, animated: true, completion: nil)
-        imagePost1?.image = imagePost2
     }
     
     override func didReceiveMemoryWarning() {
@@ -505,22 +530,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if outData != nil{
         let dict = NSKeyedUnarchiver.unarchiveObject(with: outData!)as! [[String: Any]]
         favResults = dict
+        favResultsGlobal.favResultsData = favResults
         }else{}
     }
 }
 
-
-//----------------------
-
-/*
-func dismissKeyboard() {
-    view.endEditing(true)
-    // do aditional stuff
-}
-*/
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-//        static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk", "L'équipe", "A propos"]
     static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk","Le blog", "Sexualité","Vidéo", " ", "Bookmarks", "Partager", "AppStore", " ", "À propos", "Contact", "L'équipe"]
 }
 //----------------------
