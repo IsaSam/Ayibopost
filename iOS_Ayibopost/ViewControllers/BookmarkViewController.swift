@@ -55,8 +55,6 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         self.postsContent = [contentDicString]
         self.postsEmbed = [embedDicString]
         
-        //        print(self.postsTitle)
-        //      let postTitle = postsTitle[indexPath.row]
         cell.titleLabel.text = (titleDicString as AnyObject).value(forKey: "rendered") as? String
         let htmlTag = (contentDicString as AnyObject).value(forKey: "rendered") as? String
         let content = htmlTag?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
@@ -75,10 +73,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
             }else{
                 cell.authorNameLabel.text = "Par " + authorName!
             }
-        }
-        //Date
-        
-        //date format conversion
+        }        //date format conversion
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDateFormatter = DateFormatter()
@@ -140,7 +135,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
                                 let url = URL(string: imgURLShare!)
                                 cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
                                     if ((error) != nil) {
-                                        print("placeholder image...")
+                //                        print("placeholder image...")
                                         cell.imagePost.image = UIImage(named: "placeholderImage.png")
                                     } else {
                                         //     print("Success let using the image...")
@@ -156,13 +151,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
                                 else{
                                     cell.imagePost.image = nil
                                 }
-                                //  imgShare = cell.imagePost.image
-                             //   imagePost1 = cell.imagePost
-                             //   imagePost2 = cell.imagePost.image
                             }
-                            /*     }else{
-                             print("no size 1 oioioioioioioioioioioi")
-                             }*/
                         }
                     }
                 }
@@ -182,12 +171,12 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
             favoritesPosts = favoritePosts!
         
         favTableView.reloadData()
-        print("Counter2: \(favoritesPosts.count)")
+ //       print("Counter2: \(favoritesPosts.count)")
         super.viewWillAppear(animated)
         }else{
             favoritesPosts = favResultsGlobal.favResultsData!
             favTableView.reloadData()
-            print("Counter3: \(favoritesPosts.count)")
+  //          print("Counter3: \(favoritesPosts.count)")
             super.viewWillAppear(animated)
             
         }

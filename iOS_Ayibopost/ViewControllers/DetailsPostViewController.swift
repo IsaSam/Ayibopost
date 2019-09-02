@@ -58,26 +58,10 @@ class DetailsPostViewController: UIViewController{
         
         activityIndicatoryWeb.hidesWhenStopped = true
         
-        
-        //print(post!)
-//        print(BookmarksUp)
         topBarLogo()
         PostSelect()
 
          }
-  /*  func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        activityIndicatoryWeb.startAnimating()
-        return true
-    }
-    
-    func webViewDidFinishLoad(webView: UIWebView) {
-        activityIndicatoryWeb.stopAnimating()
-    }
-    
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        activityIndicatoryWeb.stopAnimating()
-    }*/
-    
     // show indicator
     func webViewDidStartLoad(_ webView: UIWebView){
         activityIndicatoryWeb.startAnimating()
@@ -219,14 +203,11 @@ class DetailsPostViewController: UIViewController{
             let urlYou = input[range]
             if urlYou != ""{
                 urlYoutube = String(urlYou)
-           //     print(urlYoutube)
                 webView.isHidden = false
             }
-            //     urlYou = String(input[range])
         }
         if urlYoutube != ""{
                    print(urlYoutube)
-            //      self.pImage.isHidden = false
             self.postImageView.isHidden = true
             webView.isHidden = false
             
@@ -250,10 +231,6 @@ class DetailsPostViewController: UIViewController{
                         let dataDic = compressImg as? [[String: Any]]
                         let dataDic2 = compressImg2 as? [[String: Any]]
                         let dataDic3 = compressImg3 as? [[String: Any]]
-                        //   if dataDic != nil{
-                        //     self.imgPosts = dataDic!
-                        
-                        //         let imgPosts = dataDic!
                         
                         if dataDic != nil{
                             self.imgPosts = dataDic!
@@ -278,7 +255,6 @@ class DetailsPostViewController: UIViewController{
                                 postImageView.image = nil
                             }
                         }
-                        //    }else{}
                     }
                 }
             }
@@ -301,12 +277,7 @@ class DetailsPostViewController: UIViewController{
         }
         self.present(vc, animated: true, completion: nil)
     }
-   /* func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.filteredPosts = searchText.isEmpty ? self.imgPost : self.imgPost?.filter({(imgPost) -> Bool in
-            return (imgPost[PostKeys.title] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        })
-        
-    }*/
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -49,7 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var imgShare: UIImage?
     var favResults: [[String: Any]] = []
     var favResults1: [[String: Any]] = []
-//    var post: [[String: Any]] = []
     var postShare: [String: Any] = [:]
     var imagePost1: UIImageView?
     var imagePost2: UIImage?
@@ -73,35 +72,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.isHidden = true
         
     }
-/*
-    @IBAction func viewFav(_ sender: Any) {
-        self.performSegue(withIdentifier: "ViewFav1", sender: self)
-    //    storeData()
-    }*/
-    
     @IBAction func searchButton(_ sender: Any) {
-        print("Search...")
+//        print("Search...")
         navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem?.accessibilityElementsHidden = true
         navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
         searchBar.isHidden = false
-   //     searchBar.showsCancelButton = true
-   //     tableView.tableHeaderView = searchBar
-   //     searchBar.searchBarStyle = UISearchBarStyle.default
-   //     searchBar.alpha = 0.96
     }
     
     @IBAction func addFav(_ sender: UIButton) {
         
-        print("Selected Item #\(sender.tag) as a favorite")
+//        print("Selected Item #\(sender.tag) as a favorite")
         favResults.append(posts[sender.tag])
  //      print(favResults)
-        print("Counter1: \(favResults.count)")
+  //      print("Counter1: \(favResults.count)")
         self.favResults.reverse() //sort
         
         storeData() //Saved posts
         
-    //    let alert = UIAlertController(title: "Post saved successfully!", message: "Read Later all Bookmark's 📖", preferredStyle: .alert)
         let alert = UIAlertController(title: "Post enregistré avec succès!", message: "A lire plutard dans la liste des signets 📖", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
@@ -404,7 +392,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         let url = URL(string: imgURLShare!)
                         cell.imagePost.sd_setImage(with: url, placeholderImage:nil, completed: { (image, error, cacheType, url) -> Void in
                             if ((error) != nil) {
-                                print("placeholder image...")
+              //                  print("placeholder image...")
                                 cell.imagePost.image = UIImage(named: "placeholderImage.png")
                             } else {
                            //     print("Success let using the image...")
@@ -424,9 +412,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         imagePost1 = cell.imagePost
                         imagePost2 = cell.imagePost.image
                     }
-           /*     }else{
-                    print("no size 1 oioioioioioioioioioioi")
-                }*/
                 }
                 }
             }
@@ -445,23 +430,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // The cell calls this method when the user taps the heart button
     func PostsCellDidTapBookmark(_ sender: PostsCell) {
         guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        print("Bookmark", sender, tappedIndexPath)
+//        print("Bookmark", sender, tappedIndexPath)
     }
     
     
     @objc func bookmarkTapped(_ sender: Any?) {
-        // We need to call the method on the underlying object, but I don't know which row the user tapped!
-        // The sender is the button itself, not the table view cell. One way to get the index path would be to ascend
-        // the view hierarchy until we find the UITableviewCell instance.
-        print("Bookmark Tapped", sender!)
+//        print("Bookmark Tapped", sender!)
     }
     func PostsCellDidTapShare(_ sender: PostsCell) {
         guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        print("Sharing", sender, tappedIndexPath)
+ //       print("Sharing", sender, tappedIndexPath)
     }
     
     @objc func shareTapped(_ sender: Any?) {
-        print("share Tapped", sender!)
+ //       print("share Tapped", sender!)
         
     }
     
@@ -472,31 +454,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
        if segue.identifier == "ViewFav1" {
-            print("Bookmarks View segue")
+   //         print("Bookmarks View segue")
             let controller = segue.destination as! BookmarkViewController
             controller.favoritePosts = favResults
             
        }
        else{
-            print("DetailsPost View segue")
+    //        print("DetailsPost View segue")
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let post = posts[(indexPath?.row)!]
             let postTitle = postsTitle[(indexPath?.row)!]
             let postContent = postsContent[(indexPath?.row)!]
-   //         let postImage = postsEmbed[(indexPath?.row)!]
             let imgPost = postsEmbed[(indexPath?.row)!]
-   //         let imgPost = imgPosts[(indexPath?.row)!]
             let nameString = postsEmbed[(indexPath?.row)!]
             let detailViewController = segue.destination as! DetailsPostViewController
             detailViewController.post = post
-  //          detailViewController.imgPost = imgPost
             detailViewController.nameString = nameString
             detailViewController.postTitle = postTitle
             detailViewController.postContent = postContent
             detailViewController.imgPost = imgPost
-//            detailViewController.postImage = postImage
-        
         
         }
     }
@@ -533,25 +510,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.present(vc, animated: true, completion: nil)
                 imagePost1?.image = imagePost2
             }
-
-            
         }
-        
-        
-        /*
-    //    let imageURL = imgPostShare!["source_url"] as? String
-        print(imageURL!)
-    
-        if let imagePath = imageURL,
-            let imgUrl = URL(string:  imagePath){
-            imagePost1?.af_setImage(withURL: imgUrl)
-        }
-        else{
-        }
-        let image = imagePost1?.image
-*/
-        
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -576,18 +535,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 }
 
-
-//----------------------
-
-/*
-func dismissKeyboard() {
-    view.endEditing(true)
-    // do aditional stuff
-}
-*/
     // 7.Struct for add storyboards which you want show on navigation drawer
     struct DrawerArray {
-//        static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk", "L'équipe", "A propos"]
     static let array:NSArray = ["Accueil", "Politique", "Société", "Économie", "Culture", "Sport", "Podcast","AyiboTalk","Le blog", "Sexualité","Vidéo", " ", "Bookmarks", "Partager", "AppStore", " ", "À propos", "Contact", "L'équipe"]
 }
 //----------------------
