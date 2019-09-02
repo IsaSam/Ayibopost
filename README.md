@@ -19,7 +19,7 @@ User Stories - AYIBOPOST The following required functionality :
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/Zi4NUu5.gifv' title='Ayibopost Walkthrough' width='' alt='Video Walkthrough' />
+<img src="AP_video.gif?raw=true" width="" alt='Video Walkthrough' />
 
 ## Images Walkthrough
 
